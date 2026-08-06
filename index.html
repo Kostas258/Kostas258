@@ -37,6 +37,28 @@
         <h1 id="jeu-titre">Alerte Police Secours</h1>
 
         <!--
+            BARRE D'INTERFACE (HUD)
+            ========================
+            "HUD" = Head-Up Display, l'affichage d'informations en
+            permanence à l'écran (ici : l'argent du joueur). Ce n'est
+            PAS dessiné dans le Canvas, mais avec de simples balises
+            HTML classiques. C'est plus simple à gérer que de dessiner
+            du texte dans le Canvas, et ça suffit très bien pour une
+            interface de ce type.
+
+            On donne un id="argent-valeur" au <span> contenant le
+            nombre : c'est UNIQUEMENT ce nombre que notre script.js
+            ira modifier, sans toucher au reste du texte autour.
+        -->
+        <div id="hud">
+            <div id="argent-panneau">
+                <span id="argent-libelle">Fonds municipaux :</span>
+                <span id="argent-valeur">0</span>
+                <span id="argent-devise">$</span>
+            </div>
+        </div>
+
+        <!--
             L'ÉLÉMENT CANVAS
             ================
             <canvas> est une balise HTML spéciale qui fonctionne comme

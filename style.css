@@ -52,6 +52,49 @@ body {
     text-shadow: 0 0 12px rgba(77, 157, 255, 0.7); /* léger effet de lueur */
 }
 
+/* ------------------------------------------------------------
+   BARRE D'INTERFACE (HUD) - affichage de l'argent du joueur
+   ------------------------------------------------------------
+   Ce bloc n'est pas dessiné dans le Canvas : c'est du HTML/CSS
+   classique, positionné juste au-dessus de la zone de jeu.
+------------------------------------------------------------ */
+#hud {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Le panneau qui affiche le montant d'argent, façon "pastille" */
+#argent-panneau {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+
+    background-color: rgba(36, 94, 201, 0.15); /* léger fond bleu translucide */
+    border: 1px solid #4d9dff;
+    border-radius: 6px;
+    padding: 8px 16px;
+
+    font-size: 1.1rem;
+    font-variant-numeric: tabular-nums; /* les chiffres gardent toujours la même largeur, évite que le texte "tremble" quand le nombre change */
+}
+
+/* Le libellé "Fonds municipaux :" en gris clair discret */
+#argent-libelle {
+    color: #b8c2d0;
+}
+
+/* Le nombre lui-même, mis en valeur en jaune doré (couleur "argent/monnaie") */
+#argent-valeur {
+    color: #ffd166;
+    font-weight: bold;
+}
+
+/* Le symbole "$" à côté du nombre */
+#argent-devise {
+    color: #ffd166;
+}
+
 /* Le canvas lui-même : la zone de dessin du jeu */
 #jeu-canvas {
     display: block; /* évite un petit espace parasite sous l'élément */

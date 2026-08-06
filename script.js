@@ -357,11 +357,86 @@ function dessinerCarte() {
 
 
 /* ------------------------------------------------------------
-   11. LANCEMENT INITIAL
+   11. LE SYSTÈME D'ARGENT
+   ------------------------------------------------------------
+   Le joueur possède une somme d'argent qui lui sert à acheter et
+   améliorer ses unités. Cette somme augmente quand un ennemi est
+   éliminé (pas encore codé) et diminue quand le joueur dépense.
+
+   On utilise une variable "let" (et pas "const") car sa valeur
+   va changer tout au long de la partie, contrairement aux
+   constantes de configuration définies plus haut.
+------------------------------------------------------------ */
+
+// Montant de départ du joueur. 300 est une valeur de test simple,
+// qu'on pourra facilement ajuster plus tard pour équilibrer le jeu.
+let argent = 300;
+
+// On récupère une fois pour toutes la référence vers l'élément HTML
+// <span id="argent-valeur"> (voir index.html), pour ne pas avoir à
+// la rechercher à nouveau à chaque fois qu'on affiche l'argent.
+const elementArgent = document.getElementById('argent-valeur');
+
+/**
+ * Met à jour l'affichage à l'écran pour qu'il corresponde toujours
+ * à la valeur actuelle de la variable "argent". Cette fonction doit
+ * être appelée juste après CHAQUE modification de "argent", sinon
+ * le joueur verrait un nombre affiché qui ne correspond plus à la
+ * réalité du jeu.
+ */
+function mettreAJourAffichageArgent() {
+    // .textContent remplace le texte affiché à l'intérieur de l'élément HTML.
+    elementArgent.textContent = argent;
+}
+
+/**
+ * Ajoute une somme à l'argent du joueur.
+ * Utilisée plus tard, par exemple, quand un ennemi est éliminé
+ * (chaque ennemi rapportera une récompense en appelant cette fonction).
+ *
+ * @param {number} montant - la somme à ajouter (doit être positive)
+ */
+function ajouterArgent(montant) {
+    argent += montant; // équivaut à : argent = argent + montant
+    mettreAJourAffichageArgent();
+}
+
+/**
+ * Tente de dépenser une somme d'argent, par exemple pour acheter
+ * ou améliorer une unité.
+ *
+ * Cette fonction VÉRIFIE d'abord que le joueur a assez d'argent :
+ * - Si oui, elle retire la somme et renvoie "true" (succès), afin
+ *   que le reste du code sache que l'achat est confirmé.
+ * - Si non, elle ne touche pas à l'argent et renvoie "false" (échec),
+ *   pour que le reste du code puisse par exemple afficher un message
+ *   "Fonds insuffisants" plus tard.
+ *
+ * @param {number} montant - la somme à dépenser
+ * @returns {boolean} true si la dépense a pu être effectuée, false sinon
+ */
+function depenserArgent(montant) {
+    if (argent >= montant) {
+        argent -= montant; // équivaut à : argent = argent - montant
+        mettreAJourAffichageArgent();
+        return true;
+    }
+
+    // Pas assez d'argent : on ne change rien et on prévient l'appelant.
+    return false;
+}
+
+
+/* ------------------------------------------------------------
+   12. LANCEMENT INITIAL
    ------------------------------------------------------------
    Pour l'instant, le jeu n'a pas encore de "boucle d'animation"
-   (pas besoin, puisque rien ne bouge). On appelle donc la fonction
-   de dessin une seule fois, dès que le script se charge, afin
-   d'afficher la carte de base à l'écran.
+   (pas besoin, puisque rien ne bouge sur le Canvas). On appelle
+   donc nos fonctions d'initialisation une seule fois, dès que le
+   script se charge :
+     - dessinerCarte() affiche la carte de base
+     - mettreAJourAffichageArgent() affiche le montant de départ
+       dans le panneau d'interface (HUD)
 ------------------------------------------------------------ */
 dessinerCarte();
+mettreAJourAffichageArgent();
