@@ -53,21 +53,26 @@ body {
 }
 
 /* ------------------------------------------------------------
-   BARRE D'INTERFACE (HUD) - affichage de l'argent du joueur
+   BARRE D'INTERFACE (HUD) - argent, vie du Commissariat, vague
    ------------------------------------------------------------
    Ce bloc n'est pas dessiné dans le Canvas : c'est du HTML/CSS
    classique, positionné juste au-dessus de la zone de jeu.
+   Les trois panneaux (argent / vie / vague) partagent tous la
+   même classe ".hud-bloc", pour ne pas répéter le même style
+   trois fois dans ce fichier.
 ------------------------------------------------------------ */
 #hud {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* les blocs passent à la ligne sur un petit écran plutôt que de déborder */
+    gap: 12px;
 }
 
-/* Le panneau qui affiche le montant d'argent, façon "pastille" */
-#argent-panneau {
+/* Un panneau du HUD, façon "pastille" */
+.hud-bloc {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 6px;
 
     background-color: rgba(36, 94, 201, 0.15); /* léger fond bleu translucide */
@@ -79,20 +84,48 @@ body {
     font-variant-numeric: tabular-nums; /* les chiffres gardent toujours la même largeur, évite que le texte "tremble" quand le nombre change */
 }
 
-/* Le libellé "Fonds municipaux :" en gris clair discret */
-#argent-libelle {
+/* Les libellés ("Fonds municipaux :", "PV", "/"...) en gris clair discret */
+.hud-libelle {
     color: #b8c2d0;
 }
 
-/* Le nombre lui-même, mis en valeur en jaune doré (couleur "argent/monnaie") */
-#argent-valeur {
+/* Un nombre du HUD, mis en valeur (couleur par défaut : jaune doré) */
+.hud-valeur {
     color: #ffd166;
     font-weight: bold;
 }
 
-/* Le symbole "$" à côté du nombre */
-#argent-devise {
-    color: #ffd166;
+/* Le nombre de points de vie du Commissariat, en rouge/rose alerte */
+.hud-valeur-vie {
+    color: #ff8fa3;
+}
+
+/* Le bouton "Lancer la vague" */
+#bouton-lancer-vague {
+    margin-left: 6px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4d9dff;
+    color: #06090d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bouton-lancer-vague:disabled {
+    background-color: #3a4148;
+    color: #7a8390;
+    cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------
+   ZONE DE JEU : le Canvas et la boutique, côte à côte
+------------------------------------------------------------ */
+#zone-jeu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
 }
 
 /* Le canvas lui-même : la zone de dessin du jeu */
@@ -106,6 +139,125 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 24px rgba(77, 157, 255, 0.35);
 
+    /* Le curseur "pointeur" indique que le Canvas est cliquable
+       (construction et sélection des unités) */
+    cursor: pointer;
+
     /* Empêche de sélectionner le contenu du canvas comme du texte */
     user-select: none;
+}
+
+/* ------------------------------------------------------------
+   BOUTIQUE (ARMURERIE) - achat et gestion des unités
+------------------------------------------------------------ */
+#boutique {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background-color: rgba(16, 24, 34, 0.6);
+    border: 1px solid #2c3844;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+#boutique h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #4d9dff;
+    margin-bottom: 4px;
+}
+
+/* Un bouton d'achat d'unité : nom en haut, prix en dessous */
+.bouton-unite {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #3a4a5a;
+    border-radius: 6px;
+    color: #e0e6f0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bouton-unite:hover {
+    background-color: rgba(77, 157, 255, 0.2);
+    border-color: #4d9dff;
+}
+
+.bouton-unite-nom {
+    font-weight: bold;
+}
+
+.bouton-unite-cout {
+    color: #ffd166;
+    font-size: 0.85rem;
+}
+
+#boutique-aide {
+    font-size: 0.8rem;
+    color: #8a94a3;
+    line-height: 1.4;
+}
+
+/* Le panneau "Améliorer / Vendre" d'une unité déjà posée */
+#panneau-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    border-top: 1px solid #2c3844;
+    padding-top: 10px;
+}
+
+#panneau-selection h3 {
+    font-size: 1rem;
+    color: #4d9dff;
+}
+
+#panneau-selection p {
+    font-size: 0.85rem;
+    color: #b8c2d0;
+}
+
+#panneau-selection button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4d9dff;
+    color: #06090d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#panneau-selection button:disabled {
+    background-color: #3a4148;
+    color: #7a8390;
+    cursor: not-allowed;
+}
+
+#bouton-vendre {
+    background-color: #e63946 !important;
+    color: #ffffff !important;
+}
+
+/* Classe utilitaire générique : masque un élément (ex : panneau de
+   sélection tant qu'aucune unité n'est sélectionnée) */
+.cache {
+    display: none;
+}
+
+/* La zone de messages ponctuels ("Fonds insuffisants"...) */
+#message-jeu {
+    min-height: 1.2em; /* réserve toujours la place, pour éviter que la page "saute" quand un message apparaît/disparaît */
+    color: #ffd166;
+    font-size: 0.9rem;
 }

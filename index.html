@@ -40,44 +40,117 @@
             BARRE D'INTERFACE (HUD)
             ========================
             "HUD" = Head-Up Display, l'affichage d'informations en
-            permanence à l'écran (ici : l'argent du joueur). Ce n'est
-            PAS dessiné dans le Canvas, mais avec de simples balises
-            HTML classiques. C'est plus simple à gérer que de dessiner
-            du texte dans le Canvas, et ça suffit très bien pour une
-            interface de ce type.
+            permanence à l'écran (argent, vie du Commissariat, vague en
+            cours). Ce n'est PAS dessiné dans le Canvas, mais avec de
+            simples balises HTML classiques. C'est plus simple à gérer
+            que de dessiner du texte dans le Canvas, et ça suffit très
+            bien pour une interface de ce type.
 
-            On donne un id="argent-valeur" au <span> contenant le
-            nombre : c'est UNIQUEMENT ce nombre que notre script.js
-            ira modifier, sans toucher au reste du texte autour.
+            Chaque nombre a son propre id (argent-valeur, vie-valeur,
+            vague-valeur...) : c'est UNIQUEMENT ce nombre que notre
+            script.js ira modifier, sans toucher au reste du texte autour.
         -->
         <div id="hud">
-            <div id="argent-panneau">
-                <span id="argent-libelle">Fonds municipaux :</span>
-                <span id="argent-valeur">0</span>
-                <span id="argent-devise">$</span>
+            <div class="hud-bloc">
+                <span class="hud-libelle">Fonds municipaux :</span>
+                <span id="argent-valeur" class="hud-valeur hud-valeur-argent">0</span>
+                <span class="hud-libelle">$</span>
+            </div>
+            <div class="hud-bloc">
+                <span class="hud-libelle">Commissariat :</span>
+                <span id="vie-valeur" class="hud-valeur hud-valeur-vie">0</span>
+                <span class="hud-libelle">PV</span>
+            </div>
+            <div class="hud-bloc">
+                <span class="hud-libelle">Vague :</span>
+                <span id="vague-valeur" class="hud-valeur">0</span>
+                <span class="hud-libelle">/ <span id="vague-total">0</span></span>
+                <button id="bouton-lancer-vague">Lancer la vague</button>
             </div>
         </div>
 
         <!--
-            L'ÉLÉMENT CANVAS
-            ================
-            <canvas> est une balise HTML spéciale qui fonctionne comme
-            une "toile de dessin" vierge. C'est ici que TOUT le jeu sera
-            dessiné : la carte, le chemin, les tourelles, les ennemis...
-
-            On lui donne un identifiant (id="jeu-canvas") pour pouvoir
-            le retrouver facilement depuis notre fichier JavaScript.
-
-            Les attributs "width" et "height" définissent la résolution
-            réelle du dessin (en pixels). C'est différent de la taille
-            CSS : ici on fixe la taille interne de la grille de pixels
-            sur laquelle on va dessiner.
+            ZONE DE JEU
+            ============
+            Regroupe le Canvas (à gauche) et la boutique d'unités
+            (à droite), côte à côte grâce au CSS (display: flex).
         -->
-        <canvas id="jeu-canvas" width="960" height="640">
-            <!-- Message affiché uniquement si le navigateur est trop ancien
-                 pour supporter le Canvas -->
-            Votre navigateur ne supporte pas l'élément Canvas. Merci de le mettre à jour.
-        </canvas>
+        <div id="zone-jeu">
+
+            <!--
+                L'ÉLÉMENT CANVAS
+                ================
+                <canvas> est une balise HTML spéciale qui fonctionne comme
+                une "toile de dessin" vierge. C'est ici que TOUT le jeu est
+                dessiné : la carte, le chemin, les unités, les ennemis...
+
+                On lui donne un identifiant (id="jeu-canvas") pour pouvoir
+                le retrouver facilement depuis notre fichier JavaScript.
+
+                Les attributs "width" et "height" définissent la résolution
+                réelle du dessin (en pixels). C'est différent de la taille
+                CSS : ici on fixe la taille interne de la grille de pixels
+                sur laquelle on va dessiner.
+            -->
+            <canvas id="jeu-canvas" width="960" height="640">
+                <!-- Message affiché uniquement si le navigateur est trop ancien
+                     pour supporter le Canvas -->
+                Votre navigateur ne supporte pas l'élément Canvas. Merci de le mettre à jour.
+            </canvas>
+
+            <!--
+                LA BOUTIQUE (ARMURERIE)
+                ========================
+                Un bouton par type d'unité. Le nom et le prix affichés
+                dans chaque bouton (les <span> vides ci-dessous) sont
+                remplis automatiquement par script.js au démarrage, à
+                partir de l'objet UNITES : ainsi, les prix ne sont
+                écrits qu'à UN SEUL endroit dans tout le projet (dans
+                script.js), ce qui évite les erreurs de recopie.
+
+                L'attribut "data-type" sert à indiquer à script.js
+                quel type d'unité correspond à chaque bouton.
+            -->
+            <div id="boutique">
+                <h2>Armurerie</h2>
+
+                <button class="bouton-unite" data-type="tireur">
+                    <span class="bouton-unite-nom"></span>
+                    <span class="bouton-unite-cout"></span>
+                </button>
+                <button class="bouton-unite" data-type="lourd">
+                    <span class="bouton-unite-nom"></span>
+                    <span class="bouton-unite-cout"></span>
+                </button>
+                <button class="bouton-unite" data-type="herse">
+                    <span class="bouton-unite-nom"></span>
+                    <span class="bouton-unite-cout"></span>
+                </button>
+
+                <p id="boutique-aide">
+                    Cliquez sur une unité ci-dessus, puis sur un toit libre
+                    de la carte pour la construire.
+                </p>
+
+                <!--
+                    PANNEAU DE SÉLECTION
+                    ======================
+                    Caché par défaut (classe "cache", voir style.css).
+                    Affiché par script.js quand le joueur clique sur une
+                    unité déjà posée sur la carte.
+                -->
+                <div id="panneau-selection" class="cache">
+                    <h3 id="selection-titre"></h3>
+                    <p id="selection-details"></p>
+                    <button id="bouton-ameliorer"></button>
+                    <button id="bouton-vendre"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Petite zone de texte pour les messages ponctuels ("Fonds insuffisants"...) -->
+        <p id="message-jeu"></p>
 
     </div>
 
