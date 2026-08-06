@@ -9,11 +9,15 @@
       se croisent, des toits de bâtiments, et le Commissariat
       Central (la base à défendre) à l'arrivée du chemin.
     - Le système d'argent (gagner/dépenser).
-    - Les vagues d'ennemis qui se déplacent le long du chemin.
+    - 10 niveaux (10 vagues d'ennemis de plus en plus difficiles) qui
+      se déplacent le long du chemin.
     - Les unités posables sur les toits (Tireur de précision,
       Unité lourde, Herse routière), avec achat, amélioration et
       vente.
     - Les points de vie du Commissariat, la victoire et la défaite.
+    - Des Mods (modificateurs de jeu) débloqués après une première
+      victoire sur les 10 niveaux, et un bouton "Rejouer" pour
+      relancer une partie avec les mods choisis.
 
     Le fichier est découpé en grandes sections numérotées, dans
     l'ordre où on les a construites : la carte d'abord, puis
@@ -773,7 +777,7 @@ function afficherMessage(texte) {
    (comme dans la plupart des Tower Defense). Plus les vagues
    avancent, plus les ennemis sont nombreux et résistants.
 ------------------------------------------------------------ */
-const NOMBRE_TOTAL_VAGUES = 6;
+const NOMBRE_TOTAL_VAGUES = 10; // les "10 niveaux" du quartier : 10 vagues de plus en plus difficiles
 
 /**
  * Calcule la configuration (nombre d'ennemis, points de vie,
@@ -781,14 +785,21 @@ const NOMBRE_TOTAL_VAGUES = 6;
  * une fonction plutôt qu'une liste écrite à la main : les vagues
  * suivantes deviennent automatiquement plus difficiles, sans avoir
  * à tout retaper.
+ *
+ * Cette fonction tient aussi compte des Mods actifs (voir section 22,
+ * plus bas dans le fichier) : le mod "Ennemis renforcés" accélère les
+ * ennemis, et le mod "Fonds municipaux doublés" double leur récompense.
  */
 function creerConfigVague(numero) {
+    const vitesse = 65 + numero * 4;
+    const recompense = 12 + numero * 3;
+
     return {
         nombreEnnemis: 4 + numero * 2,
         pvEnnemi: 60 + numero * 25,
-        vitesse: 65 + numero * 4,          // pixels par seconde
+        vitesse: modsActifs.ennemisRenforces ? vitesse * 1.4 : vitesse,
         intervalleApparition: 0.9,          // secondes entre deux apparitions
-        recompense: 12 + numero * 3         // argent gagné par ennemi éliminé
+        recompense: modsActifs.argentDouble ? recompense * 2 : recompense
     };
 }
 
@@ -857,9 +868,14 @@ function mettreAJourVague(dt) {
 
 /**
  * Vérifie si la vague en cours est terminée (plus aucun ennemi à
- * générer ET plus aucun ennemi en vie). Si c'est le cas, soit on
- * prépare la vague suivante, soit on déclare la victoire si
- * c'était la dernière vague.
+ * générer ET plus aucun ennemi en vie). Si c'est le cas, trois issues
+ * sont possibles :
+ *   1. Il reste des vagues à venir -> on repasse en 'attente'.
+ *   2. C'était la 10ᵉ et dernière vague, et le mod "Vagues infinies"
+ *      est actif -> on repasse en 'attente' quand même, pour que le
+ *      joueur puisse continuer indéfiniment.
+ *   3. C'était la 10ᵉ vague et le mod n'est PAS actif -> victoire, et
+ *      les Mods sont débloqués pour les prochaines parties.
  */
 function verifierFinDeVague() {
     if (!vagueEnCours) return;
@@ -867,12 +883,19 @@ function verifierFinDeVague() {
 
     vagueEnCours = false;
 
-    if (vagueActuelle >= NOMBRE_TOTAL_VAGUES) {
+    const dernierNiveauTermine = vagueActuelle >= NOMBRE_TOTAL_VAGUES;
+
+    if (dernierNiveauTermine && !modsActifs.vaguesInfinies) {
         etatJeu = 'gagne';
+        debloquerModsSiNecessaire();
     } else {
         etatJeu = 'attente';
         document.getElementById('bouton-lancer-vague').disabled = false;
-        afficherMessage('Vague ' + vagueActuelle + ' terminée. Préparez la suivante !');
+        afficherMessage(
+            dernierNiveauTermine
+                ? 'Vague ' + vagueActuelle + ' repoussée. Vagues infinies : continuez si vous l\'osez !'
+                : 'Vague ' + vagueActuelle + ' terminée. Préparez la suivante !'
+        );
     }
 }
 
@@ -1245,22 +1268,191 @@ function boucleJeu(tempsActuel) {
 
 
 /* ------------------------------------------------------------
-   21. LANCEMENT INITIAL
+   22. LES MODS (débloqués après avoir terminé les 10 niveaux)
+   ------------------------------------------------------------
+   Un "mod" (pour "modificateur") est une variante de règles que le
+   joueur peut activer avant de rejouer, pour changer l'expérience
+   de jeu. Ici, ils ne sont accessibles qu'APRÈS une première
+   victoire (les 10 vagues repoussées sans le mod "Vagues infinies").
+
+   On utilise "localStorage", une mémoire du navigateur qui garde
+   ses valeurs même après avoir fermé l'onglet ou éteint
+   l'ordinateur (contrairement aux variables JavaScript classiques,
+   effacées à chaque rechargement de la page). C'est ce qui permet
+   de ne pas avoir à re-terminer les 10 niveaux à chaque visite.
+------------------------------------------------------------ */
+
+// Les clés utilisées pour ranger nos informations dans localStorage.
+// On préfixe toujours nos clés (ici "alertePoliceSecours_") pour
+// éviter d'entrer en conflit avec d'autres données du navigateur.
+const CLE_MODS_DEBLOQUES = 'alertePoliceSecours_modsDebloques';
+const CLE_MODS_ACTIFS = 'alertePoliceSecours_modsActifs';
+
+// Le catalogue des mods disponibles, sur le même principe que UNITES :
+// une seule source de vérité pour le nom et la description de chacun.
+const MODS = {
+    argentDouble: {
+        nom: 'Fonds municipaux doublés',
+        description: "L'argent de départ et les récompenses des ennemis sont doublés."
+    },
+    renfortDepart: {
+        nom: 'Renfort de départ',
+        description: '+300 $ de fonds municipaux supplémentaires dès le début de la partie.'
+    },
+    ennemisRenforces: {
+        nom: 'Ennemis renforcés',
+        description: 'Les ennemis se déplacent 40% plus vite. Un vrai défi pour les meilleurs agents.'
+    },
+    vaguesInfinies: {
+        nom: 'Vagues infinies',
+        description: "Après la 10ᵉ vague, de nouvelles vagues continuent d'arriver sans fin, encore et encore plus difficiles. Combien de temps tiendrez-vous ?"
+    }
+};
+
+// true si le joueur a déjà terminé les 10 niveaux au moins une fois
+// (dans cette partie ou lors d'une visite précédente).
+let modsDebloques = localStorage.getItem(CLE_MODS_DEBLOQUES) === 'true';
+
+// L'état actuel (activé/désactivé) de chaque mod. On relit d'abord ce
+// qui est sauvegardé dans localStorage, puis on s'assure que chaque
+// mod du catalogue MODS a bien une valeur (au cas où on ajouterait un
+// nouveau mod plus tard, après une sauvegarde plus ancienne).
+let modsActifs = JSON.parse(localStorage.getItem(CLE_MODS_ACTIFS) || '{}');
+Object.keys(MODS).forEach(function (cle) {
+    if (typeof modsActifs[cle] !== 'boolean') modsActifs[cle] = false;
+});
+
+/**
+ * Calcule l'argent de départ d'une partie, en tenant compte des mods
+ * "Fonds municipaux doublés" et "Renfort de départ" s'ils sont actifs.
+ */
+function calculerArgentDepart() {
+    let depart = 300;
+    if (modsActifs.argentDouble) depart *= 2;
+    if (modsActifs.renfortDepart) depart += 300;
+    return depart;
+}
+
+/**
+ * Construit le panneau Mods (une ligne par mod, avec sa case à
+ * cocher) à partir de l'objet MODS. Comme pour initialiserBoutique(),
+ * on ne veut écrire chaque nom/description qu'à un seul endroit.
+ *
+ * Remarque pédagogique : on construit ici du texte HTML directement
+ * (innerHTML) à partir de nos propres données. C'est pratique et sans
+ * danger UNIQUEMENT parce que ce texte vient de notre catalogue MODS,
+ * jamais d'une saisie tapée par un utilisateur. Il ne faut JAMAIS
+ * faire ça avec du texte venant d'un formulaire ou d'Internet, car un
+ * utilisateur malveillant pourrait y glisser du code (faille dite
+ * "XSS") : dans ce cas, on utilise .textContent à la place.
+ */
+function initialiserPanneauMods() {
+    const conteneur = document.getElementById('liste-mods');
+
+    conteneur.innerHTML = Object.keys(MODS).map(function (cle) {
+        const infos = MODS[cle];
+        const coche = modsActifs[cle] ? ' checked' : '';
+        return '<label class="ligne-mod">' +
+            '<input type="checkbox" data-mod="' + cle + '"' + coche + '>' +
+            '<span><strong>' + infos.nom + '</strong> — ' + infos.description + '</span>' +
+            '</label>';
+    }).join('');
+
+    // On rebranche un écouteur sur chaque nouvelle case à cocher créée
+    // ci-dessus, pour mémoriser le choix du joueur dans localStorage.
+    conteneur.querySelectorAll('input[type="checkbox"]').forEach(function (case_) {
+        case_.addEventListener('change', function () {
+            modsActifs[case_.dataset.mod] = case_.checked;
+            localStorage.setItem(CLE_MODS_ACTIFS, JSON.stringify(modsActifs));
+        });
+    });
+}
+
+/** Révèle le panneau Mods (retire la classe "cache" qui le masquait). */
+function afficherPanneauMods() {
+    document.getElementById('panneau-mods').classList.remove('cache');
+}
+
+/**
+ * Appelée à chaque victoire (voir verifierFinDeVague, section 14).
+ * La toute première fois, elle débloque définitivement les Mods,
+ * mémorise ce déblocage dans localStorage, et prévient le joueur.
+ * Les fois suivantes, elle ne fait rien (les Mods restent débloqués).
+ */
+function debloquerModsSiNecessaire() {
+    if (modsDebloques) return;
+
+    modsDebloques = true;
+    localStorage.setItem(CLE_MODS_DEBLOQUES, 'true');
+    afficherPanneauMods();
+    afficherMessage('Bravo, agent ! Les 10 niveaux sont terminés : les Mods sont débloqués.');
+}
+
+
+/* ------------------------------------------------------------
+   23. REJOUER (RÉINITIALISER UNE PARTIE)
+   ------------------------------------------------------------
+   Remet tout l'état du jeu à zéro (argent, vie du Commissariat,
+   vagues, ennemis, unités posées...) pour démarrer une toute
+   nouvelle partie, en tenant compte des mods actuellement cochés
+   dans le panneau Mods.
+------------------------------------------------------------ */
+function reinitialiserPartie() {
+    argent = calculerArgentDepart();
+    mettreAJourAffichageArgent();
+
+    pvBase = PV_BASE_MAX;
+    mettreAJourAffichageVie();
+
+    vagueActuelle = 0;
+    vagueEnCours = false;
+    configVagueActuelle = null;
+    ennemisRestantAGenerer = 0;
+    chronoProchaineApparition = 0;
+    mettreAJourAffichageVague();
+    elementVagueTotal.textContent = modsActifs.vaguesInfinies ? '∞' : NOMBRE_TOTAL_VAGUES;
+
+    ennemis = [];
+    unitesPlacees = [];
+    effetsTir = [];
+
+    typeSelectionnePourAchat = null;
+    uniteSelectionnee = null;
+    masquerPanneauSelection();
+
+    etatJeu = 'attente';
+    document.getElementById('bouton-lancer-vague').disabled = false;
+
+    const auMoinsUnModActif = Object.keys(modsActifs).some(function (cle) {
+        return modsActifs[cle];
+    });
+    afficherMessage('Nouvelle partie commencée' + (auMoinsUnModActif ? ' avec mods actifs.' : '.'));
+}
+
+
+/* ------------------------------------------------------------
+   24. LANCEMENT INITIAL
    ------------------------------------------------------------
    On branche les derniers écouteurs d'événements (clic sur le
-   Canvas, boutons "Lancer la vague" / "Améliorer" / "Vendre"), on
-   initialise l'affichage du HUD avec les valeurs de départ, puis on
-   démarre la boucle de jeu pour de bon.
+   Canvas, boutons "Lancer la vague" / "Améliorer" / "Vendre" /
+   "Rejouer"), on prépare le panneau Mods, on initialise l'affichage
+   du HUD avec les valeurs de départ, puis on démarre la boucle de
+   jeu pour de bon.
 ------------------------------------------------------------ */
 canvas.addEventListener('click', gererClicCanvas);
 document.getElementById('bouton-lancer-vague').addEventListener('click', lancerVagueSuivante);
 document.getElementById('bouton-ameliorer').addEventListener('click', ameliorerUniteSelectionnee);
 document.getElementById('bouton-vendre').addEventListener('click', vendreUniteSelectionnee);
+document.getElementById('bouton-rejouer').addEventListener('click', reinitialiserPartie);
 
 initialiserBoutique();
+initialiserPanneauMods();
+if (modsDebloques) afficherPanneauMods();
+
+argent = calculerArgentDepart(); // tient compte des mods déjà cochés lors d'une précédente visite
 mettreAJourAffichageArgent();
 mettreAJourAffichageVie();
 mettreAJourAffichageVague();
-elementVagueTotal.textContent = NOMBRE_TOTAL_VAGUES;
+elementVagueTotal.textContent = modsActifs.vaguesInfinies ? '∞' : NOMBRE_TOTAL_VAGUES;
 
 requestAnimationFrame(boucleJeu);

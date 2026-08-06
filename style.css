@@ -118,6 +118,22 @@ body {
     cursor: not-allowed;
 }
 
+/* Style générique pour un bouton "secondaire" (moins mis en avant
+   que le bleu principal), utilisé ici pour "Rejouer" */
+.bouton-secondaire {
+    padding: 8px 16px;
+    border: 1px solid #4d9dff;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #4d9dff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bouton-secondaire:hover {
+    background-color: rgba(77, 157, 255, 0.15);
+}
+
 /* ------------------------------------------------------------
    ZONE DE JEU : le Canvas et la boutique, côte à côte
 ------------------------------------------------------------ */
@@ -250,9 +266,63 @@ body {
 }
 
 /* Classe utilitaire générique : masque un élément (ex : panneau de
-   sélection tant qu'aucune unité n'est sélectionnée) */
+   sélection tant qu'aucune unité n'est sélectionnée, ou panneau Mods
+   tant que les 10 niveaux ne sont pas terminés) */
 .cache {
     display: none;
+}
+
+/* ------------------------------------------------------------
+   PANNEAU MODS - débloqué après une première victoire
+------------------------------------------------------------ */
+#panneau-mods {
+    width: 100%;
+    max-width: 960px;
+
+    background-color: rgba(255, 209, 102, 0.08); /* léger fond doré, pour se distinguer du reste (contenu "bonus") */
+    border: 1px solid #ffd166;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+#panneau-mods h2 {
+    font-size: 1.1rem;
+    color: #ffd166;
+    margin-bottom: 10px;
+}
+
+/* Une ligne de mod : la case à cocher et son texte, côte à côte */
+.ligne-mod {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 209, 102, 0.2);
+    cursor: pointer;
+}
+
+.ligne-mod:last-of-type {
+    border-bottom: none;
+}
+
+.ligne-mod input[type="checkbox"] {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    accent-color: #ffd166; /* colore la case cochée avec notre couleur "mods" */
+    cursor: pointer;
+}
+
+.ligne-mod span {
+    font-size: 0.9rem;
+    color: #e0e6f0;
+}
+
+#mods-aide {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #8a94a3;
 }
 
 /* La zone de messages ponctuels ("Fonds insuffisants"...) */

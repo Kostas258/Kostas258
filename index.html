@@ -62,11 +62,18 @@
                 <span class="hud-libelle">PV</span>
             </div>
             <div class="hud-bloc">
-                <span class="hud-libelle">Vague :</span>
+                <span class="hud-libelle">Niveau :</span>
                 <span id="vague-valeur" class="hud-valeur">0</span>
                 <span class="hud-libelle">/ <span id="vague-total">0</span></span>
                 <button id="bouton-lancer-vague">Lancer la vague</button>
             </div>
+            <!--
+                Bouton "Rejouer" : réinitialise entièrement la partie
+                (argent, vie, vagues, unités...) en tenant compte des
+                mods actuellement cochés dans le panneau Mods ci-dessous.
+                Utile pour recommencer sans avoir à recharger la page.
+            -->
+            <button id="bouton-rejouer" class="bouton-secondaire">Rejouer</button>
         </div>
 
         <!--
@@ -147,6 +154,29 @@
                 </div>
             </div>
 
+        </div>
+
+        <!--
+            PANNEAU MODS
+            =============
+            Cette section reste cachée (classe "cache", voir style.css)
+            tant que le joueur n'a pas terminé les 10 niveaux au moins
+            une fois. script.js la révèle automatiquement dès la
+            première victoire (et se souvient de ce déblocage grâce à
+            localStorage, même après avoir fermé le navigateur).
+
+            Le contenu de "liste-mods" (une ligne par mod) est généré
+            automatiquement par script.js à partir de l'objet MODS,
+            pour ne décrire chaque mod qu'à un seul endroit du projet.
+        -->
+        <div id="panneau-mods" class="cache">
+            <h2>Mods débloqués — 10 niveaux réussis !</h2>
+            <div id="liste-mods"></div>
+            <p id="mods-aide">
+                Cochez un ou plusieurs mods, puis cliquez sur "Rejouer"
+                (en haut) pour démarrer une nouvelle partie avec ces
+                réglages.
+            </p>
         </div>
 
         <!-- Petite zone de texte pour les messages ponctuels ("Fonds insuffisants"...) -->
