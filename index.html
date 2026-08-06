@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+    ============================================================
+    FICHIER : index.html
+    RÔLE    : C'est le point d'entrée du jeu. Un navigateur lit
+              toujours ce fichier en premier. Il définit la
+              structure de la page (le "squelette") et indique
+              au navigateur quels autres fichiers charger :
+                - style.css  -> l'apparence (couleurs, mise en page)
+                - script.js  -> la logique du jeu (le "cerveau")
+    ============================================================
+-->
+<html lang="fr">
+<head>
+    <!-- Encodage des caractères : permet d'afficher les accents français correctement -->
+    <meta charset="UTF-8">
+
+    <!-- Rend la page correctement adaptée aux écrans (mobile, tablette, PC) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Nova Defense - Tower Defense 2D</title>
+
+    <!-- On relie notre feuille de style CSS à cette page HTML -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--
+        Conteneur principal du jeu.
+        On l'utilise pour centrer et encadrer le Canvas avec le CSS,
+        et plus tard pour y placer l'interface (argent, vie de la base, etc.)
+    -->
+    <div id="jeu-conteneur">
+
+        <!-- Titre visible au-dessus du jeu -->
+        <h1 id="jeu-titre">Nova Defense</h1>
+
+        <!--
+            L'ÉLÉMENT CANVAS
+            ================
+            <canvas> est une balise HTML spéciale qui fonctionne comme
+            une "toile de dessin" vierge. C'est ici que TOUT le jeu sera
+            dessiné : la carte, le chemin, les tourelles, les ennemis...
+
+            On lui donne un identifiant (id="jeu-canvas") pour pouvoir
+            le retrouver facilement depuis notre fichier JavaScript.
+
+            Les attributs "width" et "height" définissent la résolution
+            réelle du dessin (en pixels). C'est différent de la taille
+            CSS : ici on fixe la taille interne de la grille de pixels
+            sur laquelle on va dessiner.
+        -->
+        <canvas id="jeu-canvas" width="960" height="640">
+            <!-- Message affiché uniquement si le navigateur est trop ancien
+                 pour supporter le Canvas -->
+            Votre navigateur ne supporte pas l'élément Canvas. Merci de le mettre à jour.
+        </canvas>
+
+    </div>
+
+    <!--
+        On relie notre fichier JavaScript à la page.
+        IMPORTANT : la balise <script> est placée tout en bas du <body>,
+        juste avant la fermeture. Cela garantit que le navigateur a déjà
+        créé et affiché le <canvas> AVANT que notre script essaie de
+        le manipuler. Si on mettait le script en haut (dans le <head>),
+        il risquerait de s'exécuter avant que le canvas n'existe.
+    -->
+    <script src="script.js"></script>
+</body>
+</html>

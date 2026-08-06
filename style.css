@@ -1,0 +1,67 @@
+/*
+    ============================================================
+    FICHIER : style.css
+    RÔLE    : Définit l'apparence visuelle de la page (couleurs,
+              centrage, espacements...). Le CSS ne dessine JAMAIS
+              le contenu du jeu lui-même (ça, c'est le rôle du
+              Canvas et de JavaScript) : il habille la page autour.
+    ============================================================
+*/
+
+/* Sélecteur "*" = s'applique à TOUS les éléments de la page.
+   On enlève les marges/espacements par défaut que chaque navigateur
+   ajoute différemment, pour repartir sur une base identique partout. */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* les bordures/paddings ne s'ajoutent plus à la largeur définie */
+}
+
+/* Le <body> est la page entière. On lui donne un fond sombre
+   pour évoquer une ambiance "espace / science-fiction",
+   et on centre tout son contenu (le titre + le canvas). */
+body {
+    min-height: 100vh; /* toujours au moins la hauteur de l'écran */
+    background-color: #05070d; /* bleu presque noir, style espace profond */
+    background-image: radial-gradient(circle at 50% 20%, #101a2e 0%, #05070d 70%);
+    color: #e0e6f0; /* couleur du texte par défaut : gris très clair */
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    /* Flexbox : une technique CSS pour centrer facilement des éléments */
+    display: flex;
+    flex-direction: column; /* empile les éléments verticalement */
+    align-items: center;    /* centre horizontalement */
+    justify-content: center;/* centre verticalement */
+    padding: 20px;
+}
+
+/* Conteneur qui regroupe le titre et le canvas */
+#jeu-conteneur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* espace entre le titre et le canvas */
+}
+
+/* Le titre du jeu */
+#jeu-titre {
+    font-size: 2rem;
+    letter-spacing: 4px; /* espace entre les lettres, effet "futuriste" */
+    text-transform: uppercase;
+    color: #4ee1ff; /* bleu cyan lumineux, ambiance sci-fi */
+    text-shadow: 0 0 12px rgba(78, 225, 255, 0.7); /* léger effet de lueur néon */
+}
+
+/* Le canvas lui-même : la zone de dessin du jeu */
+#jeu-canvas {
+    display: block; /* évite un petit espace parasite sous l'élément */
+    background-color: #000; /* fond noir avant que le JS ne dessine par-dessus */
+
+    /* Bordure lumineuse pour délimiter clairement la zone de jeu */
+    border: 2px solid #4ee1ff;
+    border-radius: 8px;
+    box-shadow: 0 0 24px rgba(78, 225, 255, 0.35);
+
+    /* Empêche de sélectionner le contenu du canvas comme du texte */
+    user-select: none;
+}
