@@ -5,10 +5,13 @@
               calcule ou se dessine est piloté depuis ce fichier.
 
     ÉTAPE ACTUELLE DU PROJET :
-    On se contente ici d'initialiser le Canvas et de dessiner la
-    carte de base (le fond + le chemin sinueux que suivront les
-    ennemis plus tard). Il n'y a encore ni ennemis, ni tourelles,
-    ni logique de jeu : uniquement du dessin statique.
+    On se contente ici d'initialiser le Canvas et de dessiner une
+    première carte simple : un quartier urbain vu de dessus, avec
+    des rues qui se croisent, des toits de bâtiments, et le
+    Commissariat Central (la base à défendre) à l'arrivée du chemin.
+
+    Il n'y a encore ni ennemis, ni argent, ni unités posables :
+    uniquement du dessin statique, pour poser le décor.
     ============================================================
 */
 
@@ -44,119 +47,142 @@ const HAUTEUR_CANVAS = canvas.height;
    facilement l'apparence du jeu plus tard, sans devoir fouiller
    dans tout le code : un seul endroit à changer.
 ------------------------------------------------------------ */
-const COULEUR_FOND = '#0a0f1c';        // Couleur du "sol" de la map (bleu nuit spatial)
-const COULEUR_GRILLE = '#141c30';      // Couleur des lignes de la grille discrète en fond
-const COULEUR_CHEMIN = '#2b3660';      // Couleur du chemin (la "route" suivie par les ennemis)
-const COULEUR_BORD_CHEMIN = '#4ee1ff'; // Couleur lumineuse qui borde le chemin (effet néon sci-fi)
-const COULEUR_POINT_DEPART = '#ff5d5d';// Couleur du marqueur "point d'apparition" des ennemis
-const COULEUR_BASE = '#4ee1ff';        // Couleur du marqueur "base" à défendre
+const COULEUR_SOL = '#232a30';           // Couleur du "sol" général du quartier (trottoirs/terrain)
+const COULEUR_RUE = '#3c444c';           // Couleur de l'asphalte des rues
+const COULEUR_BORD_RUE = '#54606a';      // Couleur du bord de rue (petit trottoir clair)
+const COULEUR_MARQUAGE = '#e8e8e8';      // Couleur des lignes blanches peintes sur la route
+const COULEUR_TOIT_BASE = '#7a5230';     // Couleur principale des toits de bâtiments (tuiles/brique)
+const COULEUR_TOIT_BORD = '#4d3420';     // Couleur du contour des toits (ombre portée)
+const COULEUR_COMMISSARIAT = '#245ec9';  // Couleur du toit du Commissariat (bleu police)
+const COULEUR_COMMISSARIAT_BORD = '#ffffff'; // Contour blanc du Commissariat pour bien le repérer
+const COULEUR_GYROPHARE_ROUGE = '#e63946'; // Petit accent rouge sur le Commissariat (façon gyrophare)
+const COULEUR_GYROPHARE_BLEU = '#245ec9';  // Petit accent bleu sur le Commissariat (façon gyrophare)
+const COULEUR_POINT_DEPART = '#e63946';  // Couleur du marqueur "point d'apparition" des ennemis
 
-const LARGEUR_CHEMIN = 56;             // Largeur (en pixels) de la route dessinée
-const TAILLE_CASE_GRILLE = 40;         // Taille d'une case de la grille de fond (en pixels)
+const LARGEUR_RUE = 60;                  // Largeur (en pixels) d'une rue dessinée
 
 
 /* ------------------------------------------------------------
-   3. DÉFINITION DU CHEMIN (LE PARCOURS DES ENNEMIS)
+   3. DÉFINITION DU CHEMIN (LA RUE PRINCIPALE SUIVIE PAR LES ENNEMIS)
    ------------------------------------------------------------
-   Le chemin est stocké comme une simple LISTE DE POINTS
-   (des coordonnées x/y). Chaque point est un "virage" du chemin.
+   Comme pour une vraie carte de Tower Defense, le chemin est
+   stocké comme une simple LISTE DE POINTS (des coordonnées x/y).
+   Chaque point représente un "virage" de la rue.
 
    Pourquoi une liste de points plutôt qu'un dessin figé ?
    Parce que plus tard, les ennemis (pas encore codés) se
    déplaceront eux aussi de point en point, en suivant exactement
-   ce même tracé. Définir le chemin comme des données réutilisables
-   (et pas juste un dessin) est essentiel pour la suite du jeu :
-   la carte ET les futurs ennemis partageront cette unique source
-   de vérité.
+   ce même tracé. La carte ET les futurs ennemis partageront cette
+   unique source de vérité.
 
-   Le chemin part d'un point d'apparition (en haut à gauche)
-   et serpente jusqu'à une base centrale.
+   Le chemin part d'un point d'apparition (bord gauche de l'écran,
+   comme une rue qui entre dans le quartier) et serpente entre les
+   bâtiments jusqu'au Commissariat Central.
 ------------------------------------------------------------ */
 const CHEMIN = [
-    { x: 0,   y: 100 },  // Point de départ : les ennemis apparaîtront ici, sur le bord gauche
-    { x: 200, y: 100 },
-    { x: 200, y: 260 },
-    { x: 480, y: 260 },
-    { x: 480, y: 80  },
-    { x: 760, y: 80  },
-    { x: 760, y: 400 },
-    { x: 380, y: 400 },
-    { x: 380, y: 540 },
-    { x: LARGEUR_CANVAS / 2, y: HAUTEUR_CANVAS / 2 } // Point final : la base, au centre de la carte
+    { x: 0,   y: 120 },  // Point de départ : les ennemis apparaîtront ici, sur le bord gauche
+    { x: 220, y: 120 },
+    { x: 220, y: 320 },
+    { x: 520, y: 320 },
+    { x: 520, y: 140 },
+    { x: 800, y: 140 },
+    { x: 800, y: 460 },
+    { x: 400, y: 460 },
+    { x: 400, y: 560 },
+    { x: 660, y: 560 }  // Point final : le Commissariat Central, la base à défendre
+];
+
+/* ------------------------------------------------------------
+   3bis. UNE RUE SECONDAIRE DÉCORATIVE (POUR LE CROISEMENT)
+   ------------------------------------------------------------
+   Le cahier des charges demande "des rues qui se croisent".
+   En plus de la rue principale empruntée par les ennemis (CHEMIN),
+   on dessine ici une petite rue transversale purement décorative,
+   qui coupe la rue principale et donne l'impression d'un vrai
+   quartier avec un carrefour. Elle n'est pas utilisée pour le
+   déplacement des ennemis, seulement pour le décor.
+------------------------------------------------------------ */
+const RUE_SECONDAIRE = {
+    debut: { x: 100, y: 220 },
+    fin:   { x: 340, y: 220 }
+};
+
+
+/* ------------------------------------------------------------
+   4. DÉFINITION DES BÂTIMENTS (LES TOITS VUS DE DESSUS)
+   ------------------------------------------------------------
+   Chaque bâtiment est un simple objet { x, y, largeur, hauteur }.
+   Comme pour le chemin, on stocke ces informations dans un tableau
+   plutôt que de "juste dessiner des rectangles au hasard" : plus
+   tard, ces mêmes bâtiments serviront d'emplacements où poser des
+   unités (tireur de précision, unité lourde, herse...).
+
+   Les bâtiments sont placés autour des rues, sans les bloquer.
+------------------------------------------------------------ */
+const BATIMENTS = [
+    { x: 30,  y: 170, largeur: 150, hauteur: 100 },
+    { x: 280, y: 20,  largeur: 170, hauteur: 80  },
+    { x: 610, y: 210, largeur: 150, hauteur: 90  },
+    { x: 40,  y: 420, largeur: 150, hauteur: 100 },
+    { x: 560, y: 300, largeur: 110, hauteur: 100 },
+    { x: 840, y: 240, largeur: 100, hauteur: 160 },
+    { x: 140, y: 560, largeur: 130, hauteur: 60  },
+    { x: 780, y: 500, largeur: 150, hauteur: 100 }
 ];
 
 
 /* ------------------------------------------------------------
-   4. FONCTION : dessinerFond()
+   5. FONCTION : dessinerFond()
    ------------------------------------------------------------
-   Dessine le décor de base de la carte : une couleur de fond
-   pleine, puis une grille discrète par-dessus pour donner un
-   effet "terrain quadrillé" façon écran de contrôle sci-fi.
+   Dessine le sol du quartier (couleur de fond pleine). C'est la
+   toute première couche : tout le reste sera dessiné par-dessus.
 ------------------------------------------------------------ */
 function dessinerFond() {
     // fillStyle définit la couleur utilisée par les prochains
     // "remplissages" (fillRect, fill...).
-    ctx.fillStyle = COULEUR_FOND;
+    ctx.fillStyle = COULEUR_SOL;
 
     // fillRect(x, y, largeur, hauteur) dessine un rectangle plein.
-    // Ici on remplit TOUT le canvas avec la couleur de fond.
+    // Ici on remplit TOUT le canvas avec la couleur de sol.
     ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
-
-    // On dessine ensuite une grille de fines lignes pour donner
-    // du relief au sol, sans attirer trop l'attention (couleur proche du fond).
-    ctx.strokeStyle = COULEUR_GRILLE; // couleur des traits (pas du remplissage)
-    ctx.lineWidth = 1;                // épaisseur des traits en pixels
-
-    // Lignes verticales : on avance de case en case le long de l'axe X
-    for (let x = 0; x <= LARGEUR_CANVAS; x += TAILLE_CASE_GRILLE) {
-        ctx.beginPath();          // commence un nouveau tracé
-        ctx.moveTo(x, 0);         // déplace le "crayon" en haut de la ligne, sans dessiner
-        ctx.lineTo(x, HAUTEUR_CANVAS); // trace une ligne jusqu'en bas
-        ctx.stroke();             // dessine effectivement le trait tracé
-    }
-
-    // Lignes horizontales : même principe, mais le long de l'axe Y
-    for (let y = 0; y <= HAUTEUR_CANVAS; y += TAILLE_CASE_GRILLE) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(LARGEUR_CANVAS, y);
-        ctx.stroke();
-    }
 }
 
 
 /* ------------------------------------------------------------
-   5. FONCTION : dessinerChemin()
+   6. FONCTION : dessinerRues()
    ------------------------------------------------------------
-   Dessine la "route" sinueuse suivie par les ennemis, en reliant
-   tous les points du tableau CHEMIN les uns après les autres.
-
-   Astuce technique : au lieu de dessiner plein de rectangles pour
-   chaque segment, on trace UNE SEULE ligne épaisse qui passe par
-   tous les points. En donnant à cette ligne une grande épaisseur
-   (LARGEUR_CHEMIN) et des extrémités/jonctions arrondies, on obtient
-   visuellement une route continue et fluide, même dans les virages.
+   Dessine les rues du quartier : la rue principale (celle du
+   tableau CHEMIN, empruntée par les ennemis) et la rue secondaire
+   décorative qui la croise. On dessine d'abord la rue secondaire
+   (en dessous), puis la rue principale par-dessus, pour que le
+   croisement ait l'air naturel.
 ------------------------------------------------------------ */
-function dessinerChemin() {
-    if (CHEMIN.length === 0) return; // sécurité : rien à dessiner si le chemin est vide
+function dessinerRues() {
+    // --- La rue secondaire décorative (croisement) ---
+    tracerSegmentRue(RUE_SECONDAIRE.debut, RUE_SECONDAIRE.fin);
 
-    // --- Étape A : dessiner la bordure lumineuse (légèrement plus large) ---
-    // On dessine d'abord un trait un peu plus épais et lumineux en dessous,
-    // puis on redessinera la route par-dessus avec une couleur plus terne.
-    // Résultat : un fin liseré coloré est visible sur les bords -> effet néon.
-    tracerLigneChemin(LARGEUR_CHEMIN + 6, COULEUR_BORD_CHEMIN);
+    // --- La rue principale (le chemin suivi par les ennemis) ---
+    if (CHEMIN.length === 0) return;
 
-    // --- Étape B : dessiner la route elle-même, par-dessus la bordure ---
-    tracerLigneChemin(LARGEUR_CHEMIN, COULEUR_CHEMIN);
+    // On trace d'abord un trait légèrement plus large et plus clair
+    // en dessous : cela crée un fin "trottoir" visible sur les bords.
+    tracerLigneChemin(LARGEUR_RUE + 8, COULEUR_BORD_RUE);
+
+    // Puis on redessine l'asphalte par-dessus, un peu moins large.
+    tracerLigneChemin(LARGEUR_RUE, COULEUR_RUE);
+
+    // Enfin, on ajoute le marquage au sol (ligne blanche discontinue)
+    // au centre de la rue principale, comme sur une vraie route.
+    tracerLigneChemin(4, COULEUR_MARQUAGE, [16, 14]);
 }
 
 /**
  * Fonction utilitaire qui trace une ligne continue passant par tous les
  * points de CHEMIN, avec l'épaisseur et la couleur demandées.
- * Elle est appelée deux fois par dessinerChemin() (voir ci-dessus),
- * ce qui évite de dupliquer le code de traçage.
+ * Le paramètre optionnel "pointilles" permet de dessiner un trait
+ * discontinu (utile pour le marquage au sol).
  */
-function tracerLigneChemin(epaisseur, couleur) {
+function tracerLigneChemin(epaisseur, couleur, pointilles) {
     ctx.beginPath();
 
     // On se positionne sur le premier point du chemin...
@@ -171,16 +197,78 @@ function tracerLigneChemin(epaisseur, couleur) {
     ctx.lineWidth = epaisseur;
 
     // "round" arrondit les extrémités et les angles de la ligne,
-    // pour que les virages du chemin ne forment pas de pointes agressives.
+    // pour que les virages de la rue ne forment pas de pointes agressives.
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
+    // setLineDash([...]) définit un motif de pointillés. On lui passe
+    // un tableau vide pour revenir à un trait continu.
+    ctx.setLineDash(pointilles || []);
+
     ctx.stroke(); // dessine le tracé défini ci-dessus
+
+    // On remet un trait continu par défaut pour ne pas perturber
+    // les prochains dessins effectués ailleurs dans le code.
+    ctx.setLineDash([]);
+}
+
+/**
+ * Fonction utilitaire qui trace un simple segment de rue rectiligne
+ * entre deux points (utilisée pour la rue secondaire décorative).
+ */
+function tracerSegmentRue(pointA, pointB) {
+    ctx.beginPath();
+    ctx.moveTo(pointA.x, pointA.y);
+    ctx.lineTo(pointB.x, pointB.y);
+    ctx.strokeStyle = COULEUR_BORD_RUE;
+    ctx.lineWidth = LARGEUR_RUE + 8;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(pointA.x, pointA.y);
+    ctx.lineTo(pointB.x, pointB.y);
+    ctx.strokeStyle = COULEUR_RUE;
+    ctx.lineWidth = LARGEUR_RUE;
+    ctx.lineCap = 'round';
+    ctx.stroke();
 }
 
 
 /* ------------------------------------------------------------
-   6. FONCTION : dessinerPointDepart()
+   7. FONCTION : dessinerBatiments()
+   ------------------------------------------------------------
+   Parcourt le tableau BATIMENTS et dessine chaque toit sous forme
+   d'un rectangle avec une petite bordure sombre (effet d'ombre
+   portée), pour qu'on distingue bien chaque bâtiment vu de dessus.
+------------------------------------------------------------ */
+function dessinerBatiments() {
+    // forEach parcourt chaque élément du tableau BATIMENTS un par un.
+    // "batiment" représente ici l'objet { x, y, largeur, hauteur } en cours.
+    BATIMENTS.forEach(function (batiment) {
+        // Le toit lui-même (rectangle plein)
+        ctx.fillStyle = COULEUR_TOIT_BASE;
+        ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+
+        // Le contour du toit (donne un effet de relief/ombre)
+        ctx.strokeStyle = COULEUR_TOIT_BORD;
+        ctx.lineWidth = 3;
+        ctx.strokeRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+
+        // Une petite ligne centrale pour évoquer le faîte du toit
+        // (la ligne qui sépare les deux pans d'un toit en pente)
+        ctx.beginPath();
+        ctx.moveTo(batiment.x, batiment.y + batiment.hauteur / 2);
+        ctx.lineTo(batiment.x + batiment.largeur, batiment.y + batiment.hauteur / 2);
+        ctx.strokeStyle = COULEUR_TOIT_BORD;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    });
+}
+
+
+/* ------------------------------------------------------------
+   8. FONCTION : dessinerPointDepart()
    ------------------------------------------------------------
    Marque visuellement l'endroit où les ennemis apparaîtront
    (le tout premier point du tableau CHEMIN), sous forme d'un
@@ -192,7 +280,7 @@ function dessinerPointDepart() {
     ctx.beginPath();
     // arc(x, y, rayon, angleDébut, angleFin) dessine un cercle (ou portion de cercle).
     // Ici 0 -> Math.PI * 2 signifie "un tour complet", donc un cercle plein.
-    ctx.arc(depart.x, depart.y, 22, 0, Math.PI * 2);
+    ctx.arc(depart.x, depart.y, 20, 0, Math.PI * 2);
     ctx.fillStyle = COULEUR_POINT_DEPART;
     ctx.fill();
 
@@ -204,53 +292,72 @@ function dessinerPointDepart() {
 
 
 /* ------------------------------------------------------------
-   7. FONCTION : dessinerBase()
+   9. FONCTION : dessinerCommissariat()
    ------------------------------------------------------------
-   Marque visuellement l'emplacement de la base à défendre
-   (le tout dernier point du tableau CHEMIN), avec un style
-   différent du point de départ pour bien les distinguer.
+   Dessine le Commissariat Central : la base que le joueur doit
+   défendre. Elle est placée au dernier point du tableau CHEMIN,
+   avec une couleur bien distincte (bleu police) et deux petits
+   accents rouge/bleu façon gyrophare, pour qu'on la repère
+   immédiatement sur la carte.
 ------------------------------------------------------------ */
-function dessinerBase() {
-    const base = CHEMIN[CHEMIN.length - 1]; // le dernier point du chemin = la base
+function dessinerCommissariat() {
+    const base = CHEMIN[CHEMIN.length - 1]; // le dernier point du chemin = le Commissariat
 
-    // Un carré représente le bâtiment de la base
-    const taille = 50;
-    ctx.fillStyle = COULEUR_BASE;
-    ctx.fillRect(base.x - taille / 2, base.y - taille / 2, taille, taille);
+    const largeur = 90;
+    const hauteur = 70;
+    const x = base.x - largeur / 2;
+    const y = base.y - hauteur / 2;
 
-    // Contour lumineux autour du carré
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = '#ffffff';
-    ctx.strokeRect(base.x - taille / 2, base.y - taille / 2, taille, taille);
+    // Le bâtiment principal du Commissariat
+    ctx.fillStyle = COULEUR_COMMISSARIAT;
+    ctx.fillRect(x, y, largeur, hauteur);
+
+    // Contour blanc épais pour bien le distinguer des toits ordinaires
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = COULEUR_COMMISSARIAT_BORD;
+    ctx.strokeRect(x, y, largeur, hauteur);
+
+    // Petit "gyrophare" décoratif sur le toit : deux petits carrés
+    // rouge et bleu côte à côte, comme sur un véhicule de police.
+    const tailleGyrophare = 14;
+    const yGyrophare = y - tailleGyrophare - 4;
+
+    ctx.fillStyle = COULEUR_GYROPHARE_BLEU;
+    ctx.fillRect(base.x - tailleGyrophare, yGyrophare, tailleGyrophare, tailleGyrophare);
+
+    ctx.fillStyle = COULEUR_GYROPHARE_ROUGE;
+    ctx.fillRect(base.x, yGyrophare, tailleGyrophare, tailleGyrophare);
 }
 
 
 /* ------------------------------------------------------------
-   8. FONCTION PRINCIPALE : dessinerCarte()
+   10. FONCTION PRINCIPALE : dessinerCarte()
    ------------------------------------------------------------
    Cette fonction orchestre le dessin complet de la carte, dans
    le BON ORDRE (très important avec un Canvas !). Chaque appel
    de fonction dessine par-dessus ce qui a déjà été tracé, comme
    des calques empilés :
 
-     1. Le fond (tout en bas de la pile)
-     2. Le chemin (par-dessus le fond)
-     3. Le point de départ (par-dessus le chemin)
-     4. La base (par-dessus le chemin)
+     1. Le sol (tout en bas de la pile)
+     2. Les rues (par-dessus le sol)
+     3. Les bâtiments (par-dessus les rues, comme des toits vus du ciel)
+     4. Le point de départ (par-dessus tout, pour rester visible)
+     5. Le Commissariat (par-dessus tout, pour rester visible)
 
-   Si on inversait l'ordre, par exemple en dessinant le fond en
+   Si on inversait l'ordre, par exemple en dessinant le sol en
    dernier, il recouvrirait tout le reste !
 ------------------------------------------------------------ */
 function dessinerCarte() {
     dessinerFond();
-    dessinerChemin();
+    dessinerRues();
+    dessinerBatiments();
     dessinerPointDepart();
-    dessinerBase();
+    dessinerCommissariat();
 }
 
 
 /* ------------------------------------------------------------
-   9. LANCEMENT INITIAL
+   11. LANCEMENT INITIAL
    ------------------------------------------------------------
    Pour l'instant, le jeu n'a pas encore de "boucle d'animation"
    (pas besoin, puisque rien ne bouge). On appelle donc la fonction
