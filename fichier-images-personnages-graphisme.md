@@ -161,7 +161,7 @@ routier / contrôle de foule).
 ### 1.5 Agent Police Secours — nouvelle unité polyvalente
 
 **Rôle en jeu** : c'est le service qui donne son nom au jeu — logique
-qu'il ait son propre personnage ! Concept proposé : une unité de base
+qu'il ait son propre personnage ! C'est une unité jouable de base
 polyvalente, peu coûteuse, dégâts modestes mais cadence de tir rapide et
 fiable (le "premier arrivé sur les lieux"). Peut servir d'unité de départ
 recommandée aux nouveaux joueurs, complémentaire du Tireur RAID (lent et
@@ -190,7 +190,7 @@ principale du jeu).
 
 ### 1.6 Agent BAC — concept "Brigade Anti-Criminalité"
 
-**Rôle en jeu (concept, pas encore codé)** : agents en civil, intervention
+**Rôle en jeu (unité jouable)** : agents en civil, intervention
 rapide et discrète. Piste de jeu : tir rapide à faible portée qui touche
 plusieurs petites cibles proches (patrouille agile). Couleur suggérée :
 turquoise `#2ec4b6`.
@@ -214,7 +214,7 @@ turquoise `#2ec4b6`.
 
 ### 1.7 Agent BRI — concept "Brigade de Recherche et d'Intervention"
 
-**Rôle en jeu (concept, pas encore codé)** : unité d'élite historique
+**Rôle en jeu (unité jouable)** : unité d'élite historique
 ("l'Anti-gang"). Piste de jeu : tir occasionnel très puissant façon "coup
 critique", une frappe chirurgicale plutôt qu'un tir régulier. Couleur
 suggérée : violet profond `#6a4c93`.
@@ -237,7 +237,7 @@ suggérée : violet profond `#6a4c93`.
 
 ### 1.8 Agent Police Judiciaire — concept "l'Enquêteur"
 
-**Rôle en jeu (concept, pas encore codé)** : ne fait pas de dégâts, mais
+**Rôle en jeu (unité jouable)** : ne fait pas de dégâts, mais
 "marque" un ennemi pour que toutes les autres unités lui infligent plus de
 dégâts (synergie d'équipe). Couleur suggérée : brun/beige `#b08968`.
 
@@ -260,7 +260,7 @@ dégâts (synergie d'équipe). Couleur suggérée : brun/beige `#b08968`.
 
 ### 1.9 Maître-chien — concept "Unité Cynophile"
 
-**Rôle en jeu (concept, pas encore codé)** : petits dégâts continus (morsure)
+**Rôle en jeu (unité jouable)** : petits dégâts continus (morsure)
 et léger ralentissement, complémentaire de la Herse CRS. Couleur suggérée :
 vert forêt `#4c7a3d`.
 
@@ -283,7 +283,7 @@ vert forêt `#4c7a3d`.
 
 ### 1.10 Agent Compagnie Motocycliste — concept "l'Intercepteur"
 
-**Rôle en jeu (concept, pas encore codé)** : intercepte et immobilise
+**Rôle en jeu (unité jouable)** : intercepte et immobilise
 brièvement un seul ennemi rapide (contre-mesure anti-"speedster"). Couleur
 suggérée : jaune sécurité routière `#f7b32b`.
 
@@ -307,7 +307,7 @@ suggérée : jaune sécurité routière `#f7b32b`.
 
 ### 1.11 Section Aérienne — concept "l'Hélicoptère"
 
-**Rôle en jeu (concept, pas encore codé)** : unité spéciale à très large
+**Rôle en jeu (unité jouable)** : unité spéciale à très large
 zone d'action mais très long temps de rechargement (frappe ponctuelle façon
 "ultime"). Contrairement aux autres unités, sa représentation sur la carte
 serait l'hélicoptère lui-même plutôt qu'un personnage debout. Couleur
@@ -560,12 +560,15 @@ roster complet d'Alerte Police Secours atteint désormais :
 - **1 antagoniste générique** (meneur de la bande)
 - **Soit un roster plus large que celui de Stark Tower Defense** (8 au total).
 
-⚠️ **Important** : pour l'instant, seuls RAID, GIGN et CRS sont réellement
-codés et jouables dans `script.js` (voir l'objet `UNITES`). Tous les autres
-personnages de ce fichier (Police Secours compris) ne sont encore que des
-**concepts visuels avec leurs prompts d'image** : dis-moi lesquels tu veux
-transformer en vraies unités jouables (avec coût, dégâts, portée...) et je
-les ajouterai au code du jeu, un par un pour garder l'équilibrage propre.
+✅ **Mise à jour** : les 10 unités sont maintenant toutes réellement codées
+et jouables dans `script.js` (voir l'objet `UNITES`), chacune avec son coût,
+ses dégâts, sa portée et sa mécanique propre — y compris les capacités
+spéciales imaginées pour Police Judiciaire (marquage d'une cible : toutes
+les unités lui infligent +50% de dégâts pendant 3s) et Compagnie
+Motocycliste (immobilisation totale d'un ennemi à l'impact). Seuls les
+graphismes restent à générer : en attendant, chaque unité est représentée
+sur la carte par une petite forme géométrique distinctive (triangle, étoile,
+loupe, empreinte de patte...) dans sa couleur dédiée.
 
 ## 6. Comment utiliser ces prompts avec ChatGPT
 

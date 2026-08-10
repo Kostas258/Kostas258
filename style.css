@@ -83,6 +83,21 @@ body {
     text-transform: uppercase;
     color: #4d9dff;
     text-shadow: 0 0 12px rgba(77, 157, 255, 0.7);
+
+    /* Centre verticalement le logo SVG à côté du texte du titre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Le badge-logo SVG (voir index.html), réutilisé sur l'écran d'accueil
+   et dans le titre au-dessus du jeu. */
+.logo-badge {
+    width: 1.4em;   /* proportionnel à la taille du texte du titre à côté */
+    height: 1.4em;
+    flex-shrink: 0; /* ne se laisse jamais écraser par le texte du titre */
+    filter: drop-shadow(0 0 6px rgba(77, 157, 255, 0.6));
 }
 
 #accueil-sous-titre {
@@ -179,6 +194,12 @@ body {
     text-transform: uppercase;
     color: #4d9dff; /* bleu "gyrophare police" lumineux */
     text-shadow: 0 0 12px rgba(77, 157, 255, 0.7); /* léger effet de lueur */
+
+    /* Centre verticalement le logo SVG (.logo-badge) à côté du texte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
 
 /* ------------------------------------------------------------
@@ -269,13 +290,16 @@ body {
 #zone-jeu {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* la boutique passe sous le canvas plutôt que de créer une barre de défilement sur un petit écran */
     align-items: flex-start;
+    justify-content: center;
     gap: 16px;
 }
 
 /* Le canvas lui-même : la zone de dessin du jeu */
 #jeu-canvas {
     display: block; /* évite un petit espace parasite sous l'élément */
+    flex-shrink: 0; /* garde toujours sa taille réelle (960x640), ne se laisse jamais compresser */
     background-color: #000; /* fond noir avant que le JS ne dessine par-dessus */
 
     /* Bordure lumineuse pour délimiter clairement la zone de jeu,
@@ -294,9 +318,13 @@ body {
 
 /* ------------------------------------------------------------
    BOUTIQUE (ARMURERIE) - achat et gestion des unités
+   ------------------------------------------------------------
+   Avec 10 unités disponibles, "liste-unites" utilise une grille à 2
+   colonnes (display: grid) plutôt qu'une simple colonne verticale :
+   ça reste compact et lisible, même avec beaucoup de choix.
 ------------------------------------------------------------ */
 #boutique {
-    width: 220px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -305,6 +333,9 @@ body {
     border: 1px solid #2c3844;
     border-radius: 8px;
     padding: 16px;
+
+    max-height: 640px; /* même hauteur que le Canvas */
+    overflow-y: auto;  /* barre de défilement si jamais le contenu dépasse */
 }
 
 #boutique h2 {
@@ -315,6 +346,13 @@ body {
     margin-bottom: 4px;
 }
 
+/* La grille de boutons d'unités : 2 colonnes de largeur égale */
+#liste-unites {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
 /* Un bouton d'achat d'unité : nom en haut, prix en dessous */
 .bouton-unite {
     display: flex;
@@ -322,13 +360,13 @@ body {
     align-items: flex-start;
     gap: 2px;
 
-    padding: 8px 12px;
+    padding: 8px 10px;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid #3a4a5a;
     border-radius: 6px;
     color: #e0e6f0;
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     text-align: left;
     cursor: pointer;
 }
@@ -344,7 +382,7 @@ body {
 
 .bouton-unite-cout {
     color: #ffd166;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 #boutique-aide {

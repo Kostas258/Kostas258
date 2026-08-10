@@ -145,6 +145,29 @@ const BATIMENTS = [
 
 
 /* ------------------------------------------------------------
+   4bis. LE MOBILIER URBAIN (DÉCOR DE LA CARTE)
+   ------------------------------------------------------------
+   Une petite liste d'éléments de décor purement esthétiques (aucun
+   impact sur le jeu, contrairement au CHEMIN ou aux BATIMENTS) :
+   lampadaires, bancs, feux tricolores... Chaque élément a un "type"
+   (qui détermine comment on le dessine, voir dessinerMobilierUrbain
+   plus bas) et une position x/y.
+------------------------------------------------------------ */
+const MOBILIER_URBAIN = [
+    { type: 'lampadaire',    x: 15,  y: 50  },
+    { type: 'banc',          x: 250, y: 380 },
+    { type: 'abribus',       x: 900, y: 60  },
+    { type: 'poubelle',      x: 470, y: 200 },
+    { type: 'feuTricolore',  x: 220, y: 220 }, // pile au carrefour entre les deux rues
+    { type: 'boucheIncendie',x: 700, y: 380 },
+    { type: 'barrierePolice',x: 90,  y: 610 },
+    { type: 'voiturePolice', x: 850, y: 615 },
+    { type: 'jardiniere',    x: 330, y: 615 },
+    { type: 'passagePieton', x: 400, y: 500 }  // posé directement sur la rue
+];
+
+
+/* ------------------------------------------------------------
    5. FONCTION : dessinerFond()
    ------------------------------------------------------------
    Dessine le sol du quartier (couleur de fond pleine). C'est la
@@ -297,6 +320,130 @@ function dessinerBatiments() {
 
 
 /* ------------------------------------------------------------
+   7bis. FONCTION : dessinerMobilierUrbain()
+   ------------------------------------------------------------
+   Parcourt MOBILIER_URBAIN et dessine chaque élément de décor selon
+   son "type", avec une petite fonction dédiée par type d'objet (plus
+   lisible qu'un seul gros bloc de dessin). Purement esthétique : ces
+   éléments ne jouent aucun rôle dans les règles du jeu.
+------------------------------------------------------------ */
+function dessinerMobilierUrbain() {
+    MOBILIER_URBAIN.forEach(function (objet) {
+        switch (objet.type) {
+            case 'lampadaire':     dessinerLampadaire(objet.x, objet.y); break;
+            case 'banc':           dessinerBanc(objet.x, objet.y); break;
+            case 'abribus':        dessinerAbribus(objet.x, objet.y); break;
+            case 'poubelle':       dessinerPoubelle(objet.x, objet.y); break;
+            case 'feuTricolore':   dessinerFeuTricolore(objet.x, objet.y); break;
+            case 'boucheIncendie': dessinerBoucheIncendie(objet.x, objet.y); break;
+            case 'barrierePolice': dessinerBarrierePolice(objet.x, objet.y); break;
+            case 'voiturePolice':  dessinerVoiturePolice(objet.x, objet.y); break;
+            case 'jardiniere':     dessinerJardiniere(objet.x, objet.y); break;
+            case 'passagePieton':  dessinerPassagePieton(objet.x, objet.y); break;
+        }
+    });
+}
+
+function dessinerLampadaire(x, y) {
+    // Halo lumineux (grand cercle translucide) derrière le lampadaire
+    ctx.beginPath();
+    ctx.arc(x, y, 16, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 232, 160, 0.15)';
+    ctx.fill();
+    // La base du lampadaire
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#f5e6a8';
+    ctx.fill();
+}
+
+function dessinerBanc(x, y) {
+    ctx.fillStyle = '#8a6a4a';
+    ctx.fillRect(x - 14, y - 6, 28, 12);
+    ctx.fillStyle = '#2b2f36';
+    ctx.fillRect(x - 14, y - 6, 28, 3);
+}
+
+function dessinerAbribus(x, y) {
+    ctx.fillStyle = 'rgba(120, 180, 220, 0.35)';
+    ctx.fillRect(x - 20, y - 14, 40, 28);
+    ctx.strokeStyle = '#54606a';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x - 20, y - 14, 40, 28);
+}
+
+function dessinerPoubelle(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 7, 0, Math.PI * 2);
+    ctx.fillStyle = '#3c444c';
+    ctx.fill();
+    ctx.strokeStyle = '#54606a';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
+function dessinerFeuTricolore(x, y) {
+    ctx.fillStyle = '#2b2f36';
+    ctx.fillRect(x - 3, y - 14, 6, 28);
+    ['#e63946', '#ffd166', '#4caf50'].forEach(function (couleur, index) {
+        ctx.beginPath();
+        ctx.arc(x, y - 8 + index * 8, 3, 0, Math.PI * 2);
+        ctx.fillStyle = couleur;
+        ctx.fill();
+    });
+}
+
+function dessinerBoucheIncendie(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = '#e63946';
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+}
+
+function dessinerBarrierePolice(x, y) {
+    const largeur = 30, hauteur = 8;
+    for (let i = 0; i < 5; i++) {
+        ctx.fillStyle = (i % 2 === 0) ? '#ffd166' : '#1c1f24';
+        ctx.fillRect(x - largeur / 2 + i * (largeur / 5), y - hauteur / 2, largeur / 5, hauteur);
+    }
+}
+
+function dessinerVoiturePolice(x, y) {
+    ctx.fillStyle = '#f2f5f8';
+    ctx.fillRect(x - 10, y - 16, 20, 32);
+    ctx.fillStyle = '#245ec9';
+    ctx.fillRect(x - 10, y - 4, 20, 8);
+    ctx.beginPath();
+    ctx.arc(x - 3, y, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#4d9dff';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(x + 3, y, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#e63946';
+    ctx.fill();
+}
+
+function dessinerJardiniere(x, y) {
+    ctx.fillStyle = '#54606a';
+    ctx.fillRect(x - 10, y - 10, 20, 20);
+    ctx.beginPath();
+    ctx.arc(x, y, 8, 0, Math.PI * 2);
+    ctx.fillStyle = '#3f7a3f';
+    ctx.fill();
+}
+
+function dessinerPassagePieton(x, y) {
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+    for (let i = -24; i <= 24; i += 12) {
+        ctx.fillRect(x + i - 3, y - 20, 6, 40);
+    }
+}
+
+
+/* ------------------------------------------------------------
    8. FONCTION : dessinerPointDepart()
    ------------------------------------------------------------
    Marque visuellement l'endroit où les ennemis apparaîtront
@@ -370,8 +517,9 @@ function dessinerCommissariat() {
      1. Le sol (tout en bas de la pile)
      2. Les rues (par-dessus le sol)
      3. Les bâtiments (par-dessus les rues, comme des toits vus du ciel)
-     4. Le point de départ (par-dessus tout, pour rester visible)
-     5. Le Commissariat (par-dessus tout, pour rester visible)
+     4. Le mobilier urbain (par-dessus les rues et bâtiments)
+     5. Le point de départ (par-dessus tout, pour rester visible)
+     6. Le Commissariat (par-dessus tout, pour rester visible)
 
    Si on inversait l'ordre, par exemple en dessinant le sol en
    dernier, il recouvrirait tout le reste !
@@ -380,6 +528,7 @@ function dessinerCarte() {
     dessinerFond();
     dessinerRues();
     dessinerBatiments();
+    dessinerMobilierUrbain();
     dessinerPointDepart();
     dessinerCommissariat();
 }
@@ -470,15 +619,30 @@ function depenserArgent(montant) {
    - portee            : distance (en pixels) à laquelle l'unité peut viser
    - tempsEntreTirs    : temps d'attente (en secondes) entre deux tirs
                          (plus c'est petit, plus l'unité tire vite)
-   - rayonExplosion    : (Unité lourde uniquement) rayon dans lequel
-                         les dégâts touchent TOUS les ennemis proches
-   - facteurRalentissement : (Herse uniquement) multiplicateur de
-                         vitesse appliqué aux ennemis dans sa portée
-                         (0.45 = ils ne gardent que 45% de leur vitesse)
+   - rayonExplosion    : (unités à dégâts de zone) rayon dans lequel les
+                         dégâts touchent TOUS les ennemis proches de la cible
+   - facteurRalentissement : (unités de ralentissement) multiplicateur de
+                         vitesse appliqué en continu aux ennemis dans sa
+                         portée (0.45 = ils ne gardent que 45% de leur vitesse)
+   - dureeMarquage / bonusDegatsMarque : (Police Judiciaire uniquement) une
+                         cible "marquée" reste vulnérable pendant
+                         dureeMarquage secondes, et subit alors
+                         bonusDegatsMarque fois plus de dégâts de la part de
+                         TOUTES les unités (pas seulement celle qui a marqué)
+   - dureeImmobilisation : (Compagnie Motocycliste uniquement) durée pendant
+                         laquelle la cible touchée est totalement stoppée
 ------------------------------------------------------------ */
 const UNITES = {
+    policeSecours: {
+        nom: 'Police Secours',
+        cout: 60,
+        degats: 18,
+        portee: 130,
+        tempsEntreTirs: 0.5,
+        couleur: '#4d9dff'
+    },
     tireur: {
-        nom: 'Tireur de précision',
+        nom: 'Agent RAID',
         cout: 120,
         degats: 45,
         portee: 170,
@@ -486,7 +650,7 @@ const UNITES = {
         couleur: '#e63946'
     },
     lourd: {
-        nom: 'Unité lourde',
+        nom: 'Agent GIGN',
         cout: 160,
         degats: 18,
         portee: 130,
@@ -495,13 +659,67 @@ const UNITES = {
         couleur: '#f4a259'
     },
     herse: {
-        nom: 'Herse routière',
+        nom: 'Agent CRS',
         cout: 70,
         degats: 0,
         portee: 90,
         tempsEntreTirs: 0,
         facteurRalentissement: 0.45,
         couleur: '#8d99ae'
+    },
+    bac: {
+        nom: 'Agent BAC',
+        cout: 140,
+        degats: 10,
+        portee: 110,
+        tempsEntreTirs: 0.35,
+        rayonExplosion: 25,
+        couleur: '#2ec4b6'
+    },
+    bri: {
+        nom: 'Agent BRI',
+        cout: 220,
+        degats: 95,
+        portee: 170,
+        tempsEntreTirs: 1.7,
+        couleur: '#6a4c93'
+    },
+    policeJudiciaire: {
+        nom: 'Police Judiciaire',
+        cout: 100,
+        degats: 0,
+        portee: 150,
+        tempsEntreTirs: 1.2,
+        dureeMarquage: 3,
+        bonusDegatsMarque: 1.5,
+        couleur: '#b08968'
+    },
+    cynophile: {
+        nom: 'Unité Cynophile',
+        cout: 110,
+        degats: 8,
+        portee: 90,
+        tempsEntreTirs: 0.5,
+        facteurRalentissement: 0.7,
+        couleur: '#4c7a3d'
+    },
+    motocycliste: {
+        nom: 'Cie Motocycliste',
+        cout: 150,
+        degats: 6,
+        portee: 130,
+        tempsEntreTirs: 1.4,
+        dureeImmobilisation: 1,
+        couleur: '#f7b32b'
+    },
+    aerienne: {
+        nom: 'Section Aérienne',
+        cout: 320,
+        degats: 55,
+        portee: 1200, // couvre toute la carte : plus grand que la diagonale du Canvas (960x640)
+        tempsEntreTirs: 6,
+        rayonExplosion: 150,
+        couleur: '#5da9e9'
     }
 };
 
@@ -572,16 +790,26 @@ function distanceEntre(pointA, pointB) {
 }
 
 /**
- * Remplit les boutons de la boutique (HTML) avec le nom et le prix
- * de chaque type d'unité, en lisant directement l'objet UNITES.
- * Ainsi, si on change un prix dans UNITES, la boutique se met à
- * jour toute seule, sans avoir à modifier le fichier HTML.
+ * Construit les boutons de la boutique (une carte par type d'unité) à
+ * partir de l'objet UNITES, exactement comme initialiserPanneauMods()
+ * et initialiserEcranAccueil() le font pour MODS et DIFFICULTES : le
+ * nom et le prix ne sont écrits qu'à un seul endroit du projet (dans
+ * UNITES), et la boutique s'adapte automatiquement si on ajoute ou
+ * retire un type d'unité, sans jamais avoir à toucher au HTML.
  */
 function initialiserBoutique() {
-    document.querySelectorAll('.bouton-unite').forEach(function (bouton) {
+    const conteneur = document.getElementById('liste-unites');
+
+    conteneur.innerHTML = Object.keys(UNITES).map(function (cle) {
+        const infos = UNITES[cle];
+        return '<button class="bouton-unite" data-type="' + cle + '">' +
+            '<span class="bouton-unite-nom">' + infos.nom + '</span>' +
+            '<span class="bouton-unite-cout">' + infos.cout + ' $</span>' +
+            '</button>';
+    }).join('');
+
+    conteneur.querySelectorAll('.bouton-unite').forEach(function (bouton) {
         const infos = UNITES[bouton.dataset.type];
-        bouton.querySelector('.bouton-unite-nom').textContent = infos.nom;
-        bouton.querySelector('.bouton-unite-cout').textContent = infos.cout + ' $';
 
         // Quand on clique sur ce bouton, on entre en "mode achat"
         // pour ce type d'unité.
@@ -677,12 +905,27 @@ function afficherPanneauSelection(unite) {
     document.getElementById('selection-titre').textContent =
         infos.nom + ' (niveau ' + unite.niveau + ')';
 
+    // On construit la description en ajoutant une phrase par capacité
+    // présente sur ce type d'unité (une unité peut en cumuler plusieurs,
+    // comme l'Unité Cynophile qui inflige des dégâts ET ralentit).
     let details = 'Portée : ' + Math.round(unite.portee) + ' px';
-    if (unite.type === 'herse') {
-        details += ' — Ralentit les ennemis de ' + Math.round((1 - infos.facteurRalentissement) * 100) + '%';
-    } else {
+
+    if (infos.facteurRalentissement) {
+        details += ' — Ralentit de ' + Math.round((1 - infos.facteurRalentissement) * 100) + '%';
+    }
+    if (unite.type === 'policeJudiciaire') {
+        details += ' — Marque une cible (+' + Math.round((infos.bonusDegatsMarque - 1) * 100) + '% dégâts subis pendant ' + infos.dureeMarquage + 's)';
+    }
+    if (unite.type === 'motocycliste') {
+        details += ' — Immobilise ' + infos.dureeImmobilisation + 's à l\'impact';
+    }
+    if (unite.degats > 0) {
         details += ' — Dégâts : ' + Math.round(unite.degats);
     }
+    if (infos.rayonExplosion) {
+        details += ' (zone ' + infos.rayonExplosion + ' px)';
+    }
+
     document.getElementById('selection-details').textContent = details;
 
     if (unite.niveau >= 2) {
@@ -833,7 +1076,9 @@ function genererEnnemi(config) {
         pvMax: config.pvEnnemi,
         vitesseBase: config.vitesse,
         recompense: config.recompense,
-        aAtteintCommissariat: false
+        aAtteintCommissariat: false,
+        marqueRestante: 0,        // secondes restantes sous l'effet "marqué" (Police Judiciaire)
+        immobiliseRestante: 0     // secondes restantes totalement immobilisé (Compagnie Motocycliste)
     });
 }
 
@@ -924,13 +1169,33 @@ function verifierFinDeVague() {
 ------------------------------------------------------------ */
 function mettreAJourEnnemis(dt) {
     ennemis.forEach(function (ennemi) {
-        // Un ennemi situé dans la portée d'au moins une Herse routière
-        // se déplace plus lentement (voir UNITES.herse.facteurRalentissement).
-        const estRalenti = unitesPlacees.some(function (unite) {
-            return unite.type === 'herse' &&
-                distanceEntre(centreBatiment(unite.batiment), ennemi) <= unite.portee;
-        });
-        const vitesse = ennemi.vitesseBase * (estRalenti ? UNITES.herse.facteurRalentissement : 1);
+        // On fait vieillir les effets temporaires (marquage, immobilisation),
+        // sans jamais descendre sous 0.
+        if (ennemi.marqueRestante > 0) ennemi.marqueRestante = Math.max(0, ennemi.marqueRestante - dt);
+        if (ennemi.immobiliseRestante > 0) ennemi.immobiliseRestante = Math.max(0, ennemi.immobiliseRestante - dt);
+
+        // Un ennemi situé dans la portée d'au moins une unité de
+        // ralentissement (Herse CRS ou Unité Cynophile) se déplace plus
+        // lentement. Si plusieurs zones se chevauchent, on applique le
+        // ralentissement le plus fort (le facteur le plus petit).
+        const facteursRalentissement = unitesPlacees
+            .filter(function (unite) {
+                return UNITES[unite.type].facteurRalentissement &&
+                    distanceEntre(centreBatiment(unite.batiment), ennemi) <= unite.portee;
+            })
+            .map(function (unite) {
+                return UNITES[unite.type].facteurRalentissement;
+            });
+
+        let vitesse;
+        if (ennemi.immobiliseRestante > 0) {
+            // L'immobilisation (Compagnie Motocycliste) prime sur tout : l'ennemi ne bouge plus du tout.
+            vitesse = 0;
+        } else if (facteursRalentissement.length > 0) {
+            vitesse = ennemi.vitesseBase * Math.min.apply(null, facteursRalentissement);
+        } else {
+            vitesse = ennemi.vitesseBase;
+        }
 
         const pointCible = CHEMIN[ennemi.indexPointCourant];
         const dx = pointCible.x - ennemi.x;
@@ -977,12 +1242,26 @@ function mettreAJourEnnemis(dt) {
 /* ------------------------------------------------------------
    16. COMBAT DES UNITÉS POSÉES
    ------------------------------------------------------------
-   À chaque image, chaque unité (sauf la Herse, qui ne tire jamais)
-   vérifie si son temps de rechargement est écoulé, puis cherche
-   l'ennemi le plus proche dans sa portée. Si elle en trouve un,
-   elle tire : dégâts directs pour le Tireur de précision, dégâts
-   de zone pour l'Unité lourde.
+   À chaque image, chaque unité (sauf la Herse, qui ne tire jamais et
+   se contente de ralentir) vérifie si son temps de rechargement est
+   écoulé, puis cherche l'ennemi le plus proche dans sa portée. Si
+   elle en trouve un, elle agit selon son type : dégâts sur une seule
+   cible, dégâts de zone, marquage, ou immobilisation.
 ------------------------------------------------------------ */
+
+/**
+ * Inflige des dégâts à un ennemi, en tenant compte du bonus "cible
+ * marquée" par la Police Judiciaire (voir UNITES.policeJudiciaire) :
+ * TOUTES les unités infligent plus de dégâts à un ennemi marqué, pas
+ * seulement celle qui l'a marqué. Centraliser ce calcul ici évite de
+ * répéter la même vérification à chaque type d'unité qui fait des
+ * dégâts.
+ */
+function infligerDegats(ennemi, degats) {
+    const multiplicateur = ennemi.marqueRestante > 0 ? UNITES.policeJudiciaire.bonusDegatsMarque : 1;
+    ennemi.pv -= degats * multiplicateur;
+}
+
 function mettreAJourUnites(dt) {
     unitesPlacees.forEach(function (unite) {
         if (unite.type === 'herse') return; // la Herse ne tire jamais, elle ralentit seulement
@@ -1008,17 +1287,27 @@ function mettreAJourUnites(dt) {
 
         if (!cible) return; // rien à portée, l'unité attend
 
-        if (unite.type === 'tireur') {
-            // Dégâts sur une seule cible.
-            cible.pv -= unite.degats;
-        } else if (unite.type === 'lourd') {
-            // Dégâts de zone : TOUS les ennemis proches de la cible
-            // touchée encaissent les dégâts, pas seulement elle.
+        const infos = UNITES[unite.type];
+
+        if (infos.rayonExplosion) {
+            // Dégâts de zone (GIGN, BAC, Section Aérienne) : TOUS les
+            // ennemis proches de la cible touchée encaissent les dégâts.
             ennemis.forEach(function (ennemi) {
-                if (distanceEntre(cible, ennemi) <= UNITES.lourd.rayonExplosion) {
-                    ennemi.pv -= unite.degats;
+                if (distanceEntre(cible, ennemi) <= infos.rayonExplosion) {
+                    infligerDegats(ennemi, unite.degats);
                 }
             });
+        } else if (unite.type === 'policeJudiciaire') {
+            // Aucun dégât : on marque la cible pour que les AUTRES
+            // unités lui infligent plus de dégâts pendant un moment.
+            cible.marqueRestante = infos.dureeMarquage;
+        } else {
+            // Cas général (RAID, Police Secours, BRI, Unité Cynophile,
+            // Compagnie Motocycliste) : dégâts sur une seule cible.
+            infligerDegats(cible, unite.degats);
+            if (unite.type === 'motocycliste') {
+                cible.immobiliseRestante = infos.dureeImmobilisation;
+            }
         }
 
         // On enregistre un petit effet visuel de tir (voir section 17).
@@ -1027,7 +1316,7 @@ function mettreAJourUnites(dt) {
             x2: cible.x, y2: cible.y,
             dureeRestante: 0.15,
             dureeInitiale: 0.15,
-            couleur: UNITES[unite.type].couleur
+            couleur: infos.couleur
         });
 
         unite.cooldownRestant = unite.tempsEntreTirs;
@@ -1103,6 +1392,25 @@ function mettreAJourAffichageVague() {
 ------------------------------------------------------------ */
 
 /** Dessine chaque unité posée sur son bâtiment, avec une forme selon son type. */
+/**
+ * Trace le contour d'une étoile à N pointes, centrée en (cx, cy),
+ * prête à être remplie (ctx.fill()) ou tracée (ctx.stroke()) juste
+ * après. Utilisée pour dessiner l'icône de l'unité BRI. On alterne
+ * un point "loin" du centre (une pointe) et un point "proche" (un
+ * creux), tout autour du cercle.
+ */
+function tracerEtoile(cx, cy, rayonExterieur, rayonInterieur, pointes) {
+    ctx.beginPath();
+    for (let i = 0; i < pointes * 2; i++) {
+        const rayon = (i % 2 === 0) ? rayonExterieur : rayonInterieur;
+        const angle = (Math.PI / pointes) * i - Math.PI / 2;
+        const x = cx + Math.cos(angle) * rayon;
+        const y = cy + Math.sin(angle) * rayon;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+}
+
 function dessinerUnitesPlacees() {
     unitesPlacees.forEach(function (unite) {
         const centre = centreBatiment(unite.batiment);
@@ -1143,6 +1451,65 @@ function dessinerUnitesPlacees() {
             for (let i = -12; i <= 12; i += 6) {
                 ctx.fillRect(centre.x + i - 1, centre.y - 12, 2, 24);
             }
+        } else if (unite.type === 'policeSecours') {
+            // Un simple cercle plein pour l'unité de base, polyvalente.
+            ctx.beginPath();
+            ctx.arc(centre.x, centre.y, 10, 0, Math.PI * 2);
+            ctx.fill();
+        } else if (unite.type === 'bac') {
+            // Un losange, pour une unité agile et discrète.
+            ctx.beginPath();
+            ctx.moveTo(centre.x, centre.y - 12);
+            ctx.lineTo(centre.x + 12, centre.y);
+            ctx.lineTo(centre.x, centre.y + 12);
+            ctx.lineTo(centre.x - 12, centre.y);
+            ctx.closePath();
+            ctx.fill();
+        } else if (unite.type === 'bri') {
+            // Une étoile, pour l'unité d'élite.
+            tracerEtoile(centre.x, centre.y, 13, 6, 5);
+            ctx.fill();
+        } else if (unite.type === 'policeJudiciaire') {
+            // Une loupe stylisée, pour l'enquêteur qui "marque" ses cibles.
+            ctx.strokeStyle = UNITES.policeJudiciaire.couleur;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(centre.x - 3, centre.y - 3, 7, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(centre.x + 2, centre.y + 2);
+            ctx.lineTo(centre.x + 11, centre.y + 11);
+            ctx.stroke();
+        } else if (unite.type === 'cynophile') {
+            // Une empreinte de patte stylisée (un gros coussinet + 3 petits).
+            ctx.beginPath();
+            ctx.arc(centre.x, centre.y + 4, 7, 0, Math.PI * 2);
+            ctx.fill();
+            [-8, 0, 8].forEach(function (decalage) {
+                ctx.beginPath();
+                ctx.arc(centre.x + decalage, centre.y - 7, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        } else if (unite.type === 'motocycliste') {
+            // Deux roues reliées par un cadre, vues de dessus.
+            ctx.beginPath();
+            ctx.arc(centre.x - 7, centre.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(centre.x + 7, centre.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillRect(centre.x - 7, centre.y - 2, 14, 4);
+        } else if (unite.type === 'aerienne') {
+            // Un rotor d'hélicoptère (deux pales en croix) vu de dessus.
+            ctx.save();
+            ctx.translate(centre.x, centre.y);
+            ctx.fillRect(-14, -2, 28, 4);
+            ctx.rotate(Math.PI / 2);
+            ctx.fillRect(-14, -2, 28, 4);
+            ctx.restore();
+            ctx.beginPath();
+            ctx.arc(centre.x, centre.y, 4, 0, Math.PI * 2);
+            ctx.fill();
         }
 
         // Petit badge doré pour indiquer une unité améliorée (niveau 2).
@@ -1176,6 +1543,28 @@ function dessinerEnnemis() {
 
         ctx.fillStyle = ratioVie > 0.3 ? '#4caf50' : '#e63946';
         ctx.fillRect(ennemi.x - largeurBarre / 2, ennemi.y - 22, largeurBarre * ratioVie, 5);
+
+        // Anneau brun/beige autour d'un ennemi "marqué" par la Police
+        // Judiciaire (il subit plus de dégâts tant que l'anneau est visible).
+        if (ennemi.marqueRestante > 0) {
+            ctx.beginPath();
+            ctx.arc(ennemi.x, ennemi.y, 16, 0, Math.PI * 2);
+            ctx.strokeStyle = UNITES.policeJudiciaire.couleur;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // Anneau jaune autour d'un ennemi immobilisé par la Compagnie
+        // Motocycliste (il ne peut plus avancer tant que l'anneau est visible).
+        if (ennemi.immobiliseRestante > 0) {
+            ctx.beginPath();
+            ctx.arc(ennemi.x, ennemi.y, 16, 0, Math.PI * 2);
+            ctx.strokeStyle = UNITES.motocycliste.couleur;
+            ctx.lineWidth = 2;
+            ctx.setLineDash([3, 3]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
     });
 }
 
