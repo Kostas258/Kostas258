@@ -475,7 +475,87 @@ coordonnées exactes. Deux façons de l'utiliser quand même :
    fidèle. Il faudra alors me redonner l'image pour que je relève les
    coordonnées.
 
-## 4. Mobilier urbain (décor de carte)
+## 4. Bâtiments et éléments de route (en tuiles réutilisables)
+
+C'est ici la vraie réponse à "comment reconstruire une carte façon Stark
+Tower Defense" : plutôt qu'une seule grande image figée (voir section 3 et
+sa mise en garde), on génère des **petites tuiles réutilisables** — quelques
+toits de bâtiments et quelques morceaux de route — qu'on peut ensuite
+répéter, faire pivoter et assembler pour reconstituer EXACTEMENT le tracé
+du jeu (le tableau `CHEMIN` et le tableau `BATIMENTS` dans `script.js`).
+C'est beaucoup plus simple à intégrer que l'image de carte complète, et
+c'est ainsi que fonctionnent la plupart des vrais jeux Tower Defense en 2D
+(y compris Stark Tower Defense).
+
+Toujours la même règle que dans le reste du fichier : vue **strictement de
+dessus** (zénithale), style vectoriel plat cohérent avec la direction
+artistique commune donnée plus haut, **fond transparent obligatoire** (pour
+pouvoir superposer les tuiles librement), et sans ombre portée qui
+dépasserait des bords de l'image (sinon les tuiles laissent une couture
+visible en se répétant).
+
+### 4.1 Toit — petit immeuble résidentiel
+> Toit d'un petit immeuble résidentiel vu strictement de dessus, forme
+> rectangulaire simple, couleur tuiles/membrane marron `#7a5230` avec un
+> léger dégradé, une ligne de faîtage centrale fine, contour sombre
+> `#4d3420`. Style vectoriel plat, contours nets, fond transparent, format
+> carré, pas de texte, pas d'ombre portée qui dépasse des bords de l'image.
+
+### 4.2 Toit — immeuble moyen avec détails techniques
+> Toit d'un immeuble de taille moyenne vu strictement de dessus, forme
+> rectangulaire, couleur marron `#7a5230`, avec quelques détails vus du
+> dessus : une unité de climatisation grise, une petite cheminée, une
+> trappe d'accès technique. Style vectoriel plat, contours nets, fond
+> transparent, format rectangulaire, pas de texte, pas d'ombre portée qui
+> dépasse des bords de l'image.
+
+### 4.3 Toit — grand immeuble / tour d'angle
+> Toit d'un grand immeuble vu strictement de dessus, forme rectangulaire
+> allongée, couleur marron foncé `#4d3420` avec fine bordure `#7a5230`,
+> plusieurs niveaux de toit suggérés par de fines lignes parallèles. Style
+> vectoriel plat, contours nets, fond transparent, format rectangulaire
+> allongé, pas de texte, pas d'ombre portée qui dépasse des bords de l'image.
+
+### 4.4 Toit — bâtiment commercial / entrepôt plat
+> Toit plat d'un bâtiment commercial ou entrepôt vu strictement de dessus,
+> forme rectangulaire large, couleur gris-brun uni, quelques grilles de
+> ventilation industrielle rectangulaires grises. Style vectoriel plat,
+> contours nets, fond transparent, format rectangulaire large, pas de
+> texte, pas d'ombre portée qui dépasse des bords de l'image.
+
+### 4.5 Route — segment rectiligne
+> Segment de route rectiligne vu strictement de dessus, asphalte gris foncé
+> `#3c444c` avec un marquage central en pointillés blancs, fines bordures
+> de trottoir gris clair `#54606a` sur les deux longs côtés. Conçu pour
+> être répété bout à bout et former une route plus longue (les deux
+> extrémités courtes doivent être identiques, sans détail qui empêcherait
+> la répétition). Style vectoriel plat, contours nets, fond transparent,
+> format rectangulaire allongé, pas de texte.
+
+### 4.6 Route — virage à angle droit
+> Virage de route à angle droit (90°) vu strictement de dessus, asphalte
+> gris foncé `#3c444c` avec marquage pointillé blanc qui suit la courbe du
+> virage, bordures de trottoir gris clair sur les côtés extérieurs du
+> virage. Les deux extrémités doivent avoir la même largeur qu'un segment
+> rectiligne, pour pouvoir s'emboîter avec lui. Style vectoriel plat,
+> contours nets, fond transparent, format carré, pas de texte.
+
+### 4.7 Route — carrefour en croix
+> Carrefour en croix (intersection de deux routes) vu strictement de
+> dessus, asphalte gris foncé `#3c444c`, marquage pointillé blanc dans les
+> deux directions qui s'interrompt proprement au centre du carrefour. Les 4
+> côtés doivent avoir la même largeur qu'un segment rectiligne, pour
+> pouvoir s'emboîter avec lui. Style vectoriel plat, contours nets, fond
+> transparent, format carré, pas de texte.
+
+### 4.8 Route — extrémité (bout de route ouvert)
+> Extrémité arrondie d'une route vue strictement de dessus, asphalte gris
+> foncé `#3c444c`, bordure de trottoir gris clair qui s'arrondit à
+> l'extrémité, sans marquage au sol à cet endroit précis. Utilisée pour le
+> point d'apparition des ennemis, en bord de carte. Style vectoriel plat,
+> contours nets, fond transparent, format carré, pas de texte.
+
+## 5. Mobilier urbain (décor de carte)
 
 Tous les prompts de cette section doivent être vus **strictement de dessus**
 (vue zénithale), pour s'intégrer à la carte 2D du jeu (même logique que les
@@ -483,63 +563,63 @@ toits de bâtiments déjà dessinés en Canvas). Ajoute systématiquement à la
 fin : *"vue de dessus stricte (zénithale), style vectoriel plat, fond
 transparent, ombre portée légère, cohérent avec un jeu Tower Defense 2D"*.
 
-### 3.1 Lampadaire urbain
+### 5.1 Lampadaire urbain
 > Un lampadaire de rue vu strictement de dessus : petit cercle lumineux
 > (le halo de lumière) au centre d'une base circulaire grise plus petite.
 > Vue de dessus stricte, style vectoriel plat, fond transparent, ombre
 > portée légère.
 
-### 3.2 Banc public
+### 5.2 Banc public
 > Un banc public vu strictement de dessus, lattes de bois horizontales
 > marron clair sur structure métallique noire. Vue de dessus stricte, style
 > vectoriel plat, fond transparent, ombre portée légère.
 
-### 3.3 Abribus
+### 5.3 Abribus
 > Un abribus (arrêt de bus) vu strictement de dessus, structure rectangulaire
 > avec toit vitré bleu clair semi-transparent et bancs à l'intérieur. Vue de
 > dessus stricte, style vectoriel plat, fond transparent, ombre portée légère.
 
-### 3.4 Poubelle publique
+### 5.4 Poubelle publique
 > Une poubelle publique ronde vue strictement de dessus, couvercle gris avec
 > ouverture centrale. Vue de dessus stricte, style vectoriel plat, fond
 > transparent, ombre portée légère.
 
-### 3.5 Feu tricolore (carrefour)
+### 5.5 Feu tricolore (carrefour)
 > Un feu de circulation vu strictement de dessus au niveau d'un carrefour :
 > petit poteau avec trois cercles (rouge, jaune, vert) empilés vus depuis le
 > haut. Vue de dessus stricte, style vectoriel plat, fond transparent, ombre
 > portée légère.
 
-### 3.6 Bouche d'incendie
+### 5.6 Bouche d'incendie
 > Une bouche d'incendie rouge vue strictement de dessus, forme cylindrique
 > avec petites poignées latérales visibles depuis le haut. Vue de dessus
 > stricte, style vectoriel plat, fond transparent, ombre portée légère.
 
-### 3.7 Barrière de police / ruban de sécurité
+### 5.7 Barrière de police / ruban de sécurité
 > Une barrière de police pliante rayée jaune et noir, vue strictement de
 > dessus, accompagnée d'un ruban de signalisation "attention" tendu au sol.
 > Vue de dessus stricte, style vectoriel plat, fond transparent, ombre
 > portée légère.
 
-### 3.8 Véhicule de police garé
+### 5.8 Véhicule de police garé
 > Une voiture de police banalisée bleu et blanc avec bande décorative
 > bleu/jaune stylisée (pas de vrai logo officiel), vue strictement de
 > dessus, gyrophare visible sur le toit. Vue de dessus stricte, style
 > vectoriel plat, fond transparent, ombre portée légère.
 
-### 3.9 Jardinière / arbre en pot
+### 5.9 Jardinière / arbre en pot
 > Un arbre urbain en jardinière carrée vue strictement de dessus, feuillage
 > circulaire vert vu depuis le haut, bac en béton gris. Vue de dessus
 > stricte, style vectoriel plat, fond transparent, ombre portée légère.
 
-### 3.10 Passage piéton
+### 5.10 Passage piéton
 > Un passage piéton (bandes blanches) sur asphalte gris foncé, vu
 > strictement de dessus, orienté horizontalement pour s'aligner sur une rue.
 > Vue de dessus stricte, style vectoriel plat, fond transparent.
 
 ---
 
-## 5. Combien de personnages dans Stark Tower Defense (le jeu Marvel) ?
+## 6. Combien de personnages dans Stark Tower Defense (le jeu Marvel) ?
 
 D'après mes recherches sur le jeu original :
 
@@ -570,7 +650,7 @@ graphismes restent à générer : en attendant, chaque unité est représentée
 sur la carte par une petite forme géométrique distinctive (triangle, étoile,
 loupe, empreinte de patte...) dans sa couleur dédiée.
 
-## 6. Comment utiliser ces prompts avec ChatGPT
+## 7. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
    même demande, le résultat sera plus propre).
