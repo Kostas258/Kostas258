@@ -440,7 +440,42 @@ Marvel existant.
 
 ---
 
-## 3. Mobilier urbain (décor de carte)
+## 3. La carte complète du quartier
+
+**Prompt :**
+> Vue aérienne stricte (zénithale, à la verticale, "bird's eye view") d'un
+> quartier urbain nocturne stylisé pour un jeu vidéo Tower Defense 2D. Une
+> route sinueuse en asphalte gris foncé, avec un marquage central en
+> pointillés blancs, traverse le quartier en plusieurs virages à angle
+> droit : elle part d'un bord de l'image et mène jusqu'à un commissariat de
+> police central, un bâtiment bleu distinct des autres avec un petit
+> gyrophare rouge/bleu stylisé sur son toit. Une rue secondaire perpendiculaire
+> croise la route principale, formant un carrefour. Autour des rues, plusieurs
+> toits de bâtiments résidentiels/commerciaux vus de dessus (toits marron/brique
+> avec un faîtage central), espacés les uns des autres pour laisser des zones
+> vides. Ambiance nocturne bleu foncé, légère lueur de lampadaires. Style
+> illustration vectorielle plate ("flat design"), contours nets, couleurs
+> vives et saturées, palette bleu police `#245ec9`/`#4d9dff`, rouge alerte
+> `#e63946`, doré `#ffd166`, asphalte gris `#3c444c`, toits marron `#7a5230`,
+> fond nuit `#06090d`/`#101822`. Format paysage (proportion 3:2), pas de
+> texte, pas de personnages, pas de logo existant.
+
+**⚠️ Note technique sur l'intégration :** notre carte actuelle est dessinée
+"à la main" en JavaScript avec des coordonnées précises (chaque virage de
+route, chaque bâtiment a un x/y exact dans `script.js`), car le jeu a besoin
+de connaître ces coordonnées pour faire avancer les ennemis et détecter les
+clics. Une image générée par IA ne collera JAMAIS pixel pour pixel à ces
+coordonnées exactes. Deux façons de l'utiliser quand même :
+1. **En texture d'ambiance** : on l'affiche en fond très assombri/flouté
+   derrière la carte dessinée par le jeu (juste pour le décor, sans lien
+   avec le gameplay) — solution la plus simple.
+2. **En remplacement complet** : on génère l'image, puis on ajuste les
+   coordonnées dans `script.js` pour qu'elles collent au mieux au chemin et
+   aux bâtiments visibles sur CETTE image précise — plus long, mais plus
+   fidèle. Il faudra alors me redonner l'image pour que je relève les
+   coordonnées.
+
+## 4. Mobilier urbain (décor de carte)
 
 Tous les prompts de cette section doivent être vus **strictement de dessus**
 (vue zénithale), pour s'intégrer à la carte 2D du jeu (même logique que les
@@ -504,7 +539,7 @@ transparent, ombre portée légère, cohérent avec un jeu Tower Defense 2D"*.
 
 ---
 
-## 4. Combien de personnages dans Stark Tower Defense (le jeu Marvel) ?
+## 5. Combien de personnages dans Stark Tower Defense (le jeu Marvel) ?
 
 D'après mes recherches sur le jeu original :
 
@@ -532,7 +567,7 @@ personnages de ce fichier (Police Secours compris) ne sont encore que des
 transformer en vraies unités jouables (avec coût, dégâts, portée...) et je
 les ajouterai au code du jeu, un par un pour garder l'équilibrage propre.
 
-## 5. Comment utiliser ces prompts avec ChatGPT
+## 6. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
    même demande, le résultat sera plus propre).
