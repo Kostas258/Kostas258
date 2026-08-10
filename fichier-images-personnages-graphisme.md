@@ -44,11 +44,19 @@ fin de chaque prompt individuel :
 
 **Palette de couleurs du jeu** (à mentionner pour rester cohérent) :
 - Bleu police / gyrophare : `#245ec9` et `#4d9dff`
-- Rouge alerte / gyrophare : `#e63946`
+- Rouge alerte / gyrophare (RAID) : `#e63946`
+- Orange (GIGN) : `#f4a259`
+- Bleu-gris (CRS) : `#8d99ae`
 - Doré (argent, accents) : `#ffd166`
 - Gris asphalte : `#3c444c`
 - Marron toits de bâtiments : `#7a5230`
 - Fond nuit urbaine : `#06090d` / `#101822`
+- Turquoise (BAC) : `#2ec4b6`
+- Violet (BRI) : `#6a4c93`
+- Brun/beige (Police Judiciaire) : `#b08968`
+- Vert forêt (Unité Cynophile) : `#4c7a3d`
+- Jaune sécurité routière (Compagnie Motocycliste) : `#f7b32b`
+- Bleu ciel (Section Aérienne) : `#5da9e9`
 
 ---
 
@@ -180,7 +188,150 @@ principale du jeu).
 
 ---
 
-### 1.6 (Optionnel) Le meneur de la bande — antagoniste générique
+### 1.6 Agent BAC — concept "Brigade Anti-Criminalité"
+
+**Rôle en jeu (concept, pas encore codé)** : agents en civil, intervention
+rapide et discrète. Piste de jeu : tir rapide à faible portée qui touche
+plusieurs petites cibles proches (patrouille agile). Couleur suggérée :
+turquoise `#2ec4b6`.
+
+**Portrait :**
+> Portrait en buste d'un policier français de la BAC en tenue civile
+> (blouson sombre décontracté, pas d'uniforme visible), brassard "POLICE"
+> discret au bras, oreillette, posture vigilante et alerte, regard qui
+> scrute la rue. Style illustration vectorielle plate, contours nets,
+> couleurs vives, palette sombre avec accents turquoise `#2ec4b6`. Fond
+> neutre dégradé, ambiance urbaine nocturne, sans texte ni logo officiel réel.
+
+**Sprite vue de dessus :**
+> Personnage vu strictement de dessus (vue zénithale, jeu vidéo Tower
+> Defense 2D), petit policier en blouson civil sombre avec un discret
+> brassard turquoise, silhouette simple, posture immobile légèrement
+> penchée en avant (aux aguets). Fond transparent, ombre portée légère,
+> style vectoriel plat cohérent avec le reste des unités du jeu.
+
+---
+
+### 1.7 Agent BRI — concept "Brigade de Recherche et d'Intervention"
+
+**Rôle en jeu (concept, pas encore codé)** : unité d'élite historique
+("l'Anti-gang"). Piste de jeu : tir occasionnel très puissant façon "coup
+critique", une frappe chirurgicale plutôt qu'un tir régulier. Couleur
+suggérée : violet profond `#6a4c93`.
+
+**Portrait :**
+> Portrait en buste d'un policier français de la BRI, tenue tactique noire
+> ajustée, gilet fin renforcé avec liseré violet, cagoule fine ou lunettes
+> tactiques, posture intense et concentrée, expression déterminée. Style
+> illustration vectorielle plate, contours nets, palette noir/gris foncé
+> avec accents violet `#6a4c93`. Fond neutre dégradé sombre, sans texte ni
+> logo officiel réel.
+
+**Sprite vue de dessus :**
+> Personnage vu strictement de dessus (vue zénithale, jeu vidéo Tower
+> Defense 2D), petit policier tactique en tenue noire avec liseré violet,
+> posture immobile en appui, silhouette fine et précise. Fond transparent,
+> ombre portée légère, style vectoriel plat cohérent avec le reste du jeu.
+
+---
+
+### 1.8 Agent Police Judiciaire — concept "l'Enquêteur"
+
+**Rôle en jeu (concept, pas encore codé)** : ne fait pas de dégâts, mais
+"marque" un ennemi pour que toutes les autres unités lui infligent plus de
+dégâts (synergie d'équipe). Couleur suggérée : brun/beige `#b08968`.
+
+**Portrait :**
+> Portrait en buste d'un enquêteur de la Police Judiciaire française,
+> trench-coat beige/brun classique sur chemise simple, badge de police à la
+> ceinture, carnet de notes visible, regard analytique et posture calme et
+> réfléchie. Style illustration vectorielle plate, contours nets, couleurs
+> chaudes, palette brun/beige `#b08968`. Fond neutre dégradé, ambiance
+> urbaine, sans texte ni logo officiel réel.
+
+**Sprite vue de dessus :**
+> Personnage vu strictement de dessus (vue zénithale, jeu vidéo Tower
+> Defense 2D), petit enquêteur en trench-coat brun/beige, silhouette
+> simple, posture immobile légèrement penchée comme s'il observait une
+> scène. Fond transparent, ombre portée légère, style vectoriel plat
+> cohérent avec le reste du jeu.
+
+---
+
+### 1.9 Maître-chien — concept "Unité Cynophile"
+
+**Rôle en jeu (concept, pas encore codé)** : petits dégâts continus (morsure)
+et léger ralentissement, complémentaire de la Herse CRS. Couleur suggérée :
+vert forêt `#4c7a3d`.
+
+**Portrait :**
+> Portrait d'un maître-chien de la police française en tenue tactique verte
+> foncée, accompagné de son chien policier générique (silhouette de berger
+> non spécifique à une race protégée), laisse courte tenue fermement, les
+> deux regardant dans la même direction avec attention. Style illustration
+> vectorielle plate, contours nets, couleurs vives, palette vert forêt
+> `#4c7a3d`. Fond neutre dégradé, sans texte ni logo officiel réel.
+
+**Sprite vue de dessus :**
+> Duo vu strictement de dessus (vue zénithale, jeu vidéo Tower Defense 2D) :
+> petit maître-chien en tenue verte foncée à côté de son chien policier
+> stylisé, silhouettes simples et lisibles, posture immobile côte à côte.
+> Fond transparent, ombre portée légère, style vectoriel plat cohérent avec
+> le reste du jeu.
+
+---
+
+### 1.10 Agent Compagnie Motocycliste — concept "l'Intercepteur"
+
+**Rôle en jeu (concept, pas encore codé)** : intercepte et immobilise
+brièvement un seul ennemi rapide (contre-mesure anti-"speedster"). Couleur
+suggérée : jaune sécurité routière `#f7b32b`.
+
+**Portrait :**
+> Portrait en buste d'un motard de la police française, blouson de moto
+> renforcé bleu marine avec bandes réfléchissantes jaune vif, casque de
+> moto tenu sous le bras ou porté avec visière relevée, posture assurée.
+> Motocyclette stylisée floutée en arrière-plan. Style illustration
+> vectorielle plate, contours nets, couleurs vives, palette bleu marine
+> avec accents jaune `#f7b32b`. Fond neutre dégradé, sans texte ni logo
+> officiel réel.
+
+**Sprite vue de dessus :**
+> Personnage vu strictement de dessus (vue zénithale, jeu vidéo Tower
+> Defense 2D), petit motard en blouson bleu marine avec bandes jaunes,
+> casque visible depuis le dessus, positionné à côté d'une moto stylisée
+> vue de dessus. Fond transparent, ombre portée légère, style vectoriel
+> plat cohérent avec le reste du jeu.
+
+---
+
+### 1.11 Section Aérienne — concept "l'Hélicoptère"
+
+**Rôle en jeu (concept, pas encore codé)** : unité spéciale à très large
+zone d'action mais très long temps de rechargement (frappe ponctuelle façon
+"ultime"). Contrairement aux autres unités, sa représentation sur la carte
+serait l'hélicoptère lui-même plutôt qu'un personnage debout. Couleur
+suggérée : bleu ciel `#5da9e9`.
+
+**Portrait (le pilote, pour l'écran de sélection) :**
+> Portrait en buste d'un pilote de la Section Aérienne de la police
+> française, combinaison de vol bleu marine avec liseré bleu ciel, casque
+> de vol avec visière et micro intégré, posture professionnelle. Hélicoptère
+> stylisé flouté en arrière-plan. Style illustration vectorielle plate,
+> contours nets, couleurs vives, palette bleu ciel `#5da9e9`. Fond neutre
+> dégradé, sans texte ni logo officiel réel.
+
+**Sprite vue de dessus (l'hélicoptère, pour la carte) :**
+> Un hélicoptère de police stylisé vu strictement de dessus (vue zénithale,
+> jeu vidéo Tower Defense 2D), fuselage bleu marine avec liseré bleu ciel
+> `#5da9e9`, rotor principal représenté par une fine silhouette circulaire
+> semi-transparente (effet de mouvement), pas de logo officiel réel. Fond
+> transparent, ombre portée douce au sol, style vectoriel plat cohérent
+> avec le reste du jeu.
+
+---
+
+### 1.12 (Optionnel) Le meneur de la bande — antagoniste générique
 
 **Rôle en jeu** : pourrait illustrer un futur "boss" de fin de niveau ou
 l'écran de défaite. Personnage 100% inventé, sans référence à un vilain
@@ -244,6 +395,48 @@ Marvel existant.
 > couleurs bleu `#245ec9` et doré `#ffd166`, bordure épaisse. Style
 > vectoriel plat, contours nets, fond transparent, sans texte, sans logo
 > officiel réel.
+
+### 2.7 Écusson concept BAC
+
+> Écusson/insigne stylisé façon patch discret, forme d'écu, représentant
+> une loupe stylisée au centre, couleurs sombres et turquoise `#2ec4b6`,
+> bordure fine grise. Style vectoriel plat, contours nets, fond transparent,
+> sans texte, sans logo officiel réel.
+
+### 2.8 Écusson concept BRI
+
+> Écusson/insigne stylisé façon patch tactique, forme d'écu pointu,
+> représentant une étoile à cinq branches stylisée au centre, couleurs noir
+> et violet `#6a4c93`, bordure argentée fine. Style vectoriel plat, contours
+> nets, fond transparent, sans texte, sans logo officiel réel.
+
+### 2.9 Écusson concept Police Judiciaire
+
+> Écusson/insigne stylisé façon patch classique, forme d'écu, représentant
+> une balance de la justice stylisée au centre, couleurs brun/beige
+> `#b08968` et doré, bordure fine sombre. Style vectoriel plat, contours
+> nets, fond transparent, sans texte, sans logo officiel réel.
+
+### 2.10 Écusson concept Unité Cynophile
+
+> Écusson/insigne stylisé façon patch rond, représentant une empreinte de
+> patte stylisée au centre, couleurs vert forêt `#4c7a3d` et beige, bordure
+> fine dorée. Style vectoriel plat, contours nets, fond transparent, sans
+> texte, sans logo officiel réel.
+
+### 2.11 Écusson concept Compagnie Motocycliste
+
+> Écusson/insigne stylisé façon patch ailé, forme d'écu, représentant une
+> roue stylisée avec deux petites ailes au centre, couleurs bleu marine et
+> jaune `#f7b32b`, bordure fine blanche. Style vectoriel plat, contours
+> nets, fond transparent, sans texte, sans logo officiel réel.
+
+### 2.12 Écusson concept Section Aérienne
+
+> Écusson/insigne stylisé façon patch d'aviation, forme ovale, représentant
+> un rotor d'hélicoptère stylisé vu de dessus au centre, couleurs bleu
+> marine et bleu ciel `#5da9e9`, bordure fine argentée. Style vectoriel
+> plat, contours nets, fond transparent, sans texte, sans logo officiel réel.
 
 ---
 
@@ -322,45 +515,24 @@ D'après mes recherches sur le jeu original :
   (Taupinard).
 - **Soit 8 personnages au total.**
 
-C'est une bonne cible pour notre propre roster : actuellement, Alerte
-Police Secours a 4 unités jouables (RAID, GIGN, CRS, et la nouvelle Police
-Secours ci-dessus) + le Commissaire + un antagoniste générique, soit 6. Les
-idées ci-dessous permettent d'aller jusqu'à un roster équivalent.
+Avec les 6 nouveaux concepts ajoutés dans ce fichier (BAC, BRI, Police
+Judiciaire, Unité Cynophile, Compagnie Motocycliste, Section Aérienne), le
+roster complet d'Alerte Police Secours atteint désormais :
 
-## 5. Pistes pour compléter le roster (services de la Police Nationale)
+- **10 personnages "héros"** : RAID, GIGN, CRS, Police Secours, BAC, BRI,
+  Police Judiciaire, Unité Cynophile, Compagnie Motocycliste, Section
+  Aérienne (+ le Commissaire en figure d'autorité hors-combat)
+- **1 antagoniste générique** (meneur de la bande)
+- **Soit un roster plus large que celui de Stark Tower Defense** (8 au total).
 
-Voici d'autres services réels de la Police Nationale française qui
-pourraient devenir de nouvelles unités jouables, avec une idée de mécanique
-de jeu pour chacun. Dis-moi lesquels t'intéressent et je rédigerai leurs
-prompts complets (portrait + sprite + écusson) sur le même modèle que
-ci-dessus.
+⚠️ **Important** : pour l'instant, seuls RAID, GIGN et CRS sont réellement
+codés et jouables dans `script.js` (voir l'objet `UNITES`). Tous les autres
+personnages de ce fichier (Police Secours compris) ne sont encore que des
+**concepts visuels avec leurs prompts d'image** : dis-moi lesquels tu veux
+transformer en vraies unités jouables (avec coût, dégâts, portée...) et je
+les ajouterai au code du jeu, un par un pour garder l'équilibrage propre.
 
-- **BAC (Brigade Anti-Criminalité)** — agents en civil, intervention rapide
-  et discrète. *Idée de jeu* : tir rapide à faible portée mais qui touche
-  plusieurs petites cibles proches (patrouille agile).
-
-- **BRI (Brigade de Recherche et d'Intervention, "l'Anti-gang")** — unité
-  d'élite parisienne historique. *Idée de jeu* : tir occasionnel très
-  puissant façon "coup critique" (une frappe chirurgicale plutôt qu'un
-  tir régulier).
-
-- **Police Judiciaire / Brigade Criminelle** — les enquêteurs. *Idée de
-  jeu* : ne fait pas de dégâts, mais "marque" un ennemi pour que toutes les
-  autres unités lui infligent plus de dégâts (effet de synergie d'équipe).
-
-- **Unité Cynophile (maître-chien)** — brigade canine. *Idée de jeu* :
-  petits dégâts continus + léger ralentissement, complémentaire de la
-  Herse CRS.
-
-- **Compagnie Motocycliste** — motards de la police. *Idée de jeu* :
-  intercepte et immobilise brièvement un seul ennemi rapide (contre-mesure
-  spécifique aux ennemis "speedster").
-
-- **Section Aérienne (hélicoptère de la Police Nationale)** — vue du ciel.
-  *Idée de jeu* : unité spéciale à très large zone d'action mais très long
-  temps de rechargement (frappe ponctuelle façon "ultime").
-
-## 6. Comment utiliser ces prompts avec ChatGPT
+## 5. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
    même demande, le résultat sera plus propre).
