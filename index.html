@@ -27,6 +27,28 @@
 <body>
 
     <!--
+        ÉCRAN D'ACCUEIL - CHOIX DE LA DIFFICULTÉ
+        ==========================================
+        Ce panneau recouvre TOUTE la page (voir style.css : position
+        fixed + inset:0) tant qu'aucune difficulté n'a été choisie. Il
+        empêche donc de cliquer sur le jeu en dessous avant d'avoir
+        fait un choix. Une fois une carte cliquée, script.js lui
+        ajoute la classe "cache" pour le masquer, et démarre la partie.
+
+        Le contenu de "liste-difficultes" (une carte par difficulté)
+        est généré automatiquement par script.js à partir de l'objet
+        DIFFICULTES, pour ne décrire chaque difficulté qu'à un seul
+        endroit du projet (comme pour la boutique et les mods).
+    -->
+    <div id="ecran-accueil">
+        <div id="accueil-panneau">
+            <h1 id="accueil-titre">Alerte Police Secours</h1>
+            <p id="accueil-sous-titre">Défendez le Commissariat Central. Choisissez votre niveau de difficulté :</p>
+            <div id="liste-difficultes"></div>
+        </div>
+    </div>
+
+    <!--
         Conteneur principal du jeu.
         On l'utilise pour centrer et encadrer le Canvas avec le CSS,
         et plus tard pour y placer l'interface (argent, vie de la base, etc.)
@@ -74,6 +96,9 @@
                 Utile pour recommencer sans avoir à recharger la page.
             -->
             <button id="bouton-rejouer" class="bouton-secondaire">Rejouer</button>
+
+            <!-- Rouvre l'écran d'accueil pour choisir une autre difficulté -->
+            <button id="bouton-changer-difficulte" class="bouton-secondaire">Changer la difficulté</button>
         </div>
 
         <!--

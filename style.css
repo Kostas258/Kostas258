@@ -35,6 +35,135 @@ body {
     padding: 20px;
 }
 
+/* ------------------------------------------------------------
+   ÉCRAN D'ACCUEIL - CHOIX DE LA DIFFICULTÉ
+   ------------------------------------------------------------
+   "position: fixed" + "inset: 0" fait que ce panneau se colle aux
+   4 bords de la fenêtre du navigateur, peu importe où on scrolle :
+   il recouvre donc TOUJOURS tout le reste de la page, comme une
+   fenêtre "par-dessus" le jeu. "z-index" définit l'ordre d'empilement
+   des éléments : plus le nombre est grand, plus l'élément est
+   dessiné par-dessus les autres (ici, tout le reste de la page).
+------------------------------------------------------------ */
+#ecran-accueil {
+    position: fixed;
+    inset: 0; /* équivaut à top:0; right:0; bottom:0; left:0; */
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    background-color: rgba(6, 9, 13, 0.93); /* voile sombre qui assombrit le jeu en dessous */
+}
+
+/* Quand la classe "cache" est ajoutée par script.js, ce sélecteur
+   plus précis (id + classe) prend le dessus sur la règle ci-dessus
+   et masque l'écran d'accueil. */
+#ecran-accueil.cache {
+    display: none;
+}
+
+#accueil-panneau {
+    width: 100%;
+    max-width: 720px;
+
+    background-color: #101822;
+    border: 2px solid #4d9dff;
+    border-radius: 12px;
+    box-shadow: 0 0 32px rgba(77, 157, 255, 0.35);
+    padding: 32px;
+    text-align: center;
+}
+
+#accueil-titre {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #4d9dff;
+    text-shadow: 0 0 12px rgba(77, 157, 255, 0.7);
+}
+
+#accueil-sous-titre {
+    margin-top: 10px;
+    color: #b8c2d0;
+    font-size: 0.95rem;
+}
+
+/* La rangée de cartes de difficulté */
+#liste-difficultes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+/* Une carte de difficulté cliquable */
+.carte-difficulte {
+    flex: 1 1 190px;
+    max-width: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    text-align: left;
+
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #3a4a5a;
+    border-radius: 8px;
+    padding: 16px;
+
+    color: #e0e6f0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.carte-difficulte:hover {
+    border-color: #4d9dff;
+    background-color: rgba(77, 157, 255, 0.15);
+}
+
+.carte-difficulte-nom {
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: #4d9dff;
+}
+
+.carte-difficulte-description {
+    font-size: 0.78rem;
+    color: #b8c2d0;
+    min-height: 3.2em; /* garde les 3 cartes bien alignées même si les textes n'ont pas la même longueur */
+}
+
+/* Une ligne "libellé + petite jauge" à l'intérieur d'une carte
+   (ex : "Résistance ennemis" avec une barre plus ou moins remplie) */
+.carte-difficulte-jauge {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.68rem;
+    color: #8a94a3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.jauge-fond {
+    width: 100%;
+    height: 6px;
+    background-color: #2b2f36;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.jauge-remplissage {
+    display: block;
+    height: 100%;
+    background-color: #ffd166;
+}
+
 /* Conteneur qui regroupe le titre et le canvas */
 #jeu-conteneur {
     display: flex;

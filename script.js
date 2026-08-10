@@ -5,6 +5,8 @@
               calcule ou se dessine est piloté depuis ce fichier.
 
     CONTENU DU JEU COMPLET :
+    - Un écran d'accueil où l'on choisit sa difficulté (Facile,
+      Normal, Difficile) avant de commencer.
     - La carte : un quartier urbain vu de dessus, avec des rues qui
       se croisent, des toits de bâtiments, et le Commissariat
       Central (la base à défendre) à l'arrivée du chemin.
@@ -17,7 +19,7 @@
     - Les points de vie du Commissariat, la victoire et la défaite.
     - Des Mods (modificateurs de jeu) débloqués après une première
       victoire sur les 10 niveaux, et un bouton "Rejouer" pour
-      relancer une partie avec les mods choisis.
+      relancer une partie avec la difficulté et les mods choisis.
 
     Le fichier est découpé en grandes sections numérotées, dans
     l'ordre où on les a construites : la carte d'abord, puis
@@ -786,20 +788,26 @@ const NOMBRE_TOTAL_VAGUES = 10; // les "10 niveaux" du quartier : 10 vagues de p
  * suivantes deviennent automatiquement plus difficiles, sans avoir
  * à tout retaper.
  *
- * Cette fonction tient aussi compte des Mods actifs (voir section 22,
- * plus bas dans le fichier) : le mod "Ennemis renforcés" accélère les
+ * Cette fonction tient aussi compte de la difficulté choisie sur
+ * l'écran d'accueil (section 21, plus bas) et des Mods actifs
+ * (section 22) : le mod "Ennemis renforcés" accélère encore plus les
  * ennemis, et le mod "Fonds municipaux doublés" double leur récompense.
  */
 function creerConfigVague(numero) {
-    const vitesse = 65 + numero * 4;
-    const recompense = 12 + numero * 3;
+    const difficulte = DIFFICULTES[difficulteActuelle];
+
+    let vitesse = (65 + numero * 4) * difficulte.multiplicateurVitesseEnnemi;
+    let recompense = (12 + numero * 3) * difficulte.multiplicateurRecompense;
+
+    if (modsActifs.ennemisRenforces) vitesse *= 1.4;
+    if (modsActifs.argentDouble) recompense *= 2;
 
     return {
         nombreEnnemis: 4 + numero * 2,
-        pvEnnemi: 60 + numero * 25,
-        vitesse: modsActifs.ennemisRenforces ? vitesse * 1.4 : vitesse,
+        pvEnnemi: Math.round((60 + numero * 25) * difficulte.multiplicateurPvEnnemi),
+        vitesse: vitesse,
         intervalleApparition: 0.9,          // secondes entre deux apparitions
-        recompense: modsActifs.argentDouble ? recompense * 2 : recompense
+        recompense: Math.round(recompense)
     };
 }
 
@@ -1268,6 +1276,110 @@ function boucleJeu(tempsActuel) {
 
 
 /* ------------------------------------------------------------
+   21. LA DIFFICULTÉ (choisie sur l'écran d'accueil)
+   ------------------------------------------------------------
+   Avant même de commencer à jouer, le joueur choisit un niveau de
+   difficulté sur l'écran d'accueil (voir index.html, #ecran-accueil).
+   Ce choix ajuste l'argent de départ ainsi que la résistance, la
+   vitesse et la récompense des ennemis, via des "multiplicateurs"
+   (des nombres par lesquels on multiplie une valeur de base : 1 =
+   inchangé, 1.5 = +50%, 0.7 = -30%...).
+
+   Comme pour UNITES et MODS plus haut, tout est regroupé dans un
+   seul objet DIFFICULTES : c'est notre unique source de vérité pour
+   le nom, la description et les réglages de chaque difficulté.
+------------------------------------------------------------ */
+const DIFFICULTES = {
+    facile: {
+        nom: 'Agent stagiaire',
+        description: 'Ennemis plus lents et moins résistants. Fonds de départ généreux. Idéal pour découvrir le jeu.',
+        multiplicateurPvEnnemi: 0.7,
+        multiplicateurVitesseEnnemi: 0.85,
+        multiplicateurRecompense: 1.15,
+        multiplicateurArgentDepart: 1.3
+    },
+    normal: {
+        nom: 'Officier de police',
+        description: "L'expérience Alerte Police Secours classique et équilibrée.",
+        multiplicateurPvEnnemi: 1,
+        multiplicateurVitesseEnnemi: 1,
+        multiplicateurRecompense: 1,
+        multiplicateurArgentDepart: 1
+    },
+    difficile: {
+        nom: 'Chef de la Brigade',
+        description: 'Ennemis nettement plus rapides et résistants. Fonds de départ réduits. Réservé aux meilleurs agents.',
+        multiplicateurPvEnnemi: 1.6,
+        multiplicateurVitesseEnnemi: 1.25,
+        multiplicateurRecompense: 0.9,
+        multiplicateurArgentDepart: 0.75
+    }
+};
+
+// La difficulté actuellement sélectionnée (une des clés de DIFFICULTES
+// ci-dessus). "normal" par défaut, tant que le joueur n'a rien choisi.
+let difficulteActuelle = 'normal';
+
+/**
+ * Construit l'écran d'accueil (une carte cliquable par difficulté) à
+ * partir de l'objet DIFFICULTES. Chaque carte affiche son nom, sa
+ * description, et de petites jauges visuelles (résistance, vitesse,
+ * fonds de départ) pour comparer les difficultés d'un coup d'œil.
+ *
+ * Comme pour initialiserPanneauMods(), on construit ici du HTML à
+ * partir de nos propres données de configuration (jamais d'une
+ * saisie utilisateur) : voir la remarque sur .innerHTML un peu plus
+ * bas dans ce fichier pour le détail de cette précaution.
+ */
+function initialiserEcranAccueil() {
+    const conteneur = document.getElementById('liste-difficultes');
+
+    conteneur.innerHTML = Object.keys(DIFFICULTES).map(function (cle) {
+        const d = DIFFICULTES[cle];
+        return '<button class="carte-difficulte" data-difficulte="' + cle + '">' +
+            '<span class="carte-difficulte-nom">' + d.nom + '</span>' +
+            '<span class="carte-difficulte-description">' + d.description + '</span>' +
+            construireJauge('Résistance ennemis', d.multiplicateurPvEnnemi / 1.6) +
+            construireJauge('Vitesse ennemis', d.multiplicateurVitesseEnnemi / 1.25) +
+            construireJauge('Fonds de départ', d.multiplicateurArgentDepart / 1.3) +
+            '</button>';
+    }).join('');
+
+    conteneur.querySelectorAll('.carte-difficulte').forEach(function (carte) {
+        carte.addEventListener('click', function () {
+            demarrerPartieAvecDifficulte(carte.dataset.difficulte);
+        });
+    });
+}
+
+/**
+ * Construit le petit bloc HTML "libellé + jauge remplie à X%" utilisé
+ * dans chaque carte de difficulté. "ratio" doit être un nombre entre
+ * 0 et 1 (0% à 100% de remplissage).
+ */
+function construireJauge(libelle, ratio) {
+    const pourcentage = Math.round(Math.min(1, Math.max(0, ratio)) * 100);
+    return '<span class="carte-difficulte-jauge">' + libelle +
+        '<span class="jauge-fond"><span class="jauge-remplissage" style="width:' + pourcentage + '%"></span></span>' +
+        '</span>';
+}
+
+/**
+ * Appelée quand le joueur clique sur une carte de difficulté : on
+ * mémorise son choix, on masque l'écran d'accueil, et on (re)démarre
+ * une partie propre avec reinitialiserPartie() (voir section 24), qui
+ * tient compte de "difficulteActuelle" pour calculer l'argent de
+ * départ et la force des ennemis.
+ */
+function demarrerPartieAvecDifficulte(cle) {
+    difficulteActuelle = cle;
+    document.getElementById('ecran-accueil').classList.add('cache');
+    reinitialiserPartie();
+    afficherMessage('Difficulté sélectionnée : ' + DIFFICULTES[cle].nom + '.');
+}
+
+
+/* ------------------------------------------------------------
    22. LES MODS (débloqués après avoir terminé les 10 niveaux)
    ------------------------------------------------------------
    Un "mod" (pour "modificateur") est une variante de règles que le
@@ -1323,11 +1435,12 @@ Object.keys(MODS).forEach(function (cle) {
 });
 
 /**
- * Calcule l'argent de départ d'une partie, en tenant compte des mods
- * "Fonds municipaux doublés" et "Renfort de départ" s'ils sont actifs.
+ * Calcule l'argent de départ d'une partie, en tenant compte de la
+ * difficulté choisie sur l'écran d'accueil, puis des mods "Fonds
+ * municipaux doublés" et "Renfort de départ" s'ils sont actifs.
  */
 function calculerArgentDepart() {
-    let depart = 300;
+    let depart = Math.round(300 * DIFFICULTES[difficulteActuelle].multiplicateurArgentDepart);
     if (modsActifs.argentDouble) depart *= 2;
     if (modsActifs.renfortDepart) depart += 300;
     return depart;
@@ -1426,7 +1539,10 @@ function reinitialiserPartie() {
     const auMoinsUnModActif = Object.keys(modsActifs).some(function (cle) {
         return modsActifs[cle];
     });
-    afficherMessage('Nouvelle partie commencée' + (auMoinsUnModActif ? ' avec mods actifs.' : '.'));
+    afficherMessage(
+        'Nouvelle partie (' + DIFFICULTES[difficulteActuelle].nom + ')' +
+        (auMoinsUnModActif ? ' avec mods actifs.' : '.')
+    );
 }
 
 
@@ -1435,21 +1551,27 @@ function reinitialiserPartie() {
    ------------------------------------------------------------
    On branche les derniers écouteurs d'événements (clic sur le
    Canvas, boutons "Lancer la vague" / "Améliorer" / "Vendre" /
-   "Rejouer"), on prépare le panneau Mods, on initialise l'affichage
-   du HUD avec les valeurs de départ, puis on démarre la boucle de
-   jeu pour de bon.
+   "Rejouer" / "Changer la difficulté"), on prépare l'écran d'accueil,
+   la boutique et le panneau Mods, on initialise l'affichage du HUD
+   avec les valeurs de départ, puis on démarre la boucle de jeu pour
+   de bon. L'écran d'accueil (visible par défaut, voir index.html)
+   empêche le joueur d'agir tant qu'il n'a pas choisi une difficulté.
 ------------------------------------------------------------ */
 canvas.addEventListener('click', gererClicCanvas);
 document.getElementById('bouton-lancer-vague').addEventListener('click', lancerVagueSuivante);
 document.getElementById('bouton-ameliorer').addEventListener('click', ameliorerUniteSelectionnee);
 document.getElementById('bouton-vendre').addEventListener('click', vendreUniteSelectionnee);
 document.getElementById('bouton-rejouer').addEventListener('click', reinitialiserPartie);
+document.getElementById('bouton-changer-difficulte').addEventListener('click', function () {
+    document.getElementById('ecran-accueil').classList.remove('cache');
+});
 
+initialiserEcranAccueil();
 initialiserBoutique();
 initialiserPanneauMods();
 if (modsDebloques) afficherPanneauMods();
 
-argent = calculerArgentDepart(); // tient compte des mods déjà cochés lors d'une précédente visite
+argent = calculerArgentDepart(); // tient compte de la difficulté et des mods déjà choisis lors d'une précédente visite
 mettreAJourAffichageArgent();
 mettreAJourAffichageVie();
 mettreAJourAffichageVague();
