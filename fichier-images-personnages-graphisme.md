@@ -22,6 +22,7 @@ choisi pour coller à ce que fait chaque unité dans le jeu :
 | Tireur de précision     | **RAID**              | Unité d'élite de la Police Nationale, tir de précision, discrétion |
 | Unité lourde             | **GIGN**               | Unité d'élite de la Gendarmerie, assaut, effraction, puissance de feu |
 | Herse routière           | **CRS**                | Gère réellement barrages routiers et contrôle de foule       |
+| Unité polyvalente (nouveau) | **Police Secours**  | Premier service à intervenir sur le terrain (appels du 17), donne son nom au jeu |
 | (Commissariat)           | **Commissaire**        | Chef d'établissement, figure d'autorité du QG                |
 
 Aucun de ces personnages ne doit ressembler à un héros Marvel existant : les
@@ -88,7 +89,7 @@ l'écran de victoire, ou un futur dialogue/tutoriel.
 **Portrait :**
 > Portrait en buste d'un policier français de l'unité RAID, tenue tactique
 > noire, gilet pare-balles avec inscription générique "POLICE" (pas de vrai
-   logo officiel), cagoule ou lunettes de visée sur le front, posture
+> logo officiel), cagoule ou lunettes de visée sur le front, posture
 > concentrée et professionnelle. Pas d'arme visible au premier plan (juste
 > le haut du corps). Style illustration vectorielle plate, contours nets,
 > palette dominante noir/gris foncé avec accents rouge `#e63946` (couleur
@@ -149,7 +150,37 @@ routier / contrôle de foule).
 
 ---
 
-### 1.5 (Optionnel) Le meneur de la bande — antagoniste générique
+### 1.5 Agent Police Secours — nouvelle unité polyvalente
+
+**Rôle en jeu** : c'est le service qui donne son nom au jeu — logique
+qu'il ait son propre personnage ! Concept proposé : une unité de base
+polyvalente, peu coûteuse, dégâts modestes mais cadence de tir rapide et
+fiable (le "premier arrivé sur les lieux"). Peut servir d'unité de départ
+recommandée aux nouveaux joueurs, complémentaire du Tireur RAID (lent et
+puissant), de l'Unité lourde GIGN (zone) et de la Herse CRS (aucun dégât).
+Couleur suggérée pour cette unité : bleu vif `#4d9dff` (la couleur "police"
+principale du jeu).
+
+**Portrait :**
+> Portrait en buste d'un agent de police-secours français en patrouille,
+> uniforme bleu marine classique avec bandes réfléchissantes bleu clair et
+> jaune fluo sur les épaules, gilet pare-balles léger, talkie-walkie
+> accroché à l'épaule, expression alerte et bienveillante. Style
+> illustration vectorielle plate, contours nets, couleurs vives, palette
+> bleu `#4d9dff` avec accents jaune fluorescent. Fond neutre dégradé,
+> ambiance patrouille de nuit, sans texte ni logo officiel réel.
+
+**Sprite vue de dessus :**
+> Personnage vu strictement de dessus (vue zénithale, jeu vidéo Tower
+> Defense 2D), petit agent de police en uniforme bleu marine avec bandes
+> réfléchissantes jaune fluo, casquette de patrouille visible depuis le
+> haut, posture immobile en position de veille. Fond transparent, ombre
+> portée légère, style vectoriel plat cohérent avec le reste des unités du
+> jeu.
+
+---
+
+### 1.6 (Optionnel) Le meneur de la bande — antagoniste générique
 
 **Rôle en jeu** : pourrait illustrer un futur "boss" de fin de niveau ou
 l'écran de défaite. Personnage 100% inventé, sans référence à un vilain
@@ -198,7 +229,15 @@ Marvel existant.
 > `#8d99ae` et jaune signalisation, bordure dorée fine. Style vectoriel
 > plat, contours nets, fond transparent, sans texte, sans logo officiel réel.
 
-### 2.5 Écusson générique "Commissariat Central"
+### 2.5 Écusson unité Police Secours
+
+> Écusson/insigne stylisé façon patch de patrouille, forme d'écu,
+> représentant un gyrophare stylisé au centre entouré de deux ailes
+> discrètes, couleurs bleu vif `#4d9dff` et jaune fluo, bordure blanche
+> fine. Style vectoriel plat, contours nets, fond transparent, sans texte,
+> sans logo officiel réel.
+
+### 2.6 Écusson générique "Commissariat Central"
 
 > Écusson circulaire façon badge officiel stylisé, représentant un petit
 > bâtiment de commissariat stylisé surmonté d'une étoile à cinq branches,
@@ -272,7 +311,56 @@ transparent, ombre portée légère, cohérent avec un jeu Tower Defense 2D"*.
 
 ---
 
-## 4. Comment utiliser ces prompts avec ChatGPT
+## 4. Combien de personnages dans Stark Tower Defense (le jeu Marvel) ?
+
+D'après mes recherches sur le jeu original :
+
+- **5 héros jouables** (placés comme tourelles) : Iron Man, Spider-Man,
+  Thor, Cyclope et Ms. Marvel — chacun améliorable 3 fois (dégâts, cadence,
+  portée).
+- **3 ennemis/boss** : Dr Doom (Docteur Fatalis), M.O.D.O.K. et Moleman
+  (Taupinard).
+- **Soit 8 personnages au total.**
+
+C'est une bonne cible pour notre propre roster : actuellement, Alerte
+Police Secours a 4 unités jouables (RAID, GIGN, CRS, et la nouvelle Police
+Secours ci-dessus) + le Commissaire + un antagoniste générique, soit 6. Les
+idées ci-dessous permettent d'aller jusqu'à un roster équivalent.
+
+## 5. Pistes pour compléter le roster (services de la Police Nationale)
+
+Voici d'autres services réels de la Police Nationale française qui
+pourraient devenir de nouvelles unités jouables, avec une idée de mécanique
+de jeu pour chacun. Dis-moi lesquels t'intéressent et je rédigerai leurs
+prompts complets (portrait + sprite + écusson) sur le même modèle que
+ci-dessus.
+
+- **BAC (Brigade Anti-Criminalité)** — agents en civil, intervention rapide
+  et discrète. *Idée de jeu* : tir rapide à faible portée mais qui touche
+  plusieurs petites cibles proches (patrouille agile).
+
+- **BRI (Brigade de Recherche et d'Intervention, "l'Anti-gang")** — unité
+  d'élite parisienne historique. *Idée de jeu* : tir occasionnel très
+  puissant façon "coup critique" (une frappe chirurgicale plutôt qu'un
+  tir régulier).
+
+- **Police Judiciaire / Brigade Criminelle** — les enquêteurs. *Idée de
+  jeu* : ne fait pas de dégâts, mais "marque" un ennemi pour que toutes les
+  autres unités lui infligent plus de dégâts (effet de synergie d'équipe).
+
+- **Unité Cynophile (maître-chien)** — brigade canine. *Idée de jeu* :
+  petits dégâts continus + léger ralentissement, complémentaire de la
+  Herse CRS.
+
+- **Compagnie Motocycliste** — motards de la police. *Idée de jeu* :
+  intercepte et immobilise brièvement un seul ennemi rapide (contre-mesure
+  spécifique aux ennemis "speedster").
+
+- **Section Aérienne (hélicoptère de la Police Nationale)** — vue du ciel.
+  *Idée de jeu* : unité spéciale à très large zone d'action mais très long
+  temps de rechargement (frappe ponctuelle façon "ultime").
+
+## 6. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
    même demande, le résultat sera plus propre).
