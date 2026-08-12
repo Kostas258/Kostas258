@@ -718,6 +718,36 @@ génères ces variantes et préfères ce rendu, dis-le-moi : je peux basculer
 `TOITS_IMAGES` dessus, ou même mélanger les deux styles selon les
 bâtiments pour varier la carte.
 
+### 7.6 Maquette complète de l'interface (vue d'ensemble)
+
+Prompt fourni par l'utilisateur, avec un seul ajustement : "portraits de
+super-héros existants" → nos propres personnages originaux (RAID, GIGN,
+CRS, etc., déjà créés dans ce fichier), pour la même raison que partout
+ailleurs dans ce document — aucune reprise de personnage protégé.
+
+> Une maquette complète (full screen UI) d'un jeu vidéo de tower defense
+> 2D. Au centre : une carte de ville vue de dessus (top-down) stricte avec
+> une grille orthogonale. La carte contient une douzaine d'immeubles
+> massifs aux toits plats de couleurs pastel, chaque immeuble étant
+> rectangulaire et occupant l'équivalent d'au moins 5 cases de la grille
+> pour faire de gros blocs. Une route en asphalte gris serpente entre ces
+> immeubles en formant des angles droits, avec un chemin clair pour les
+> ennemis. Autour de la carte : une interface utilisateur (UI) style
+> "comic book" avec des bordures épaisses bleues et jaunes. Le menu de
+> droite affiche des cases avec des portraits d'agents de police
+> originaux et stylisés (silhouettes inventées, aucune ressemblance avec
+> un personnage ou une franchise existante) pour la sélection des tours,
+> et des barres de statistiques (vitesse, dégâts) en bleu et vert. Style
+> graphique : cartoon, flat design, art vectoriel très propre, éclairage
+> vif, sans ombres réalistes. Format paysage. Aucun logo, texte ou marque
+> existante.
+
+**Astuce** : une fois cette image générée, tu peux aussi la donner
+directement à ChatGPT en lui demandant "redessine le personnage de la
+case N en t'inspirant de [décris l'Agent RAID/GIGN/CRS/etc.]" pour peupler
+concrètement les cases avec nos unités, plutôt que de laisser l'IA
+inventer des silhouettes génériques.
+
 ## 8. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
