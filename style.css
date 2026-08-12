@@ -473,6 +473,16 @@ body {
     display: none;
 }
 
+/* #panneau-selection définit son propre "display: flex" (voir plus
+   haut), et un sélecteur #id l'emporte toujours sur un simple .classe
+   même écrit après : sans cette règle plus précise (id + classe), le
+   panneau restait visible (vide) en permanence tant qu'aucune unité
+   n'était sélectionnée. Même correctif que pour #ecran-accueil.cache
+   un peu plus haut dans ce fichier. */
+#panneau-selection.cache {
+    display: none;
+}
+
 /* ------------------------------------------------------------
    PANNEAU MODS - débloqué après une première victoire
 ------------------------------------------------------------ */
@@ -1064,3 +1074,202 @@ body{padding:10px;background:radial-gradient(circle at 50% 0,rgba(30,120,180,.18
 #selection-barres .stat-ligne { font-size: 0.7rem; }
 #selection-barres .stat-libelle { width: 50px; }
 #selection-barres .jauge-fond { height: 6px; }
+
+/* ------------------------------------------------------------
+   HUD "TABLEAU DE BORD" (barre du haut, bandeau d'alerte, barre
+   tactique du bas)
+   ------------------------------------------------------------
+   Toutes les icônes de cette section sont des SVG en ligne avec
+   fill/stroke="currentColor" : elles prennent automatiquement la
+   couleur du texte définie par CSS, sans avoir besoin d'un fichier
+   image supplémentaire (cohérent avec l'esprit "graphismes
+   procéduraux" du projet).
+------------------------------------------------------------ */
+.hud-icone {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Empile désormais la barre principale au-dessus de la barre
+   secondaire (au lieu de les répartir côte à côte) : voir #hud plus
+   haut dans ce fichier pour la règle d'origine (display:flex simple). */
+#hud {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hud-topbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hud-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(85, 216, 255, .32);
+    background: linear-gradient(180deg, rgba(48, 107, 161, .22), rgba(16, 38, 61, .3));
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+}
+
+.hud-stat-argent { color: var(--ambre); }
+.hud-stat-argent .hud-icone { color: var(--ambre); }
+.hud-stat-score { color: var(--cyan); }
+.hud-stat-score .hud-icone { color: var(--cyan); }
+
+.hud-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .3);
+    background: transparent;
+    color: var(--texte, #eaf4ff);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.hud-pill:hover { background: rgba(255, 255, 255, .08); }
+
+.hud-secondaire {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.hud-secondaire .bouton-secondaire {
+    padding: 6px 12px;
+    font-size: .78rem;
+}
+
+/* Le bandeau d'alerte : numéro de vague + gros bouton rouge, pensé
+   pour être immédiatement identifiable et facile à toucher sur mobile. */
+.hud-vague-bandeau {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 8px 8px 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 70, 93, .4);
+    background: linear-gradient(90deg, rgba(255, 70, 93, .12), transparent);
+}
+
+.hud-vague-compte {
+    font-weight: 900;
+    letter-spacing: .5px;
+    color: var(--texte, #eaf4ff);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Sélecteur ID+classe (specificité supérieure à un simple #id) pour
+   être certain de l'emporter sur les anciennes règles #bouton-lancer-vague
+   définies plus haut dans ce fichier (héritées des fusions précédentes). */
+#bouton-lancer-vague.bouton-alerte {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    margin: 0;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ff5b6e, var(--rouge));
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(255, 70, 93, .45);
+    animation: pulsation-alerte 1.6s ease-in-out infinite;
+}
+
+#bouton-lancer-vague.bouton-alerte:disabled {
+    background: #3a4148;
+    color: #7a8390;
+    box-shadow: none;
+    animation: none;
+    cursor: not-allowed;
+}
+
+@keyframes pulsation-alerte {
+    0%, 100% { box-shadow: 0 6px 18px rgba(255, 70, 93, .45); }
+    50% { box-shadow: 0 6px 26px rgba(255, 70, 93, .75); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bouton-alerte { animation: none; }
+}
+
+/* Barre tactique du bas : 3 indicateurs à lecture rapide */
+#barre-tactique-basse {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.stat-basse {
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(85, 216, 255, .22);
+    background: rgba(7, 20, 32, .8);
+    color: var(--texte, #eaf4ff);
+}
+
+.stat-basse-libelle {
+    flex: 1;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--texte-doux, #a9bbcd);
+}
+
+.stat-basse-valeur {
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-basse-barre {
+    display: block;
+    width: 70px;
+    height: 7px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #241a22;
+}
+
+#vie-barre-basse {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #3ddc84;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.stat-basse-vie .hud-icone { color: #ff8fa3; }
+
+.stat-basse-bonus .hud-icone { color: var(--ambre); }
+.stat-basse-bonus .bonus-objectif-etat { color: var(--ambre); }
+.stat-basse-bonus.bonus-echoue { opacity: .55; }
+.stat-basse-bonus.bonus-echoue .hud-icone { color: #7a8390; }
+.stat-basse-bonus.bonus-echoue .bonus-objectif-etat { color: #7a8390; text-decoration: line-through; }
+
+@media (max-width: 700px) {
+    .hud-stat, .hud-pill { padding: 6px 10px; font-size: .85rem; }
+    .hud-vague-bandeau { flex-direction: column; align-items: stretch; }
+    .bouton-alerte { justify-content: center; }
+    .stat-basse { flex: 1 1 100%; }
+}

@@ -677,6 +677,21 @@ let argent = 300;
 // la rechercher à nouveau à chaque fois qu'on affiche l'argent.
 const elementArgent = document.getElementById('argent-valeur');
 
+// Le score est un compteur purement informatif (il n'influence aucune
+// règle du jeu) : il augmente quand un ennemi est éliminé et quand une
+// vague est repoussée. Contrairement à l'argent, il ne baisse jamais.
+let score = 0;
+const elementScore = document.getElementById('score-valeur');
+
+function mettreAJourAffichageScore() {
+    elementScore.textContent = score.toLocaleString('fr-FR');
+}
+
+function ajouterScore(montant) {
+    score += Math.round(montant);
+    mettreAJourAffichageScore();
+}
+
 /**
  * Met à jour l'affichage à l'écran pour qu'il corresponde toujours
  * à la valeur actuelle de la variable "argent". Cette fonction doit
@@ -1511,6 +1526,7 @@ function verifierFinDeVague() {
     chronoProchaineApparition = 0;
     preparationVagueRestante = 0;
     configVagueActuelle = null;
+    ajouterScore(vagueActuelle * 250);
 
     const dernierNiveauTermine = vagueActuelle >= NOMBRE_TOTAL_VAGUES;
 
@@ -1755,6 +1771,7 @@ function mettreAJourUnites(dt) {
         if (ennemi.pv > 0) return true;
 
         ajouterArgent(ennemi.recompense);
+        ajouterScore(ennemi.recompense * 10);
         return false;
     });
 }
@@ -1828,16 +1845,33 @@ let pvBase = 20;      // points de vie du Commissariat
 const PV_BASE_MAX = 20;
 let etatJeu = 'attente';
 
-const elementVie = document.getElementById('vie-valeur');
+// Le "bonus objectif" (barre du bas) reste actif tant que le Commissariat
+// n'a subi AUCUNE perte de points de vie depuis le début de la partie.
+// Il repasse à "true" à chaque nouvelle partie (voir reinitialiserPartie).
+let objectifSansPerte = true;
+
+const elementVieBarre = document.getElementById('vie-barre-basse');
+const elementViePourcentage = document.getElementById('vie-pourcentage-valeur');
 const elementVagueValeur = document.getElementById('vague-valeur');
 const elementVagueTotal = document.getElementById('vague-total');
 
 /** Met à jour l'affichage des points de vie du Commissariat dans le HUD. */
 function mettreAJourAffichageVie() {
-    elementVie.textContent = pvBase;
     const ratio = Math.max(0, Math.min(1, pvBase / PV_BASE_MAX));
-    document.getElementById('vie-barre').style.width = (ratio * 100) + '%';
-    elementVie.style.color = ratio <= .3 ? '#ff465d' : '#ff9c72';
+    elementVieBarre.style.width = (ratio * 100) + '%';
+    elementVieBarre.style.background = ratio <= .3 ? '#ff465d' : '#3ddc84';
+    elementViePourcentage.textContent = Math.round(ratio * 100) + '%';
+
+    if (pvBase < PV_BASE_MAX) objectifSansPerte = false;
+    mettreAJourBonusObjectif();
+}
+
+/** Met à jour le badge "Bonus objectif" (barre tactique du bas). */
+function mettreAJourBonusObjectif() {
+    const badge = document.getElementById('bonus-objectif');
+    if (!badge) return;
+    badge.classList.toggle('bonus-echoue', !objectifSansPerte);
+    badge.querySelector('.bonus-objectif-etat').textContent = objectifSansPerte ? 'En cours' : 'Manqué';
 }
 
 /** Met à jour l'affichage du numéro de vague en cours dans le HUD. */
@@ -1848,9 +1882,8 @@ function mettreAJourAffichageVague() {
 function mettreAJourHUDOperationnel() {
     const statut = document.getElementById('statut-operation');
     const detail = document.getElementById('statut-detail');
-    const compteur = document.getElementById('compteur-menaces');
     const totalMenaces = ennemis.length + ennemisRestantAGenerer;
-    compteur.textContent = totalMenaces + (totalMenaces > 1 ? ' menaces' : ' menace');
+    document.getElementById('ennemis-restants-valeur').textContent = totalMenaces;
 
     if (etatJeu === 'gagne') {
         statut.textContent = 'SÉCURISÉ'; detail.textContent = 'Toutes les vagues ont été repoussées.';
@@ -2336,9 +2369,16 @@ function construireJauge(libelle, ratio) {
  * tient compte de "difficulteActuelle" pour calculer l'argent de
  * départ et la force des ennemis.
  */
+// Passe à "true" dès qu'une première partie a démarré : permet au
+// bouton "Jouer" du menu Studio de savoir s'il doit ouvrir l'écran de
+// difficulté (tout premier lancement) ou simplement refermer le menu
+// (cas où le menu a été rouvert en cours de partie via le bouton "Aide").
+let partieDejaDemarree = false;
+
 function demarrerPartieAvecDifficulte(cle) {
     initialiserAudio(); // déclenché par le clic : conforme aux restrictions d'autoplay des navigateurs
     difficulteActuelle = cle;
+    partieDejaDemarree = true;
     document.getElementById('ecran-accueil').classList.add('cache');
     reinitialiserPartie();
     definirModeMusique('jeu');
@@ -2482,6 +2522,10 @@ function reinitialiserPartie() {
     argent = calculerArgentDepart();
     mettreAJourAffichageArgent();
 
+    score = 0;
+    mettreAJourAffichageScore();
+
+    objectifSansPerte = true;
     pvBase = PV_BASE_MAX;
     mettreAJourAffichageVie();
 
@@ -2614,8 +2658,23 @@ function hideMenu() {
 document.getElementById('menu-jouer').addEventListener('click', function () {
     initialiserAudio();
     hideMenu();
+    // Si une partie est déjà en cours, le menu a été rouvert via le
+    // bouton "Aide" du HUD : on se contente de le refermer, sans
+    // repasser par l'écran de choix de la difficulté.
+    if (partieDejaDemarree) return;
     document.getElementById('ecran-accueil').classList.remove('cache');
 });
+
+// Bouton "Aide" du HUD en jeu : rouvre le menu Studio directement sur
+// la section Règles, sans interrompre la partie en cours (l'état du
+// jeu n'est pas modifié, seul le menu passe au premier plan).
+const boutonAide = document.getElementById('bouton-aide');
+if (boutonAide) {
+    boutonAide.addEventListener('click', function () {
+        showMenu();
+        afficherSectionMenu('regles');
+    });
+}
 
 document.getElementById('menu-regles').addEventListener('click', function () { afficherSectionMenu('regles'); });
 document.getElementById('menu-personnages').addEventListener('click', function () { afficherSectionMenu('personnages'); });
