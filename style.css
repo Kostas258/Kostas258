@@ -418,6 +418,60 @@ body {
     font-size: 0.75rem;
 }
 
+/* ------------------------------------------------------------
+   FICHES DE CARACTÉRISTIQUES (jauges Vitesse / Portée / Dégâts)
+   ------------------------------------------------------------
+   Réutilisées à deux endroits : dans chaque carte de la boutique
+   (avant achat) et dans le panneau de sélection (après avoir posé
+   une unité). On réutilise volontairement les classes .jauge-fond
+   et .jauge-remplissage déjà définies pour l'écran de difficulté :
+   même famille visuelle dans tout le jeu.
+------------------------------------------------------------ */
+.stats-unite {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.stat-ligne {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem;
+    color: #8a94a3;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.stat-libelle {
+    width: 36px;
+    flex-shrink: 0;
+}
+
+.stat-ligne .jauge-fond {
+    flex: 1;
+    height: 4px;
+}
+
+/* Dans le panneau de sélection (plus large que les cartes de la
+   boutique), les jauges peuvent respirer un peu plus. */
+#selection-barres .stats-unite {
+    margin: 8px 0;
+}
+
+#selection-barres .stat-ligne {
+    font-size: 0.7rem;
+}
+
+#selection-barres .stat-libelle {
+    width: 50px;
+}
+
+#selection-barres .jauge-fond {
+    height: 6px;
+}
+
 #boutique-aide {
     font-size: 0.8rem;
     color: #8a94a3;

@@ -776,6 +776,62 @@ function distanceEntre(pointA, pointB) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
+/* ------------------------------------------------------------
+   13bis. FICHES DE CARACTÉRISTIQUES (barres VITESSE / PORTÉE / DÉGÂTS)
+   ------------------------------------------------------------
+   Petit "bonus" visuel façon fiche de personnage de jeu vidéo :
+   trois jauges qui permettent de comparer les unités d'un coup
+   d'œil, aussi bien dans la boutique (avant achat) que dans le
+   panneau de sélection (après avoir posé une unité).
+
+   Ces trois constantes définissent les bornes MIN/MAX utilisées pour
+   convertir une statistique brute (ex : 1.1 seconde entre deux tirs)
+   en pourcentage de remplissage de jauge (0% à 100%). Elles sont
+   calées sur les valeurs extrêmes réellement présentes dans UNITES,
+   pour que les jauges utilisent bien toute leur longueur.
+------------------------------------------------------------ */
+const BARRE_CADENCE_MIN = 0.35; // Agent BAC : l'unité qui tire le plus vite
+const BARRE_CADENCE_MAX = 6;    // Section Aérienne : l'unité qui recharge le plus lentement
+const BARRE_PORTEE_MAX = 300;   // Au-delà, la jauge reste pleine (portée "illimitée" de la Section Aérienne)
+const BARRE_DEGATS_MAX = 95;    // Agent BRI : les dégâts les plus élevés en un seul tir
+
+/**
+ * Construit le HTML d'UNE jauge (libellé + barre remplie à X%).
+ * "ratio" doit être un nombre entre 0 et 1, ou null si la statistique
+ * ne s'applique pas à cette unité (ex : la Vitesse de tir pour la
+ * Herse CRS, qui ne tire jamais).
+ */
+function construireBarreStat(libelle, ratio) {
+    const pourcentage = ratio === null ? 0 : Math.round(Math.min(1, Math.max(0, ratio)) * 100);
+    return '<span class="stat-ligne">' +
+        '<span class="stat-libelle">' + libelle + '</span>' +
+        '<span class="jauge-fond"><span class="jauge-remplissage" style="width:' + pourcentage + '%"></span></span>' +
+        '</span>';
+}
+
+/**
+ * Construit les 3 jauges (Vitesse, Portée, Dégâts) d'une unité, à
+ * partir de ses statistiques ACTUELLES. On accepte aussi bien un
+ * objet UNITES[cle] (stats de base, pour la boutique avant achat)
+ * qu'une unité déjà posée sur la carte (stats potentiellement
+ * augmentées par une amélioration niveau 2) : les deux ont les
+ * mêmes noms de champs (tempsEntreTirs, portee, degats).
+ */
+function construireBarresUnite(stats) {
+    const vitesse = stats.tempsEntreTirs > 0
+        ? 1 - Math.min(1, Math.max(0, (stats.tempsEntreTirs - BARRE_CADENCE_MIN) / (BARRE_CADENCE_MAX - BARRE_CADENCE_MIN)))
+        : null; // la Herse CRS ne tire jamais : pas de vitesse de tir à afficher
+
+    const portee = stats.portee / BARRE_PORTEE_MAX;
+    const degats = stats.degats / BARRE_DEGATS_MAX;
+
+    return '<span class="stats-unite">' +
+        construireBarreStat('Vitesse', vitesse) +
+        construireBarreStat('Portée', portee) +
+        construireBarreStat('Dégâts', degats) +
+        '</span>';
+}
+
 /**
  * Construit les boutons de la boutique (une carte par type d'unité) à
  * partir de l'objet UNITES, exactement comme initialiserPanneauMods()
@@ -794,6 +850,7 @@ function initialiserBoutique() {
             '<span class="bouton-unite-texte">' +
                 '<span class="bouton-unite-nom">' + infos.nom + '</span>' +
                 '<span class="bouton-unite-cout">' + infos.cout + ' $</span>' +
+                construireBarresUnite(infos) +
             '</span>' +
             '</button>';
     }).join('');
@@ -917,6 +974,7 @@ function afficherPanneauSelection(unite) {
     }
 
     document.getElementById('selection-details').textContent = details;
+    document.getElementById('selection-barres').innerHTML = construireBarresUnite(unite);
 
     if (unite.niveau >= 2) {
         boutonAmeliorer.textContent = 'Niveau maximum atteint';

@@ -645,12 +645,80 @@ et jouables dans `script.js` (voir l'objet `UNITES`), chacune avec son coût,
 ses dégâts, sa portée et sa mécanique propre — y compris les capacités
 spéciales imaginées pour Police Judiciaire (marquage d'une cible : toutes
 les unités lui infligent +50% de dégâts pendant 3s) et Compagnie
-Motocycliste (immobilisation totale d'un ennemi à l'impact). Seuls les
-graphismes restent à générer : en attendant, chaque unité est représentée
-sur la carte par une petite forme géométrique distinctive (triangle, étoile,
-loupe, empreinte de patte...) dans sa couleur dédiée.
+Motocycliste (immobilisation totale d'un ennemi à l'impact).
 
-## 7. Comment utiliser ces prompts avec ChatGPT
+✅ **Mise à jour 2** : les images ont été générées et intégrées ! Chaque
+unité affiche désormais son vrai portrait (en avatar rond sur la carte, en
+vignette dans la boutique), avec trois jauges **Vitesse / Portée / Dégâts**
+façon fiche de personnage — le principe des barres de statistiques d'un
+jeu de tower defense, appliqué à notre propre roster, sans reprendre le
+design d'un jeu existant. Les toits de bâtiments, le mobilier urbain et le
+logo utilisent aussi leurs vraies images désormais.
+
+## 7. Bâtiments et menu façon "jeu cartoon vif" (style original)
+
+Section ajoutée à la demande de l'utilisateur, qui souhaitait un rendu de
+bâtiments et un menu de jeu dans l'esprit des tower defense cartoon grand
+public (contours noirs épais, couleurs très saturées, ambiance ludique).
+**Important** : ces prompts décrivent un style général très répandu dans le
+jeu vidéo mobile (aucune œuvre n'a de droits sur "des couleurs vives et des
+contours épais"), pas la reprise d'un jeu précis. La palette et la
+composition restent celles d'Alerte Police Secours (bleu/or/rouge), pas
+celles d'un autre jeu.
+
+### 7.1 Toit — immeuble cartoon vif (variante alternative)
+
+> Toit d'immeuble vu strictement de dessus, style cartoon très saturé
+> (proche d'un jeu mobile grand public), contours noirs épais et nets,
+> aplats de couleur francs sans dégradés complexes, toit en tuiles bleu
+> marine `#245ec9` avec faîtage doré `#ffd166`, quelques détails simples
+> (climatiseur gris, petite antenne). Fond transparent, pas de texte, pas
+> d'ombre qui dépasse des bords de l'image, format carré.
+
+### 7.2 Pâté de bâtiments avec cour et parking (variante alternative)
+
+> Vue de dessus stricte d'un petit îlot urbain complet (plusieurs toits
+> assemblés autour d'une cour centrale et d'un petit parking), style
+> cartoon très saturé, contours noirs épais, toits bleu marine et beige,
+> quelques voitures stylisées garées, une pelouse avec des arbres ronds
+> vu de dessus. Palette bleu `#245ec9`/`#4d9dff`, doré `#ffd166`, gris
+> asphalte `#3c444c`. Fond transparent, pas de texte.
+
+### 7.3 Bannière de menu (bandeau supérieur)
+
+> Bandeau/ruban de menu de jeu vidéo, format paysage très allongé, style
+> cartoon avec contours noirs épais, courbes façon banderole, couleurs
+> bleu `#245ec9` et doré `#ffd166` avec un léger dégradé, petites étoiles
+> décoratives aux extrémités. Conçu pour accueillir du texte par-dessus
+> (argent, score) ajouté séparément en HTML/CSS. Fond transparent, pas de
+> texte intégré, format large et bas (proportion environ 6:1).
+
+### 7.4 Barre de boutons de menu (bandeau inférieur)
+
+> Bandeau de menu de jeu vidéo façon barre de boutons, format paysage très
+> allongé, style cartoon avec contours noirs épais, aplats bleu marine
+> foncé avec liseré doré `#ffd166`, surface légèrement bombée façon bouton
+> physique. Conçu pour accueillir plusieurs boutons de texte par-dessus
+> (Menu principal, Pause). Fond transparent, pas de texte intégré, format
+> large et bas (proportion environ 8:1).
+
+### 7.5 Fond d'écran d'accueil (menu principal)
+
+> Illustration de fond pour un écran d'accueil de jeu vidéo, vue aérienne
+> stylisée d'une ville la nuit avec quelques gyrophares de police au loin,
+> style cartoon vif et saturé, contours noirs marqués, ambiance héroïque
+> et dynamique plutôt que réaliste. Palette bleu nuit `#06090d`/`#101822`
+> en fond, accents bleu `#4d9dff` et doré `#ffd166`. Composition dégagée
+> au centre pour laisser la place au titre et aux boutons ajoutés
+> séparément. Pas de texte intégré à l'image.
+
+**Note d'intégration** : contrairement aux toits déjà en place (plus
+peints/détaillés), ce style cartoon est plus flashy et contrasté. Si tu
+génères ces variantes et préfères ce rendu, dis-le-moi : je peux basculer
+`TOITS_IMAGES` dessus, ou même mélanger les deux styles selon les
+bâtiments pour varier la carte.
+
+## 8. Comment utiliser ces prompts avec ChatGPT
 
 1. Copie un prompt à la fois (ne mélange pas plusieurs éléments dans une
    même demande, le résultat sera plus propre).
