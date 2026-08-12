@@ -13,13 +13,19 @@
     - Le système d'argent (gagner/dépenser).
     - 10 niveaux (10 vagues d'ennemis de plus en plus difficiles) qui
       se déplacent le long du chemin.
-    - Les unités posables sur les toits (Tireur de précision,
-      Unité lourde, Herse routière), avec achat, amélioration et
-      vente.
+    - 10 unités posables sur les toits (Police Secours, RAID, GIGN,
+      CRS, BAC, BRI, Police Judiciaire, Unité Cynophile, Compagnie
+      Motocycliste, Section Aérienne), avec achat, amélioration et
+      vente. Chacune est illustrée par un vrai portrait généré par IA
+      (dossier images/, voir fichier-images-personnages-graphisme.md).
     - Les points de vie du Commissariat, la victoire et la défaite.
     - Des Mods (modificateurs de jeu) débloqués après une première
       victoire sur les 10 niveaux, et un bouton "Rejouer" pour
       relancer une partie avec la difficulté et les mods choisis.
+    - Des images générées par IA pour les personnages, le logo, les
+      toits de bâtiments et le mobilier urbain (lampadaire, banc,
+      abribus...), chargées une fois et réutilisées à chaque image
+      (voir section 12bis).
 
     Le fichier est découpé en grandes sections numérotées, dans
     l'ordre où on les a construites : la carte d'abord, puis
@@ -64,8 +70,7 @@ const COULEUR_SOL = '#232a30';           // Couleur du "sol" général du quarti
 const COULEUR_RUE = '#3c444c';           // Couleur de l'asphalte des rues
 const COULEUR_BORD_RUE = '#54606a';      // Couleur du bord de rue (petit trottoir clair)
 const COULEUR_MARQUAGE = '#e8e8e8';      // Couleur des lignes blanches peintes sur la route
-const COULEUR_TOIT_BASE = '#7a5230';     // Couleur principale des toits de bâtiments (tuiles/brique)
-const COULEUR_TOIT_BORD = '#4d3420';     // Couleur du contour des toits (ombre portée)
+const COULEUR_TOIT_BASE = '#7a5230';     // Couleur de repli tant que l'image du toit n'est pas chargée
 const COULEUR_COMMISSARIAT = '#245ec9';  // Couleur du toit du Commissariat (bleu police)
 const COULEUR_COMMISSARIAT_BORD = '#ffffff'; // Contour blanc du Commissariat pour bien le repérer
 const COULEUR_GYROPHARE_ROUGE = '#e63946'; // Petit accent rouge sur le Commissariat (façon gyrophare)
@@ -274,9 +279,14 @@ function tracerSegmentRue(pointA, pointB) {
 /* ------------------------------------------------------------
    7. FONCTION : dessinerBatiments()
    ------------------------------------------------------------
-   Parcourt le tableau BATIMENTS et dessine chaque toit sous forme
-   d'un rectangle avec une petite bordure sombre (effet d'ombre
-   portée), pour qu'on distingue bien chaque bâtiment vu de dessus.
+   Parcourt le tableau BATIMENTS et dessine le toit de chacun avec
+   une vraie image générée par IA (voir TOITS_IMAGES, section 12bis).
+   On répartit les 4 variantes de toit disponibles sur les 8
+   bâtiments avec l'opérateur "%" (modulo) : bâtiment 0 -> toit 0,
+   bâtiment 1 -> toit 1, ... bâtiment 4 -> toit 0 à nouveau, etc.
+   Tant que l'image correspondante n'est pas encore chargée, on
+   affiche un simple rectangle de couleur à la place (solution de
+   repli), pour ne jamais laisser de trou visuel sur la carte.
 
    Cette fonction ajoute aussi un indice visuel : si le joueur a
    sélectionné un type d'unité dans la boutique (variable
@@ -286,26 +296,19 @@ function tracerSegmentRue(pointA, pointB) {
    construire ici".
 ------------------------------------------------------------ */
 function dessinerBatiments() {
-    // forEach parcourt chaque élément du tableau BATIMENTS un par un.
-    // "batiment" représente ici l'objet { x, y, largeur, hauteur } en cours.
-    BATIMENTS.forEach(function (batiment) {
-        // Le toit lui-même (rectangle plein)
-        ctx.fillStyle = COULEUR_TOIT_BASE;
-        ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+    // forEach(fonction(élément, index)) : le deuxième paramètre est la
+    // position de l'élément dans le tableau (0, 1, 2...), ce qui nous
+    // sert à choisir quelle image de toit utiliser.
+    BATIMENTS.forEach(function (batiment, index) {
+        const image = TOITS_IMAGES[index % TOITS_IMAGES.length];
 
-        // Le contour du toit (donne un effet de relief/ombre)
-        ctx.strokeStyle = COULEUR_TOIT_BORD;
-        ctx.lineWidth = 3;
-        ctx.strokeRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
-
-        // Une petite ligne centrale pour évoquer le faîte du toit
-        // (la ligne qui sépare les deux pans d'un toit en pente)
-        ctx.beginPath();
-        ctx.moveTo(batiment.x, batiment.y + batiment.hauteur / 2);
-        ctx.lineTo(batiment.x + batiment.largeur, batiment.y + batiment.hauteur / 2);
-        ctx.strokeStyle = COULEUR_TOIT_BORD;
-        ctx.lineWidth = 1;
-        ctx.stroke();
+        if (image.complete && image.naturalWidth > 0) {
+            ctx.drawImage(image, batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+        } else {
+            // Solution de repli tant que l'image n'est pas encore chargée.
+            ctx.fillStyle = COULEUR_TOIT_BASE;
+            ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+        }
 
         // Indice visuel "emplacement constructible" (voir explication ci-dessus)
         if (typeSelectionnePourAchat && !uniteSurBatiment(batiment)) {
@@ -322,124 +325,20 @@ function dessinerBatiments() {
 /* ------------------------------------------------------------
    7bis. FONCTION : dessinerMobilierUrbain()
    ------------------------------------------------------------
-   Parcourt MOBILIER_URBAIN et dessine chaque élément de décor selon
-   son "type", avec une petite fonction dédiée par type d'objet (plus
-   lisible qu'un seul gros bloc de dessin). Purement esthétique : ces
-   éléments ne jouent aucun rôle dans les règles du jeu.
+   Parcourt MOBILIER_URBAIN et dessine chaque élément de décor avec
+   sa vraie image (voir MOBILIER_IMAGES et MOBILIER_TAILLES, section
+   12bis), grâce à notre fonction utilitaire dessinerImageCentree().
+   Purement esthétique : ces éléments ne jouent aucun rôle dans les
+   règles du jeu.
 ------------------------------------------------------------ */
 function dessinerMobilierUrbain() {
     MOBILIER_URBAIN.forEach(function (objet) {
-        switch (objet.type) {
-            case 'lampadaire':     dessinerLampadaire(objet.x, objet.y); break;
-            case 'banc':           dessinerBanc(objet.x, objet.y); break;
-            case 'abribus':        dessinerAbribus(objet.x, objet.y); break;
-            case 'poubelle':       dessinerPoubelle(objet.x, objet.y); break;
-            case 'feuTricolore':   dessinerFeuTricolore(objet.x, objet.y); break;
-            case 'boucheIncendie': dessinerBoucheIncendie(objet.x, objet.y); break;
-            case 'barrierePolice': dessinerBarrierePolice(objet.x, objet.y); break;
-            case 'voiturePolice':  dessinerVoiturePolice(objet.x, objet.y); break;
-            case 'jardiniere':     dessinerJardiniere(objet.x, objet.y); break;
-            case 'passagePieton':  dessinerPassagePieton(objet.x, objet.y); break;
-        }
+        dessinerImageCentree(
+            MOBILIER_IMAGES[objet.type],
+            objet.x, objet.y,
+            MOBILIER_TAILLES[objet.type] || 32
+        );
     });
-}
-
-function dessinerLampadaire(x, y) {
-    // Halo lumineux (grand cercle translucide) derrière le lampadaire
-    ctx.beginPath();
-    ctx.arc(x, y, 16, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255, 232, 160, 0.15)';
-    ctx.fill();
-    // La base du lampadaire
-    ctx.beginPath();
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#f5e6a8';
-    ctx.fill();
-}
-
-function dessinerBanc(x, y) {
-    ctx.fillStyle = '#8a6a4a';
-    ctx.fillRect(x - 14, y - 6, 28, 12);
-    ctx.fillStyle = '#2b2f36';
-    ctx.fillRect(x - 14, y - 6, 28, 3);
-}
-
-function dessinerAbribus(x, y) {
-    ctx.fillStyle = 'rgba(120, 180, 220, 0.35)';
-    ctx.fillRect(x - 20, y - 14, 40, 28);
-    ctx.strokeStyle = '#54606a';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(x - 20, y - 14, 40, 28);
-}
-
-function dessinerPoubelle(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, 7, 0, Math.PI * 2);
-    ctx.fillStyle = '#3c444c';
-    ctx.fill();
-    ctx.strokeStyle = '#54606a';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-}
-
-function dessinerFeuTricolore(x, y) {
-    ctx.fillStyle = '#2b2f36';
-    ctx.fillRect(x - 3, y - 14, 6, 28);
-    ['#e63946', '#ffd166', '#4caf50'].forEach(function (couleur, index) {
-        ctx.beginPath();
-        ctx.arc(x, y - 8 + index * 8, 3, 0, Math.PI * 2);
-        ctx.fillStyle = couleur;
-        ctx.fill();
-    });
-}
-
-function dessinerBoucheIncendie(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, 6, 0, Math.PI * 2);
-    ctx.fillStyle = '#e63946';
-    ctx.fill();
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-}
-
-function dessinerBarrierePolice(x, y) {
-    const largeur = 30, hauteur = 8;
-    for (let i = 0; i < 5; i++) {
-        ctx.fillStyle = (i % 2 === 0) ? '#ffd166' : '#1c1f24';
-        ctx.fillRect(x - largeur / 2 + i * (largeur / 5), y - hauteur / 2, largeur / 5, hauteur);
-    }
-}
-
-function dessinerVoiturePolice(x, y) {
-    ctx.fillStyle = '#f2f5f8';
-    ctx.fillRect(x - 10, y - 16, 20, 32);
-    ctx.fillStyle = '#245ec9';
-    ctx.fillRect(x - 10, y - 4, 20, 8);
-    ctx.beginPath();
-    ctx.arc(x - 3, y, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#4d9dff';
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(x + 3, y, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#e63946';
-    ctx.fill();
-}
-
-function dessinerJardiniere(x, y) {
-    ctx.fillStyle = '#54606a';
-    ctx.fillRect(x - 10, y - 10, 20, 20);
-    ctx.beginPath();
-    ctx.arc(x, y, 8, 0, Math.PI * 2);
-    ctx.fillStyle = '#3f7a3f';
-    ctx.fill();
-}
-
-function dessinerPassagePieton(x, y) {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-    for (let i = -24; i <= 24; i += 12) {
-        ctx.fillRect(x + i - 3, y - 20, 6, 40);
-    }
 }
 
 
@@ -639,7 +538,8 @@ const UNITES = {
         degats: 18,
         portee: 130,
         tempsEntreTirs: 0.5,
-        couleur: '#4d9dff'
+        couleur: '#4d9dff',
+        portrait: 'images/portrait_policeSecours.jpg'
     },
     tireur: {
         nom: 'Agent RAID',
@@ -647,7 +547,8 @@ const UNITES = {
         degats: 45,
         portee: 170,
         tempsEntreTirs: 1.1,
-        couleur: '#e63946'
+        couleur: '#e63946',
+        portrait: 'images/portrait_tireur.jpg'
     },
     lourd: {
         nom: 'Agent GIGN',
@@ -656,7 +557,8 @@ const UNITES = {
         portee: 130,
         tempsEntreTirs: 0.7,
         rayonExplosion: 55,
-        couleur: '#f4a259'
+        couleur: '#f4a259',
+        portrait: 'images/portrait_lourd.jpg'
     },
     herse: {
         nom: 'Agent CRS',
@@ -665,7 +567,8 @@ const UNITES = {
         portee: 90,
         tempsEntreTirs: 0,
         facteurRalentissement: 0.45,
-        couleur: '#8d99ae'
+        couleur: '#8d99ae',
+        portrait: 'images/portrait_herse.jpg'
     },
     bac: {
         nom: 'Agent BAC',
@@ -674,7 +577,8 @@ const UNITES = {
         portee: 110,
         tempsEntreTirs: 0.35,
         rayonExplosion: 25,
-        couleur: '#2ec4b6'
+        couleur: '#2ec4b6',
+        portrait: 'images/portrait_bac.jpg'
     },
     bri: {
         nom: 'Agent BRI',
@@ -682,7 +586,8 @@ const UNITES = {
         degats: 95,
         portee: 170,
         tempsEntreTirs: 1.7,
-        couleur: '#6a4c93'
+        couleur: '#6a4c93',
+        portrait: 'images/portrait_bri.jpg'
     },
     policeJudiciaire: {
         nom: 'Police Judiciaire',
@@ -692,7 +597,8 @@ const UNITES = {
         tempsEntreTirs: 1.2,
         dureeMarquage: 3,
         bonusDegatsMarque: 1.5,
-        couleur: '#b08968'
+        couleur: '#b08968',
+        portrait: 'images/portrait_policeJudiciaire.jpg'
     },
     cynophile: {
         nom: 'Unité Cynophile',
@@ -701,7 +607,8 @@ const UNITES = {
         portee: 90,
         tempsEntreTirs: 0.5,
         facteurRalentissement: 0.7,
-        couleur: '#4c7a3d'
+        couleur: '#4c7a3d',
+        portrait: 'images/portrait_cynophile.jpg'
     },
     motocycliste: {
         nom: 'Cie Motocycliste',
@@ -710,7 +617,8 @@ const UNITES = {
         portee: 130,
         tempsEntreTirs: 1.4,
         dureeImmobilisation: 1,
-        couleur: '#f7b32b'
+        couleur: '#f7b32b',
+        portrait: 'images/portrait_motocycliste.jpg'
     },
     aerienne: {
         nom: 'Section Aérienne',
@@ -719,9 +627,88 @@ const UNITES = {
         portee: 1200, // couvre toute la carte : plus grand que la diagonale du Canvas (960x640)
         tempsEntreTirs: 6,
         rayonExplosion: 150,
-        couleur: '#5da9e9'
+        couleur: '#5da9e9',
+        portrait: 'images/portrait_aerienne.jpg'
     }
 };
+
+/* ------------------------------------------------------------
+   12bis. IMAGES DU JEU (personnages, toits, mobilier urbain, logo)
+   ------------------------------------------------------------
+   On charge ici, une seule fois, toutes les images générées par IA
+   (voir fichier-images-personnages-graphisme.md) dont le jeu a
+   besoin. "new Image()" crée un objet image vide, et "img.src = ..."
+   lance son téléchargement en arrière-plan, SANS bloquer le reste du
+   script : le jeu démarre normalement pendant que les images se
+   chargent en parallèle.
+
+   Comme notre boucle de jeu redessine la scène 60 fois par seconde
+   (voir section 20), on n'a même pas besoin d'attendre la fin du
+   chargement "à la main" : dès qu'une image est prête, elle
+   apparaît automatiquement dès l'image suivante. En attendant,
+   "img.complete" vaut false et nos fonctions de dessin savent
+   afficher une solution de repli simple (un rectangle de couleur).
+------------------------------------------------------------ */
+
+// Un portrait par type d'unité, chargé une seule fois et réutilisé à
+// chaque image (frame) pour dessiner l'avatar rond sur la carte.
+const PORTRAITS_UNITES = {};
+Object.keys(UNITES).forEach(function (cle) {
+    const image = new Image();
+    image.src = UNITES[cle].portrait;
+    PORTRAITS_UNITES[cle] = image;
+});
+
+// Le portrait du Commissaire (affiché sur l'écran d'accueil).
+const PORTRAIT_COMMISSAIRE = new Image();
+PORTRAIT_COMMISSAIRE.src = 'images/portrait_commissaire.jpg';
+
+// Le logo compact (bandeau de titre) et le grand logo (écran d'accueil).
+const LOGO_COMPACT = new Image();
+LOGO_COMPACT.src = 'images/logo_compact.png';
+
+// 4 variantes de toits, réparties sur les 8 bâtiments de la carte
+// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 4]).
+const TOITS_IMAGES = ['toit_1.png', 'toit_2.png', 'toit_3.png', 'toit_4.png'].map(function (nom) {
+    const image = new Image();
+    image.src = 'images/' + nom;
+    return image;
+});
+
+// Une image par élément de mobilier urbain (voir MOBILIER_URBAIN,
+// section 4bis) : la clé correspond exactement au "type" utilisé
+// dans ce tableau.
+const MOBILIER_IMAGES = {};
+['lampadaire', 'banc', 'abribus', 'poubelle', 'feuTricolore', 'boucheIncendie',
+    'barrierePolice', 'voiturePolice', 'jardiniere', 'passagePieton'].forEach(function (cle) {
+    const image = new Image();
+    image.src = 'images/mobilier_' + cle + '.png';
+    MOBILIER_IMAGES[cle] = image;
+});
+
+// La taille d'affichage cible (en pixels) de chaque élément de
+// mobilier urbain : certains objets (abribus, voiture) sont bien
+// plus larges que d'autres (bouche d'incendie, poubelle).
+const MOBILIER_TAILLES = {
+    lampadaire: 26, banc: 40, abribus: 58, poubelle: 22, feuTricolore: 30,
+    boucheIncendie: 18, barrierePolice: 42, voiturePolice: 46, jardiniere: 32, passagePieton: 48
+};
+
+/**
+ * Dessine une image centrée en (x, y), redimensionnée pour que son
+ * plus grand côté fasse "tailleMax" pixels, sans déformer ses
+ * proportions. Ne fait rien tant que l'image n'est pas encore
+ * chargée (img.complete), pour éviter une erreur ou un dessin vide.
+ */
+function dessinerImageCentree(img, x, y, tailleMax) {
+    if (!img.complete || img.naturalWidth === 0) return;
+
+    const ratio = img.naturalWidth / img.naturalHeight;
+    const largeur = ratio >= 1 ? tailleMax : tailleMax * ratio;
+    const hauteur = ratio >= 1 ? tailleMax / ratio : tailleMax;
+
+    ctx.drawImage(img, x - largeur / 2, y - hauteur / 2, largeur, hauteur);
+}
 
 // Facteurs utilisés lors d'une amélioration ou d'une vente
 // (voir la section 13 ci-dessous pour leur utilisation).
@@ -803,8 +790,11 @@ function initialiserBoutique() {
     conteneur.innerHTML = Object.keys(UNITES).map(function (cle) {
         const infos = UNITES[cle];
         return '<button class="bouton-unite" data-type="' + cle + '">' +
-            '<span class="bouton-unite-nom">' + infos.nom + '</span>' +
-            '<span class="bouton-unite-cout">' + infos.cout + ' $</span>' +
+            '<img class="bouton-unite-avatar" src="' + infos.portrait + '" alt="">' +
+            '<span class="bouton-unite-texte">' +
+                '<span class="bouton-unite-nom">' + infos.nom + '</span>' +
+                '<span class="bouton-unite-cout">' + infos.cout + ' $</span>' +
+            '</span>' +
             '</button>';
     }).join('');
 
@@ -1391,29 +1381,49 @@ function mettreAJourAffichageVague() {
    le décor.
 ------------------------------------------------------------ */
 
-/** Dessine chaque unité posée sur son bâtiment, avec une forme selon son type. */
 /**
- * Trace le contour d'une étoile à N pointes, centrée en (cx, cy),
- * prête à être remplie (ctx.fill()) ou tracée (ctx.stroke()) juste
- * après. Utilisée pour dessiner l'icône de l'unité BRI. On alterne
- * un point "loin" du centre (une pointe) et un point "proche" (un
- * creux), tout autour du cercle.
+ * Dessine le portrait d'une unité sous forme d'un avatar rond, avec
+ * un anneau de la couleur propre à son type (pour rester identifiable
+ * d'un coup d'œil même à petite taille). L'image est recadrée en
+ * "cover" : on prend un carré au centre-haut de l'image source (là où
+ * se trouve le visage sur nos portraits) et on l'étire pour remplir
+ * exactement le cercle, sans jamais déformer les proportions.
  */
-function tracerEtoile(cx, cy, rayonExterieur, rayonInterieur, pointes) {
+function dessinerAvatarUnite(img, cx, cy, rayon, couleurAnneau) {
+    // Le socle sombre, toujours visible même si l'image n'est pas encore chargée.
     ctx.beginPath();
-    for (let i = 0; i < pointes * 2; i++) {
-        const rayon = (i % 2 === 0) ? rayonExterieur : rayonInterieur;
-        const angle = (Math.PI / pointes) * i - Math.PI / 2;
-        const x = cx + Math.cos(angle) * rayon;
-        const y = cy + Math.sin(angle) * rayon;
-        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    ctx.arc(cx, cy, rayon, 0, Math.PI * 2);
+    ctx.fillStyle = '#1c1f24';
+    ctx.fill();
+
+    if (img.complete && img.naturalWidth > 0) {
+        const cote = Math.min(img.naturalWidth, img.naturalHeight);
+        const decalageX = (img.naturalWidth - cote) / 2;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, rayon - 2, 0, Math.PI * 2);
+        ctx.clip(); // tout ce qui est dessiné ensuite reste à l'intérieur du cercle
+        ctx.drawImage(
+            img,
+            decalageX, 0, cote, cote,      // carré source (centré horizontalement, aligné en haut)
+            cx - rayon, cy - rayon, rayon * 2, rayon * 2 // destination : remplit le cercle
+        );
+        ctx.restore();
     }
-    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, rayon, 0, Math.PI * 2);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = couleurAnneau;
+    ctx.stroke();
 }
 
+/** Dessine chaque unité posée sur son bâtiment, avec son portrait en avatar rond. */
 function dessinerUnitesPlacees() {
     unitesPlacees.forEach(function (unite) {
         const centre = centreBatiment(unite.batiment);
+        const infos = UNITES[unite.type];
 
         // Si cette unité est sélectionnée, on affiche un cercle en
         // pointillés pour visualiser sa portée de tir.
@@ -1427,90 +1437,7 @@ function dessinerUnitesPlacees() {
             ctx.setLineDash([]);
         }
 
-        // Le socle sombre commun à toutes les unités.
-        ctx.beginPath();
-        ctx.arc(centre.x, centre.y, 20, 0, Math.PI * 2);
-        ctx.fillStyle = '#1c1f24';
-        ctx.fill();
-
-        ctx.fillStyle = UNITES[unite.type].couleur;
-
-        if (unite.type === 'tireur') {
-            // Un triangle façon "viseur de précision".
-            ctx.beginPath();
-            ctx.moveTo(centre.x, centre.y - 12);
-            ctx.lineTo(centre.x - 10, centre.y + 8);
-            ctx.lineTo(centre.x + 10, centre.y + 8);
-            ctx.closePath();
-            ctx.fill();
-        } else if (unite.type === 'lourd') {
-            // Un carré massif pour l'unité lourde à dégâts de zone.
-            ctx.fillRect(centre.x - 12, centre.y - 12, 24, 24);
-        } else if (unite.type === 'herse') {
-            // Une série de petites barres verticales, façon herse au sol.
-            for (let i = -12; i <= 12; i += 6) {
-                ctx.fillRect(centre.x + i - 1, centre.y - 12, 2, 24);
-            }
-        } else if (unite.type === 'policeSecours') {
-            // Un simple cercle plein pour l'unité de base, polyvalente.
-            ctx.beginPath();
-            ctx.arc(centre.x, centre.y, 10, 0, Math.PI * 2);
-            ctx.fill();
-        } else if (unite.type === 'bac') {
-            // Un losange, pour une unité agile et discrète.
-            ctx.beginPath();
-            ctx.moveTo(centre.x, centre.y - 12);
-            ctx.lineTo(centre.x + 12, centre.y);
-            ctx.lineTo(centre.x, centre.y + 12);
-            ctx.lineTo(centre.x - 12, centre.y);
-            ctx.closePath();
-            ctx.fill();
-        } else if (unite.type === 'bri') {
-            // Une étoile, pour l'unité d'élite.
-            tracerEtoile(centre.x, centre.y, 13, 6, 5);
-            ctx.fill();
-        } else if (unite.type === 'policeJudiciaire') {
-            // Une loupe stylisée, pour l'enquêteur qui "marque" ses cibles.
-            ctx.strokeStyle = UNITES.policeJudiciaire.couleur;
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.arc(centre.x - 3, centre.y - 3, 7, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(centre.x + 2, centre.y + 2);
-            ctx.lineTo(centre.x + 11, centre.y + 11);
-            ctx.stroke();
-        } else if (unite.type === 'cynophile') {
-            // Une empreinte de patte stylisée (un gros coussinet + 3 petits).
-            ctx.beginPath();
-            ctx.arc(centre.x, centre.y + 4, 7, 0, Math.PI * 2);
-            ctx.fill();
-            [-8, 0, 8].forEach(function (decalage) {
-                ctx.beginPath();
-                ctx.arc(centre.x + decalage, centre.y - 7, 3.5, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        } else if (unite.type === 'motocycliste') {
-            // Deux roues reliées par un cadre, vues de dessus.
-            ctx.beginPath();
-            ctx.arc(centre.x - 7, centre.y, 5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(centre.x + 7, centre.y, 5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillRect(centre.x - 7, centre.y - 2, 14, 4);
-        } else if (unite.type === 'aerienne') {
-            // Un rotor d'hélicoptère (deux pales en croix) vu de dessus.
-            ctx.save();
-            ctx.translate(centre.x, centre.y);
-            ctx.fillRect(-14, -2, 28, 4);
-            ctx.rotate(Math.PI / 2);
-            ctx.fillRect(-14, -2, 28, 4);
-            ctx.restore();
-            ctx.beginPath();
-            ctx.arc(centre.x, centre.y, 4, 0, Math.PI * 2);
-            ctx.fill();
-        }
+        dessinerAvatarUnite(PORTRAITS_UNITES[unite.type], centre.x, centre.y, 20, infos.couleur);
 
         // Petit badge doré pour indiquer une unité améliorée (niveau 2).
         if (unite.niveau === 2) {
@@ -1586,10 +1513,23 @@ function dessinerEffetsTir() {
     });
 }
 
-/** Affiche un grand message centré (GAME OVER / VICTOIRE) par-dessus toute la scène. */
+// Le grand emblème "gyrophares" affiché sur l'écran de victoire (voir
+// fichier-images-personnages-graphisme.md, section 2.1 pour son prompt).
+const LOGO_VICTOIRE = new Image();
+LOGO_VICTOIRE.src = 'images/logo.png';
+
+/**
+ * Affiche un grand message centré (GAME OVER / VICTOIRE) par-dessus
+ * toute la scène. Sur la victoire uniquement, le grand emblème du jeu
+ * est affiché au-dessus du texte, pour une sortie plus mémorable.
+ */
 function dessinerEcranFin(texte, couleur) {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
     ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+
+    if (etatJeu === 'gagne') {
+        dessinerImageCentree(LOGO_VICTOIRE, LARGEUR_CANVAS / 2, HAUTEUR_CANVAS / 2 - 110, 160);
+    }
 
     ctx.fillStyle = couleur;
     ctx.font = 'bold 48px "Segoe UI", Arial, sans-serif';

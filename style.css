@@ -91,11 +91,13 @@ body {
     gap: 12px;
 }
 
-/* Le badge-logo SVG (voir index.html), réutilisé sur l'écran d'accueil
-   et dans le titre au-dessus du jeu. */
+/* Le logo (voir index.html), réutilisé sur l'écran d'accueil et dans
+   le titre au-dessus du jeu. object-fit:contain garde ses proportions
+   d'origine sans jamais l'étirer, quelle que soit la taille imposée. */
 .logo-badge {
     width: 1.4em;   /* proportionnel à la taille du texte du titre à côté */
     height: 1.4em;
+    object-fit: contain;
     flex-shrink: 0; /* ne se laisse jamais écraser par le texte du titre */
     filter: drop-shadow(0 0 6px rgba(77, 157, 255, 0.6));
 }
@@ -104,6 +106,19 @@ body {
     margin-top: 10px;
     color: #b8c2d0;
     font-size: 0.95rem;
+}
+
+/* Le portrait du Commissaire sur l'écran d'accueil */
+#accueil-commissaire {
+    display: block;
+    margin: 18px auto 0;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: top center; /* cadre sur le visage plutôt que le centre de l'image */
+    border-radius: 50%;
+    border: 3px solid #4d9dff;
+    box-shadow: 0 0 16px rgba(77, 157, 255, 0.5);
 }
 
 /* La rangée de cartes de difficulté */
@@ -353,14 +368,14 @@ body {
     gap: 8px;
 }
 
-/* Un bouton d'achat d'unité : nom en haut, prix en dessous */
+/* Un bouton d'achat d'unité : portrait à gauche, nom + prix à droite */
 .bouton-unite {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
 
-    padding: 8px 10px;
+    padding: 6px 8px;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid #3a4a5a;
     border-radius: 6px;
@@ -374,6 +389,24 @@ body {
 .bouton-unite:hover {
     background-color: rgba(77, 157, 255, 0.2);
     border-color: #4d9dff;
+}
+
+/* Le portrait de l'unité, en petite vignette ronde */
+.bouton-unite-avatar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center; /* cadre sur le visage plutôt que le centre de l'image */
+    border: 2px solid #3a4a5a;
+}
+
+.bouton-unite-texte {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0; /* autorise le texte à se réduire plutôt que de déborder de la grille */
 }
 
 .bouton-unite-nom {

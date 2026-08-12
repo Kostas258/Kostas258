@@ -44,22 +44,21 @@
         <div id="accueil-panneau">
             <h1 id="accueil-titre">
                 <!--
-                    LOGO DU JEU (SVG "fait main")
-                    ===============================
-                    En attendant un vrai logo généré par IA (voir
-                    fichier-images-personnages-graphisme.md, section 2.1),
-                    ce badge étoilé est dessiné directement en SVG : un
-                    cercle bleu avec une étoile dorée, un motif générique
-                    de badge de police qui ne copie aucun logo existant.
-                    Comme il est vectoriel, il reste net à toutes les tailles.
+                    LOGO DU JEU
+                    ============
+                    Emblème généré par IA à partir du prompt de la
+                    section 2.1 de fichier-images-personnages-graphisme.md
+                    (fond blanc détouré en transparent lors du traitement
+                    de l'image, voir images/logo_compact.png).
                 -->
-                <svg class="logo-badge" viewBox="0 0 100 100" aria-hidden="true">
-                    <circle cx="50" cy="50" r="46" fill="#245ec9" stroke="#ffd166" stroke-width="5"/>
-                    <polygon points="50,10 60,38 90,38 66,56 75,86 50,68 25,86 34,56 10,38 40,38" fill="#ffd166"/>
-                </svg>
+                <img class="logo-badge" src="images/logo_compact.png" alt="Emblème du jeu">
                 Alerte Police Secours
             </h1>
             <p id="accueil-sous-titre">Défendez le Commissariat Central. Choisissez votre niveau de difficulté :</p>
+
+            <!-- Portrait du Commissaire, généré par IA (voir le fichier de prompts, section 1.1) -->
+            <img id="accueil-commissaire" src="images/portrait_commissaire.jpg" alt="Le Commissaire, chef du Commissariat Central">
+
             <div id="liste-difficultes"></div>
         </div>
     </div>
@@ -71,12 +70,9 @@
     -->
     <div id="jeu-conteneur">
 
-        <!-- Titre visible au-dessus du jeu (même logo SVG que l'écran d'accueil) -->
+        <!-- Titre visible au-dessus du jeu (même logo que l'écran d'accueil) -->
         <h1 id="jeu-titre">
-            <svg class="logo-badge" viewBox="0 0 100 100" aria-hidden="true">
-                <circle cx="50" cy="50" r="46" fill="#245ec9" stroke="#ffd166" stroke-width="5"/>
-                <polygon points="50,10 60,38 90,38 66,56 75,86 50,68 25,86 34,56 10,38 40,38" fill="#ffd166"/>
-            </svg>
+            <img class="logo-badge" src="images/logo_compact.png" alt="Emblème du jeu">
             Alerte Police Secours
         </h1>
 
