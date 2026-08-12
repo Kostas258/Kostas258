@@ -394,8 +394,8 @@ body {
 
 /* Le portrait de l'unité, en petite vignette ronde */
 .bouton-unite-avatar {
-    width: 34px;
-    height: 34px;
+    width: 46px;
+    height: 46px;
     flex-shrink: 0;
     border-radius: 50%;
     object-fit: cover;
@@ -805,60 +805,21 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
     *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
 }
 
-/* V3 — habillage arcade tactique original inspiré des références de composition. */
-body {
-    padding: 10px;
-    background:
-        radial-gradient(circle at 50% 0, rgba(32,96,150,.2), transparent 42%),
-        repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 2px, transparent 2px 8px), #070b11;
-}
-#jeu-conteneur {
-    position: relative; max-width: 1320px; padding: 14px 14px 18px;
-    border: 7px solid #d9353f; border-top-color: #efc043; border-bottom-color: #efc043;
-    border-radius: 22px; background: #111722;
-    box-shadow: inset 0 0 0 3px #21090d, 0 18px 60px #000;
-}
-#jeu-conteneur::before, #jeu-conteneur::after {
-    content:""; position:absolute; z-index:2; pointer-events:none; height:16px; left:18%; right:18%;
-    background: repeating-linear-gradient(135deg, #cb2636 0 18px, #ec4050 18px 28px, #74101d 28px 32px);
-    clip-path: polygon(4% 0,96% 0,100% 100%,0 100%);
-}
-#jeu-conteneur::before { top:-7px; } #jeu-conteneur::after { bottom:-7px; transform:rotate(180deg); }
-#jeu-titre { font-style:italic; font-weight:1000; color:#fff; -webkit-text-stroke:1px #08233b; }
-#hud { top:4px; border:2px solid #680d18; border-radius:10px; background:linear-gradient(180deg,#e23c48,#9f1726); }
-.hud-bloc { color:#fff; border:1px solid rgba(255,255,255,.24); background:rgba(47,2,9,.28); transform:skewX(-3deg); }
-.hud-libelle,.hud-valeur,.hud-bloc button,.hud-bloc input { transform:skewX(3deg); }
-#bandeau-operationnel { border:2px solid #d49e30; border-left-width:7px; background:#10151c; }
-#canvas-coque { padding:5px; border:3px solid #282e37; border-radius:9px; background:#080b0f; }
-#jeu-canvas { border:0; border-radius:4px; box-shadow:inset 0 0 40px #000; }
-#boutique { border:2px solid #d49e30; border-top-width:6px; border-radius:8px; background:#f1eee3; color:#16181b; }
-#boutique h2 { color:#bd1f2d; font-style:italic; -webkit-text-stroke:.4px #5d1018; }
-.bouton-unite { color:#17191d; background:#dfded8; border-color:#979a9d; }
-.bouton-unite:hover { background:#fff3c9; } .bouton-unite-nom { color:#a41624; }
-#panneau-selection { background:#fff8de; color:#16181b; border-left-color:#d12d39; }
-#panneau-selection h3 { color:#b01926; }
-#ecran-roster { position:fixed; inset:0; z-index:1200; display:none; overflow:auto; padding:24px; background:rgba(4,7,11,.96); }
-#ecran-roster.ouvert { display:flex; align-items:flex-start; justify-content:center; }
-.roster-panneau { width:min(1080px,100%); border:6px solid #d53642; border-top-color:#efc043; border-bottom-color:#efc043; border-radius:18px; background:linear-gradient(#303236,#17191d); box-shadow:0 20px 80px #000; padding:22px; }
-.roster-entete { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
-.roster-entete h2 { color:#fff; font-size:clamp(1.4rem,4vw,2.8rem); font-style:italic; text-transform:uppercase; text-shadow:3px 3px #0c0d10; }
-.roster-grille { display:grid; grid-template-columns:repeat(5,minmax(120px,1fr)); gap:16px; }
-.roster-carte { min-height:238px; display:flex; flex-direction:column; align-items:center; padding:10px; border:1px solid #5b5e63; background:linear-gradient(145deg,#414348,#222429); box-shadow:inset 0 0 18px rgba(0,0,0,.45); }
-.roster-carte img { width:145px; height:145px; object-fit:contain; filter:drop-shadow(0 9px 3px rgba(0,0,0,.5)); }
-.roster-carte strong { color:#f3f1e7; text-align:center; text-transform:uppercase; font-style:italic; }
-.roster-niveaux { display:flex; gap:5px; margin-top:7px; }
-.roster-niveaux span { width:23px; height:23px; display:grid; place-items:center; border-radius:50%; background:#1a5c89; color:#fff; font-weight:900; font-size:.72rem; }
-.roster-niveaux span:nth-child(2){background:#bd7f20}.roster-niveaux span:nth-child(3){background:#b82332}
-#bouton-roster,#bouton-fermer-roster { cursor:pointer; border:2px solid #f3c145; border-radius:6px; padding:8px 14px; background:#c92735; color:#fff; font-weight:900; text-transform:uppercase; }
-@media(max-width:800px){.roster-grille{grid-template-columns:repeat(2,minmax(120px,1fr))}.roster-panneau{padding:12px}#jeu-conteneur{border-width:4px;padding:8px}.roster-carte img{width:120px;height:120px}}
-
+/* Navigation des unités — panneau tactique compact. */
+#ecran-roster{position:fixed;inset:0;z-index:1200;display:none;overflow:auto;padding:24px;background:rgba(2,8,15,.96)}
+#ecran-roster.ouvert{display:flex;align-items:flex-start;justify-content:center}
+.roster-panneau{width:min(1080px,100%);padding:20px;border:1px solid #2e8bd2;border-radius:12px;background:linear-gradient(145deg,#102438,#07121f);box-shadow:0 24px 80px #000}
+.roster-entete{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.roster-entete h2{color:#eef8ff;font-size:clamp(1.4rem,4vw,2.5rem);text-transform:uppercase}
+.roster-grille{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px}.roster-carte{min-height:238px;display:flex;flex-direction:column;align-items:center;padding:10px;border:1px solid #31506b;background:#0b1b2a}
+.roster-carte img{width:145px;height:145px;object-fit:contain;filter:drop-shadow(0 8px 3px rgba(0,0,0,.5))}.roster-carte strong{color:#eef8ff;text-align:center;text-transform:uppercase}.roster-niveaux{display:flex;gap:5px;margin-top:7px}.roster-niveaux span{width:23px;height:23px;display:grid;place-items:center;border-radius:50%;background:#137bc2;color:#fff;font-weight:900;font-size:.72rem}
+#bouton-roster,#bouton-fermer-roster{cursor:pointer;border:1px solid #5cc8ff;border-radius:6px;padding:8px 14px;background:#126eb0;color:#fff;font-weight:900;text-transform:uppercase}
+@media(max-width:800px){.roster-grille{grid-template-columns:repeat(2,minmax(120px,1fr))}.roster-panneau{padding:12px}.roster-carte img{width:120px;height:120px}}
 
 /* V4 — décors générés, fiches tactiques et menu de commandement. */
-:root { --fond-menu-v4:url("images/fond_menu_accueil.webp"); }
-#ecran-accueil { background-image:linear-gradient(rgba(3,7,12,.22),rgba(3,7,12,.55)),var(--fond-menu-v4); background-size:cover; background-position:center; }
+#ecran-accueil { background:radial-gradient(circle at 50% 10%,rgba(40,132,196,.25),transparent 42%),linear-gradient(145deg,#071827,#020811); }
 #accueil-panneau { max-width:900px; background:rgba(5,12,22,.84); border:3px solid #d8a832; backdrop-filter:blur(5px); }
 #accueil-panneau::before { background:linear-gradient(90deg,#b51e2d,#efc043,#1f77b9); color:#fff; }
-#panneau-selection { position:relative; overflow:hidden; background-color:#f7f0da; color:#17181b; }
+#panneau-selection { position:relative; overflow:hidden; background-color:#f7f0da; background-image:linear-gradient(rgba(255,249,229,.92),rgba(255,249,229,.94)),var(--panneau-v4); background-size:cover; color:#17181b; }
 #selection-details { line-height:1.45; }
 #selection-competence { margin:10px 0; padding:9px; border:1px solid #c08d28; background:rgba(255,255,255,.55); color:#24191b; font-size:.78rem; line-height:1.45; }
 .fiche-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; margin-top:8px; }
@@ -871,81 +832,235 @@ body {
 @keyframes pulsation-niveau { to { filter:drop-shadow(0 0 7px #ff4558); transform:scale(1.05); } }
 @media(max-width:700px){.fiche-stats{grid-template-columns:1fr}.roster-carte{min-height:275px}}
 
-/* Alerte Police Secours — identité comic-book bleu cobalt et jaune. */
-:root{--ptd-blue:#0757d8;--ptd-blue-dark:#032d79;--ptd-blue-light:#20a9ff;--ptd-yellow:#ffd21f;--ptd-ink:#061225}
-body{background:radial-gradient(circle at 50% 0,rgba(32,169,255,.28),transparent 38%),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 8px),#031329}
-#jeu-conteneur{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);border-bottom-color:var(--ptd-yellow);background:#07182f;box-shadow:inset 0 0 0 3px #011b48,0 18px 60px #000}
-#jeu-conteneur::before,#jeu-conteneur::after{background:repeating-linear-gradient(135deg,#0757d8 0 18px,#20a9ff 18px 28px,#032d79 28px 32px)}
-#hud{border-color:#01378e;background:linear-gradient(180deg,#1278ed,#063c9b)}
-.hud-bloc{background:rgba(1,24,67,.58);border-color:rgba(255,255,255,.35)}
-#bouton-lancer-vague,#bouton-roster,#bouton-fermer-roster{color:#05142c;border-color:#fff1a2;background:linear-gradient(180deg,#ffe66a,#f4b900)}
-#bandeau-operationnel{border-color:var(--ptd-yellow);background:#061a38}
-#canvas-coque{border-color:#0f70dd;background:#02122b}
-#jeu-canvas{box-shadow:inset 0 0 30px rgba(2,22,55,.5),0 0 24px rgba(32,169,255,.18)}
-#boutique{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);background:#f7f9ff}
-#boutique h2,.bouton-unite-nom,#panneau-selection h3{color:#0757d8}
-.bouton-unite{background:#edf3ff;border-color:#7899c7}.bouton-unite:hover{background:#fff8cf}.bouton-unite.selectionnee{border-color:var(--ptd-yellow);background:#fff4b8}
-#panneau-selection{background:#fff;border-left-color:var(--ptd-blue)}
-.roster-panneau{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);border-bottom-color:var(--ptd-yellow);background:linear-gradient(#123d7c,#071a38)}
-.roster-niveaux span{background:#0874df}.roster-niveaux span:nth-child(2){background:#eebd10}.roster-niveaux span:nth-child(3){background:#20a9ff}
-#accueil-panneau{border-color:var(--ptd-blue-light);border-left-color:var(--ptd-yellow);background:linear-gradient(145deg,rgba(5,45,105,.98),rgba(2,18,46,.98))}
-#accueil-panneau::before{color:#031329;background:linear-gradient(90deg,var(--ptd-blue-light),var(--ptd-yellow))}
-.carte-difficulte{background:rgba(4,26,63,.86);border-left-color:var(--ptd-blue-light)}.carte-difficulte:hover,.carte-difficulte:focus-visible{border-left-color:var(--ptd-yellow)}
-@media(max-width:700px){#jeu-conteneur{border-width:4px}}
+/* Alerte Police Secours — interface mobile premium. */
+:root{--ptd-blue:#168bd2;--ptd-cyan:#68d8ff;--ptd-metal:#263b4d;--ptd-ink:#050c14}
+body{padding:10px;background:radial-gradient(circle at 50% 0,rgba(30,120,180,.18),transparent 42%),#030910}
+#jeu-conteneur{position:relative;max-width:1320px;padding:12px;border:1px solid #315b78;border-radius:14px;background:linear-gradient(145deg,#0b1b2a,#050d16);box-shadow:0 20px 60px #000}
+#jeu-conteneur::before,#jeu-conteneur::after{display:none}#jeu-titre{font-style:normal;font-weight:900;color:#eef8ff;-webkit-text-stroke:0;text-shadow:0 0 18px rgba(72,189,255,.35)}
+#hud{top:4px;border:1px solid #315b78;border-radius:10px;background:rgba(7,20,32,.96);box-shadow:0 8px 24px rgba(0,0,0,.35)}.hud-bloc{color:#fff;border:1px solid rgba(104,216,255,.2);background:#10283c;transform:none}.hud-libelle,.hud-valeur,.hud-bloc button,.hud-bloc input{transform:none}
+#bouton-lancer-vague,#bouton-roster,#bouton-fermer-roster{color:#fff;border-color:#72dfff;background:linear-gradient(180deg,#229ee8,#1269a7)}
+#bandeau-operationnel{border:1px solid #294b64;border-left:4px solid var(--ptd-cyan);background:#071725}#canvas-coque{padding:4px;border:1px solid #315b78;border-radius:10px;background:#020810}#jeu-canvas{border:0;border-radius:7px;box-shadow:inset 0 0 24px rgba(1,12,22,.45)}
+#boutique{border:1px solid #315b78;border-top:3px solid var(--ptd-cyan);border-radius:10px;background:linear-gradient(180deg,#10283c,#071521);color:#dcecff}#boutique h2,.bouton-unite-nom,#panneau-selection h3{color:#72dfff}.bouton-unite{color:#dcecff;background:#10283c;border-color:#31536d}.bouton-unite:hover{background:#173a55}.bouton-unite.selectionnee{border-color:#75ddff;background:#174262}
+#panneau-selection{background:#0b2031;color:#dcecff;border-left-color:#68d8ff}#panneau-selection p{color:#b8ccdc}.roster-panneau{border-color:#315b78;background:linear-gradient(#10283c,#071521)}.roster-niveaux span:nth-child(2){background:#60768a}.roster-niveaux span:nth-child(3){background:#45c6ff}
+#accueil-panneau{border:1px solid #3b779e;border-left:5px solid #68d8ff;background:linear-gradient(145deg,rgba(10,35,54,.98),rgba(3,13,23,.98))}#accueil-panneau::before{color:#eaf7ff;background:linear-gradient(90deg,#1269a7,#2aa7e8)}.carte-difficulte{background:rgba(8,31,49,.9);border-left-color:#258bc9}.carte-difficulte:hover,.carte-difficulte:focus-visible{border-left-color:#68d8ff}
+@media(max-width:700px){#jeu-conteneur{padding:7px;border-radius:9px}.hud-bloc{min-height:38px}}
+
+
+/* Menu principal mobile : décor urbain entièrement procédural et léger. */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 18px;
+  background:
+    radial-gradient(circle at top, rgba(45, 92, 140, 0.18), transparent 40%),
+    linear-gradient(180deg, rgba(8, 17, 29, 0.94), rgba(4, 10, 18, 0.98));
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-overlay.menu-cache { display: none; }
+
+.menu-city {
+  position: absolute;
+  inset: -5%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: clamp(28px, 5vw, 78px);
+  padding: 5vh 5vw;
+  opacity: 0.42;
+  filter: blur(1.5px);
+  transform: rotate(-1.5deg) scale(1.05);
+  pointer-events: none;
+}
+
+.menu-city::before,
+.menu-city::after {
+  content: "";
+  position: absolute;
+  background: #25384a;
+  border: 2px solid rgba(153, 192, 225, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.45);
+}
+
+.menu-city::before { left: 0; right: 0; top: 48%; height: clamp(52px, 8vw, 94px); }
+.menu-city::after { top: 0; bottom: 0; left: 67%; width: clamp(54px, 8vw, 96px); }
+
+.menu-city span {
+  position: relative;
+  z-index: 1;
+  min-height: 90px;
+  border: 1px solid rgba(119, 170, 220, 0.26);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 28px, rgba(139, 183, 220, 0.1) 29px 30px),
+    repeating-linear-gradient(0deg, transparent 0 28px, rgba(139, 183, 220, 0.1) 29px 30px),
+    linear-gradient(145deg, #23384a, #101d2a);
+  box-shadow: 0 12px 0 #07111b, 0 18px 25px rgba(0, 0, 0, 0.55), inset 0 0 0 4px rgba(130, 174, 210, 0.08);
+}
+
+.menu-city span:nth-child(2n) { background-color: #27313a; transform: translateY(8px); }
+.menu-city span:nth-child(3n) { background-color: #182c3d; transform: translateX(12px); }
+
+.menu-panel {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 420px);
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  padding: 28px 24px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(119, 170, 220, 0.22);
+  background: rgba(10, 18, 30, 0.82);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.menu-title { margin-bottom: 22px; }
+
+.menu-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #8fa8c2;
+  text-transform: uppercase;
+}
+
+.menu-title h1 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 0.95;
+  color: #f5f8ff;
+  text-transform: uppercase;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.menu-title p,
+.menu-subpanel p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #8fa8c2;
+}
+
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.menu-btn {
+  appearance: none;
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid rgba(142, 184, 228, 0.22);
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, #15314f 0%, #0c1c2f 100%);
+  color: #f5f8ff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 18px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-btn:hover,
+.menu-btn:focus-visible {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #1d466f 0%, #102844 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 24px rgba(0, 0, 0, 0.34);
+  outline: 2px solid rgba(244, 200, 79, 0.48);
+  outline-offset: 2px;
+}
+
+.menu-btn-primary {
+  background: linear-gradient(180deg, #f4c84f 0%, #c99516 100%);
+  color: #122033;
+  border-color: rgba(255, 220, 120, 0.55);
+}
+
+.menu-btn-primary:hover,
+.menu-btn-primary:focus-visible { background: linear-gradient(180deg, #ffd76b 0%, #d8a920 100%); }
+
+.menu-footer {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(143, 168, 194, 0.85);
+  letter-spacing: 0.04em;
+}
+
+.menu-subpanel h2 { margin: 0; color: #f5f8ff; font-size: 26px; }
+
+.menu-option {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 10px;
+  padding: 16px;
+  border: 1px solid rgba(119, 170, 220, 0.22);
+  border-radius: 15px;
+  color: #f5f8ff;
+  text-align: left;
+  background: rgba(8, 17, 29, 0.58);
+}
+
+.menu-option input { width: 100%; accent-color: #f4c84f; }
+.menu-subpanel[hidden] { display: none; }
+
+@media (max-width: 480px) {
+  .menu-panel { padding: 22px 18px 16px; border-radius: 18px; }
+  .menu-btn { padding: 14px 16px; font-size: 16px; }
+  .menu-city { gap: 34px; opacity: 0.34; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-btn { transition: none; }
+}
+
+.menu-panel.menu-panel-large { width:min(96vw,980px); }
+.menu-scroll { max-height:min(68vh,680px); overflow:auto; margin-top:18px; padding:2px; scrollbar-color:#315b78 #08111d; }
+.menu-info-grid,.menu-personnages-grid,.menu-ameliorations-grid { display:grid; gap:12px; text-align:left; }
+.menu-info-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.menu-personnages-grid,.menu-ameliorations-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.menu-info-card,.menu-personnage-card,.menu-amelioration-card { border:1px solid rgba(119,170,220,.24); border-radius:15px; background:linear-gradient(145deg,rgba(17,39,59,.92),rgba(7,17,28,.94)); box-shadow:inset 0 1px rgba(255,255,255,.04); }
+.menu-info-card { padding:16px; }
+.menu-info-card strong { display:block; margin-bottom:6px; color:#f4c84f; text-transform:uppercase; letter-spacing:.06em; }
+.menu-info-card p { margin:0; }
+.menu-personnage-card { display:grid; grid-template-columns:92px 1fr; gap:12px; align-items:center; padding:10px; }
+.menu-personnage-card img { width:92px; height:92px; object-fit:cover; border-radius:11px; border:1px solid #4c9ee8; background:#111c28; }
+.menu-personnage-card h3,.menu-amelioration-card h3 { margin:0 0 4px; color:#f5f8ff; font-size:15px; text-transform:uppercase; }
+.menu-personnage-card p { margin:2px 0; font-size:12px; color:#8fa8c2; }
+.menu-stat { display:grid; grid-template-columns:62px 1fr; gap:7px; align-items:center; margin-top:5px; color:#b9cde0; font-size:10px; text-transform:uppercase; }
+.menu-stat i { display:block; height:5px; overflow:hidden; border-radius:5px; background:#07111d; }
+.menu-stat i::after { content:""; display:block; width:var(--stat); height:100%; background:linear-gradient(90deg,#2c8fda,#6ed6ff); }
+.menu-amelioration-card { padding:11px; }
+.menu-evolutions { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.menu-evolution { position:relative; margin:0; }
+.menu-evolution img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border:1px solid #315b78; border-radius:9px; background:#111c28; }
+.menu-evolution figcaption { position:absolute; left:4px; bottom:4px; padding:2px 6px; border-radius:7px; color:#f5f8ff; background:rgba(4,12,20,.86); font-size:10px; font-weight:900; }
+.menu-amelioration-card small { display:block; margin-top:8px; color:#8fa8c2; line-height:1.35; }
+.menu-resource-note { margin-top:14px; padding:12px; border-left:3px solid #f4c84f; color:#8fa8c2; background:rgba(8,17,29,.64); font-size:12px; text-align:left; }
+@media(max-width:700px){.menu-info-grid,.menu-personnages-grid,.menu-ameliorations-grid{grid-template-columns:1fr}.menu-scroll{max-height:62vh}.menu-personnage-card{grid-template-columns:78px 1fr}.menu-personnage-card img{width:78px;height:78px}}
 
 
 
 /* ------------------------------------------------------------
    FICHES DE CARACTÉRISTIQUES (jauges Vitesse / Portée / Dégâts)
-   ------------------------------------------------------------
-   Réutilisées à deux endroits : dans chaque carte de la boutique
-   (avant achat) et dans le panneau de sélection (après avoir posé
-   une unité). On réutilise volontairement les classes .jauge-fond
-   et .jauge-remplissage déjà définies pour l'écran de difficulté :
-   même famille visuelle dans tout le jeu.
 ------------------------------------------------------------ */
-.stats-unite {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-top: 4px;
-}
-
-.stat-ligne {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.6rem;
-    color: #8a94a3;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-.stat-libelle {
-    width: 36px;
-    flex-shrink: 0;
-}
-
-.stat-ligne .jauge-fond {
-    flex: 1;
-    height: 4px;
-}
-
-/* Dans le panneau de sélection (plus large que les cartes de la
-   boutique), les jauges peuvent respirer un peu plus. */
-#selection-barres .stats-unite {
-    margin: 8px 0;
-}
-
-#selection-barres .stat-ligne {
-    font-size: 0.7rem;
-    color: #4a4032;
-}
-
-#selection-barres .stat-libelle {
-    width: 50px;
-}
-
-#selection-barres .jauge-fond {
-    height: 6px;
-}
+.stats-unite { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+.stat-ligne { display: flex; align-items: center; gap: 5px; font-size: 0.6rem; color: var(--texte-doux, #8a94a3); text-transform: uppercase; letter-spacing: 0.3px; }
+.stat-libelle { width: 36px; flex-shrink: 0; }
+.stat-ligne .jauge-fond { flex: 1; height: 4px; }
+#selection-barres .stats-unite { margin: 8px 0; }
+#selection-barres .stat-ligne { font-size: 0.7rem; }
+#selection-barres .stat-libelle { width: 50px; }
+#selection-barres .jauge-fond { height: 6px; }

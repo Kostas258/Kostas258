@@ -12,25 +12,88 @@
 -->
 <html lang="fr">
 <head>
-    <!-- Encodage des caractères : permet d'afficher les accents français correctement -->
     <meta charset="UTF-8">
-
-    <!-- Rend la page correctement adaptée aux écrans (mobile, tablette, PC) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0757d8">
+    <meta name="theme-color" content="#07111f">
     <meta name="description" content="Alerte Police Secours, tower defense urbain autonome jouable sur ordinateur et mobile.">
-
-    <!-- Titre affiché dans l'onglet du navigateur -->
     <title>Alerte Police Secours - Tower Defense 2D</title>
-
-    <!-- On relie notre feuille de style CSS à cette page HTML -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="menu-overlay" class="menu-overlay" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+    <div class="menu-city" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="menu-panel">
+        <section id="menu-home">
+            <div class="menu-title">
+                <span class="menu-kicker">Tower Defense</span>
+                <h1 id="menu-title">Alerte Police Secours</h1>
+                <p>Défends le commissariat contre les vagues ennemies.</p>
+            </div>
+            <div class="menu-actions">
+                <button id="menu-jouer" class="menu-btn menu-btn-primary" type="button">Jouer</button>
+                <button id="menu-regles" class="menu-btn" type="button">Règles du jeu</button>
+                <button id="menu-personnages" class="menu-btn" type="button">Personnages</button>
+                <button id="menu-ameliorations" class="menu-btn" type="button">Améliorations</button>
+                <button id="menu-options" class="menu-btn" type="button">Options</button>
+                <button id="menu-credits" class="menu-btn" type="button">Crédits</button>
+            </div>
+            <div class="menu-footer">Style urbain premium • vue du dessus • gameplay tactique</div>
+        </section>
+        <section id="menu-regles-panel" class="menu-subpanel" hidden>
+            <h2>Règles du jeu</h2>
+            <p>Organise les services de police sur les toits pour protéger le Commissariat.</p>
+            <div class="menu-scroll"><div class="menu-info-grid">
+                <article class="menu-info-card"><strong>1 • Choisir</strong><p>Sélectionne une unité dans l’armurerie. Chaque service possède une portée, une cadence et une spécialité propres.</p></article>
+                <article class="menu-info-card"><strong>2 • Positionner</strong><p>Touche une case carrée lumineuse sur un toit. Anticipe les virages et couvre plusieurs portions de route.</p></article>
+                <article class="menu-info-card"><strong>3 • Intervenir</strong><p>Lance la vague. Les ennemis entrent au nord du Commissariat et suivent la route jusqu’à la base.</p></article>
+                <article class="menu-info-card"><strong>4 • Renforcer</strong><p>Sélectionne une unité placée pour l’améliorer jusqu’au niveau III ou la revendre afin de réorganiser la défense.</p></article>
+            </div></div>
+            <div class="menu-actions"><button class="menu-btn menu-retour" type="button">Retour</button></div>
+        </section>
+        <section id="menu-personnages-panel" class="menu-subpanel" hidden>
+            <h2>Personnages</h2>
+            <p>Dix services complémentaires, conçus pour des rôles tactiques distincts.</p>
+            <div class="menu-scroll"><div id="menu-personnages-grille" class="menu-personnages-grid"></div></div>
+            <div class="menu-actions"><button class="menu-btn menu-retour" type="button">Retour</button></div>
+        </section>
+        <section id="menu-ameliorations-panel" class="menu-subpanel" hidden>
+            <h2>Améliorations</h2>
+            <p>Chaque achat renforce les statistiques et fait évoluer l’apparence de l’unité.</p>
+            <div class="menu-scroll"><div id="menu-ameliorations-grille" class="menu-ameliorations-grid"></div></div>
+            <div class="menu-actions"><button class="menu-btn menu-retour" type="button">Retour</button></div>
+        </section>
+        <section id="menu-options-panel" class="menu-subpanel" hidden>
+            <h2>Options</h2>
+            <p>Règle l'ambiance et les effets sonores avant l'intervention.</p>
+            <label class="menu-option" for="menu-volume">
+                <span>Volume général</span>
+                <input id="menu-volume" type="range" min="0" max="100" value="55">
+            </label>
+            <div class="menu-actions">
+                <button id="menu-mute" class="menu-btn" type="button">Couper le son</button>
+                <button class="menu-btn menu-retour" type="button">Retour</button>
+            </div>
+        </section>
+        <section id="menu-credits-panel" class="menu-subpanel" hidden>
+            <h2>Crédits</h2>
+            <p>Concept et développement : Alerte Police Secours.<br>Direction artistique : ville tactique nocturne, graphismes procéduraux et personnages originaux.</p>
+            <div class="menu-resource-note">Ressources étudiées : Kenney Top-down Shooter, Kenney RPG Urban Kit et Kenney Tower Defense (CC0), collection OpenGameArt Top-Down Assets (licences à vérifier élément par élément), MetroCity Cars (CC0). Aucun asset tiers n’est intégré : le jeu reste autonome.</div>
+            <div class="menu-actions">
+                <button class="menu-btn menu-retour" type="button">Retour</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+
 
     
-    <div id="ecran-accueil">
+    <div id="ecran-accueil" class="cache">
         <div id="accueil-panneau">
             <h1 id="accueil-titre">
                 
@@ -156,14 +219,7 @@
     
     
 
-    <!--
-        On relie notre fichier JavaScript à la page.
-        IMPORTANT : la balise <script> est placée tout en bas du <body>,
-        juste avant la fermeture. Cela garantit que le navigateur a déjà
-        créé et affiché le <canvas> AVANT que notre script essaie de
-        le manipuler. Si on mettait le script en haut (dans le <head>),
-        il risquerait de s'exécuter avant que le canvas n'existe.
-    -->
+
     <script src="script.js"></script>
 </body>
 </html>

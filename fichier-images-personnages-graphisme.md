@@ -777,16 +777,40 @@ intégrées au projet :
   `ennemi_blinde.webp`, `ennemi_chef.webp`, `ennemi_saboteur.webp`,
   `ennemi_eclaireur.webp`) : chaque vague mélange ces 6 profils (vitesse/PV/
   récompense différents) à partir de la vague 2.
-- **Texture de route** (`route_1.webp` à `route_4.webp`, seule la première est
-  utilisée pour l'instant) : légère surcouche non directionnelle sur
-  l'asphalte, en complément du dessin procédural existant.
-- **Fond de l'écran d'accueil** (`fond_menu_accueil.webp`) : console tactique
-  généraliste (pas de logo ni de personnage précis), utilisée uniquement en
-  arrière-plan assombri derrière le panneau de choix de difficulté.
-
 Un second visuel généré dans cette même itération (un cadre rouge et or de
 type "fiche de personnage") a été volontairement écarté : son style
 (triangle façon réacteur, palette rouge/or) rappelait trop directement
 l'armure d'Iron Man / l'identité visuelle Marvel. Le panneau
 "Améliorer / Vendre" garde donc un fond neutre avec notre propre bordure
 bleu/jaune.
+
+## 10. Refonte "ville nocturne premium" (menu Studio + nouvelle carte)
+
+Nouvelle itération fusionnée par-dessus la précédente, avec une refonte
+complète de la ville et un menu d'accueil à onglets :
+
+- **Évolutions visuelles par unité** (`evolution_<unité>_1/2/3.webp`, 30
+  fichiers, 3 par unité) : chaque amélioration change l'apparence de
+  l'unité sur la carte (voir `PORTRAITS_AMELIORATIONS` dans `script.js`),
+  et sont affichées côte à côte dans l'écran "Améliorations" du menu.
+- **Toits techniques** (`toit_technique_1.webp` à `_4.webp`) : remplacent
+  les 12 toits pastel de la maquette précédente (retirés du dépôt, voir
+  ci-dessous) — mieux adaptés à la nouvelle palette nocturne bleu-gris/
+  anthracite demandée, avec équipements de toiture (climatiseurs, gaines).
+- **Mobilier urbain, texture de route et fond de menu** : redessinés
+  entièrement en procédural (formes Canvas, sans image), pour un fichier
+  plus léger. Les anciens fichiers `mobilier_*.png`, `route_*.webp`,
+  `toit_maquette_*.png` et `fond_menu_accueil.webp` ont été supprimés du
+  dépôt car devenus inutilisés.
+- **Nouveau plan de ville** : tracé de routes et emplacements de bâtiments
+  entièrement repositionnés (`CHEMIN`, `BATIMENTS`, `CASES_PLACEMENT`),
+  toujours 12 bâtiments × 2 emplacements.
+- **Menu d'accueil "Studio"** : 5 sections (Règles, Personnages,
+  Améliorations, Options, Crédits) accessibles avant même l'écran de
+  difficulté, avec re-vérification de licences pour les ressources
+  externes envisagées (voir section Crédits du jeu) — aucune n'est utilisée,
+  tous les visuels sont générés par IA et originaux.
+
+Gain net : le fichier autonome est passé d'environ 4,7 Mo à environ 2 Mo
+grâce au remplacement des images de mobilier (assez lourdes) par du
+dessin procédural.

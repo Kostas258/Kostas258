@@ -84,6 +84,10 @@ function ecrireStockage(cle, valeur) {
 let contexteAudio = null;
 let gainAudioPrincipal = null;
 let gainAmbiance = null;
+let gainMusiqueMenu = null;
+let gainMusiqueJeu = null;
+let minuterieMusique = null;
+let modeMusique = 'menu';
 let audioMuet = lireStockage('alertePoliceSecours_audioMuet', 'false') === 'true';
 let volumeAudio = Number(lireStockage('alertePoliceSecours_volume', '0.45'));
 if (!Number.isFinite(volumeAudio)) volumeAudio = 0.45;
@@ -104,8 +108,13 @@ function initialiserAudio() {
     gainAudioPrincipal.connect(contexteAudio.destination);
 
     gainAmbiance = contexteAudio.createGain();
-    gainAmbiance.gain.value = 0.12;
+    gainAmbiance.gain.value = 0.07;
     gainAmbiance.connect(gainAudioPrincipal);
+
+    gainMusiqueMenu = contexteAudio.createGain();
+    gainMusiqueJeu = contexteAudio.createGain();
+    gainMusiqueMenu.connect(gainAudioPrincipal);
+    gainMusiqueJeu.connect(gainAudioPrincipal);
 
     // Souffle urbain très discret, entièrement synthétisé dans le navigateur.
     const longueur = Math.max(1, Math.floor(contexteAudio.sampleRate * 2));
@@ -131,7 +140,54 @@ function initialiserAudio() {
         oscillateur.connect(gain).connect(gainAmbiance);
         oscillateur.start();
     });
+    demarrerBouclesMusicales();
+    appliquerModeMusique(true);
     contexteAudio.resume().catch(function () {});
+}
+
+function creerNoteMusicale(frequence, debut, duree, volume, destination, forme) {
+    const oscillateur = contexteAudio.createOscillator();
+    const gain = contexteAudio.createGain();
+    oscillateur.type = forme || 'triangle';
+    oscillateur.frequency.setValueAtTime(frequence, debut);
+    gain.gain.setValueAtTime(0.0001, debut);
+    gain.gain.exponentialRampToValueAtTime(volume, debut + .035);
+    gain.gain.exponentialRampToValueAtTime(0.0001, debut + duree);
+    oscillateur.connect(gain).connect(destination);
+    oscillateur.start(debut);
+    oscillateur.stop(debut + duree + .03);
+}
+
+function planifierBouclesMusicales() {
+    if (!contexteAudio || !gainMusiqueMenu || !gainMusiqueJeu) return;
+    const debut = contexteAudio.currentTime + .06;
+    const menu = [110,146.83,164.81,146.83,123.47,146.83,196,164.81];
+    const jeu = [110,110,146.83,164.81,110,196,174.61,146.83,123.47,123.47,164.81,196,110,220,196,164.81];
+    menu.forEach(function(note,index){ creerNoteMusicale(note, debut + index * .51, .44, .022, gainMusiqueMenu, index % 2 ? 'sine' : 'triangle'); });
+    jeu.forEach(function(note,index){ creerNoteMusicale(note, debut + index * .255, .19, .016, gainMusiqueJeu, index % 4 === 0 ? 'sawtooth' : 'triangle'); });
+}
+
+function demarrerBouclesMusicales() {
+    if (minuterieMusique) return;
+    planifierBouclesMusicales();
+    minuterieMusique = window.setInterval(planifierBouclesMusicales, 4080);
+}
+
+function appliquerModeMusique(immediat) {
+    if (!contexteAudio || !gainMusiqueMenu || !gainMusiqueJeu) return;
+    const maintenant = contexteAudio.currentTime;
+    const duree = immediat ? .01 : .45;
+    gainMusiqueMenu.gain.cancelScheduledValues(maintenant);
+    gainMusiqueJeu.gain.cancelScheduledValues(maintenant);
+    gainMusiqueMenu.gain.setValueAtTime(gainMusiqueMenu.gain.value, maintenant);
+    gainMusiqueJeu.gain.setValueAtTime(gainMusiqueJeu.gain.value, maintenant);
+    gainMusiqueMenu.gain.linearRampToValueAtTime(modeMusique === 'menu' ? .72 : 0, maintenant + duree);
+    gainMusiqueJeu.gain.linearRampToValueAtTime(modeMusique === 'jeu' ? .62 : 0, maintenant + duree);
+}
+
+function definirModeMusique(mode) {
+    modeMusique = mode;
+    appliquerModeMusique(false);
 }
 
 function appliquerVolumeAudio() {
@@ -143,11 +199,19 @@ function appliquerVolumeAudio() {
 function jouerSon(type) {
     if (!contexteAudio || !gainAudioPrincipal || audioMuet || volumeAudio <= 0) return;
     const maintenant = contexteAudio.currentTime;
-    if (type === 'tir' && maintenant - dernierSonTir < 0.055) return;
-    if (type === 'tir') dernierSonTir = maintenant;
+    const estAttaque = ['tir','rafale','precision','lourd','marquage','interception','canin','helicoptere'].includes(type);
+    if (estAttaque && maintenant - dernierSonTir < 0.045) return;
+    if (estAttaque) dernierSonTir = maintenant;
 
     const profils = {
         tir:          { debut: 210, fin: 92, duree: .055, volume: .035, forme: 'square' },
+        rafale:       { debut: 260, fin: 105, duree: .045, volume: .038, forme: 'square' },
+        precision:    { debut: 720, fin: 125, duree: .11, volume: .05, forme: 'triangle' },
+        lourd:        { debut: 135, fin: 38, duree: .16, volume: .065, forme: 'sawtooth' },
+        marquage:     { debut: 880, fin: 1320, duree: .18, volume: .03, forme: 'sine' },
+        interception: { debut: 310, fin: 62, duree: .12, volume: .052, forme: 'square' },
+        canin:        { debut: 190, fin: 330, duree: .08, volume: .035, forme: 'triangle' },
+        helicoptere:  { debut: 95, fin: 42, duree: .24, volume: .06, forme: 'sawtooth' },
         impact:       { debut: 105, fin: 48, duree: .09, volume: .045, forme: 'triangle' },
         construction: { debut: 330, fin: 660, duree: .15, volume: .055, forme: 'sine' },
         upgrade:      { debut: 440, fin: 990, duree: .28, volume: .065, forme: 'triangle' },
@@ -178,11 +242,11 @@ function jouerSon(type) {
    facilement l'apparence du jeu plus tard, sans devoir fouiller
    dans tout le code : un seul endroit à changer.
 ------------------------------------------------------------ */
-const COULEUR_SOL = '#232a30';           // Couleur du "sol" général du quartier (trottoirs/terrain)
-const COULEUR_RUE = '#3c444c';           // Couleur de l'asphalte des rues
-const COULEUR_BORD_RUE = '#54606a';      // Couleur du bord de rue (petit trottoir clair)
-const COULEUR_MARQUAGE = '#e8e8e8';      // Couleur des lignes blanches peintes sur la route
-const COULEUR_TOIT_BASE = '#7a5230';     // Couleur de repli tant que l'image du toit n'est pas chargée
+const COULEUR_SOL = '#111a24';           // Couleur du "sol" général du quartier (trottoirs/terrain)
+const COULEUR_RUE = '#26323e';           // Couleur de l'asphalte des rues
+const COULEUR_BORD_RUE = '#607487';      // Couleur du bord de rue (petit trottoir clair)
+const COULEUR_MARQUAGE = '#dceaf2';      // Couleur des lignes blanches peintes sur la route
+const COULEUR_TOIT_BASE = '#344554';     // Couleur de repli tant que l'image du toit n'est pas chargée
 const COULEUR_COMMISSARIAT = '#245ec9';  // Couleur du toit du Commissariat (bleu police)
 const COULEUR_COMMISSARIAT_BORD = '#ffffff'; // Contour blanc du Commissariat pour bien le repérer
 const COULEUR_GYROPHARE_ROUGE = '#e63946'; // Petit accent rouge sur le Commissariat (façon gyrophare)
@@ -210,27 +274,12 @@ const LARGEUR_RUE = 60;                  // Largeur (en pixels) d'une rue dessin
    bâtiments jusqu'au Commissariat Central.
 ------------------------------------------------------------ */
 const CHEMIN = [
+    { x: 690, y: 0 }, { x: 690, y: 112 },
     { x: 0, y: 112 }, { x: 190, y: 112 }, { x: 190, y: 258 },
     { x: 378, y: 258 }, { x: 378, y: 112 }, { x: 560, y: 112 },
     { x: 560, y: 360 }, { x: 760, y: 360 }, { x: 760, y: 520 },
     { x: 520, y: 520 }, { x: 520, y: 610 }, { x: 690, y: 610 }
 ];
-
-/* ------------------------------------------------------------
-   3bis. UNE RUE SECONDAIRE DÉCORATIVE (POUR LE CROISEMENT)
-   ------------------------------------------------------------
-   Le cahier des charges demande "des rues qui se croisent".
-   En plus de la rue principale empruntée par les ennemis (CHEMIN),
-   on dessine ici une petite rue transversale purement décorative,
-   qui coupe la rue principale et donne l'impression d'un vrai
-   quartier avec un carrefour. Elle n'est pas utilisée pour le
-   déplacement des ennemis, seulement pour le décor.
------------------------------------------------------------- */
-const RUE_SECONDAIRE = {
-    debut: { x: 100, y: 220 },
-    fin:   { x: 340, y: 220 }
-};
-
 
 /* ------------------------------------------------------------
    4. DÉFINITION DES BÂTIMENTS (LES TOITS VUS DE DESSUS)
@@ -244,27 +293,27 @@ const RUE_SECONDAIRE = {
    Les bâtiments sont placés autour des rues, sans les bloquer.
 ------------------------------------------------------------ */
 const BATIMENTS = [
-    {x:22,y:162,largeur:142,hauteur:82},{x:218,y:18,largeur:130,hauteur:76},
-    {x:404,y:158,largeur:130,hauteur:84},{x:28,y:302,largeur:132,hauteur:92},
-    {x:214,y:310,largeur:132,hauteur:90},{x:594,y:168,largeur:142,hauteur:98},
-    {x:794,y:300,largeur:138,hauteur:92},{x:170,y:470,largeur:142,hauteur:92},
-    {x:798,y:464,largeur:134,hauteur:92},{x:340,y:542,largeur:138,hauteur:74},
-    {x:594,y:18,largeur:142,hauteur:76},{x:798,y:18,largeur:134,hauteur:76}
+    {x:12,y:6,largeur:142,hauteur:68},{x:212,y:4,largeur:142,hauteur:70},
+    {x:414,y:154,largeur:112,hauteur:66},{x:10,y:302,largeur:140,hauteur:92},
+    {x:208,y:306,largeur:132,hauteur:96},{x:600,y:154,largeur:136,hauteur:108},
+    {x:800,y:288,largeur:132,hauteur:104},{x:170,y:452,largeur:142,hauteur:110},
+    {x:800,y:456,largeur:132,hauteur:100},{x:338,y:556,largeur:140,hauteur:70},
+    {x:492,y:4,largeur:142,hauteur:70},{x:798,y:4,largeur:134,hauteur:70}
 ];
 
 const CASES_PLACEMENT = [
-    {x:36,y:176,largeur:42,hauteur:42,zone:'#e8a9bd'},{x:104,y:190,largeur:42,hauteur:42,zone:'#e8a9bd'},
-    {x:230,y:31,largeur:42,hauteur:42,zone:'#d6c69c'},{x:292,y:40,largeur:42,hauteur:42,zone:'#d6c69c'},
-    {x:420,y:172,largeur:42,hauteur:42,zone:'#a5d8e7'},{x:476,y:188,largeur:42,hauteur:42,zone:'#a5d8e7'},
-    {x:42,y:322,largeur:42,hauteur:42,zone:'#b7e9de'},{x:100,y:337,largeur:42,hauteur:42,zone:'#b7e9de'},
-    {x:230,y:327,largeur:42,hauteur:42,zone:'#a8d9a7'},{x:288,y:344,largeur:42,hauteur:42,zone:'#a8d9a7'},
-    {x:610,y:188,largeur:42,hauteur:42,zone:'#d8b5e2'},{x:674,y:202,largeur:42,hauteur:42,zone:'#d8b5e2'},
-    {x:810,y:318,largeur:42,hauteur:42,zone:'#f0d59a'},{x:870,y:336,largeur:42,hauteur:42,zone:'#f0d59a'},
-    {x:187,y:486,largeur:42,hauteur:42,zone:'#d2b39e'},{x:250,y:505,largeur:42,hauteur:42,zone:'#d2b39e'},
-    {x:812,y:480,largeur:42,hauteur:42,zone:'#b7d1ed'},{x:872,y:500,largeur:42,hauteur:42,zone:'#b7d1ed'},
-    {x:356,y:556,largeur:42,hauteur:42,zone:'#c4c6ca'},{x:418,y:568,largeur:42,hauteur:42,zone:'#c4c6ca'},
-    {x:610,y:31,largeur:42,hauteur:42,zone:'#8fd5e8'},{x:676,y:40,largeur:42,hauteur:42,zone:'#8fd5e8'},
-    {x:812,y:31,largeur:42,hauteur:42,zone:'#efd477'},{x:874,y:40,largeur:42,hauteur:42,zone:'#efd477'}
+    {x:22,y:18,largeur:42,hauteur:42,zone:'#e8a9bd'},{x:100,y:18,largeur:42,hauteur:42,zone:'#e8a9bd'},
+    {x:222,y:16,largeur:42,hauteur:42,zone:'#d6c69c'},{x:300,y:16,largeur:42,hauteur:42,zone:'#d6c69c'},
+    {x:420,y:166,largeur:42,hauteur:42,zone:'#a5d8e7'},{x:476,y:166,largeur:42,hauteur:42,zone:'#a5d8e7'},
+    {x:20,y:326,largeur:42,hauteur:42,zone:'#b7e9de'},{x:96,y:326,largeur:42,hauteur:42,zone:'#b7e9de'},
+    {x:218,y:326,largeur:42,hauteur:42,zone:'#a8d9a7'},{x:286,y:326,largeur:42,hauteur:42,zone:'#a8d9a7'},
+    {x:610,y:184,largeur:42,hauteur:42,zone:'#d8b5e2'},{x:682,y:184,largeur:42,hauteur:42,zone:'#d8b5e2'},
+    {x:810,y:310,largeur:42,hauteur:42,zone:'#f0d59a'},{x:876,y:310,largeur:42,hauteur:42,zone:'#f0d59a'},
+    {x:182,y:478,largeur:42,hauteur:42,zone:'#d2b39e'},{x:252,y:478,largeur:42,hauteur:42,zone:'#d2b39e'},
+    {x:810,y:480,largeur:42,hauteur:42,zone:'#b7d1ed'},{x:876,y:480,largeur:42,hauteur:42,zone:'#b7d1ed'},
+    {x:348,y:568,largeur:42,hauteur:42,zone:'#c4c6ca'},{x:418,y:568,largeur:42,hauteur:42,zone:'#c4c6ca'},
+    {x:502,y:16,largeur:42,hauteur:42,zone:'#8fd5e8'},{x:580,y:16,largeur:42,hauteur:42,zone:'#8fd5e8'},
+    {x:808,y:16,largeur:42,hauteur:42,zone:'#efd477'},{x:876,y:16,largeur:42,hauteur:42,zone:'#efd477'}
 ];
 
 
@@ -278,16 +327,9 @@ const CASES_PLACEMENT = [
    plus bas) et une position x/y.
 ------------------------------------------------------------ */
 const MOBILIER_URBAIN = [
-    { type: 'lampadaire',    x: 15,  y: 50  },
-    { type: 'banc',          x: 250, y: 380 },
-    { type: 'abribus',       x: 900, y: 60  },
-    { type: 'poubelle',      x: 470, y: 200 },
-    { type: 'feuTricolore',  x: 220, y: 220 }, // pile au carrefour entre les deux rues
-    { type: 'boucheIncendie',x: 700, y: 380 },
-    { type: 'barrierePolice',x: 90,  y: 610 },
-    { type: 'voiturePolice', x: 850, y: 615 },
-    { type: 'jardiniere',    x: 330, y: 615 },
-    { type: 'passagePieton', x: 400, y: 500 }  // posé directement sur la rue
+    {type:'lampadaire',x:178,y:82},{type:'feuTricolore',x:190,y:220},
+    {type:'barrierePolice',x:90,y:610},{type:'voiturePolice',x:850,y:615},
+    {type:'passagePieton',x:630,y:520}
 ];
 
 
@@ -299,27 +341,11 @@ const MOBILIER_URBAIN = [
 ------------------------------------------------------------ */
 function dessinerFond() {
     const degrade = ctx.createLinearGradient(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
-    degrade.addColorStop(0, '#172433');
-    degrade.addColorStop(.52, '#111c27');
-    degrade.addColorStop(1, '#09131d');
-    ctx.fillStyle = degrade;
-    ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
-
-    // Dallage urbain et grain déterministe (aucun scintillement entre les images).
-    ctx.strokeStyle = 'rgba(128, 164, 185, .055)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < LARGEUR_CANVAS; x += 32) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, HAUTEUR_CANVAS); ctx.stroke();
-    }
-    for (let y = 0; y < HAUTEUR_CANVAS; y += 32) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(LARGEUR_CANVAS, y); ctx.stroke();
-    }
-    for (let i = 0; i < 90; i++) {
-        const x = (i * 83 + 19) % LARGEUR_CANVAS;
-        const y = (i * 47 + 31) % HAUTEUR_CANVAS;
-        ctx.fillStyle = i % 3 ? 'rgba(110,150,170,.05)' : 'rgba(0,0,0,.08)';
-        ctx.fillRect(x, y, 2 + (i % 4), 1);
-    }
+    degrade.addColorStop(0, '#142536'); degrade.addColorStop(.55, '#0d1b28'); degrade.addColorStop(1, '#07111a');
+    ctx.fillStyle = degrade; ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+    ctx.strokeStyle = 'rgba(112, 157, 184, .045)'; ctx.lineWidth = 1;
+    for (let x = 0; x < LARGEUR_CANVAS; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, HAUTEUR_CANVAS); ctx.stroke(); }
+    for (let y = 0; y < HAUTEUR_CANVAS; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(LARGEUR_CANVAS, y); ctx.stroke(); }
 }
 
 
@@ -333,8 +359,6 @@ function dessinerFond() {
    croisement ait l'air naturel.
 ------------------------------------------------------------ */
 function dessinerRues() {
-    // --- La rue secondaire décorative (croisement) ---
-    tracerSegmentRue(RUE_SECONDAIRE.debut, RUE_SECONDAIRE.fin);
 
     // --- La rue principale (le chemin suivi par les ennemis) ---
     if (CHEMIN.length === 0) return;
@@ -346,28 +370,15 @@ function dessinerRues() {
     // Puis on redessine l'asphalte par-dessus, un peu moins large.
     tracerLigneChemin(LARGEUR_RUE, COULEUR_RUE);
 
-    // Texture routière nocturne originale, découpée dans le tracé. Le dessin
-    // vectoriel précédent reste le repli immédiat pendant son chargement.
-    if (typeof MODULES_ROUTES !== 'undefined' && MODULES_ROUTES[0] && MODULES_ROUTES[0].complete && MODULES_ROUTES[0].naturalWidth > 0) {
-        const motifRoute = ctx.createPattern(MODULES_ROUTES[0], 'repeat');
-        ctx.save();
-        ctx.globalAlpha = .34;
-        ctx.beginPath(); ctx.moveTo(CHEMIN[0].x, CHEMIN[0].y);
-        for (let i = 1; i < CHEMIN.length; i++) ctx.lineTo(CHEMIN[i].x, CHEMIN[i].y);
-        ctx.strokeStyle = motifRoute; ctx.lineWidth = LARGEUR_RUE - 4;
-        ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
-        ctx.restore();
-    }
-
     // Enfin, on ajoute le marquage au sol (ligne blanche discontinue)
     // au centre de la rue principale, comme sur une vraie route.
     tracerLigneChemin(4, COULEUR_MARQUAGE, [16, 14]);
 
     // Reflets humides et flèches directionnelles donnent du relief à la chaussée.
-    tracerLigneChemin(1, 'rgba(90, 190, 255, .18)', [5, 32]);
+    tracerLigneChemin(1, 'rgba(104, 216, 255, .26)', [8, 28]);
     ctx.save();
-    ctx.fillStyle = 'rgba(232, 241, 247, .45)';
-    [{x:335,y:320,a:0},{x:650,y:140,a:0},{x:800,y:350,a:Math.PI/2},{x:580,y:460,a:Math.PI}].forEach(function (fleche) {
+    ctx.fillStyle = 'rgba(220, 241, 250, .58)';
+    [{x:320,y:112,a:Math.PI},{x:560,y:250,a:Math.PI/2},{x:660,y:360,a:0},{x:630,y:520,a:Math.PI}].forEach(function (fleche) {
         ctx.translate(fleche.x, fleche.y); ctx.rotate(fleche.a);
         ctx.beginPath(); ctx.moveTo(10,0); ctx.lineTo(-5,-7); ctx.lineTo(-2,0); ctx.lineTo(-5,7); ctx.closePath(); ctx.fill();
         ctx.rotate(-fleche.a); ctx.translate(-fleche.x, -fleche.y);
@@ -411,38 +422,6 @@ function tracerLigneChemin(epaisseur, couleur, pointilles) {
     ctx.setLineDash([]);
 }
 
-/**
- * Fonction utilitaire qui trace un simple segment de rue rectiligne
- * entre deux points (utilisée pour la rue secondaire décorative).
- */
-function tracerSegmentRue(pointA, pointB) {
-    ctx.beginPath();
-    ctx.moveTo(pointA.x, pointA.y);
-    ctx.lineTo(pointB.x, pointB.y);
-    ctx.strokeStyle = COULEUR_BORD_RUE;
-    ctx.lineWidth = LARGEUR_RUE + 8;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(pointA.x, pointA.y);
-    ctx.lineTo(pointB.x, pointB.y);
-    ctx.strokeStyle = COULEUR_RUE;
-    ctx.lineWidth = LARGEUR_RUE;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(pointA.x, pointA.y);
-    ctx.lineTo(pointB.x, pointB.y);
-    ctx.strokeStyle = 'rgba(232, 232, 232, .7)';
-    ctx.lineWidth = 3;
-    ctx.setLineDash([14, 12]);
-    ctx.stroke();
-    ctx.setLineDash([]);
-}
-
-
 /* ------------------------------------------------------------
    7. FONCTION : dessinerBatiments()
    ------------------------------------------------------------
@@ -467,10 +446,10 @@ function dessinerBatiments() {
     // position de l'élément dans le tableau (0, 1, 2...), ce qui nous
     // sert à choisir quelle image de toit utiliser.
     BATIMENTS.forEach(function (batiment, index) {
-        const image = TOITS_IMAGES[index % TOITS_IMAGES.length];
+        const image = IMMEUBLES_REALISTES[index % IMMEUBLES_REALISTES.length];
 
-        ctx.fillStyle = 'rgba(0, 0, 0, .42)';
-        ctx.fillRect(batiment.x + 8, batiment.y + 10, batiment.largeur, batiment.hauteur);
+        ctx.fillStyle = 'rgba(0, 4, 10, .48)';
+        ctx.fillRect(batiment.x + 6, batiment.y + 8, batiment.largeur, batiment.hauteur);
 
         if (image.complete && image.naturalWidth > 0) {
             ctx.drawImage(image, batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
@@ -481,25 +460,23 @@ function dessinerBatiments() {
         }
 
         const toitDegrade = ctx.createLinearGradient(batiment.x, batiment.y, batiment.x, batiment.y + batiment.hauteur);
-        toitDegrade.addColorStop(0, 'rgba(120, 190, 220, .12)');
-        toitDegrade.addColorStop(1, 'rgba(0, 5, 12, .38)');
+        toitDegrade.addColorStop(0, 'rgba(125, 193, 218, .16)');
+        toitDegrade.addColorStop(1, 'rgba(3, 12, 22, .42)');
         ctx.fillStyle = toitDegrade;
         ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
-        ctx.strokeStyle = 'rgba(145, 201, 226, .34)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(156, 212, 235, .58)';
+        ctx.lineWidth = 2;
         ctx.strokeRect(batiment.x + .5, batiment.y + .5, batiment.largeur - 1, batiment.hauteur - 1);
+        ctx.strokeStyle = 'rgba(12, 25, 36, .72)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(batiment.x + 5.5, batiment.y + 5.5, batiment.largeur - 11, batiment.hauteur - 11);
 
         // Équipements de toiture et fenêtres éclairées, générés de façon stable par index.
         if (batiment.largeur > 120) {
             ctx.fillStyle = '#263440';
-            ctx.fillRect(batiment.x + 12, batiment.y + 12, 24, 15);
+            ctx.fillRect(batiment.x + 10, batiment.y + batiment.hauteur - 17, 26, 10);
             ctx.strokeStyle = '#607483';
-            ctx.strokeRect(batiment.x + 12, batiment.y + 12, 24, 15);
-        }
-        for (let w = 18; w < batiment.largeur - 10; w += 30) {
-            if ((w + index) % 3 === 0) continue;
-            ctx.fillStyle = 'rgba(255, 205, 104, .38)';
-            ctx.fillRect(batiment.x + w, batiment.y + batiment.hauteur - 5, 12, 3);
+            ctx.strokeRect(batiment.x + 10, batiment.y + batiment.hauteur - 17, 26, 10);
         }
 
         // Indice visuel "emplacement constructible" (voir explication ci-dessus)
@@ -512,14 +489,13 @@ function dessinerCasesPlacement() {
         const centre = centreBatiment(caseToit);
         const active = Boolean(typeSelectionnePourAchat) && !occupee;
         ctx.save();
-        ctx.fillStyle = occupee ? 'rgba(5, 13, 22, .34)' : (active ? caseToit.zone + 'cc' : caseToit.zone + '55');
-        ctx.strokeStyle = active ? '#ffd166' : (occupee ? 'rgba(110, 198, 255, .28)' : 'rgba(110, 198, 255, .38)');
-        ctx.lineWidth = active ? 2.5 : 1;
-        ctx.setLineDash(active ? [6, 4] : [3, 5]);
-        ctx.beginPath();
-        ctx.roundRect(caseToit.x, caseToit.y, caseToit.largeur, caseToit.hauteur, 8);
-        ctx.fill(); ctx.stroke();
-        ctx.setLineDash([]);
+        ctx.fillStyle = occupee ? 'rgba(5, 13, 22, .52)' : (active ? 'rgba(255, 209, 102, .64)' : 'rgba(22, 118, 186, .54)');
+        ctx.strokeStyle = active ? '#ffd166' : (occupee ? '#5d7890' : '#c8edff');
+        ctx.lineWidth = active ? 3 : 2;
+        ctx.shadowColor = active ? '#ffd166' : 'rgba(70, 185, 255, .55)';
+        ctx.shadowBlur = active ? 10 : 4;
+        ctx.fillRect(caseToit.x, caseToit.y, caseToit.largeur, caseToit.hauteur);
+        ctx.strokeRect(caseToit.x + 1, caseToit.y + 1, caseToit.largeur - 2, caseToit.hauteur - 2);
         if (!occupee) {
             ctx.fillStyle = active ? '#ffd166' : 'rgba(185, 226, 255, .62)';
             ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center';
@@ -541,18 +517,20 @@ function dessinerCasesPlacement() {
 ------------------------------------------------------------ */
 function dessinerMobilierUrbain() {
     MOBILIER_URBAIN.forEach(function (objet) {
-        if (objet.type === 'lampadaire' || objet.type === 'feuTricolore') {
-            const halo = ctx.createRadialGradient(objet.x, objet.y, 2, objet.x, objet.y, objet.type === 'lampadaire' ? 55 : 30);
-            halo.addColorStop(0, 'rgba(255, 218, 136, .32)');
-            halo.addColorStop(1, 'rgba(255, 218, 136, 0)');
-            ctx.fillStyle = halo;
-            ctx.beginPath(); ctx.arc(objet.x, objet.y, objet.type === 'lampadaire' ? 55 : 30, 0, Math.PI * 2); ctx.fill();
+        ctx.save(); ctx.translate(objet.x, objet.y);
+        if (objet.type === 'lampadaire') {
+            const halo = ctx.createRadialGradient(0, 0, 2, 0, 0, 34); halo.addColorStop(0, 'rgba(255,224,150,.3)'); halo.addColorStop(1, 'rgba(255,224,150,0)');
+            ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(0, 0, 34, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = '#91a8b8'; ctx.fillRect(-2, -7, 4, 14); ctx.fillStyle = '#ffe09a'; ctx.fillRect(-5, -9, 10, 4);
+        } else if (objet.type === 'feuTricolore') {
+            ctx.fillStyle = '#738b9c'; ctx.fillRect(-2, -12, 4, 24); ctx.fillStyle = '#111b22'; ctx.fillRect(-7, -14, 14, 22); ['#ef5261','#e7b94a','#52ce7b'].forEach(function(c,i){ctx.fillStyle=c;ctx.beginPath();ctx.arc(0,-10+i*7,2,0,Math.PI*2);ctx.fill();});
+        } else if (objet.type === 'barrierePolice') {
+            ctx.fillStyle = '#d8e7ef'; ctx.fillRect(-22, -4, 44, 8); ctx.fillStyle = '#238bd0'; for(let x=-20;x<20;x+=12) ctx.fillRect(x,-4,6,8);
+        } else if (objet.type === 'voiturePolice') {
+            ctx.fillStyle = '#dcebf2'; ctx.fillRect(-20,-10,40,20); ctx.fillStyle = '#17334a'; ctx.fillRect(-10,-8,20,16); ctx.fillStyle = '#238bd0'; ctx.fillRect(-4,-12,8,4);
+        } else {
+            ctx.fillStyle = 'rgba(225,239,247,.72)'; for(let x=-22;x<=22;x+=11) ctx.fillRect(x,-14,5,28);
         }
-        dessinerImageCentree(
-            MOBILIER_IMAGES[objet.type],
-            objet.x, objet.y,
-            MOBILIER_TAILLES[objet.type] || 32
-        );
+        ctx.restore();
     });
 }
 
@@ -642,20 +620,9 @@ function dessinerCommissariat() {
 }
 
 function dessinerAtmosphere() {
-    // Brume bleutée, vignette nocturne et pluie légère animée.
-    const brume = ctx.createRadialGradient(480, 310, 80, 480, 310, 620);
-    brume.addColorStop(0, 'rgba(35, 104, 145, .025)');
-    brume.addColorStop(1, 'rgba(0, 4, 11, .36)');
-    ctx.fillStyle = brume;
-    ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
-
-    ctx.strokeStyle = 'rgba(135, 194, 220, .09)';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < 38; i++) {
-        const x = (i * 91 + tempsAnimation * 24) % (LARGEUR_CANVAS + 40) - 20;
-        const y = (i * 53 + tempsAnimation * 115) % (HAUTEUR_CANVAS + 30) - 15;
-        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 4, y + 11); ctx.stroke();
-    }
+    const brume = ctx.createRadialGradient(480, 310, 100, 480, 310, 620);
+    brume.addColorStop(0, 'rgba(35, 104, 145, .018)'); brume.addColorStop(1, 'rgba(0, 4, 11, .28)');
+    ctx.fillStyle = brume; ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
 }
 
 
@@ -681,11 +648,11 @@ function dessinerCarte() {
     dessinerFond();
     dessinerRues();
     dessinerBatiments();
+    dessinerAtmosphere();
     dessinerCasesPlacement();
     dessinerMobilierUrbain();
     dessinerPointDepart();
     dessinerCommissariat();
-    dessinerAtmosphere();
 }
 
 
@@ -932,27 +899,28 @@ const COMPETENCES_UNITES = {
 };
 
 
+const IMAGES_AMELIORATIONS = {
+    policeSecours: ['images/evolution_policeSecours_1.webp', 'images/evolution_policeSecours_2.webp', 'images/evolution_policeSecours_3.webp'],
+    tireur: ['images/evolution_tireur_1.webp', 'images/evolution_tireur_2.webp', 'images/evolution_tireur_3.webp'],
+    lourd: ['images/evolution_lourd_1.webp', 'images/evolution_lourd_2.webp', 'images/evolution_lourd_3.webp'],
+    herse: ['images/evolution_herse_1.webp', 'images/evolution_herse_2.webp', 'images/evolution_herse_3.webp'],
+    bac: ['images/evolution_bac_1.webp', 'images/evolution_bac_2.webp', 'images/evolution_bac_3.webp'],
+    bri: ['images/evolution_bri_1.webp', 'images/evolution_bri_2.webp', 'images/evolution_bri_3.webp'],
+    policeJudiciaire: ['images/evolution_policeJudiciaire_1.webp', 'images/evolution_policeJudiciaire_2.webp', 'images/evolution_policeJudiciaire_3.webp'],
+    cynophile: ['images/evolution_cynophile_1.webp', 'images/evolution_cynophile_2.webp', 'images/evolution_cynophile_3.webp'],
+    motocycliste: ['images/evolution_motocycliste_1.webp', 'images/evolution_motocycliste_2.webp', 'images/evolution_motocycliste_3.webp'],
+    aerienne: ['images/evolution_aerienne_1.webp', 'images/evolution_aerienne_2.webp', 'images/evolution_aerienne_3.webp']
+};
+const PORTRAITS_AMELIORATIONS = {};
+Object.keys(IMAGES_AMELIORATIONS).forEach(function(type){
+    PORTRAITS_AMELIORATIONS[type] = IMAGES_AMELIORATIONS[type].map(function(uri){ const image = new Image(); image.src = uri; return image; });
+});
+
 const PORTRAITS_UNITES = {};
 Object.keys(UNITES).forEach(function (cle) {
     const image = new Image();
     image.src = UNITES[cle].portrait;
     PORTRAITS_UNITES[cle] = image;
-});
-
-// Le portrait du Commissaire (affiché sur l'écran d'accueil).
-const PORTRAIT_COMMISSAIRE = new Image();
-PORTRAIT_COMMISSAIRE.src = 'images/portrait_commissaire.jpg';
-
-// Le logo compact (bandeau de titre) et le grand logo (écran d'accueil).
-const LOGO_COMPACT = new Image();
-LOGO_COMPACT.src = 'images/logo_compact.png';
-
-// 4 variantes de toits, réparties sur les 8 bâtiments de la carte
-// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 4]).
-const TOITS_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (numero) {
-    const image = new Image();
-    image.src = 'images/toit_maquette_' + numero + '.png';
-    return image;
 });
 
 // Nouveaux visuels originaux, compressés et embarqués mécaniquement en fin
@@ -967,7 +935,6 @@ const NOUVEAUX_ASSETS_URIS = {
         blinde: 'images/ennemi_blinde.webp', chef: 'images/ennemi_chef.webp',
         saboteur: 'images/ennemi_saboteur.webp', eclaireur: 'images/ennemi_eclaireur.webp'
     },
-    roads: ['images/route_1.webp', 'images/route_2.webp', 'images/route_3.webp', 'images/route_4.webp']
 };
 function chargerCollectionImages(collection) {
     if (Array.isArray(collection)) return collection.map(function (src) { const img = new Image(); img.src = src; return img; });
@@ -975,9 +942,10 @@ function chargerCollectionImages(collection) {
     Object.keys(collection).forEach(function (cle) { const img = new Image(); img.src = collection[cle]; resultat[cle] = img; });
     return resultat;
 }
+const IMMEUBLES_V4_URIS = ['images/toit_technique_1.webp', 'images/toit_technique_2.webp', 'images/toit_technique_3.webp', 'images/toit_technique_4.webp'];
+const IMMEUBLES_REALISTES = chargerCollectionImages(IMMEUBLES_V4_URIS);
 const PLATEFORMES_TOURS = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.towers);
 const SPRITES_ENNEMIS = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.enemies);
-const MODULES_ROUTES = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.roads);
 
 function plateformePourUnite(type) {
     if (type === 'aerienne') return PLATEFORMES_TOURS.aerienne;
@@ -985,25 +953,6 @@ function plateformePourUnite(type) {
     if (type === 'tireur' || type === 'lourd' || type === 'bri' || type === 'bac') return PLATEFORMES_TOURS.intervention;
     return PLATEFORMES_TOURS.patrouille;
 }
-
-// Une image par élément de mobilier urbain (voir MOBILIER_URBAIN,
-// section 4bis) : la clé correspond exactement au "type" utilisé
-// dans ce tableau.
-const MOBILIER_IMAGES = {};
-['lampadaire', 'banc', 'abribus', 'poubelle', 'feuTricolore', 'boucheIncendie',
-    'barrierePolice', 'voiturePolice', 'jardiniere', 'passagePieton'].forEach(function (cle) {
-    const image = new Image();
-    image.src = 'images/mobilier_' + cle + '.png';
-    MOBILIER_IMAGES[cle] = image;
-});
-
-// La taille d'affichage cible (en pixels) de chaque élément de
-// mobilier urbain : certains objets (abribus, voiture) sont bien
-// plus larges que d'autres (bouche d'incendie, poubelle).
-const MOBILIER_TAILLES = {
-    lampadaire: 26, banc: 40, abribus: 58, poubelle: 22, feuTricolore: 30,
-    boucheIncendie: 18, barrierePolice: 42, voiturePolice: 46, jardiniere: 32, passagePieton: 48
-};
 
 /**
  * Dessine une image centrée en (x, y), redimensionnée pour que son
@@ -1558,6 +1507,10 @@ function verifierFinDeVague() {
     if (ennemisRestantAGenerer > 0 || ennemis.length > 0) return;
 
     vagueEnCours = false;
+    ennemisRestantAGenerer = 0;
+    chronoProchaineApparition = 0;
+    preparationVagueRestante = 0;
+    configVagueActuelle = null;
 
     const dernierNiveauTermine = vagueActuelle >= NOMBRE_TOTAL_VAGUES;
 
@@ -1569,7 +1522,8 @@ function verifierFinDeVague() {
         jouerSon('victoire');
     } else {
         etatJeu = 'attente';
-        document.getElementById('bouton-lancer-vague').disabled = false;
+        const boutonVague = document.getElementById('bouton-lancer-vague');
+        boutonVague.disabled = false;
         afficherMessage(
             dernierNiveauTermine
                 ? 'Vague ' + vagueActuelle + ' repoussée. Vagues infinies : continuez si vous l\'osez !'
@@ -1791,7 +1745,8 @@ function mettreAJourUnites(dt) {
 
         unite.cooldownRestant = unite.tempsEntreTirs;
         unite.animationTir = .22;
-        jouerSon(unite.type === 'aerienne' ? 'impact' : 'tir');
+        const sonsAttaque = {policeSecours:'tir',tireur:'precision',lourd:'lourd',bac:'rafale',bri:'precision',policeJudiciaire:'marquage',cynophile:'canin',motocycliste:'interception',aerienne:'helicoptere'};
+        jouerSon(sonsAttaque[unite.type] || 'tir');
     });
 
     // On retire les ennemis tués pendant ce combat, et on récompense
@@ -2017,7 +1972,8 @@ function dessinerUnitesPlacees() {
             dessinerHelicoptere(centre.x, yAnime, unite);
         } else {
             const recul = unite.animationTir > 0 ? 2.5 : 0;
-            dessinerAvatarUnite(PORTRAITS_UNITES[unite.type], centre.x - recul, yAnime - 1, 15, infos.couleur);
+            const portraitNiveau = PORTRAITS_AMELIORATIONS[unite.type] && PORTRAITS_AMELIORATIONS[unite.type][unite.niveau - 1];
+            dessinerAvatarUnite(portraitNiveau || PORTRAITS_UNITES[unite.type], centre.x - recul, yAnime - 1, 15, infos.couleur);
             ctx.fillStyle = 'rgba(2, 9, 16, .82)';
             ctx.fillRect(centre.x - 18, yAnime + 14, 36, 11);
             ctx.fillStyle = '#eaf4ff';
@@ -2385,6 +2341,7 @@ function demarrerPartieAvecDifficulte(cle) {
     difficulteActuelle = cle;
     document.getElementById('ecran-accueil').classList.add('cache');
     reinitialiserPartie();
+    definirModeMusique('jeu');
     afficherMessage('Difficulté sélectionnée : ' + DIFFICULTES[cle].nom + '.');
 }
 
@@ -2615,6 +2572,88 @@ curseurVolume.addEventListener('input', function () {
     actualiserControlesAudio();
 });
 
+
+const menuOverlay = document.getElementById('menu-overlay');
+const menuHome = document.getElementById('menu-home');
+const menuOptionsPanel = document.getElementById('menu-options-panel');
+const menuCreditsPanel = document.getElementById('menu-credits-panel');
+const menuReglesPanel = document.getElementById('menu-regles-panel');
+const menuPersonnagesPanel = document.getElementById('menu-personnages-panel');
+const menuAmeliorationsPanel = document.getElementById('menu-ameliorations-panel');
+const menuVolume = document.getElementById('menu-volume');
+const menuMute = document.getElementById('menu-mute');
+
+function afficherSectionMenu(section) {
+    menuHome.hidden = section !== 'accueil';
+    menuOptionsPanel.hidden = section !== 'options';
+    menuCreditsPanel.hidden = section !== 'credits';
+    menuReglesPanel.hidden = section !== 'regles';
+    menuPersonnagesPanel.hidden = section !== 'personnages';
+    menuAmeliorationsPanel.hidden = section !== 'ameliorations';
+    document.querySelector('.menu-panel').classList.toggle('menu-panel-large', section === 'regles' || section === 'personnages' || section === 'ameliorations');
+}
+
+function synchroniserOptionsMenu() {
+    menuVolume.value = curseurVolume.value;
+    menuMute.textContent = !audioMuet && volumeAudio > 0 ? 'Couper le son' : 'Activer le son';
+}
+
+function showMenu() {
+    afficherSectionMenu('accueil');
+    synchroniserOptionsMenu();
+    definirModeMusique('menu');
+    document.getElementById('ecran-accueil').classList.add('cache');
+    menuOverlay.classList.remove('menu-cache');
+    document.getElementById('menu-jouer').focus();
+}
+
+function hideMenu() {
+    menuOverlay.classList.add('menu-cache');
+}
+
+document.getElementById('menu-jouer').addEventListener('click', function () {
+    initialiserAudio();
+    hideMenu();
+    document.getElementById('ecran-accueil').classList.remove('cache');
+});
+
+document.getElementById('menu-regles').addEventListener('click', function () { afficherSectionMenu('regles'); });
+document.getElementById('menu-personnages').addEventListener('click', function () { afficherSectionMenu('personnages'); });
+document.getElementById('menu-ameliorations').addEventListener('click', function () { afficherSectionMenu('ameliorations'); });
+
+document.getElementById('menu-options').addEventListener('click', function () {
+    synchroniserOptionsMenu();
+    afficherSectionMenu('options');
+});
+
+document.getElementById('menu-credits').addEventListener('click', function () {
+    afficherSectionMenu('credits');
+});
+
+document.querySelectorAll('.menu-retour').forEach(function (bouton) {
+    bouton.addEventListener('click', function () { afficherSectionMenu('accueil'); });
+});
+
+menuVolume.addEventListener('input', function () {
+    curseurVolume.value = menuVolume.value;
+    curseurVolume.dispatchEvent(new Event('input', { bubbles: true }));
+    synchroniserOptionsMenu();
+});
+
+menuMute.addEventListener('click', function () {
+    boutonAudio.click();
+    synchroniserOptionsMenu();
+});
+
+menuOverlay.addEventListener('pointerdown', function activerMusiqueMenu() {
+    initialiserAudio();
+    definirModeMusique('menu');
+}, { once:true });
+
+menuOverlay.addEventListener('keydown', function (evenement) {
+    if (evenement.key === 'Escape' && menuHome.hidden) afficherSectionMenu('accueil');
+});
+
 boutonVitesse.addEventListener('click', function () {
     multiplicateurVitesseJeu = multiplicateurVitesseJeu === 1 ? 2 : 1;
     boutonVitesse.textContent = '×' + multiplicateurVitesseJeu;
@@ -2624,18 +2663,54 @@ boutonVitesse.addEventListener('click', function () {
 
 document.addEventListener('keydown', function (evenement) {
     if (evenement.key.toLowerCase() === 'm') boutonAudio.click();
-    if (evenement.key === ' ' && !document.getElementById('ecran-accueil').classList.contains('cache')) return;
+    if (evenement.key === ' ' && (!menuOverlay.classList.contains('menu-cache') || !document.getElementById('ecran-accueil').classList.contains('cache'))) return;
     if (evenement.key === ' ' && !vagueEnCours && etatJeu !== 'gagne' && etatJeu !== 'perdu') {
         evenement.preventDefault();
         lancerVagueSuivante();
     }
 });
 
+
+function pourcentageStatistique(valeur, maximum) { return Math.max(8, Math.min(100, Math.round(valeur / maximum * 100))); }
+
+function initialiserMenuStudio() {
+    const grillePersonnages = document.getElementById('menu-personnages-grille');
+    const grilleAmeliorations = document.getElementById('menu-ameliorations-grille');
+    Object.keys(UNITES).forEach(function(type) {
+        const infos = UNITES[type];
+        const meta = COMPETENCES_UNITES[type];
+        const carte = document.createElement('article');
+        carte.className = 'menu-personnage-card';
+        const image = document.createElement('img'); image.src = IMAGES_AMELIORATIONS[type][0]; image.alt = infos.nom + ', niveau I';
+        const corps = document.createElement('div');
+        const titre = document.createElement('h3'); titre.textContent = infos.nom;
+        const role = document.createElement('p'); role.textContent = meta.role + ' • ' + meta.skill;
+        const attaque = document.createElement('p'); attaque.textContent = meta.attaque + ' — cible : ' + meta.cible;
+        corps.append(titre, role, attaque);
+        [['Dégâts',pourcentageStatistique(infos.degats || 1,180)],['Portée',pourcentageStatistique(infos.portee,520)],['Cadence',pourcentageStatistique(1 / Math.max(.18,infos.tempsEntreTirs || 1),4)]].forEach(function(stat){
+            const ligne = document.createElement('span'); ligne.className = 'menu-stat'; ligne.innerHTML = '<b>' + stat[0] + '</b><i style="--stat:' + stat[1] + '%"></i>'; corps.appendChild(ligne);
+        });
+        carte.append(image, corps); grillePersonnages.appendChild(carte);
+
+        const evolution = document.createElement('article'); evolution.className = 'menu-amelioration-card';
+        const nom = document.createElement('h3'); nom.textContent = infos.nom;
+        const niveaux = document.createElement('div'); niveaux.className = 'menu-evolutions';
+        IMAGES_AMELIORATIONS[type].forEach(function(uri,index){
+            const figure = document.createElement('figure'); figure.className = 'menu-evolution';
+            const visuel = document.createElement('img'); visuel.src = uri; visuel.alt = infos.nom + ', niveau ' + (index + 1); visuel.loading = 'lazy';
+            const legende = document.createElement('figcaption'); legende.textContent = 'N' + (index + 1);
+            figure.append(visuel, legende); niveaux.appendChild(figure);
+        });
+        const details = document.createElement('small'); details.textContent = 'Chaque niveau : dégâts +50 %, portée +20 %, cadence améliorée. Niveau III : ' + meta.effet + '.';
+        evolution.append(nom, niveaux, details); grilleAmeliorations.appendChild(evolution);
+    });
+}
+
 function initialiserRosterV3() {
     const grille = document.getElementById('roster-grille');
     Object.keys(UNITES).forEach(function(type) {
         const carte = document.createElement('article'); carte.className = 'roster-carte';
-        const image = document.createElement('img'); image.src = UNITES[type].portrait; image.alt = UNITES[type].nom;
+        const image = document.createElement('img'); image.src = IMAGES_AMELIORATIONS[type][0]; image.alt = UNITES[type].nom;
         const nom = document.createElement('strong'); nom.textContent = UNITES[type].nom;
         const meta = COMPETENCES_UNITES[type];
         const role = document.createElement('span'); role.className = 'roster-role'; role.textContent = meta.role;
@@ -2649,6 +2724,7 @@ function initialiserRosterV3() {
     ecran.addEventListener('click', function(e){ if(e.target === ecran) document.getElementById('bouton-fermer-roster').click(); });
 }
 
+initialiserMenuStudio();
 initialiserRosterV3();
 initialiserEcranAccueil();
 initialiserBoutique();
