@@ -1,3 +1,4 @@
+
 /*
     ============================================================
     FICHIER : script.js
@@ -58,6 +59,117 @@ const ctx = canvas.getContext('2d');
 const LARGEUR_CANVAS = canvas.width;
 const HAUTEUR_CANVAS = canvas.height;
 
+// État transversal : animations, rythme, sauvegarde robuste et audio procédural.
+let tempsAnimation = 0;
+let multiplicateurVitesseJeu = 1;
+let preparationVagueRestante = 0;
+let particules = [];
+let textesFlottants = [];
+let secousseRestante = 0;
+let flashBaseRestant = 0;
+
+function lireStockage(cle, valeurParDefaut) {
+    try {
+        const valeur = window.localStorage.getItem(cle);
+        return valeur === null ? valeurParDefaut : valeur;
+    } catch (erreur) {
+        return valeurParDefaut;
+    }
+}
+
+function ecrireStockage(cle, valeur) {
+    try { window.localStorage.setItem(cle, valeur); } catch (erreur) { /* mode privé / fichier local */ }
+}
+
+let contexteAudio = null;
+let gainAudioPrincipal = null;
+let gainAmbiance = null;
+let audioMuet = lireStockage('alertePoliceSecours_audioMuet', 'false') === 'true';
+let volumeAudio = Number(lireStockage('alertePoliceSecours_volume', '0.45'));
+if (!Number.isFinite(volumeAudio)) volumeAudio = 0.45;
+volumeAudio = Math.min(1, Math.max(0, volumeAudio));
+let dernierSonTir = -Infinity;
+
+function initialiserAudio() {
+    if (contexteAudio) {
+        if (contexteAudio.state === 'suspended') contexteAudio.resume().catch(function () {});
+        return;
+    }
+    const AudioContextDisponible = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextDisponible) return;
+
+    contexteAudio = new AudioContextDisponible();
+    gainAudioPrincipal = contexteAudio.createGain();
+    gainAudioPrincipal.gain.value = audioMuet ? 0 : volumeAudio;
+    gainAudioPrincipal.connect(contexteAudio.destination);
+
+    gainAmbiance = contexteAudio.createGain();
+    gainAmbiance.gain.value = 0.12;
+    gainAmbiance.connect(gainAudioPrincipal);
+
+    // Souffle urbain très discret, entièrement synthétisé dans le navigateur.
+    const longueur = Math.max(1, Math.floor(contexteAudio.sampleRate * 2));
+    const tampon = contexteAudio.createBuffer(1, longueur, contexteAudio.sampleRate);
+    const donnees = tampon.getChannelData(0);
+    for (let i = 0; i < longueur; i++) donnees[i] = (Math.random() * 2 - 1) * 0.12;
+    const bruit = contexteAudio.createBufferSource();
+    const filtre = contexteAudio.createBiquadFilter();
+    filtre.type = 'lowpass';
+    filtre.frequency.value = 420;
+    bruit.buffer = tampon;
+    bruit.loop = true;
+    bruit.connect(filtre).connect(gainAmbiance);
+    bruit.start();
+
+    // Bourdonnement musical grave, sans fichier externe ni asset protégé.
+    [48, 72].forEach(function (frequence, index) {
+        const oscillateur = contexteAudio.createOscillator();
+        const gain = contexteAudio.createGain();
+        oscillateur.type = index === 0 ? 'sine' : 'triangle';
+        oscillateur.frequency.value = frequence;
+        gain.gain.value = index === 0 ? 0.035 : 0.012;
+        oscillateur.connect(gain).connect(gainAmbiance);
+        oscillateur.start();
+    });
+    contexteAudio.resume().catch(function () {});
+}
+
+function appliquerVolumeAudio() {
+    if (!gainAudioPrincipal || !contexteAudio) return;
+    gainAudioPrincipal.gain.cancelScheduledValues(contexteAudio.currentTime);
+    gainAudioPrincipal.gain.linearRampToValueAtTime(audioMuet ? 0 : volumeAudio, contexteAudio.currentTime + 0.04);
+}
+
+function jouerSon(type) {
+    if (!contexteAudio || !gainAudioPrincipal || audioMuet || volumeAudio <= 0) return;
+    const maintenant = contexteAudio.currentTime;
+    if (type === 'tir' && maintenant - dernierSonTir < 0.055) return;
+    if (type === 'tir') dernierSonTir = maintenant;
+
+    const profils = {
+        tir:          { debut: 210, fin: 92, duree: .055, volume: .035, forme: 'square' },
+        impact:       { debut: 105, fin: 48, duree: .09, volume: .045, forme: 'triangle' },
+        construction: { debut: 330, fin: 660, duree: .15, volume: .055, forme: 'sine' },
+        upgrade:      { debut: 440, fin: 990, duree: .28, volume: .065, forme: 'triangle' },
+        vente:        { debut: 520, fin: 310, duree: .16, volume: .045, forme: 'sine' },
+        vague:        { debut: 130, fin: 390, duree: .42, volume: .075, forme: 'sawtooth' },
+        alerte:       { debut: 680, fin: 440, duree: .24, volume: .08, forme: 'square' },
+        victoire:     { debut: 392, fin: 784, duree: .75, volume: .085, forme: 'triangle' },
+        defaite:      { debut: 180, fin: 55, duree: .9, volume: .085, forme: 'sawtooth' }
+    };
+    const p = profils[type] || profils.impact;
+    const oscillateur = contexteAudio.createOscillator();
+    const gain = contexteAudio.createGain();
+    oscillateur.type = p.forme;
+    oscillateur.frequency.setValueAtTime(p.debut, maintenant);
+    oscillateur.frequency.exponentialRampToValueAtTime(Math.max(20, p.fin), maintenant + p.duree);
+    gain.gain.setValueAtTime(p.volume, maintenant);
+    gain.gain.exponentialRampToValueAtTime(0.0001, maintenant + p.duree);
+    oscillateur.connect(gain).connect(gainAudioPrincipal);
+    oscillateur.start(maintenant);
+    oscillateur.stop(maintenant + p.duree + .02);
+}
+
 
 /* ------------------------------------------------------------
    2. CONSTANTES DE CONFIGURATION VISUELLE
@@ -98,16 +210,10 @@ const LARGEUR_RUE = 60;                  // Largeur (en pixels) d'une rue dessin
    bâtiments jusqu'au Commissariat Central.
 ------------------------------------------------------------ */
 const CHEMIN = [
-    { x: 0,   y: 120 },  // Point de départ : les ennemis apparaîtront ici, sur le bord gauche
-    { x: 220, y: 120 },
-    { x: 220, y: 320 },
-    { x: 520, y: 320 },
-    { x: 520, y: 140 },
-    { x: 800, y: 140 },
-    { x: 800, y: 460 },
-    { x: 400, y: 460 },
-    { x: 400, y: 560 },
-    { x: 660, y: 560 }  // Point final : le Commissariat Central, la base à défendre
+    { x: 0, y: 112 }, { x: 190, y: 112 }, { x: 190, y: 258 },
+    { x: 378, y: 258 }, { x: 378, y: 112 }, { x: 560, y: 112 },
+    { x: 560, y: 360 }, { x: 760, y: 360 }, { x: 760, y: 520 },
+    { x: 520, y: 520 }, { x: 520, y: 610 }, { x: 690, y: 610 }
 ];
 
 /* ------------------------------------------------------------
@@ -138,14 +244,27 @@ const RUE_SECONDAIRE = {
    Les bâtiments sont placés autour des rues, sans les bloquer.
 ------------------------------------------------------------ */
 const BATIMENTS = [
-    { x: 30,  y: 170, largeur: 150, hauteur: 100 },
-    { x: 280, y: 20,  largeur: 170, hauteur: 80  },
-    { x: 610, y: 210, largeur: 150, hauteur: 90  },
-    { x: 40,  y: 420, largeur: 150, hauteur: 100 },
-    { x: 560, y: 300, largeur: 110, hauteur: 100 },
-    { x: 840, y: 240, largeur: 100, hauteur: 160 },
-    { x: 140, y: 560, largeur: 130, hauteur: 60  },
-    { x: 780, y: 500, largeur: 150, hauteur: 100 }
+    {x:22,y:162,largeur:142,hauteur:82},{x:218,y:18,largeur:130,hauteur:76},
+    {x:404,y:158,largeur:130,hauteur:84},{x:28,y:302,largeur:132,hauteur:92},
+    {x:214,y:310,largeur:132,hauteur:90},{x:594,y:168,largeur:142,hauteur:98},
+    {x:794,y:300,largeur:138,hauteur:92},{x:170,y:470,largeur:142,hauteur:92},
+    {x:798,y:464,largeur:134,hauteur:92},{x:340,y:542,largeur:138,hauteur:74},
+    {x:594,y:18,largeur:142,hauteur:76},{x:798,y:18,largeur:134,hauteur:76}
+];
+
+const CASES_PLACEMENT = [
+    {x:36,y:176,largeur:42,hauteur:42,zone:'#e8a9bd'},{x:104,y:190,largeur:42,hauteur:42,zone:'#e8a9bd'},
+    {x:230,y:31,largeur:42,hauteur:42,zone:'#d6c69c'},{x:292,y:40,largeur:42,hauteur:42,zone:'#d6c69c'},
+    {x:420,y:172,largeur:42,hauteur:42,zone:'#a5d8e7'},{x:476,y:188,largeur:42,hauteur:42,zone:'#a5d8e7'},
+    {x:42,y:322,largeur:42,hauteur:42,zone:'#b7e9de'},{x:100,y:337,largeur:42,hauteur:42,zone:'#b7e9de'},
+    {x:230,y:327,largeur:42,hauteur:42,zone:'#a8d9a7'},{x:288,y:344,largeur:42,hauteur:42,zone:'#a8d9a7'},
+    {x:610,y:188,largeur:42,hauteur:42,zone:'#d8b5e2'},{x:674,y:202,largeur:42,hauteur:42,zone:'#d8b5e2'},
+    {x:810,y:318,largeur:42,hauteur:42,zone:'#f0d59a'},{x:870,y:336,largeur:42,hauteur:42,zone:'#f0d59a'},
+    {x:187,y:486,largeur:42,hauteur:42,zone:'#d2b39e'},{x:250,y:505,largeur:42,hauteur:42,zone:'#d2b39e'},
+    {x:812,y:480,largeur:42,hauteur:42,zone:'#b7d1ed'},{x:872,y:500,largeur:42,hauteur:42,zone:'#b7d1ed'},
+    {x:356,y:556,largeur:42,hauteur:42,zone:'#c4c6ca'},{x:418,y:568,largeur:42,hauteur:42,zone:'#c4c6ca'},
+    {x:610,y:31,largeur:42,hauteur:42,zone:'#8fd5e8'},{x:676,y:40,largeur:42,hauteur:42,zone:'#8fd5e8'},
+    {x:812,y:31,largeur:42,hauteur:42,zone:'#efd477'},{x:874,y:40,largeur:42,hauteur:42,zone:'#efd477'}
 ];
 
 
@@ -179,13 +298,28 @@ const MOBILIER_URBAIN = [
    toute première couche : tout le reste sera dessiné par-dessus.
 ------------------------------------------------------------ */
 function dessinerFond() {
-    // fillStyle définit la couleur utilisée par les prochains
-    // "remplissages" (fillRect, fill...).
-    ctx.fillStyle = COULEUR_SOL;
-
-    // fillRect(x, y, largeur, hauteur) dessine un rectangle plein.
-    // Ici on remplit TOUT le canvas avec la couleur de sol.
+    const degrade = ctx.createLinearGradient(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+    degrade.addColorStop(0, '#172433');
+    degrade.addColorStop(.52, '#111c27');
+    degrade.addColorStop(1, '#09131d');
+    ctx.fillStyle = degrade;
     ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+
+    // Dallage urbain et grain déterministe (aucun scintillement entre les images).
+    ctx.strokeStyle = 'rgba(128, 164, 185, .055)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < LARGEUR_CANVAS; x += 32) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, HAUTEUR_CANVAS); ctx.stroke();
+    }
+    for (let y = 0; y < HAUTEUR_CANVAS; y += 32) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(LARGEUR_CANVAS, y); ctx.stroke();
+    }
+    for (let i = 0; i < 90; i++) {
+        const x = (i * 83 + 19) % LARGEUR_CANVAS;
+        const y = (i * 47 + 31) % HAUTEUR_CANVAS;
+        ctx.fillStyle = i % 3 ? 'rgba(110,150,170,.05)' : 'rgba(0,0,0,.08)';
+        ctx.fillRect(x, y, 2 + (i % 4), 1);
+    }
 }
 
 
@@ -212,9 +346,33 @@ function dessinerRues() {
     // Puis on redessine l'asphalte par-dessus, un peu moins large.
     tracerLigneChemin(LARGEUR_RUE, COULEUR_RUE);
 
+    // Texture routière nocturne originale, découpée dans le tracé. Le dessin
+    // vectoriel précédent reste le repli immédiat pendant son chargement.
+    if (typeof MODULES_ROUTES !== 'undefined' && MODULES_ROUTES[0] && MODULES_ROUTES[0].complete && MODULES_ROUTES[0].naturalWidth > 0) {
+        const motifRoute = ctx.createPattern(MODULES_ROUTES[0], 'repeat');
+        ctx.save();
+        ctx.globalAlpha = .34;
+        ctx.beginPath(); ctx.moveTo(CHEMIN[0].x, CHEMIN[0].y);
+        for (let i = 1; i < CHEMIN.length; i++) ctx.lineTo(CHEMIN[i].x, CHEMIN[i].y);
+        ctx.strokeStyle = motifRoute; ctx.lineWidth = LARGEUR_RUE - 4;
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
+        ctx.restore();
+    }
+
     // Enfin, on ajoute le marquage au sol (ligne blanche discontinue)
     // au centre de la rue principale, comme sur une vraie route.
     tracerLigneChemin(4, COULEUR_MARQUAGE, [16, 14]);
+
+    // Reflets humides et flèches directionnelles donnent du relief à la chaussée.
+    tracerLigneChemin(1, 'rgba(90, 190, 255, .18)', [5, 32]);
+    ctx.save();
+    ctx.fillStyle = 'rgba(232, 241, 247, .45)';
+    [{x:335,y:320,a:0},{x:650,y:140,a:0},{x:800,y:350,a:Math.PI/2},{x:580,y:460,a:Math.PI}].forEach(function (fleche) {
+        ctx.translate(fleche.x, fleche.y); ctx.rotate(fleche.a);
+        ctx.beginPath(); ctx.moveTo(10,0); ctx.lineTo(-5,-7); ctx.lineTo(-2,0); ctx.lineTo(-5,7); ctx.closePath(); ctx.fill();
+        ctx.rotate(-fleche.a); ctx.translate(-fleche.x, -fleche.y);
+    });
+    ctx.restore();
 }
 
 /**
@@ -273,6 +431,15 @@ function tracerSegmentRue(pointA, pointB) {
     ctx.lineWidth = LARGEUR_RUE;
     ctx.lineCap = 'round';
     ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(pointA.x, pointA.y);
+    ctx.lineTo(pointB.x, pointB.y);
+    ctx.strokeStyle = 'rgba(232, 232, 232, .7)';
+    ctx.lineWidth = 3;
+    ctx.setLineDash([14, 12]);
+    ctx.stroke();
+    ctx.setLineDash([]);
 }
 
 
@@ -302,6 +469,9 @@ function dessinerBatiments() {
     BATIMENTS.forEach(function (batiment, index) {
         const image = TOITS_IMAGES[index % TOITS_IMAGES.length];
 
+        ctx.fillStyle = 'rgba(0, 0, 0, .42)';
+        ctx.fillRect(batiment.x + 8, batiment.y + 10, batiment.largeur, batiment.hauteur);
+
         if (image.complete && image.naturalWidth > 0) {
             ctx.drawImage(image, batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
         } else {
@@ -310,14 +480,52 @@ function dessinerBatiments() {
             ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
         }
 
-        // Indice visuel "emplacement constructible" (voir explication ci-dessus)
-        if (typeSelectionnePourAchat && !uniteSurBatiment(batiment)) {
-            ctx.strokeStyle = '#ffd166';
-            ctx.lineWidth = 3;
-            ctx.setLineDash([8, 6]);
-            ctx.strokeRect(batiment.x - 3, batiment.y - 3, batiment.largeur + 6, batiment.hauteur + 6);
-            ctx.setLineDash([]);
+        const toitDegrade = ctx.createLinearGradient(batiment.x, batiment.y, batiment.x, batiment.y + batiment.hauteur);
+        toitDegrade.addColorStop(0, 'rgba(120, 190, 220, .12)');
+        toitDegrade.addColorStop(1, 'rgba(0, 5, 12, .38)');
+        ctx.fillStyle = toitDegrade;
+        ctx.fillRect(batiment.x, batiment.y, batiment.largeur, batiment.hauteur);
+        ctx.strokeStyle = 'rgba(145, 201, 226, .34)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(batiment.x + .5, batiment.y + .5, batiment.largeur - 1, batiment.hauteur - 1);
+
+        // Équipements de toiture et fenêtres éclairées, générés de façon stable par index.
+        if (batiment.largeur > 120) {
+            ctx.fillStyle = '#263440';
+            ctx.fillRect(batiment.x + 12, batiment.y + 12, 24, 15);
+            ctx.strokeStyle = '#607483';
+            ctx.strokeRect(batiment.x + 12, batiment.y + 12, 24, 15);
         }
+        for (let w = 18; w < batiment.largeur - 10; w += 30) {
+            if ((w + index) % 3 === 0) continue;
+            ctx.fillStyle = 'rgba(255, 205, 104, .38)';
+            ctx.fillRect(batiment.x + w, batiment.y + batiment.hauteur - 5, 12, 3);
+        }
+
+        // Indice visuel "emplacement constructible" (voir explication ci-dessus)
+    });
+}
+
+function dessinerCasesPlacement() {
+    CASES_PLACEMENT.forEach(function (caseToit, index) {
+        const occupee = Boolean(uniteSurBatiment(caseToit));
+        const centre = centreBatiment(caseToit);
+        const active = Boolean(typeSelectionnePourAchat) && !occupee;
+        ctx.save();
+        ctx.fillStyle = occupee ? 'rgba(5, 13, 22, .34)' : (active ? caseToit.zone + 'cc' : caseToit.zone + '55');
+        ctx.strokeStyle = active ? '#ffd166' : (occupee ? 'rgba(110, 198, 255, .28)' : 'rgba(110, 198, 255, .38)');
+        ctx.lineWidth = active ? 2.5 : 1;
+        ctx.setLineDash(active ? [6, 4] : [3, 5]);
+        ctx.beginPath();
+        ctx.roundRect(caseToit.x, caseToit.y, caseToit.largeur, caseToit.hauteur, 8);
+        ctx.fill(); ctx.stroke();
+        ctx.setLineDash([]);
+        if (!occupee) {
+            ctx.fillStyle = active ? '#ffd166' : 'rgba(185, 226, 255, .62)';
+            ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center';
+            ctx.fillText(String(index + 1).padStart(2, '0'), centre.x, centre.y + 3);
+        }
+        ctx.restore();
     });
 }
 
@@ -333,6 +541,13 @@ function dessinerBatiments() {
 ------------------------------------------------------------ */
 function dessinerMobilierUrbain() {
     MOBILIER_URBAIN.forEach(function (objet) {
+        if (objet.type === 'lampadaire' || objet.type === 'feuTricolore') {
+            const halo = ctx.createRadialGradient(objet.x, objet.y, 2, objet.x, objet.y, objet.type === 'lampadaire' ? 55 : 30);
+            halo.addColorStop(0, 'rgba(255, 218, 136, .32)');
+            halo.addColorStop(1, 'rgba(255, 218, 136, 0)');
+            ctx.fillStyle = halo;
+            ctx.beginPath(); ctx.arc(objet.x, objet.y, objet.type === 'lampadaire' ? 55 : 30, 0, Math.PI * 2); ctx.fill();
+        }
         dessinerImageCentree(
             MOBILIER_IMAGES[objet.type],
             objet.x, objet.y,
@@ -384,7 +599,10 @@ function dessinerCommissariat() {
     const y = base.y - hauteur / 2;
 
     // Le bâtiment principal du Commissariat
-    ctx.fillStyle = COULEUR_COMMISSARIAT;
+    const degradeBase = ctx.createLinearGradient(x, y, x + largeur, y + hauteur);
+    degradeBase.addColorStop(0, '#397ee8');
+    degradeBase.addColorStop(1, '#102d61');
+    ctx.fillStyle = degradeBase;
     ctx.fillRect(x, y, largeur, hauteur);
 
     // Contour blanc épais pour bien le distinguer des toits ordinaires
@@ -397,11 +615,47 @@ function dessinerCommissariat() {
     const tailleGyrophare = 14;
     const yGyrophare = y - tailleGyrophare - 4;
 
+    const pulsation = .55 + Math.sin(tempsAnimation * 7) * .4;
+    ctx.globalAlpha = Math.max(.15, pulsation);
     ctx.fillStyle = COULEUR_GYROPHARE_BLEU;
     ctx.fillRect(base.x - tailleGyrophare, yGyrophare, tailleGyrophare, tailleGyrophare);
 
     ctx.fillStyle = COULEUR_GYROPHARE_ROUGE;
     ctx.fillRect(base.x, yGyrophare, tailleGyrophare, tailleGyrophare);
+    ctx.globalAlpha = 1;
+
+    [
+        { x: base.x - 7, couleur: 'rgba(50, 145, 255, .34)', phase: 0 },
+        { x: base.x + 7, couleur: 'rgba(255, 55, 78, .30)', phase: Math.PI }
+    ].forEach(function (feu) {
+        const rayon = 42 + 16 * Math.max(0, Math.sin(tempsAnimation * 7 + feu.phase));
+        const halo = ctx.createRadialGradient(feu.x, yGyrophare, 2, feu.x, yGyrophare, rayon);
+        halo.addColorStop(0, feu.couleur); halo.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(feu.x, yGyrophare, rayon, 0, Math.PI * 2); ctx.fill();
+    });
+
+    ctx.fillStyle = '#eef8ff';
+    ctx.font = 'bold 10px "Arial Narrow", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('COMMISSARIAT', base.x, base.y + 4);
+    ctx.textAlign = 'start';
+}
+
+function dessinerAtmosphere() {
+    // Brume bleutée, vignette nocturne et pluie légère animée.
+    const brume = ctx.createRadialGradient(480, 310, 80, 480, 310, 620);
+    brume.addColorStop(0, 'rgba(35, 104, 145, .025)');
+    brume.addColorStop(1, 'rgba(0, 4, 11, .36)');
+    ctx.fillStyle = brume;
+    ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+
+    ctx.strokeStyle = 'rgba(135, 194, 220, .09)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 38; i++) {
+        const x = (i * 91 + tempsAnimation * 24) % (LARGEUR_CANVAS + 40) - 20;
+        const y = (i * 53 + tempsAnimation * 115) % (HAUTEUR_CANVAS + 30) - 15;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 4, y + 11); ctx.stroke();
+    }
 }
 
 
@@ -427,9 +681,11 @@ function dessinerCarte() {
     dessinerFond();
     dessinerRues();
     dessinerBatiments();
+    dessinerCasesPlacement();
     dessinerMobilierUrbain();
     dessinerPointDepart();
     dessinerCommissariat();
+    dessinerAtmosphere();
 }
 
 
@@ -464,6 +720,16 @@ const elementArgent = document.getElementById('argent-valeur');
 function mettreAJourAffichageArgent() {
     // .textContent remplace le texte affiché à l'intérieur de l'élément HTML.
     elementArgent.textContent = argent;
+    actualiserEtatBoutique();
+}
+
+function actualiserEtatBoutique() {
+    document.querySelectorAll('.bouton-unite').forEach(function (bouton) {
+        const infos = UNITES[bouton.dataset.type];
+        bouton.classList.toggle('inabordable', !!infos && argent < infos.cout);
+        bouton.setAttribute('aria-pressed', String(typeSelectionnePourAchat === bouton.dataset.type));
+        bouton.classList.toggle('selectionnee', typeSelectionnePourAchat === bouton.dataset.type);
+    });
 }
 
 /**
@@ -652,6 +918,20 @@ const UNITES = {
 
 // Un portrait par type d'unité, chargé une seule fois et réutilisé à
 // chaque image (frame) pour dessiner l'avatar rond sur la carte.
+const COMPETENCES_UNITES = {
+    policeSecours:{role:'Polyvalent',attaque:'Rafale contrôlée',cible:'Premier ennemi',skill:'Appui immédiat',recharge:'0,5 s',forces:'Cadence et faible coût',faiblesses:'Faibles dégâts de zone',effet:'Rafale bleue accélérée au niveau III'},
+    tireur:{role:'Longue portée',attaque:'Tir perforant',cible:'Menace la plus avancée',skill:'Visée critique',recharge:'1,1 s',forces:'Portée et critiques',faiblesses:'Cadence lente',effet:'Trace rouge et impact précis'},
+    lourd:{role:'Assaut lourd',attaque:'Charge explosive',cible:'Groupe dense',skill:'Déflagration tactique',recharge:'0,7 s',forces:'Dégâts de zone',faiblesses:'Coût élevé',effet:'Onde orange et secousse'},
+    herse:{role:'Contrôle',attaque:'Zone de barrage',cible:'Tous dans la zone',skill:'Herse renforcée',recharge:'Passive',forces:'Ralentissement continu',faiblesses:'Aucun dégât direct',effet:'Anneau bleu et étincelles'},
+    bac:{role:'Intervention rapide',attaque:'Rafale rapprochée',cible:'Groupe proche',skill:'Encerclement',recharge:'0,35 s',forces:'Cadence et petite zone',faiblesses:'Portée réduite',effet:'Impacts cyan multiples'},
+    bri:{role:'Élimination',attaque:'Tir de précision',cible:'Cible la plus dangereuse',skill:'Neutralisation critique',recharge:'1,7 s',forces:'Très gros dégâts',faiblesses:'Prix et cadence',effet:'Flash violet et critique'},
+    policeJudiciaire:{role:'Soutien',attaque:'Désignation',cible:'Cible non marquée',skill:'Marquage prioritaire',recharge:'1,2 s',forces:'Amplifie tous les dégâts',faiblesses:'Aucun dégât direct',effet:'Balise dorée pulsante'},
+    cynophile:{role:'Détection',attaque:'Interception canine',cible:'Ennemi rapide',skill:'Pistage',recharge:'0,5 s',forces:'Détection et ralentissement',faiblesses:'Courte portée',effet:'Traînée verte et morsure'},
+    motocycliste:{role:'Interception',attaque:'Percussion ciblée',cible:'Premier ennemi',skill:'Blocage routier',recharge:'1,4 s',forces:'Immobilisation',faiblesses:'Dégâts modestes',effet:'Trace jaune et cercle bloqué'},
+    aerienne:{role:'Soutien global',attaque:'Frappe aérienne',cible:'Plus grand groupe',skill:'Survol d’urgence',recharge:'6 s',forces:'Portée globale et grande zone',faiblesses:'Très chère et lente',effet:'Passage hélicoptère et explosion bleue'}
+};
+
+
 const PORTRAITS_UNITES = {};
 Object.keys(UNITES).forEach(function (cle) {
     const image = new Image();
@@ -667,15 +947,44 @@ PORTRAIT_COMMISSAIRE.src = 'images/portrait_commissaire.jpg';
 const LOGO_COMPACT = new Image();
 LOGO_COMPACT.src = 'images/logo_compact.png';
 
-// 12 variantes de toits pastel (extraites de la maquette d'interface
-// fournie par l'utilisateur : bâtiments massifs aux toits plats colorés,
-// vus strictement de dessus), réparties sur les 8 bâtiments de la carte
-// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 12]).
+// 4 variantes de toits, réparties sur les 8 bâtiments de la carte
+// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 4]).
 const TOITS_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (numero) {
     const image = new Image();
     image.src = 'images/toit_maquette_' + numero + '.png';
     return image;
 });
+
+// Nouveaux visuels originaux, compressés et embarqués mécaniquement en fin
+// de production afin que le HTML reste entièrement autonome hors connexion.
+const NOUVEAUX_ASSETS_URIS = {
+    towers: {
+        patrouille: 'images/plateforme_patrouille.webp', intervention: 'images/plateforme_intervention.webp',
+        controle: 'images/plateforme_controle.webp', aerienne: 'images/plateforme_aerienne.webp'
+    },
+    enemies: {
+        standard: 'images/ennemi_standard.webp', rapide: 'images/ennemi_rapide.webp',
+        blinde: 'images/ennemi_blinde.webp', chef: 'images/ennemi_chef.webp',
+        saboteur: 'images/ennemi_saboteur.webp', eclaireur: 'images/ennemi_eclaireur.webp'
+    },
+    roads: ['images/route_1.webp', 'images/route_2.webp', 'images/route_3.webp', 'images/route_4.webp']
+};
+function chargerCollectionImages(collection) {
+    if (Array.isArray(collection)) return collection.map(function (src) { const img = new Image(); img.src = src; return img; });
+    const resultat = {};
+    Object.keys(collection).forEach(function (cle) { const img = new Image(); img.src = collection[cle]; resultat[cle] = img; });
+    return resultat;
+}
+const PLATEFORMES_TOURS = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.towers);
+const SPRITES_ENNEMIS = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.enemies);
+const MODULES_ROUTES = chargerCollectionImages(NOUVEAUX_ASSETS_URIS.roads);
+
+function plateformePourUnite(type) {
+    if (type === 'aerienne') return PLATEFORMES_TOURS.aerienne;
+    if (type === 'herse' || type === 'motocycliste' || type === 'cynophile') return PLATEFORMES_TOURS.controle;
+    if (type === 'tireur' || type === 'lourd' || type === 'bri' || type === 'bac') return PLATEFORMES_TOURS.intervention;
+    return PLATEFORMES_TOURS.patrouille;
+}
 
 // Une image par élément de mobilier urbain (voir MOBILIER_URBAIN,
 // section 4bis) : la clé correspond exactement au "type" utilisé
@@ -778,20 +1087,14 @@ function distanceEntre(pointA, pointB) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-/* ------------------------------------------------------------
-   13bis. FICHES DE CARACTÉRISTIQUES (barres VITESSE / PORTÉE / DÉGÂTS)
-   ------------------------------------------------------------
-   Petit "bonus" visuel façon fiche de personnage de jeu vidéo :
-   trois jauges qui permettent de comparer les unités d'un coup
-   d'œil, aussi bien dans la boutique (avant achat) que dans le
-   panneau de sélection (après avoir posé une unité).
-
-   Ces trois constantes définissent les bornes MIN/MAX utilisées pour
-   convertir une statistique brute (ex : 1.1 seconde entre deux tirs)
-   en pourcentage de remplissage de jauge (0% à 100%). Elles sont
-   calées sur les valeurs extrêmes réellement présentes dans UNITES,
-   pour que les jauges utilisent bien toute leur longueur.
------------------------------------------------------------- */
+/**
+ * Construit les boutons de la boutique (une carte par type d'unité) à
+ * partir de l'objet UNITES, exactement comme initialiserPanneauMods()
+ * et initialiserEcranAccueil() le font pour MODS et DIFFICULTES : le
+ * nom et le prix ne sont écrits qu'à un seul endroit du projet (dans
+ * UNITES), et la boutique s'adapte automatiquement si on ajoute ou
+ * retire un type d'unité, sans jamais avoir à toucher au HTML.
+ */
 const BARRE_CADENCE_MIN = 0.35; // Agent BAC : l'unité qui tire le plus vite
 const BARRE_CADENCE_MAX = 6;    // Section Aérienne : l'unité qui recharge le plus lentement
 const BARRE_PORTEE_MAX = 300;   // Au-delà, la jauge reste pleine (portée "illimitée" de la Section Aérienne)
@@ -834,14 +1137,6 @@ function construireBarresUnite(stats) {
         '</span>';
 }
 
-/**
- * Construit les boutons de la boutique (une carte par type d'unité) à
- * partir de l'objet UNITES, exactement comme initialiserPanneauMods()
- * et initialiserEcranAccueil() le font pour MODS et DIFFICULTES : le
- * nom et le prix ne sont écrits qu'à un seul endroit du projet (dans
- * UNITES), et la boutique s'adapte automatiquement si on ajoute ou
- * retire un type d'unité, sans jamais avoir à toucher au HTML.
- */
 function initialiserBoutique() {
     const conteneur = document.getElementById('liste-unites');
 
@@ -866,9 +1161,11 @@ function initialiserBoutique() {
             typeSelectionnePourAchat = bouton.dataset.type;
             uniteSelectionnee = null;
             masquerPanneauSelection();
-            afficherMessage('Cliquez sur un toit libre pour construire : ' + infos.nom + '.');
+            actualiserEtatBoutique();
+            afficherMessage('Choisissez une case libre pour déployer : ' + infos.nom + '.');
         });
     });
+    actualiserEtatBoutique();
 }
 
 /**
@@ -887,11 +1184,11 @@ function gererClicCanvas(evenement) {
     // de la souris (coordonnées de la fenêtre) en coordonnées à
     // l'intérieur du Canvas (coordonnées du jeu).
     const zone = canvas.getBoundingClientRect();
-    const x = evenement.clientX - zone.left;
-    const y = evenement.clientY - zone.top;
+    const x = (evenement.clientX - zone.left) * (LARGEUR_CANVAS / zone.width);
+    const y = (evenement.clientY - zone.top) * (HAUTEUR_CANVAS / zone.height);
 
-    // On cherche si le clic tombe à l'intérieur d'un des bâtiments.
-    const batiment = BATIMENTS.find(function (b) {
+    // On cherche la case précise touchée : chaque toit en offre deux.
+    const batiment = CASES_PLACEMENT.find(function (b) {
         return x >= b.x && x <= b.x + b.largeur && y >= b.y && y <= b.y + b.hauteur;
     });
 
@@ -900,6 +1197,7 @@ function gererClicCanvas(evenement) {
         typeSelectionnePourAchat = null;
         uniteSelectionnee = null;
         masquerPanneauSelection();
+        actualiserEtatBoutique();
         return;
     }
 
@@ -920,14 +1218,24 @@ function gererClicCanvas(evenement) {
                     portee: infos.portee,
                     tempsEntreTirs: infos.tempsEntreTirs,
                     cooldownRestant: 0,
-                    investissementTotal: infos.cout
+                    investissementTotal: infos.cout,
+                    facteurRalentissement: infos.facteurRalentissement || null,
+                    dureeMarquage: infos.dureeMarquage || 0,
+                    bonusDegatsMarque: infos.bonusDegatsMarque || 1,
+                    dureeImmobilisation: infos.dureeImmobilisation || 0,
+                    rayonExplosion: infos.rayonExplosion || 0,
+                    animationTir: 0,
+                    animationUpgrade: 0
                 });
+                creerExplosionVisuelle(centreBatiment(batiment).x, centreBatiment(batiment).y, infos.couleur, 12, 34);
+                jouerSon('construction');
                 afficherMessage(infos.nom + ' construit(e) avec succès.');
             } else {
                 afficherMessage('Fonds insuffisants pour construire ' + infos.nom + '.');
             }
         }
         typeSelectionnePourAchat = null;
+        actualiserEtatBoutique();
         return;
     }
 
@@ -959,30 +1267,36 @@ function afficherPanneauSelection(unite) {
     // comme l'Unité Cynophile qui inflige des dégâts ET ralentit).
     let details = 'Portée : ' + Math.round(unite.portee) + ' px';
 
-    if (infos.facteurRalentissement) {
-        details += ' — Ralentit de ' + Math.round((1 - infos.facteurRalentissement) * 100) + '%';
+    if (unite.facteurRalentissement) {
+        details += ' — Ralentit de ' + Math.round((1 - unite.facteurRalentissement) * 100) + '%';
     }
     if (unite.type === 'policeJudiciaire') {
-        details += ' — Marque une cible (+' + Math.round((infos.bonusDegatsMarque - 1) * 100) + '% dégâts subis pendant ' + infos.dureeMarquage + 's)';
+        details += ' — Marque une cible (+' + Math.round((unite.bonusDegatsMarque - 1) * 100) + '% dégâts subis pendant ' + unite.dureeMarquage.toFixed(1) + 's)';
     }
     if (unite.type === 'motocycliste') {
-        details += ' — Immobilise ' + infos.dureeImmobilisation + 's à l\'impact';
+        details += ' — Immobilise ' + unite.dureeImmobilisation.toFixed(1) + 's à l\'impact';
     }
     if (unite.degats > 0) {
         details += ' — Dégâts : ' + Math.round(unite.degats);
     }
-    if (infos.rayonExplosion) {
-        details += ' (zone ' + infos.rayonExplosion + ' px)';
+    if (unite.rayonExplosion) {
+        details += ' (zone ' + Math.round(unite.rayonExplosion) + ' px)';
     }
 
     document.getElementById('selection-details').textContent = details;
+    const competence = COMPETENCES_UNITES[unite.type];
+    document.getElementById('selection-competence').innerHTML =
+        '<strong class="fiche-skill">' + competence.skill + '</strong> — ' + competence.attaque +
+        '<div class="fiche-stats"><span class="fiche-stat">Rôle : ' + competence.role + '</span><span class="fiche-stat">Cible : ' + competence.cible + '</span>' +
+        '<span class="fiche-stat">Recharge : ' + competence.recharge + '</span><span class="fiche-stat">Effet : ' + competence.effet + '</span></div>' +
+        '<small>Forces : ' + competence.forces + ' • Faiblesses : ' + competence.faiblesses + '</small>';
     document.getElementById('selection-barres').innerHTML = construireBarresUnite(unite);
 
-    if (unite.niveau >= 2) {
-        boutonAmeliorer.textContent = 'Niveau maximum atteint';
+    if (unite.niveau >= 3) {
+        boutonAmeliorer.textContent = 'Niveau III maximum';
         boutonAmeliorer.disabled = true;
     } else {
-        const coutAmelioration = Math.round(infos.cout * COUT_AMELIORATION_FACTEUR);
+        const coutAmelioration = Math.round(infos.cout * COUT_AMELIORATION_FACTEUR * (unite.niveau === 2 ? 1.5 : 1));
         boutonAmeliorer.textContent = 'Améliorer (' + coutAmelioration + ' $)';
         boutonAmeliorer.disabled = false;
     }
@@ -999,28 +1313,42 @@ function masquerPanneauSelection() {
 }
 
 /**
- * Améliore l'unité actuellement sélectionnée au niveau 2 : plus de
- * dégâts et plus de portée, en échange d'argent. Une unité ne peut
- * être améliorée qu'une seule fois dans cette version du jeu.
+ * Améliore l'unité sélectionnée jusqu'au niveau III : plus de dégâts,
+ * de portée et de cadence, avec un second coût plus élevé au niveau III.
  */
 function ameliorerUniteSelectionnee() {
-    if (!uniteSelectionnee || uniteSelectionnee.niveau >= 2) return;
+    if (!uniteSelectionnee || uniteSelectionnee.niveau >= 3) return;
 
     const infos = UNITES[uniteSelectionnee.type];
-    const coutAmelioration = Math.round(infos.cout * COUT_AMELIORATION_FACTEUR);
+    const coutAmelioration = Math.round(infos.cout * COUT_AMELIORATION_FACTEUR * (uniteSelectionnee.niveau === 2 ? 1.5 : 1));
 
     if (!depenserArgent(coutAmelioration)) {
         afficherMessage('Fonds insuffisants pour améliorer cette unité.');
         return;
     }
 
-    uniteSelectionnee.niveau = 2;
+    uniteSelectionnee.niveau += 1;
     uniteSelectionnee.degats = Math.round(uniteSelectionnee.degats * BONUS_AMELIORATION_DEGATS);
     uniteSelectionnee.portee = Math.round(uniteSelectionnee.portee * BONUS_AMELIORATION_PORTEE);
+    uniteSelectionnee.tempsEntreTirs = Math.max(.18, uniteSelectionnee.tempsEntreTirs * .86);
+    if (uniteSelectionnee.facteurRalentissement) {
+        uniteSelectionnee.facteurRalentissement = Math.max(.25, uniteSelectionnee.facteurRalentissement * .82);
+    }
+    if (uniteSelectionnee.type === 'policeJudiciaire') {
+        uniteSelectionnee.dureeMarquage += 1.5;
+        uniteSelectionnee.bonusDegatsMarque += .25;
+    }
+    if (uniteSelectionnee.type === 'motocycliste') uniteSelectionnee.dureeImmobilisation += .6;
+    if (uniteSelectionnee.rayonExplosion) uniteSelectionnee.rayonExplosion *= 1.15;
     uniteSelectionnee.investissementTotal += coutAmelioration;
+    uniteSelectionnee.animationUpgrade = 1;
+
+    const centre = centreBatiment(uniteSelectionnee.batiment);
+    creerExplosionVisuelle(centre.x, centre.y, '#ffd166', 22, 52);
+    jouerSon('upgrade');
 
     afficherPanneauSelection(uniteSelectionnee); // on rafraîchit les infos affichées
-    afficherMessage('Unité améliorée au niveau 2.');
+    afficherMessage('Unité améliorée au niveau ' + uniteSelectionnee.niveau + '.');
 }
 
 /**
@@ -1033,6 +1361,7 @@ function vendreUniteSelectionnee() {
     if (!uniteSelectionnee) return;
 
     const remboursement = Math.round(uniteSelectionnee.investissementTotal * REMBOURSEMENT_VENTE_FACTEUR);
+    const centre = centreBatiment(uniteSelectionnee.batiment);
     ajouterArgent(remboursement);
 
     // On reconstruit le tableau unitesPlacees SANS l'unité vendue.
@@ -1041,6 +1370,8 @@ function vendreUniteSelectionnee() {
     });
 
     afficherMessage('Unité vendue (+' + remboursement + ' $).');
+    creerExplosionVisuelle(centre.x, centre.y, '#8ed6ff', 10, 28);
+    jouerSon('vente');
     uniteSelectionnee = null;
     masquerPanneauSelection();
 }
@@ -1061,6 +1392,16 @@ function afficherMessage(texte) {
     idDisparitionMessage = setTimeout(function () {
         elementMessage.textContent = '';
     }, 3000);
+}
+
+let idAnnonceVague = null;
+function afficherAnnonceVague(titre, sousTitre, duree) {
+    const annonce = document.getElementById('annonce-vague');
+    document.getElementById('annonce-vague-titre').textContent = titre;
+    document.getElementById('annonce-vague-sous-titre').textContent = sousTitre || '';
+    annonce.classList.remove('cache');
+    if (idAnnonceVague) clearTimeout(idAnnonceVague);
+    idAnnonceVague = setTimeout(function () { annonce.classList.add('cache'); }, duree || 1400);
 }
 
 
@@ -1099,7 +1440,7 @@ function creerConfigVague(numero) {
         nombreEnnemis: 4 + numero * 2,
         pvEnnemi: Math.round((60 + numero * 25) * difficulte.multiplicateurPvEnnemi),
         vitesse: vitesse,
-        intervalleApparition: 0.9,          // secondes entre deux apparitions
+        intervalleApparition: Math.max(0.48, 0.92 - numero * 0.025),
         recompense: Math.round(recompense)
     };
 }
@@ -1112,23 +1453,47 @@ let vagueEnCours = false;       // true pendant qu'une vague est active (apparit
 let configVagueActuelle = null; // les réglages (pv, vitesse...) de la vague en cours
 let ennemisRestantAGenerer = 0; // combien d'ennemis de la vague actuelle n'ont pas encore surgi
 let chronoProchaineApparition = 0; // temps restant (en secondes) avant la prochaine apparition
+let compteurEnnemisGeneres = 0;
 
 /**
  * Crée un nouvel ennemi au point de départ du chemin (CHEMIN[0])
  * et l'ajoute à la liste des ennemis en vie.
  */
 function genererEnnemi(config) {
+    compteurEnnemisGeneres++;
+    let archetype = 'standard';
+    if (vagueActuelle >= 6 && compteurEnnemisGeneres % 11 === 0) archetype = 'chef';
+    else if (vagueActuelle >= 7 && compteurEnnemisGeneres % 9 === 0) archetype = 'saboteur';
+    else if (vagueActuelle >= 4 && compteurEnnemisGeneres % 8 === 0) archetype = 'eclaireur';
+    else if (vagueActuelle >= 3 && compteurEnnemisGeneres % 7 === 0) archetype = 'blinde';
+    else if (vagueActuelle >= 2 && compteurEnnemisGeneres % 5 === 0) archetype = 'rapide';
+
+    const profils = {
+        standard: { pv: 1, vitesse: 1, recompense: 1, rayon: 11, couleur: '#a5404e', degatsBase: 1 },
+        rapide:   { pv: .68, vitesse: 1.34, recompense: .9, rayon: 9, couleur: '#db8a3b', degatsBase: 1 },
+        blinde:   { pv: 1.7, vitesse: .76, recompense: 1.45, rayon: 14, couleur: '#596a78', degatsBase: 2 },
+        chef:     { pv: 2.15, vitesse: .92, recompense: 1.8, rayon: 15, couleur: '#783b8f', degatsBase: 2 },
+        saboteur: { pv: 1.18, vitesse: 1.08, recompense: 1.3, rayon: 11, couleur: '#8a6aa8', degatsBase: 2 },
+        eclaireur:{ pv: .52, vitesse: 1.62, recompense: 1.05, rayon: 10, couleur: '#f4a261', degatsBase: 1 }
+    };
+    const profil = profils[archetype];
     ennemis.push({
         x: CHEMIN[0].x,
         y: CHEMIN[0].y,
         indexPointCourant: 1,     // le prochain point du CHEMIN visé par l'ennemi
-        pv: config.pvEnnemi,
-        pvMax: config.pvEnnemi,
-        vitesseBase: config.vitesse,
-        recompense: config.recompense,
+        pv: Math.round(config.pvEnnemi * profil.pv),
+        pvMax: Math.round(config.pvEnnemi * profil.pv),
+        vitesseBase: config.vitesse * profil.vitesse,
+        recompense: Math.round(config.recompense * profil.recompense),
+        archetype: archetype,
+        rayon: profil.rayon,
+        couleur: profil.couleur,
+        degatsBase: profil.degatsBase,
         aAtteintCommissariat: false,
         marqueRestante: 0,        // secondes restantes sous l'effet "marqué" (Police Judiciaire)
-        immobiliseRestante: 0     // secondes restantes totalement immobilisé (Compagnie Motocycliste)
+        bonusMarquage: 1,
+        immobiliseRestante: 0,    // secondes restantes totalement immobilisé (Compagnie Motocycliste)
+        impactRestant: 0
     });
 }
 
@@ -1144,12 +1509,15 @@ function lancerVagueSuivante() {
     configVagueActuelle = creerConfigVague(vagueActuelle);
     ennemisRestantAGenerer = configVagueActuelle.nombreEnnemis;
     chronoProchaineApparition = 0; // le tout premier ennemi apparaît immédiatement
+    preparationVagueRestante = 1.55;
     vagueEnCours = true;
     etatJeu = 'en_cours';
 
     mettreAJourAffichageVague();
     document.getElementById('bouton-lancer-vague').disabled = true;
     afficherMessage('Vague ' + vagueActuelle + ' lancée !');
+    afficherAnnonceVague('VAGUE ' + vagueActuelle, vagueActuelle === NOMBRE_TOTAL_VAGUES ? 'ALERTE MAXIMALE' : 'DÉPLOIEMENT IMMINENT', 1500);
+    jouerSon('vague');
 }
 
 /**
@@ -1160,6 +1528,11 @@ function lancerVagueSuivante() {
  */
 function mettreAJourVague(dt) {
     if (!vagueEnCours || ennemisRestantAGenerer <= 0) return;
+
+    if (preparationVagueRestante > 0) {
+        preparationVagueRestante = Math.max(0, preparationVagueRestante - dt);
+        return;
+    }
 
     chronoProchaineApparition -= dt;
     if (chronoProchaineApparition <= 0) {
@@ -1191,6 +1564,9 @@ function verifierFinDeVague() {
     if (dernierNiveauTermine && !modsActifs.vaguesInfinies) {
         etatJeu = 'gagne';
         debloquerModsSiNecessaire();
+        afficherAnnonceVague('MISSION RÉUSSIE', 'LE QUARTIER EST SÉCURISÉ', 3200);
+        creerExplosionVisuelle(LARGEUR_CANVAS / 2, HAUTEUR_CANVAS / 2, '#55d8ff', 70, 260);
+        jouerSon('victoire');
     } else {
         etatJeu = 'attente';
         document.getElementById('bouton-lancer-vague').disabled = false;
@@ -1199,6 +1575,7 @@ function verifierFinDeVague() {
                 ? 'Vague ' + vagueActuelle + ' repoussée. Vagues infinies : continuez si vous l\'osez !'
                 : 'Vague ' + vagueActuelle + ' terminée. Préparez la suivante !'
         );
+        afficherAnnonceVague('SECTEUR SÉCURISÉ', 'RENFORCEZ VOS POSITIONS', 1200);
     }
 }
 
@@ -1223,6 +1600,7 @@ function mettreAJourEnnemis(dt) {
         // sans jamais descendre sous 0.
         if (ennemi.marqueRestante > 0) ennemi.marqueRestante = Math.max(0, ennemi.marqueRestante - dt);
         if (ennemi.immobiliseRestante > 0) ennemi.immobiliseRestante = Math.max(0, ennemi.immobiliseRestante - dt);
+        if (ennemi.impactRestant > 0) ennemi.impactRestant = Math.max(0, ennemi.impactRestant - dt);
 
         // Un ennemi situé dans la portée d'au moins une unité de
         // ralentissement (Herse CRS ou Unité Cynophile) se déplace plus
@@ -1230,11 +1608,11 @@ function mettreAJourEnnemis(dt) {
         // ralentissement le plus fort (le facteur le plus petit).
         const facteursRalentissement = unitesPlacees
             .filter(function (unite) {
-                return UNITES[unite.type].facteurRalentissement &&
+                return unite.facteurRalentissement &&
                     distanceEntre(centreBatiment(unite.batiment), ennemi) <= unite.portee;
             })
             .map(function (unite) {
-                return UNITES[unite.type].facteurRalentissement;
+                return unite.facteurRalentissement;
             });
 
         let vitesse;
@@ -1280,9 +1658,16 @@ function mettreAJourEnnemis(dt) {
     ennemis = ennemis.filter(function (ennemi) {
         if (!ennemi.aAtteintCommissariat) return true;
 
-        pvBase = Math.max(0, pvBase - 1);
+        pvBase = Math.max(0, pvBase - (ennemi.degatsBase || 1));
         mettreAJourAffichageVie();
-        if (pvBase <= 0) etatJeu = 'perdu';
+        flashBaseRestant = .42;
+        secousseRestante = Math.max(secousseRestante, .22);
+        jouerSon('alerte');
+        if (pvBase <= 0 && etatJeu !== 'perdu') {
+            etatJeu = 'perdu';
+            afficherAnnonceVague('MISSION ÉCHOUÉE', 'LE COMMISSARIAT EST SUBMERGÉ', 3200);
+            jouerSon('defaite');
+        }
 
         return false; // l'ennemi disparaît de la liste
     });
@@ -1307,13 +1692,27 @@ function mettreAJourEnnemis(dt) {
  * répéter la même vérification à chaque type d'unité qui fait des
  * dégâts.
  */
-function infligerDegats(ennemi, degats) {
-    const multiplicateur = ennemi.marqueRestante > 0 ? UNITES.policeJudiciaire.bonusDegatsMarque : 1;
-    ennemi.pv -= degats * multiplicateur;
+function infligerDegats(ennemi, degats, sourceType) {
+    const multiplicateur = ennemi.marqueRestante > 0 ? (ennemi.bonusMarquage || UNITES.policeJudiciaire.bonusDegatsMarque) : 1;
+    const chanceCritique = {tireur:.2,bri:.3,bac:.13,policeSecours:.08,lourd:.1,aerienne:.12}[sourceType] || .05;
+    const critique = sourceType && sourceType !== 'cynophile' && Math.random() < chanceCritique;
+    const degatsFinaux = degats * multiplicateur * (critique ? 1.75 : 1);
+    ennemi.pv -= degatsFinaux;
+    ennemi.impactRestant = .12;
+    creerTexteFlottant(ennemi.x, ennemi.y - 18, (critique ? 'CRIT ' : '-') + Math.round(degatsFinaux), critique ? '#ff8a66' : (multiplicateur > 1 ? '#ffd166' : '#eaf4ff'));
+}
+
+function progressionEnnemi(ennemi) {
+    const precedent = CHEMIN[Math.max(0, ennemi.indexPointCourant - 1)];
+    const suivant = CHEMIN[Math.min(CHEMIN.length - 1, ennemi.indexPointCourant)];
+    const longueur = Math.max(1, distanceEntre(precedent, suivant));
+    return ennemi.indexPointCourant + distanceEntre(precedent, ennemi) / longueur;
 }
 
 function mettreAJourUnites(dt) {
     unitesPlacees.forEach(function (unite) {
+        unite.animationTir = Math.max(0, (unite.animationTir || 0) - dt);
+        unite.animationUpgrade = Math.max(0, (unite.animationUpgrade || 0) - dt);
         if (unite.type === 'herse') return; // la Herse ne tire jamais, elle ralentit seulement
 
         if (unite.cooldownRestant > 0) {
@@ -1323,15 +1722,30 @@ function mettreAJourUnites(dt) {
 
         const centre = centreBatiment(unite.batiment);
 
-        // On cherche, parmi tous les ennemis à portée, celui qui est
-        // le plus proche de l'unité (stratégie de ciblage simple).
+        // La priorité de ciblage respecte la fiche de chaque unité : progression,
+        // vitesse, résistance ou densité du groupe selon sa spécialité.
         let cible = null;
-        let distanceMin = Infinity;
+        let meilleurScore = -Infinity;
         ennemis.forEach(function (ennemi) {
+            if (ennemi.pv <= 0) return;
             const d = distanceEntre(centre, ennemi);
-            if (d <= unite.portee && d < distanceMin) {
+            const progression = progressionEnnemi(ennemi);
+            let score = progression;
+            if (unite.type === 'cynophile') {
+                score = ennemi.vitesseBase * 4 + progression;
+            } else if (unite.type === 'bri') {
+                score = ennemi.pvMax * .035 + progression;
+            } else if (unite.type === 'lourd' || unite.type === 'bac' || unite.type === 'aerienne') {
+                const rayonGroupe = Math.max(48, unite.rayonExplosion || 62);
+                const voisins = ennemis.reduce(function (total, autre) {
+                    return total + (autre.pv > 0 && distanceEntre(ennemi, autre) <= rayonGroupe ? 1 : 0);
+                }, 0);
+                score = voisins * 100 + progression;
+            }
+            if (unite.type === 'policeJudiciaire' && ennemi.marqueRestante > .7) score -= 100;
+            if (d <= unite.portee && score > meilleurScore) {
                 cible = ennemi;
-                distanceMin = d;
+                meilleurScore = score;
             }
         });
 
@@ -1343,21 +1757,26 @@ function mettreAJourUnites(dt) {
             // Dégâts de zone (GIGN, BAC, Section Aérienne) : TOUS les
             // ennemis proches de la cible touchée encaissent les dégâts.
             ennemis.forEach(function (ennemi) {
-                if (distanceEntre(cible, ennemi) <= infos.rayonExplosion) {
-                    infligerDegats(ennemi, unite.degats);
+                if (ennemi.pv > 0 && distanceEntre(cible, ennemi) <= unite.rayonExplosion) {
+                    infligerDegats(ennemi, unite.degats, unite.type);
                 }
             });
+            creerExplosionVisuelle(cible.x, cible.y, infos.couleur, unite.type === 'aerienne' ? 28 : 12, unite.rayonExplosion);
+            if (unite.type === 'aerienne') secousseRestante = Math.max(secousseRestante, .32);
         } else if (unite.type === 'policeJudiciaire') {
             // Aucun dégât : on marque la cible pour que les AUTRES
             // unités lui infligent plus de dégâts pendant un moment.
-            cible.marqueRestante = infos.dureeMarquage;
+            cible.marqueRestante = unite.dureeMarquage;
+            cible.bonusMarquage = unite.bonusDegatsMarque;
+            creerExplosionVisuelle(cible.x, cible.y, infos.couleur, 8, 24);
         } else {
             // Cas général (RAID, Police Secours, BRI, Unité Cynophile,
             // Compagnie Motocycliste) : dégâts sur une seule cible.
-            infligerDegats(cible, unite.degats);
+            infligerDegats(cible, unite.degats, unite.type);
             if (unite.type === 'motocycliste') {
-                cible.immobiliseRestante = infos.dureeImmobilisation;
+                cible.immobiliseRestante = unite.dureeImmobilisation;
             }
+            creerExplosionVisuelle(cible.x, cible.y, infos.couleur, 4, 18);
         }
 
         // On enregistre un petit effet visuel de tir (voir section 17).
@@ -1366,10 +1785,13 @@ function mettreAJourUnites(dt) {
             x2: cible.x, y2: cible.y,
             dureeRestante: 0.15,
             dureeInitiale: 0.15,
-            couleur: infos.couleur
+            couleur: infos.couleur,
+            type: unite.type === 'aerienne' ? 'helicoptere' : (unite.type === 'policeJudiciaire' ? 'marquage' : (unite.type === 'motocycliste' ? 'immobilisation' : 'projectile'))
         });
 
         unite.cooldownRestant = unite.tempsEntreTirs;
+        unite.animationTir = .22;
+        jouerSon(unite.type === 'aerienne' ? 'impact' : 'tir');
     });
 
     // On retire les ennemis tués pendant ce combat, et on récompense
@@ -1392,6 +1814,27 @@ function mettreAJourUnites(dt) {
 ------------------------------------------------------------ */
 let effetsTir = [];
 
+function creerExplosionVisuelle(x, y, couleur, quantite, rayon) {
+    const nombre = Math.max(1, quantite || 8);
+    for (let i = 0; i < nombre; i++) {
+        const angle = (Math.PI * 2 * i / nombre) + Math.random() * .35;
+        const vitesse = 24 + Math.random() * (rayon || 30) * 1.6;
+        particules.push({
+            x: x, y: y,
+            vx: Math.cos(angle) * vitesse,
+            vy: Math.sin(angle) * vitesse,
+            vie: .28 + Math.random() * .38,
+            vieMax: .66,
+            taille: 1.5 + Math.random() * 3.5,
+            couleur: couleur
+        });
+    }
+}
+
+function creerTexteFlottant(x, y, texte, couleur) {
+    textesFlottants.push({ x: x, y: y, texte: texte, couleur: couleur, vie: .72, vieMax: .72 });
+}
+
 /** Fait vieillir tous les effets de tir, et retire ceux qui sont terminés. */
 function mettreAJourEffets(dt) {
     effetsTir.forEach(function (effet) {
@@ -1400,6 +1843,20 @@ function mettreAJourEffets(dt) {
     effetsTir = effetsTir.filter(function (effet) {
         return effet.dureeRestante > 0;
     });
+
+    particules.forEach(function (p) {
+        p.vie -= dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.vx *= Math.pow(.08, dt);
+        p.vy *= Math.pow(.08, dt);
+    });
+    particules = particules.filter(function (p) { return p.vie > 0; });
+
+    textesFlottants.forEach(function (t) { t.vie -= dt; t.y -= 24 * dt; });
+    textesFlottants = textesFlottants.filter(function (t) { return t.vie > 0; });
+    secousseRestante = Math.max(0, secousseRestante - dt);
+    flashBaseRestant = Math.max(0, flashBaseRestant - dt);
 }
 
 
@@ -1423,11 +1880,34 @@ const elementVagueTotal = document.getElementById('vague-total');
 /** Met à jour l'affichage des points de vie du Commissariat dans le HUD. */
 function mettreAJourAffichageVie() {
     elementVie.textContent = pvBase;
+    const ratio = Math.max(0, Math.min(1, pvBase / PV_BASE_MAX));
+    document.getElementById('vie-barre').style.width = (ratio * 100) + '%';
+    elementVie.style.color = ratio <= .3 ? '#ff465d' : '#ff9c72';
 }
 
 /** Met à jour l'affichage du numéro de vague en cours dans le HUD. */
 function mettreAJourAffichageVague() {
     elementVagueValeur.textContent = vagueActuelle;
+}
+
+function mettreAJourHUDOperationnel() {
+    const statut = document.getElementById('statut-operation');
+    const detail = document.getElementById('statut-detail');
+    const compteur = document.getElementById('compteur-menaces');
+    const totalMenaces = ennemis.length + ennemisRestantAGenerer;
+    compteur.textContent = totalMenaces + (totalMenaces > 1 ? ' menaces' : ' menace');
+
+    if (etatJeu === 'gagne') {
+        statut.textContent = 'SÉCURISÉ'; detail.textContent = 'Toutes les vagues ont été repoussées.';
+    } else if (etatJeu === 'perdu') {
+        statut.textContent = 'ÉCHEC'; detail.textContent = 'Le Commissariat doit être repris.';
+    } else if (preparationVagueRestante > 0) {
+        statut.textContent = 'DÉPLOIEMENT'; detail.textContent = 'Premiers contacts dans ' + Math.max(1, Math.ceil(preparationVagueRestante)) + ' s.';
+    } else if (vagueEnCours) {
+        statut.textContent = 'CONTACT'; detail.textContent = 'Vague ' + vagueActuelle + ' — priorité aux cibles proches du Commissariat.';
+    } else {
+        statut.textContent = 'EN ATTENTE'; detail.textContent = 'Renforcez les toits puis lancez la prochaine vague.';
+    }
 }
 
 
@@ -1479,11 +1959,40 @@ function dessinerAvatarUnite(img, cx, cy, rayon, couleurAnneau) {
     ctx.stroke();
 }
 
+function dessinerHelicoptere(cx, cy, unite) {
+    const flottement = Math.sin(tempsAnimation * 2.8 + cx) * 3;
+    const y = cy + flottement;
+    ctx.save();
+    ctx.translate(cx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.32)';
+    ctx.beginPath(); ctx.ellipse(5, 13, 28, 8, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#182a3b';
+    ctx.beginPath(); ctx.ellipse(0, 0, 23, 10, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#4a8fc9';
+    ctx.beginPath(); ctx.ellipse(9, -2, 9, 6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#9edfff'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(-20, 0); ctx.lineTo(-36, -3); ctx.lineTo(-41, 3); ctx.stroke();
+    ctx.strokeStyle = 'rgba(210,240,255,.72)';
+    ctx.lineWidth = 2;
+    const rotor = tempsAnimation * 14;
+    ctx.beginPath(); ctx.moveTo(Math.cos(rotor) * 34, Math.sin(rotor) * 5 - 12); ctx.lineTo(-Math.cos(rotor) * 34, -Math.sin(rotor) * 5 - 12); ctx.stroke();
+    ctx.fillStyle = Math.sin(tempsAnimation * 8) > 0 ? '#54b7ff' : '#ff465d';
+    ctx.fillRect(-2, -7, 5, 3);
+    ctx.restore();
+
+    if (unite.animationTir > 0) {
+        ctx.strokeStyle = 'rgba(255,215,100,.75)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, 28 + (1 - unite.animationTir / .22) * 20, 0, Math.PI * 2); ctx.stroke();
+    }
+}
+
 /** Dessine chaque unité posée sur son bâtiment, avec son portrait en avatar rond. */
 function dessinerUnitesPlacees() {
-    unitesPlacees.forEach(function (unite) {
+    unitesPlacees.forEach(function (unite, index) {
         const centre = centreBatiment(unite.batiment);
         const infos = UNITES[unite.type];
+        const yAnime = centre.y + Math.sin(tempsAnimation * 2.2 + index * 1.7) * 1.4;
+        const plateforme = plateformePourUnite(unite.type);
 
         // Si cette unité est sélectionnée, on affiche un cercle en
         // pointillés pour visualiser sa portée de tir.
@@ -1497,14 +2006,46 @@ function dessinerUnitesPlacees() {
             ctx.setLineDash([]);
         }
 
-        dessinerAvatarUnite(PORTRAITS_UNITES[unite.type], centre.x, centre.y, 20, infos.couleur);
+        if (plateforme && plateforme.complete && plateforme.naturalWidth > 0) {
+            ctx.save();
+            ctx.globalAlpha = .96;
+            dessinerImageCentree(plateforme, centre.x, centre.y + 2, unite.type === 'aerienne' ? 62 : 58);
+            ctx.restore();
+        }
 
-        // Petit badge doré pour indiquer une unité améliorée (niveau 2).
-        if (unite.niveau === 2) {
+        if (unite.type === 'aerienne') {
+            dessinerHelicoptere(centre.x, yAnime, unite);
+        } else {
+            const recul = unite.animationTir > 0 ? 2.5 : 0;
+            dessinerAvatarUnite(PORTRAITS_UNITES[unite.type], centre.x - recul, yAnime - 1, 15, infos.couleur);
+            ctx.fillStyle = 'rgba(2, 9, 16, .82)';
+            ctx.fillRect(centre.x - 18, yAnime + 14, 36, 11);
+            ctx.fillStyle = '#eaf4ff';
+            ctx.font = 'bold 8px "Arial Narrow", Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(infos.nom.replace('Agent ', '').replace('Police ', 'P. ').slice(0, 10).toUpperCase(), centre.x, yAnime + 22);
+            ctx.textAlign = 'start';
+        }
+
+        if (unite.type === 'herse' || unite.type === 'cynophile') {
+            ctx.strokeStyle = infos.couleur + '80';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(centre.x, centre.y, 27 + Math.sin(tempsAnimation * 3) * 3, 0, Math.PI * 2); ctx.stroke();
+        }
+
+        // Badge de grade : II en doré, III en rouge lumineux.
+        if (unite.niveau >= 2) {
             ctx.beginPath();
-            ctx.arc(centre.x + 14, centre.y - 14, 5, 0, Math.PI * 2);
-            ctx.fillStyle = '#ffd166';
+            ctx.arc(centre.x + 16, yAnime - 16, unite.niveau === 3 ? 9 : 7, 0, Math.PI * 2);
+            ctx.fillStyle = unite.niveau === 3 ? '#e63946' : '#ffd166';
             ctx.fill();
+            ctx.fillStyle = unite.niveau === 3 ? '#ffffff' : '#07111f'; ctx.font = 'bold 8px Arial'; ctx.textAlign = 'center'; ctx.fillText(unite.niveau === 3 ? 'III' : 'II', centre.x + 16, yAnime - 13); ctx.textAlign = 'start';
+        }
+        if (unite.animationUpgrade > 0) {
+            const progression = 1 - unite.animationUpgrade;
+            ctx.strokeStyle = 'rgba(255,209,102,' + unite.animationUpgrade + ')';
+            ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.arc(centre.x, centre.y, 26 + progression * 42, 0, Math.PI * 2); ctx.stroke();
         }
     });
 }
@@ -1512,24 +2053,44 @@ function dessinerUnitesPlacees() {
 /** Dessine chaque ennemi (cercle + petite barre de vie au-dessus). */
 function dessinerEnnemis() {
     ennemis.forEach(function (ennemi) {
-        ctx.beginPath();
-        ctx.arc(ennemi.x, ennemi.y, 12, 0, Math.PI * 2);
-        ctx.fillStyle = '#7c2d3a';
-        ctx.fill();
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = '#ffffff';
-        ctx.stroke();
+        const cible = CHEMIN[Math.min(CHEMIN.length - 1, ennemi.indexPointCourant)];
+        const angle = Math.atan2(cible.y - ennemi.y, cible.x - ennemi.x);
+        const rayon = ennemi.rayon || 11;
+        const marche = Math.sin(tempsAnimation * (ennemi.vitesseBase / 11) + ennemi.x * .04);
+        const sprite = SPRITES_ENNEMIS[ennemi.archetype] || SPRITES_ENNEMIS.standard;
+        ctx.save();
+        ctx.translate(ennemi.x, ennemi.y);
+        ctx.rotate(angle + Math.PI / 2);
+        ctx.fillStyle = 'rgba(0,0,0,.34)';
+        ctx.beginPath(); ctx.ellipse(3, 8, rayon, rayon * .55, 0, 0, Math.PI * 2); ctx.fill();
+        if (sprite && sprite.complete && sprite.naturalWidth > 0) {
+            const taille = rayon * (ennemi.archetype === 'eclaireur' ? 3.2 : 3.5);
+            ctx.globalAlpha = ennemi.impactRestant > 0 ? .56 : 1;
+            ctx.drawImage(sprite, -taille / 2, -taille / 2 + marche * .7, taille, taille);
+            if (ennemi.impactRestant > 0) {
+                ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = 'rgba(255,255,255,.66)';
+                ctx.beginPath(); ctx.arc(0, 0, rayon * 1.1, 0, Math.PI * 2); ctx.fill();
+            }
+        } else {
+            ctx.strokeStyle = ennemi.impactRestant > 0 ? '#ffffff' : ennemi.couleur;
+            ctx.fillStyle = ennemi.impactRestant > 0 ? '#f7fbff' : ennemi.couleur;
+            ctx.lineWidth = ennemi.archetype === 'blinde' ? 5 : 3;
+            ctx.beginPath(); ctx.moveTo(-4, 10); ctx.lineTo(-5 + marche * 2, 18); ctx.moveTo(4, 10); ctx.lineTo(5 - marche * 2, 18); ctx.stroke();
+            ctx.fillRect(-rayon * .48, -2, rayon * .96, 14);
+            ctx.beginPath(); ctx.arc(0, -7, rayon * .5, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.restore();
 
         // La barre de vie : un fond gris, puis un remplissage coloré
         // dont la largeur dépend du pourcentage de vie restant.
-        const largeurBarre = 26;
+        const largeurBarre = 30 + (rayon - 10) * 2;
         const ratioVie = Math.max(0, ennemi.pv / ennemi.pvMax);
 
         ctx.fillStyle = '#2b2f36';
-        ctx.fillRect(ennemi.x - largeurBarre / 2, ennemi.y - 22, largeurBarre, 5);
+        ctx.fillRect(ennemi.x - largeurBarre / 2, ennemi.y - rayon - 13, largeurBarre, 5);
 
         ctx.fillStyle = ratioVie > 0.3 ? '#4caf50' : '#e63946';
-        ctx.fillRect(ennemi.x - largeurBarre / 2, ennemi.y - 22, largeurBarre * ratioVie, 5);
+        ctx.fillRect(ennemi.x - largeurBarre / 2, ennemi.y - rayon - 13, largeurBarre * ratioVie, 5);
 
         // Anneau brun/beige autour d'un ennemi "marqué" par la Police
         // Judiciaire (il subit plus de dégâts tant que l'anneau est visible).
@@ -1552,6 +2113,15 @@ function dessinerEnnemis() {
             ctx.stroke();
             ctx.setLineDash([]);
         }
+
+        const facteurs = unitesPlacees.filter(function (u) { return u.facteurRalentissement && distanceEntre(centreBatiment(u.batiment), ennemi) <= u.portee; });
+        if (facteurs.length && ennemi.immobiliseRestante <= 0) {
+            ctx.fillStyle = 'rgba(90, 205, 255, .72)';
+            for (let i = 0; i < 3; i++) {
+                const a = tempsAnimation * 2 + i * Math.PI * 2 / 3;
+                ctx.beginPath(); ctx.arc(ennemi.x + Math.cos(a) * 16, ennemi.y + Math.sin(a) * 7, 2, 0, Math.PI * 2); ctx.fill();
+            }
+        }
     });
 }
 
@@ -1565,12 +2135,40 @@ function dessinerEffetsTir() {
         ctx.beginPath();
         ctx.moveTo(effet.x1, effet.y1);
         ctx.lineTo(effet.x2, effet.y2);
-        ctx.strokeStyle = effet.couleur;
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = effet.type === 'marquage' ? '#ffd166' : effet.couleur;
+        ctx.lineWidth = effet.type === 'helicoptere' ? 4 : 2;
+        ctx.setLineDash(effet.type === 'marquage' ? [4, 4] : []);
         ctx.stroke();
+        ctx.setLineDash([]);
+
+        const progression = 1 - effet.dureeRestante / effet.dureeInitiale;
+        const px = effet.x1 + (effet.x2 - effet.x1) * progression;
+        const py = effet.y1 + (effet.y2 - effet.y1) * progression;
+        ctx.fillStyle = '#fff7c5';
+        ctx.beginPath(); ctx.arc(px, py, effet.type === 'helicoptere' ? 5 : 3, 0, Math.PI * 2); ctx.fill();
+
+        if (effet.type === 'helicoptere' || effet.type === 'immobilisation') {
+            ctx.strokeStyle = effet.type === 'helicoptere' ? 'rgba(255,70,93,.8)' : 'rgba(255,209,102,.9)';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(effet.x2, effet.y2, 12 + progression * 20, 0, Math.PI * 2); ctx.stroke();
+        }
 
         ctx.globalAlpha = 1; // on remet l'opacité normale pour la suite des dessins
     });
+
+    particules.forEach(function (p) {
+        ctx.globalAlpha = Math.max(0, p.vie / p.vieMax);
+        ctx.fillStyle = p.couleur;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.taille, 0, Math.PI * 2); ctx.fill();
+    });
+    textesFlottants.forEach(function (t) {
+        ctx.globalAlpha = Math.max(0, t.vie / t.vieMax);
+        ctx.fillStyle = t.couleur;
+        ctx.font = 'bold 12px "Arial Narrow", Arial, sans-serif';
+        ctx.textAlign = 'center'; ctx.fillText(t.texte, t.x, t.y);
+    });
+    ctx.textAlign = 'start';
+    ctx.globalAlpha = 1;
 }
 
 // Le grand emblème "gyrophares" affiché sur l'écran de victoire (voir
@@ -1584,18 +2182,26 @@ LOGO_VICTOIRE.src = 'images/logo.png';
  * est affiché au-dessus du texte, pour une sortie plus mémorable.
  */
 function dessinerEcranFin(texte, couleur) {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+    const pulsation = .72 + Math.sin(tempsAnimation * 2.6) * .06;
+    ctx.fillStyle = 'rgba(0, 5, 12, ' + pulsation + ')';
     ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
 
     if (etatJeu === 'gagne') {
         dessinerImageCentree(LOGO_VICTOIRE, LARGEUR_CANVAS / 2, HAUTEUR_CANVAS / 2 - 110, 160);
     }
 
+    ctx.fillStyle = 'rgba(5, 18, 30, .92)';
+    ctx.fillRect(LARGEUR_CANVAS / 2 - 260, HAUTEUR_CANVAS / 2 - 48, 520, 126);
+    ctx.strokeStyle = couleur; ctx.lineWidth = 3;
+    ctx.strokeRect(LARGEUR_CANVAS / 2 - 260, HAUTEUR_CANVAS / 2 - 48, 520, 126);
     ctx.fillStyle = couleur;
-    ctx.font = 'bold 48px "Segoe UI", Arial, sans-serif';
+    ctx.font = 'bold 48px "Arial Narrow", Arial, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(texte, LARGEUR_CANVAS / 2, HAUTEUR_CANVAS / 2);
+    ctx.fillStyle = '#dbeeff';
+    ctx.font = 'bold 14px "Arial Narrow", Arial, sans-serif';
+    ctx.fillText(etatJeu === 'gagne' ? 'SECTEUR SÉCURISÉ • MODS DÉBLOQUÉS' : 'RÉORGANISEZ VOS UNITÉS ET RELANCEZ L’OPÉRATION', LARGEUR_CANVAS / 2, HAUTEUR_CANVAS / 2 + 42);
 
     // On remet les réglages de texte par défaut pour ne pas perturber
     // d'éventuels futurs textes dessinés ailleurs.
@@ -1610,13 +2216,24 @@ function dessinerEcranFin(texte, couleur) {
  * partie est gagnée ou perdue.
  */
 function dessinerScene() {
+    ctx.save();
+    if (secousseRestante > 0) {
+        const intensite = secousseRestante * 13;
+        ctx.translate(Math.sin(tempsAnimation * 73) * intensite, Math.cos(tempsAnimation * 59) * intensite);
+    }
     dessinerCarte();
     dessinerUnitesPlacees();
     dessinerEffetsTir();
     dessinerEnnemis();
 
+    if (flashBaseRestant > 0) {
+        ctx.fillStyle = 'rgba(255, 50, 76, ' + Math.min(.28, flashBaseRestant) + ')';
+        ctx.fillRect(0, 0, LARGEUR_CANVAS, HAUTEUR_CANVAS);
+    }
+
     if (etatJeu === 'perdu') dessinerEcranFin('GAME OVER', '#e63946');
     if (etatJeu === 'gagne') dessinerEcranFin('VICTOIRE !', '#4d9dff');
+    ctx.restore();
 }
 
 
@@ -1647,16 +2264,19 @@ function boucleJeu(tempsActuel) {
     // On limite dt à 0.1s maximum : si le navigateur a mis l'onglet en
     // pause quelques secondes (ex : changement d'onglet), on évite que
     // tout le jeu fasse un immense bond en avant d'un coup au retour.
-    const dt = Math.min((tempsActuel - dernierTemps) / 1000, 0.1);
+    const dtReel = Math.min((tempsActuel - dernierTemps) / 1000, 0.1);
+    const dt = dtReel * multiplicateurVitesseJeu;
     dernierTemps = tempsActuel;
+    tempsAnimation += dtReel;
 
     if (etatJeu === 'en_cours') {
         mettreAJourVague(dt);
         mettreAJourEnnemis(dt);
         mettreAJourUnites(dt);
-        mettreAJourEffets(dt);
         verifierFinDeVague();
     }
+    mettreAJourEffets(dt);
+    mettreAJourHUDOperationnel();
 
     dessinerScene();
 
@@ -1761,6 +2381,7 @@ function construireJauge(libelle, ratio) {
  * départ et la force des ennemis.
  */
 function demarrerPartieAvecDifficulte(cle) {
+    initialiserAudio(); // déclenché par le clic : conforme aux restrictions d'autoplay des navigateurs
     difficulteActuelle = cle;
     document.getElementById('ecran-accueil').classList.add('cache');
     reinitialiserPartie();
@@ -1812,13 +2433,14 @@ const MODS = {
 
 // true si le joueur a déjà terminé les 10 niveaux au moins une fois
 // (dans cette partie ou lors d'une visite précédente).
-let modsDebloques = localStorage.getItem(CLE_MODS_DEBLOQUES) === 'true';
+let modsDebloques = lireStockage(CLE_MODS_DEBLOQUES, 'false') === 'true';
 
 // L'état actuel (activé/désactivé) de chaque mod. On relit d'abord ce
 // qui est sauvegardé dans localStorage, puis on s'assure que chaque
 // mod du catalogue MODS a bien une valeur (au cas où on ajouterait un
 // nouveau mod plus tard, après une sauvegarde plus ancienne).
-let modsActifs = JSON.parse(localStorage.getItem(CLE_MODS_ACTIFS) || '{}');
+let modsActifs = {};
+try { modsActifs = JSON.parse(lireStockage(CLE_MODS_ACTIFS, '{}')); } catch (erreur) { modsActifs = {}; }
 Object.keys(MODS).forEach(function (cle) {
     if (typeof modsActifs[cle] !== 'boolean') modsActifs[cle] = false;
 });
@@ -1865,7 +2487,7 @@ function initialiserPanneauMods() {
     conteneur.querySelectorAll('input[type="checkbox"]').forEach(function (case_) {
         case_.addEventListener('change', function () {
             modsActifs[case_.dataset.mod] = case_.checked;
-            localStorage.setItem(CLE_MODS_ACTIFS, JSON.stringify(modsActifs));
+            ecrireStockage(CLE_MODS_ACTIFS, JSON.stringify(modsActifs));
         });
     });
 }
@@ -1885,7 +2507,7 @@ function debloquerModsSiNecessaire() {
     if (modsDebloques) return;
 
     modsDebloques = true;
-    localStorage.setItem(CLE_MODS_DEBLOQUES, 'true');
+    ecrireStockage(CLE_MODS_DEBLOQUES, 'true');
     afficherPanneauMods();
     afficherMessage('Bravo, agent ! Les 10 niveaux sont terminés : les Mods sont débloqués.');
 }
@@ -1911,16 +2533,24 @@ function reinitialiserPartie() {
     configVagueActuelle = null;
     ennemisRestantAGenerer = 0;
     chronoProchaineApparition = 0;
+    preparationVagueRestante = 0;
+    compteurEnnemisGeneres = 0;
     mettreAJourAffichageVague();
     elementVagueTotal.textContent = modsActifs.vaguesInfinies ? '∞' : NOMBRE_TOTAL_VAGUES;
 
     ennemis = [];
     unitesPlacees = [];
     effetsTir = [];
+    particules = [];
+    textesFlottants = [];
+    secousseRestante = 0;
+    flashBaseRestant = 0;
 
     typeSelectionnePourAchat = null;
     uniteSelectionnee = null;
     masquerPanneauSelection();
+    actualiserEtatBoutique();
+    document.getElementById('annonce-vague').classList.add('cache');
 
     etatJeu = 'attente';
     document.getElementById('bouton-lancer-vague').disabled = false;
@@ -1955,10 +2585,76 @@ document.getElementById('bouton-changer-difficulte').addEventListener('click', f
     document.getElementById('ecran-accueil').classList.remove('cache');
 });
 
+const boutonAudio = document.getElementById('bouton-audio');
+const curseurVolume = document.getElementById('volume-audio');
+const boutonVitesse = document.getElementById('bouton-vitesse');
+
+function actualiserControlesAudio() {
+    boutonAudio.textContent = audioMuet || volumeAudio === 0 ? '🔇' : '🔊';
+    boutonAudio.setAttribute('aria-pressed', String(audioMuet));
+    boutonAudio.title = audioMuet ? 'Réactiver le son' : 'Couper le son';
+    curseurVolume.value = Math.round(volumeAudio * 100);
+}
+
+boutonAudio.addEventListener('click', function () {
+    initialiserAudio();
+    audioMuet = !audioMuet;
+    ecrireStockage('alertePoliceSecours_audioMuet', String(audioMuet));
+    appliquerVolumeAudio();
+    actualiserControlesAudio();
+    if (!audioMuet) jouerSon('construction');
+});
+
+curseurVolume.addEventListener('input', function () {
+    initialiserAudio();
+    volumeAudio = Number(curseurVolume.value) / 100;
+    audioMuet = false;
+    ecrireStockage('alertePoliceSecours_volume', String(volumeAudio));
+    ecrireStockage('alertePoliceSecours_audioMuet', 'false');
+    appliquerVolumeAudio();
+    actualiserControlesAudio();
+});
+
+boutonVitesse.addEventListener('click', function () {
+    multiplicateurVitesseJeu = multiplicateurVitesseJeu === 1 ? 2 : 1;
+    boutonVitesse.textContent = '×' + multiplicateurVitesseJeu;
+    boutonVitesse.setAttribute('aria-pressed', String(multiplicateurVitesseJeu === 2));
+    boutonVitesse.title = multiplicateurVitesseJeu === 2 ? 'Revenir à la vitesse normale' : 'Accélérer le jeu';
+});
+
+document.addEventListener('keydown', function (evenement) {
+    if (evenement.key.toLowerCase() === 'm') boutonAudio.click();
+    if (evenement.key === ' ' && !document.getElementById('ecran-accueil').classList.contains('cache')) return;
+    if (evenement.key === ' ' && !vagueEnCours && etatJeu !== 'gagne' && etatJeu !== 'perdu') {
+        evenement.preventDefault();
+        lancerVagueSuivante();
+    }
+});
+
+function initialiserRosterV3() {
+    const grille = document.getElementById('roster-grille');
+    Object.keys(UNITES).forEach(function(type) {
+        const carte = document.createElement('article'); carte.className = 'roster-carte';
+        const image = document.createElement('img'); image.src = UNITES[type].portrait; image.alt = UNITES[type].nom;
+        const nom = document.createElement('strong'); nom.textContent = UNITES[type].nom;
+        const meta = COMPETENCES_UNITES[type];
+        const role = document.createElement('span'); role.className = 'roster-role'; role.textContent = meta.role;
+        const skill = document.createElement('p'); skill.className = 'roster-skill'; skill.textContent = meta.skill + ' — ' + meta.attaque;
+        const niveaux = document.createElement('div'); niveaux.className = 'roster-niveaux'; niveaux.innerHTML = '<span>I</span><span>II</span><span class="niveau-iii">III</span>';
+        carte.append(image, nom, role, skill, niveaux); grille.appendChild(carte);
+    });
+    const ecran = document.getElementById('ecran-roster');
+    document.getElementById('bouton-roster').addEventListener('click', function(){ ecran.classList.add('ouvert'); ecran.setAttribute('aria-hidden','false'); });
+    document.getElementById('bouton-fermer-roster').addEventListener('click', function(){ ecran.classList.remove('ouvert'); ecran.setAttribute('aria-hidden','true'); });
+    ecran.addEventListener('click', function(e){ if(e.target === ecran) document.getElementById('bouton-fermer-roster').click(); });
+}
+
+initialiserRosterV3();
 initialiserEcranAccueil();
 initialiserBoutique();
 initialiserPanneauMods();
 if (modsDebloques) afficherPanneauMods();
+actualiserControlesAudio();
 
 argent = calculerArgentDepart(); // tient compte de la difficulté et des mods déjà choisis lors d'une précédente visite
 mettreAJourAffichageArgent();
@@ -1967,3 +2663,4 @@ mettreAJourAffichageVague();
 elementVagueTotal.textContent = modsActifs.vaguesInfinies ? '∞' : NOMBRE_TOTAL_VAGUES;
 
 requestAnimationFrame(boucleJeu);
+

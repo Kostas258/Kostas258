@@ -1,3 +1,4 @@
+
 /*
     ============================================================
     FICHIER : style.css
@@ -418,60 +419,6 @@ body {
     font-size: 0.75rem;
 }
 
-/* ------------------------------------------------------------
-   FICHES DE CARACTÉRISTIQUES (jauges Vitesse / Portée / Dégâts)
-   ------------------------------------------------------------
-   Réutilisées à deux endroits : dans chaque carte de la boutique
-   (avant achat) et dans le panneau de sélection (après avoir posé
-   une unité). On réutilise volontairement les classes .jauge-fond
-   et .jauge-remplissage déjà définies pour l'écran de difficulté :
-   même famille visuelle dans tout le jeu.
------------------------------------------------------------- */
-.stats-unite {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-top: 4px;
-}
-
-.stat-ligne {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.6rem;
-    color: #8a94a3;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-.stat-libelle {
-    width: 36px;
-    flex-shrink: 0;
-}
-
-.stat-ligne .jauge-fond {
-    flex: 1;
-    height: 4px;
-}
-
-/* Dans le panneau de sélection (plus large que les cartes de la
-   boutique), les jauges peuvent respirer un peu plus. */
-#selection-barres .stats-unite {
-    margin: 8px 0;
-}
-
-#selection-barres .stat-ligne {
-    font-size: 0.7rem;
-}
-
-#selection-barres .stat-libelle {
-    width: 50px;
-}
-
-#selection-barres .jauge-fond {
-    height: 6px;
-}
-
 #boutique-aide {
     font-size: 0.8rem;
     color: #8a94a3;
@@ -584,4 +531,421 @@ body {
     min-height: 1.2em; /* réserve toujours la place, pour éviter que la page "saute" quand un message apparaît/disparaît */
     color: #ffd166;
     font-size: 0.9rem;
+}
+
+/* Refonte opérationnelle : lisibilité, mobile et retours d'état. */
+:root {
+    color-scheme: dark;
+    --nuit-0: #03070d;
+    --nuit-1: #07111f;
+    --panneau: rgba(10, 22, 36, 0.9);
+    --bleu: #43a5ff;
+    --cyan: #55d8ff;
+    --rouge: #ff465d;
+    --ambre: #ffc857;
+    --texte: #eaf4ff;
+    --texte-doux: #a9bbcd;
+}
+
+html { background: var(--nuit-0); }
+
+body {
+    justify-content: flex-start;
+    min-width: 320px;
+    padding: clamp(8px, 2vw, 20px);
+    overflow-x: hidden;
+    background:
+        linear-gradient(rgba(67, 165, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(67, 165, 255, 0.025) 1px, transparent 1px),
+        radial-gradient(circle at 20% 0%, rgba(28, 94, 150, 0.22), transparent 34rem),
+        radial-gradient(circle at 90% 18%, rgba(167, 32, 62, 0.13), transparent 30rem),
+        var(--nuit-0);
+    background-size: 34px 34px, 34px 34px, auto, auto, auto;
+    font-family: "Arial Narrow", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
+}
+
+button, input { font: inherit; }
+button { touch-action: manipulation; }
+button:focus-visible, input:focus-visible, canvas:focus-visible {
+    outline: 3px solid var(--ambre);
+    outline-offset: 3px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+#ecran-accueil {
+    overflow-y: auto;
+    background:
+        linear-gradient(135deg, rgba(2, 8, 15, 0.96), rgba(5, 18, 31, 0.94)),
+        repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.02) 3px 4px);
+}
+
+#accueil-panneau {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(85, 216, 255, 0.75);
+    border-left: 5px solid var(--bleu);
+    border-radius: 4px;
+    background: linear-gradient(145deg, rgba(13, 30, 48, .98), rgba(5, 14, 24, .98));
+    box-shadow: 0 24px 80px rgba(0,0,0,.65), 0 0 42px rgba(67,165,255,.16);
+}
+
+#accueil-panneau::before {
+    content: "CENTRE DE COMMANDEMENT • ACCÈS AUTORISÉ";
+    display: block;
+    margin: -32px -32px 24px;
+    padding: 9px 18px;
+    color: #07111f;
+    background: linear-gradient(90deg, var(--bleu), var(--cyan));
+    font-weight: 900;
+    font-size: .72rem;
+    letter-spacing: .16em;
+}
+
+.carte-difficulte {
+    min-height: 178px;
+    border-radius: 3px;
+    border-left: 4px solid #3a4a5a;
+    transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+}
+
+.carte-difficulte:hover, .carte-difficulte:focus-visible {
+    transform: translateY(-3px);
+    border-left-color: var(--ambre);
+}
+
+#jeu-conteneur {
+    width: min(100%, 1280px);
+    gap: 12px;
+}
+
+#jeu-titre {
+    margin-top: 4px;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--texte);
+    text-shadow: 0 0 18px rgba(67, 165, 255, .65);
+}
+
+#hud {
+    position: sticky;
+    top: 6px;
+    z-index: 20;
+    padding: 8px;
+    border: 1px solid rgba(85, 216, 255, .24);
+    border-radius: 4px;
+    background: rgba(4, 13, 23, .9);
+    box-shadow: 0 10px 32px rgba(0,0,0,.36);
+    backdrop-filter: blur(12px);
+}
+
+.hud-bloc {
+    min-height: 42px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, rgba(48, 107, 161, .2), rgba(16, 38, 61, .22));
+}
+
+.hud-mini-barre {
+    width: 64px;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #241a22;
+}
+
+#vie-barre {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--rouge), #ff9c72);
+    transition: width .25s ease;
+}
+
+.hud-audio { gap: 8px; }
+.bouton-icone {
+    min-width: 40px;
+    min-height: 34px;
+    padding: 5px 9px;
+    border: 1px solid rgba(85,216,255,.45);
+    border-radius: 3px;
+    color: var(--texte);
+    background: #0b2034;
+    cursor: pointer;
+}
+.bouton-icone[aria-pressed="true"] { color: #07111f; background: var(--ambre); }
+#volume-audio { width: 88px; accent-color: var(--cyan); }
+
+#bouton-lancer-vague {
+    min-height: 34px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #65c4ff, #2386e0);
+    box-shadow: inset 0 1px rgba(255,255,255,.35), 0 0 16px rgba(67,165,255,.2);
+}
+
+.bouton-secondaire {
+    border-radius: 3px;
+    background: rgba(5, 20, 34, .72);
+}
+
+#bandeau-operationnel {
+    width: 100%;
+    min-height: 36px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 7px 12px;
+    border-left: 4px solid var(--ambre);
+    background: rgba(8, 20, 32, .82);
+    color: var(--texte-doux);
+    font-size: .82rem;
+}
+#statut-operation { color: var(--ambre); font-weight: 900; letter-spacing: .12em; }
+#compteur-menaces { color: var(--cyan); font-variant-numeric: tabular-nums; }
+
+#zone-jeu { width: 100%; flex-wrap: nowrap; }
+#canvas-coque {
+    position: relative;
+    width: min(960px, calc(100% - 296px));
+    flex: 1 1 720px;
+    min-width: 0;
+}
+
+#jeu-canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    flex-shrink: 1;
+    border-radius: 3px;
+    border-color: rgba(85,216,255,.65);
+    box-shadow: 0 18px 50px rgba(0,0,0,.5), 0 0 28px rgba(67,165,255,.18);
+    touch-action: manipulation;
+}
+
+#annonce-vague {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(2,12,23,.88) 20% 80%, transparent);
+    animation: entree-annonce .28s ease-out;
+}
+#annonce-vague.cache { display: none; }
+#annonce-vague strong { color: var(--texte); font-size: clamp(1.5rem, 5vw, 3.4rem); letter-spacing: .12em; text-shadow: 0 0 22px var(--bleu); }
+#annonce-vague span { margin-top: 7px; color: var(--cyan); text-transform: uppercase; letter-spacing: .16em; }
+@keyframes entree-annonce { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+
+#boutique {
+    flex: 0 0 280px;
+    border-radius: 3px;
+    border-top: 3px solid var(--bleu);
+    background: linear-gradient(180deg, rgba(12, 29, 46, .96), rgba(5, 15, 25, .96));
+    box-shadow: 0 18px 42px rgba(0,0,0,.34);
+}
+.bouton-unite {
+    position: relative;
+    min-height: 54px;
+    border-radius: 3px;
+    transition: border-color .15s ease, transform .15s ease, background .15s ease;
+}
+.bouton-unite:hover { transform: translateY(-1px); }
+.bouton-unite.selectionnee {
+    border-color: var(--ambre);
+    background: rgba(255, 200, 87, .14);
+    box-shadow: inset 0 0 0 1px rgba(255,200,87,.28);
+}
+.bouton-unite.inabordable { filter: saturate(.35); opacity: .62; }
+.bouton-unite-nom { line-height: 1.08; }
+#panneau-selection { padding: 12px; background: rgba(67,165,255,.07); border-left: 3px solid var(--cyan); }
+
+#message-jeu {
+    width: min(100%, 960px);
+    padding: 8px 12px;
+    border-left: 3px solid var(--ambre);
+    background: rgba(255,200,87,.05);
+}
+
+@media (max-width: 1120px) {
+    #zone-jeu { flex-wrap: wrap; }
+    #canvas-coque { width: 100%; flex-basis: 100%; }
+    #boutique { width: 100%; flex-basis: 100%; max-height: none; }
+    #liste-unites { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .bouton-unite { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 700px) {
+    #accueil-panneau { padding: 20px 14px; }
+    #accueil-panneau::before { margin: -20px -14px 18px; }
+    #accueil-commissaire { width: 88px; height: 88px; }
+    #liste-difficultes { margin-top: 16px; }
+    .carte-difficulte { flex-basis: 100%; max-width: none; min-height: 0; }
+    #hud { position: static; }
+    .hud-bloc { flex: 1 1 145px; justify-content: center; padding: 7px 9px; font-size: .9rem; }
+    #bandeau-operationnel { grid-template-columns: 1fr auto; }
+    #statut-detail { grid-column: 1 / -1; grid-row: 2; }
+    #liste-unites { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bouton-unite { flex-direction: row; text-align: left; }
+    #jeu-titre { letter-spacing: .15em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+}
+
+/* V3 — habillage arcade tactique original inspiré des références de composition. */
+body {
+    padding: 10px;
+    background:
+        radial-gradient(circle at 50% 0, rgba(32,96,150,.2), transparent 42%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 2px, transparent 2px 8px), #070b11;
+}
+#jeu-conteneur {
+    position: relative; max-width: 1320px; padding: 14px 14px 18px;
+    border: 7px solid #d9353f; border-top-color: #efc043; border-bottom-color: #efc043;
+    border-radius: 22px; background: #111722;
+    box-shadow: inset 0 0 0 3px #21090d, 0 18px 60px #000;
+}
+#jeu-conteneur::before, #jeu-conteneur::after {
+    content:""; position:absolute; z-index:2; pointer-events:none; height:16px; left:18%; right:18%;
+    background: repeating-linear-gradient(135deg, #cb2636 0 18px, #ec4050 18px 28px, #74101d 28px 32px);
+    clip-path: polygon(4% 0,96% 0,100% 100%,0 100%);
+}
+#jeu-conteneur::before { top:-7px; } #jeu-conteneur::after { bottom:-7px; transform:rotate(180deg); }
+#jeu-titre { font-style:italic; font-weight:1000; color:#fff; -webkit-text-stroke:1px #08233b; }
+#hud { top:4px; border:2px solid #680d18; border-radius:10px; background:linear-gradient(180deg,#e23c48,#9f1726); }
+.hud-bloc { color:#fff; border:1px solid rgba(255,255,255,.24); background:rgba(47,2,9,.28); transform:skewX(-3deg); }
+.hud-libelle,.hud-valeur,.hud-bloc button,.hud-bloc input { transform:skewX(3deg); }
+#bandeau-operationnel { border:2px solid #d49e30; border-left-width:7px; background:#10151c; }
+#canvas-coque { padding:5px; border:3px solid #282e37; border-radius:9px; background:#080b0f; }
+#jeu-canvas { border:0; border-radius:4px; box-shadow:inset 0 0 40px #000; }
+#boutique { border:2px solid #d49e30; border-top-width:6px; border-radius:8px; background:#f1eee3; color:#16181b; }
+#boutique h2 { color:#bd1f2d; font-style:italic; -webkit-text-stroke:.4px #5d1018; }
+.bouton-unite { color:#17191d; background:#dfded8; border-color:#979a9d; }
+.bouton-unite:hover { background:#fff3c9; } .bouton-unite-nom { color:#a41624; }
+#panneau-selection { background:#fff8de; color:#16181b; border-left-color:#d12d39; }
+#panneau-selection h3 { color:#b01926; }
+#ecran-roster { position:fixed; inset:0; z-index:1200; display:none; overflow:auto; padding:24px; background:rgba(4,7,11,.96); }
+#ecran-roster.ouvert { display:flex; align-items:flex-start; justify-content:center; }
+.roster-panneau { width:min(1080px,100%); border:6px solid #d53642; border-top-color:#efc043; border-bottom-color:#efc043; border-radius:18px; background:linear-gradient(#303236,#17191d); box-shadow:0 20px 80px #000; padding:22px; }
+.roster-entete { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+.roster-entete h2 { color:#fff; font-size:clamp(1.4rem,4vw,2.8rem); font-style:italic; text-transform:uppercase; text-shadow:3px 3px #0c0d10; }
+.roster-grille { display:grid; grid-template-columns:repeat(5,minmax(120px,1fr)); gap:16px; }
+.roster-carte { min-height:238px; display:flex; flex-direction:column; align-items:center; padding:10px; border:1px solid #5b5e63; background:linear-gradient(145deg,#414348,#222429); box-shadow:inset 0 0 18px rgba(0,0,0,.45); }
+.roster-carte img { width:145px; height:145px; object-fit:contain; filter:drop-shadow(0 9px 3px rgba(0,0,0,.5)); }
+.roster-carte strong { color:#f3f1e7; text-align:center; text-transform:uppercase; font-style:italic; }
+.roster-niveaux { display:flex; gap:5px; margin-top:7px; }
+.roster-niveaux span { width:23px; height:23px; display:grid; place-items:center; border-radius:50%; background:#1a5c89; color:#fff; font-weight:900; font-size:.72rem; }
+.roster-niveaux span:nth-child(2){background:#bd7f20}.roster-niveaux span:nth-child(3){background:#b82332}
+#bouton-roster,#bouton-fermer-roster { cursor:pointer; border:2px solid #f3c145; border-radius:6px; padding:8px 14px; background:#c92735; color:#fff; font-weight:900; text-transform:uppercase; }
+@media(max-width:800px){.roster-grille{grid-template-columns:repeat(2,minmax(120px,1fr))}.roster-panneau{padding:12px}#jeu-conteneur{border-width:4px;padding:8px}.roster-carte img{width:120px;height:120px}}
+
+
+/* V4 — décors générés, fiches tactiques et menu de commandement. */
+:root { --fond-menu-v4:url("images/fond_menu_accueil.webp"); }
+#ecran-accueil { background-image:linear-gradient(rgba(3,7,12,.22),rgba(3,7,12,.55)),var(--fond-menu-v4); background-size:cover; background-position:center; }
+#accueil-panneau { max-width:900px; background:rgba(5,12,22,.84); border:3px solid #d8a832; backdrop-filter:blur(5px); }
+#accueil-panneau::before { background:linear-gradient(90deg,#b51e2d,#efc043,#1f77b9); color:#fff; }
+#panneau-selection { position:relative; overflow:hidden; background-color:#f7f0da; color:#17181b; }
+#selection-details { line-height:1.45; }
+#selection-competence { margin:10px 0; padding:9px; border:1px solid #c08d28; background:rgba(255,255,255,.55); color:#24191b; font-size:.78rem; line-height:1.45; }
+.fiche-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; margin-top:8px; }
+.fiche-stat { padding:5px 7px; background:#262a30; color:#fff; border-left:3px solid #d62c3a; }
+.fiche-skill { color:#8f1320; font-weight:900; }
+.roster-carte { min-height:305px; }
+.roster-carte .roster-role { color:#e6b83e; font-size:.72rem; text-transform:uppercase; font-weight:900; }
+.roster-carte .roster-skill { margin-top:6px; color:#d9d9d9; font-size:.68rem; line-height:1.25; text-align:center; }
+.niveau-iii { animation:pulsation-niveau 1.3s ease-in-out infinite alternate; }
+@keyframes pulsation-niveau { to { filter:drop-shadow(0 0 7px #ff4558); transform:scale(1.05); } }
+@media(max-width:700px){.fiche-stats{grid-template-columns:1fr}.roster-carte{min-height:275px}}
+
+/* Alerte Police Secours — identité comic-book bleu cobalt et jaune. */
+:root{--ptd-blue:#0757d8;--ptd-blue-dark:#032d79;--ptd-blue-light:#20a9ff;--ptd-yellow:#ffd21f;--ptd-ink:#061225}
+body{background:radial-gradient(circle at 50% 0,rgba(32,169,255,.28),transparent 38%),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 8px),#031329}
+#jeu-conteneur{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);border-bottom-color:var(--ptd-yellow);background:#07182f;box-shadow:inset 0 0 0 3px #011b48,0 18px 60px #000}
+#jeu-conteneur::before,#jeu-conteneur::after{background:repeating-linear-gradient(135deg,#0757d8 0 18px,#20a9ff 18px 28px,#032d79 28px 32px)}
+#hud{border-color:#01378e;background:linear-gradient(180deg,#1278ed,#063c9b)}
+.hud-bloc{background:rgba(1,24,67,.58);border-color:rgba(255,255,255,.35)}
+#bouton-lancer-vague,#bouton-roster,#bouton-fermer-roster{color:#05142c;border-color:#fff1a2;background:linear-gradient(180deg,#ffe66a,#f4b900)}
+#bandeau-operationnel{border-color:var(--ptd-yellow);background:#061a38}
+#canvas-coque{border-color:#0f70dd;background:#02122b}
+#jeu-canvas{box-shadow:inset 0 0 30px rgba(2,22,55,.5),0 0 24px rgba(32,169,255,.18)}
+#boutique{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);background:#f7f9ff}
+#boutique h2,.bouton-unite-nom,#panneau-selection h3{color:#0757d8}
+.bouton-unite{background:#edf3ff;border-color:#7899c7}.bouton-unite:hover{background:#fff8cf}.bouton-unite.selectionnee{border-color:var(--ptd-yellow);background:#fff4b8}
+#panneau-selection{background:#fff;border-left-color:var(--ptd-blue)}
+.roster-panneau{border-color:var(--ptd-blue);border-top-color:var(--ptd-yellow);border-bottom-color:var(--ptd-yellow);background:linear-gradient(#123d7c,#071a38)}
+.roster-niveaux span{background:#0874df}.roster-niveaux span:nth-child(2){background:#eebd10}.roster-niveaux span:nth-child(3){background:#20a9ff}
+#accueil-panneau{border-color:var(--ptd-blue-light);border-left-color:var(--ptd-yellow);background:linear-gradient(145deg,rgba(5,45,105,.98),rgba(2,18,46,.98))}
+#accueil-panneau::before{color:#031329;background:linear-gradient(90deg,var(--ptd-blue-light),var(--ptd-yellow))}
+.carte-difficulte{background:rgba(4,26,63,.86);border-left-color:var(--ptd-blue-light)}.carte-difficulte:hover,.carte-difficulte:focus-visible{border-left-color:var(--ptd-yellow)}
+@media(max-width:700px){#jeu-conteneur{border-width:4px}}
+
+
+
+/* ------------------------------------------------------------
+   FICHES DE CARACTÉRISTIQUES (jauges Vitesse / Portée / Dégâts)
+   ------------------------------------------------------------
+   Réutilisées à deux endroits : dans chaque carte de la boutique
+   (avant achat) et dans le panneau de sélection (après avoir posé
+   une unité). On réutilise volontairement les classes .jauge-fond
+   et .jauge-remplissage déjà définies pour l'écran de difficulté :
+   même famille visuelle dans tout le jeu.
+------------------------------------------------------------ */
+.stats-unite {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.stat-ligne {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem;
+    color: #8a94a3;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.stat-libelle {
+    width: 36px;
+    flex-shrink: 0;
+}
+
+.stat-ligne .jauge-fond {
+    flex: 1;
+    height: 4px;
+}
+
+/* Dans le panneau de sélection (plus large que les cartes de la
+   boutique), les jauges peuvent respirer un peu plus. */
+#selection-barres .stats-unite {
+    margin: 8px 0;
+}
+
+#selection-barres .stat-ligne {
+    font-size: 0.7rem;
+    color: #4a4032;
+}
+
+#selection-barres .stat-libelle {
+    width: 50px;
+}
+
+#selection-barres .jauge-fond {
+    height: 6px;
 }

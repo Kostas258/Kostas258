@@ -762,3 +762,31 @@ inventer des silhouettes génériques.
    intégrer dans `index.html` / `script.js` (par exemple en remplaçant les
    formes géométriques actuelles des unités par ces sprites, ou en les
    affichant dans le panneau "Armurerie").
+
+## 9. Assets intégrés lors de la fusion avec la version enrichie
+
+Ces images (déjà générées et déjà en place dans `images/`, aucune action
+requise) ont été récupérées depuis une itération enrichie du jeu et
+intégrées au projet :
+
+- **Plateformes de tour** (`plateforme_patrouille.webp`, `plateforme_intervention.webp`,
+  `plateforme_controle.webp`, `plateforme_aerienne.webp`) : socles tactiques
+  dessinés sous chaque unité posée sur un toit, choisis selon la famille de
+  l'unité (voir `plateformePourUnite()` dans `script.js`).
+- **Sprites d'ennemis par archétype** (`ennemi_standard.webp`, `ennemi_rapide.webp`,
+  `ennemi_blinde.webp`, `ennemi_chef.webp`, `ennemi_saboteur.webp`,
+  `ennemi_eclaireur.webp`) : chaque vague mélange ces 6 profils (vitesse/PV/
+  récompense différents) à partir de la vague 2.
+- **Texture de route** (`route_1.webp` à `route_4.webp`, seule la première est
+  utilisée pour l'instant) : légère surcouche non directionnelle sur
+  l'asphalte, en complément du dessin procédural existant.
+- **Fond de l'écran d'accueil** (`fond_menu_accueil.webp`) : console tactique
+  généraliste (pas de logo ni de personnage précis), utilisée uniquement en
+  arrière-plan assombri derrière le panneau de choix de difficulté.
+
+Un second visuel généré dans cette même itération (un cadre rouge et or de
+type "fiche de personnage") a été volontairement écarté : son style
+(triangle façon réacteur, palette rouge/or) rappelait trop directement
+l'armure d'Iron Man / l'identité visuelle Marvel. Le panneau
+"Améliorer / Vendre" garde donc un fond neutre avec notre propre bordure
+bleu/jaune.
