@@ -667,11 +667,13 @@ PORTRAIT_COMMISSAIRE.src = 'images/portrait_commissaire.jpg';
 const LOGO_COMPACT = new Image();
 LOGO_COMPACT.src = 'images/logo_compact.png';
 
-// 4 variantes de toits, réparties sur les 8 bâtiments de la carte
-// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 4]).
-const TOITS_IMAGES = ['toit_1.png', 'toit_2.png', 'toit_3.png', 'toit_4.png'].map(function (nom) {
+// 12 variantes de toits pastel (extraites de la maquette d'interface
+// fournie par l'utilisateur : bâtiments massifs aux toits plats colorés,
+// vus strictement de dessus), réparties sur les 8 bâtiments de la carte
+// (voir dessinerBatiments : BATIMENTS[i] utilise TOITS_IMAGES[i % 12]).
+const TOITS_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (numero) {
     const image = new Image();
-    image.src = 'images/' + nom;
+    image.src = 'images/toit_maquette_' + numero + '.png';
     return image;
 });
 
