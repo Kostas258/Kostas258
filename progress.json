@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:48:44.145Z",
+  "updatedAt": "2026-08-20T12:50:28.513Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 40,
+      "done": 46,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 49,
+      "done": 51,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1167,6 +1167,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:44:53.444Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "gmi6i",
+        "verdict": "available",
+        "text": "@gmi6i | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+        "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"gmi6i\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@gmi6i semble disponible sur Instagram !\",\"alternatives\":[]}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:49:15.571Z",
+        "attempts": 1
       }
     },
     "h9bui": {
@@ -1205,6 +1215,32 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:48:44.145Z",
+        "attempts": 1
+      }
+    },
+    "hnu1e": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "hnu1e",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | hnu1e | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": "data: {\"status\":\"progress\",\"results\":[]}\n\ndata: {\"status\":\"finished\",\"results\":{\"instagram\":{\"code\":404,\"value\":\"hnu1e\",\"message\":\"\",\"available\":null}}}\n\n",
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:49:23.217Z",
+        "attempts": 1
+      }
+    },
+    "hr4ie": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "hr4ie",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | hr4ie | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:50:28.513Z",
         "attempts": 1
       }
     }
