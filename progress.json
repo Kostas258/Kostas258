@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:42:49.657Z",
+  "updatedAt": "2026-08-20T12:43:28.037Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 43,
+      "done": 44,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 43,
+      "done": 44,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1111,6 +1111,28 @@
         "attempts": 1
       }
     },
-    "fdo4e": {}
+    "fdo4e": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "fdo4e",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | fdo4e | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:43:09.273Z",
+        "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "fdo4e",
+        "verdict": "taken",
+        "text": "@fdo4e | Ce nom est déjà pris. | Trouver des alternatives similaires",
+        "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"fdo4e\",\"platform\":\"Instagram\"},\"message\":\"@fdo4e est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:43:28.037Z",
+        "attempts": 1
+      }
+    }
   }
 }
