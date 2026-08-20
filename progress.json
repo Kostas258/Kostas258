@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:52:40.258Z",
+  "updatedAt": "2026-08-20T12:54:03.792Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 46,
+      "done": 47,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 53,
+      "done": 54,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1190,6 +1190,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:45:59.205Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "h9bui",
+        "verdict": "unknown",
+        "text": "",
+        "api": null,
+        "error": "page.waitForFunction: Timeout 60000ms exceeded.",
+        "checkedAt": "2026-08-20T12:54:03.786Z",
+        "attempts": 3
       }
     },
     "hb2ol": {
@@ -1267,6 +1277,19 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:52:40.258Z",
+        "attempts": 1
+      }
+    },
+    "kai8l": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "kai8l",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | kai8l | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:53:45.644Z",
         "attempts": 1
       }
     }

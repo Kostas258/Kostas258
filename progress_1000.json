@@ -1,7 +1,7 @@
 {
   "source": "nomutilisateursprare.md (1000 pseudos inspirés de m7ia)",
   "startedAt": "2026-08-20T12:36:26.496Z",
-  "updatedAt": "2026-08-20T12:49:22.036Z",
+  "updatedAt": "2026-08-20T12:53:45.509Z",
   "target": 10,
   "delaySecondsBetweenUsernames": 30,
   "site": "vervox.app",
@@ -1008,7 +1008,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 10,
+  "checked": 11,
   "available": [
     "m7ia",
     "m7iy",
@@ -1117,6 +1117,16 @@
       "error": null,
       "checkedAt": "2026-08-20T12:49:22.036Z",
       "attempts": 1
+    },
+    "m7ik": {
+      "site": "vervox",
+      "username": "m7ik",
+      "verdict": "taken",
+      "text": "@m7ik | Ce nom est déjà pris. | Trouver des alternatives similaires",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7ik\",\"platform\":\"Instagram\"},\"message\":\"@m7ik est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:53:45.509Z",
+      "attempts": 3
     }
   }
 }
