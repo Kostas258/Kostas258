@@ -25,6 +25,8 @@ function siteCell(r) {
 }
 
 function finalStatus(vx, bs) {
+  if (!vx && !bs) return 'Non vérifié';
+  if (!vx || (vx.verdict === 'unknown' && !bs)) return vx ? 'Indéterminé' : 'Non vérifié';
   const v = vx && vx.verdict;
   const b = bs && bs.verdict;
   const det = [v, b].filter(x => x === 'taken' || x === 'available');
@@ -35,7 +37,7 @@ function finalStatus(vx, bs) {
 }
 
 const out = [];
-let nPris = 0, nDispo1 = 0, nDispo2 = 0, nInd = 0;
+let nPris = 0, nDispo1 = 0, nDispo2 = 0, nInd = 0, nNon = 0;
 const dispoList = [];
 
 for (const row of rows) {
@@ -44,6 +46,7 @@ for (const row of rows) {
   if (status === 'Pris') nPris++;
   else if (status === 'Disponible') { nDispo2++; dispoList.push(row); }
   else if (status === 'Disponible (1 source)') { nDispo1++; dispoList.push(row); }
+  else if (status === 'Non vérifié') nNon++;
   else nInd++;
   out.push({ ...row, status, vx: siteCell(res.vervox), bs: siteCell(res.brandsnag), res });
 }
@@ -112,11 +115,13 @@ doc += `
 | Pris | ${nPris} |
 | Disponible (confirmé par les deux sites) | ${nDispo2} |
 | Disponible (une seule source exploitable) | ${nDispo1} |
-| Indéterminé | ${nInd} |
+| Indéterminé (vérifié, sans réponse exploitable) | ${nInd} |
+| Non vérifié (quota du site épuisé) | ${nNon} |
 | **Total** | **100** |
 
 - **${verifiedOk}/100 pseudos vérifiés avec succès** (statut déterminé par au moins une source fonctionnelle).
-- **${nInd}/100 indéterminés** (aucune source n'a pu répondre).
+- **${nInd}/100 indéterminés** (interrogés, aucune source n'a pu répondre).
+- **${nNon}/100 non vérifiés** : le run a été interrompu par le quota de vervox (429 IP_RATE_LIMITED). Ces pseudos n'ont jamais été interrogés — leur statut est inconnu, pas « disponible ».
 
 ## Fiabilité des sources
 
