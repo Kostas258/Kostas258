@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:51:34.082Z",
+  "updatedAt": "2026-08-20T12:52:40.258Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -114,7 +114,7 @@
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 52,
+      "done": 53,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1254,6 +1254,19 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:51:34.082Z",
+        "attempts": 1
+      }
+    },
+    "k5mai": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "k5mai",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | k5mai | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:52:40.258Z",
         "attempts": 1
       }
     }
