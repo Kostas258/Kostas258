@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:54:03.792Z",
+  "updatedAt": "2026-08-20T12:55:56.417Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -114,7 +114,7 @@
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 54,
+      "done": 56,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1290,6 +1290,32 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:53:45.644Z",
+        "attempts": 1
+      }
+    },
+    "ku9eu": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "ku9eu",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | ku9eu | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:54:50.993Z",
+        "attempts": 1
+      }
+    },
+    "la8ee": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "la8ee",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | la8ee | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:55:56.417Z",
         "attempts": 1
       }
     }
