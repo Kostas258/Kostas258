@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:22:42.884Z",
+  "updatedAt": "2026-08-20T12:24:11.726Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 18,
+      "done": 19,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 21,
+      "done": 23,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -546,6 +546,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:20:12.384Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "xe5a",
+        "verdict": "taken",
+        "text": "@xe5a | Ce nom est déjà pris. | Trouver des alternatives similaires",
+        "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"xe5a\",\"platform\":\"Instagram\"},\"message\":\"@xe5a est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:23:25.947Z",
+        "attempts": 1
       }
     },
     "j7vuu": {
@@ -571,6 +581,32 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:22:22.847Z",
+        "attempts": 1
+      }
+    },
+    "jre5e": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "jre5e",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | jre5e | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:23:28.055Z",
+        "attempts": 1
+      }
+    },
+    "x6eeb": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "x6eeb",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | x6eeb | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:24:11.726Z",
         "attempts": 1
       }
     }
