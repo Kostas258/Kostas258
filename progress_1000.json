@@ -1,7 +1,7 @@
 {
   "source": "nomutilisateursprare.md (1000 pseudos inspirés de m7ia)",
   "startedAt": "2026-08-20T12:36:26.496Z",
-  "updatedAt": "2026-08-20T12:42:08.725Z",
+  "updatedAt": "2026-08-20T12:46:28.693Z",
   "target": 10,
   "delaySecondsBetweenUsernames": 30,
   "site": "vervox.app",
@@ -1008,9 +1008,10 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 4,
+  "checked": 8,
   "available": [
-    "m7ia"
+    "m7ia",
+    "m7iy"
   ],
   "blocked": false,
   "blockedAt": null,
@@ -1054,6 +1055,46 @@
       "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7io\",\"platform\":\"Instagram\"},\"message\":\"@m7io est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
       "error": null,
       "checkedAt": "2026-08-20T12:40:00.658Z",
+      "attempts": 1
+    },
+    "m7iu": {
+      "site": "vervox",
+      "username": "m7iu",
+      "verdict": "taken",
+      "text": "@m7iu | Ce nom est déjà pris. | Trouver des alternatives similaires",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7iu\",\"platform\":\"Instagram\"},\"message\":\"@m7iu est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:44:11.767Z",
+      "attempts": 2
+    },
+    "m7iy": {
+      "site": "vervox",
+      "username": "m7iy",
+      "verdict": "available",
+      "text": "@m7iy | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7iy\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7iy semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:44:58.713Z",
+      "attempts": 1
+    },
+    "m7iq": {
+      "site": "vervox",
+      "username": "m7iq",
+      "verdict": "taken",
+      "text": "@m7iq | Ce nom est déjà pris. | Trouver des alternatives similaires",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7iq\",\"platform\":\"Instagram\"},\"message\":\"@m7iq est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:45:38.030Z",
+      "attempts": 1
+    },
+    "m7ix": {
+      "site": "vervox",
+      "username": "m7ix",
+      "verdict": "taken",
+      "text": "@m7ix | Ce nom est déjà pris. | Trouver des alternatives similaires",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7ix\",\"platform\":\"Instagram\"},\"message\":\"@m7ix est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:46:28.693Z",
       "attempts": 1
     }
   }

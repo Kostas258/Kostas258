@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:43:28.037Z",
+  "updatedAt": "2026-08-20T12:47:38.429Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 44,
+      "done": 46,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 44,
+      "done": 48,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1029,17 +1029,6 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:39:13.392Z",
         "attempts": 1
-      },
-      "vervox": {
-        "site": "vervox",
-        "username": "daa7t",
-        "verdict": "unknown",
-        "text": "",
-        "api": null,
-        "error": "CAPTCHA / anti-bot page detected",
-        "checkedAt": "2026-08-20T12:40:13.531Z",
-        "attempts": 1,
-        "captcha": true
       }
     },
     "deu9v": {
@@ -1131,6 +1120,68 @@
         "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"fdo4e\",\"platform\":\"Instagram\"},\"message\":\"@fdo4e est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
         "error": null,
         "checkedAt": "2026-08-20T12:43:28.037Z",
+        "attempts": 1
+      }
+    },
+    "gm7ic": {
+      "vervox": {
+        "site": "vervox",
+        "username": "gm7ic",
+        "verdict": "available",
+        "text": "@gm7ic | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+        "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"gm7ic\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@gm7ic semble disponible sur Instagram !\",\"alternatives\":[]}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:44:11.141Z",
+        "attempts": 1
+      },
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "gm7ic",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | gm7ic | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:44:14.558Z",
+        "attempts": 1
+      }
+    },
+    "gmi6i": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "gmi6i",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | gmi6i | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": "data: {\"status\":\"progress\",\"results\":[]}\n\ndata: {\"status\":\"finished\",\"results\":{\"instagram\":{\"code\":404,\"value\":\"gmi6i\",\"message\":\"\",\"available\":null}}}\n\n",
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:44:53.444Z",
+        "attempts": 1
+      }
+    },
+    "h9bui": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "h9bui",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | h9bui | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:45:59.205Z",
+        "attempts": 1
+      }
+    },
+    "hb2ol": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "hb2ol",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | hb2ol | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:47:38.429Z",
         "attempts": 1
       }
     }
