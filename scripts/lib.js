@@ -1,6 +1,6 @@
 const { chromium, request } = require('/opt/node22/lib/node_modules/playwright');
 
-const PROXY = { server: 'http://127.0.0.1:33353' };
+const PROXY = { server: process.env.HTTPS_PROXY || process.env.https_proxy || 'http://127.0.0.1:33353' };
 const STATIC_RE = /\.(js|css|woff2?|ttf|otf|png|jpe?g|gif|svg|webp|ico)(\?|$)/i;
 const BLOCK_RE = /googletagmanager|google-analytics|doubleclick|facebook\.net|hotjar|clarity\.ms|monitoring\?|\/ingest\/|sentry/i;
 
