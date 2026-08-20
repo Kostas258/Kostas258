@@ -1,7 +1,7 @@
 {
   "source": "nomutilisateursprare.md (1000 pseudos inspirés de m7ia)",
   "startedAt": "2026-08-20T12:36:26.496Z",
-  "updatedAt": "2026-08-20T12:46:28.693Z",
+  "updatedAt": "2026-08-20T12:48:39.723Z",
   "target": 10,
   "delaySecondsBetweenUsernames": 30,
   "site": "vervox.app",
@@ -1008,10 +1008,11 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 8,
+  "checked": 9,
   "available": [
     "m7ia",
-    "m7iy"
+    "m7iy",
+    "m7iv"
   ],
   "blocked": false,
   "blockedAt": null,
@@ -1096,6 +1097,16 @@
       "error": null,
       "checkedAt": "2026-08-20T12:46:28.693Z",
       "attempts": 1
+    },
+    "m7iv": {
+      "site": "vervox",
+      "username": "m7iv",
+      "verdict": "available",
+      "text": "@m7iv | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7iv\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7iv semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-20T12:48:39.723Z",
+      "attempts": 2
     }
   }
 }

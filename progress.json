@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:47:38.429Z",
+  "updatedAt": "2026-08-20T12:48:44.145Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 46,
+      "done": 40,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 48,
+      "done": 49,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -1029,6 +1029,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:39:13.392Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "daa7t",
+        "verdict": "available",
+        "text": "@daa7t | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+        "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"daa7t\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@daa7t semble disponible sur Instagram !\",\"alternatives\":[]}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:48:24.296Z",
+        "attempts": 2
       }
     },
     "deu9v": {
@@ -1182,6 +1192,19 @@
         "api": null,
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:47:38.429Z",
+        "attempts": 1
+      }
+    },
+    "he4no": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "he4no",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | he4no | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:48:44.145Z",
         "attempts": 1
       }
     }
