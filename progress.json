@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-08-20T12:07:25.122Z",
-  "updatedAt": "2026-08-20T12:19:26.741Z",
+  "updatedAt": "2026-08-20T12:22:42.884Z",
   "delaySecondsBetweenUsernames": 30,
   "usernames": [
     "ba5i",
@@ -107,14 +107,14 @@
   "sites": {
     "vervox": {
       "url": "https://vervox.app/fr/outils/verificateur-nom-instagram",
-      "done": 14,
+      "done": 18,
       "blocked": false,
       "blockedAt": null,
       "note": null
     },
     "brandsnag": {
       "url": "https://brandsnag.com/fr/nom-dutilisateur-instagram",
-      "done": 18,
+      "done": 21,
       "blocked": false,
       "blockedAt": null,
       "note": null
@@ -454,6 +454,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:17:09.148Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "vi2o",
+        "verdict": "taken",
+        "text": "@vi2o | Ce nom est déjà pris. | Trouver des alternatives similaires",
+        "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"vi2o\",\"platform\":\"Instagram\"},\"message\":\"@vi2o est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:20:19.677Z",
+        "attempts": 1
       }
     },
     "w5uh": {
@@ -466,6 +476,16 @@
         "api": "data: {\"status\":\"progress\",\"results\":[]}\n\ndata: {\"status\":\"finished\",\"results\":{\"instagram\":{\"code\":404,\"value\":\"w5uh\",\"message\":\"\",\"available\":null}}}\n\n",
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:17:48.962Z",
+        "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "w5uh",
+        "verdict": "taken",
+        "text": "@w5uh | Ce nom est déjà pris. | Trouver des alternatives similaires",
+        "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"w5uh\",\"platform\":\"Instagram\"},\"message\":\"@w5uh est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:20:57.951Z",
         "attempts": 1
       }
     },
@@ -480,6 +500,16 @@
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:18:28.176Z",
         "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "x2eh",
+        "verdict": "available",
+        "text": "@x2eh | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+        "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"x2eh\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@x2eh semble disponible sur Instagram !\",\"alternatives\":[]}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:21:43.701Z",
+        "attempts": 1
       }
     },
     "x2iz": {
@@ -492,6 +522,55 @@
         "api": "data: {\"status\":\"progress\",\"results\":[]}\n\ndata: {\"status\":\"finished\",\"results\":{\"instagram\":{\"code\":404,\"value\":\"x2iz\",\"message\":\"\",\"available\":null}}}\n\n",
         "error": "site returned \"unknown\" (cannot reach Instagram)",
         "checkedAt": "2026-08-20T12:19:07.106Z",
+        "attempts": 1
+      },
+      "vervox": {
+        "site": "vervox",
+        "username": "x2iz",
+        "verdict": "available",
+        "text": "@x2iz | Ce nom est disponible sur Instagram ! | Certains handles peuvent être réservés (marques, anciens comptes, comptes en attente). Confirme la disponibilité finale en créant le compte sur Instagram. | Créer le compte sur Instagram",
+        "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"x2iz\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@x2iz semble disponible sur Instagram !\",\"alternatives\":[]}",
+        "error": null,
+        "checkedAt": "2026-08-20T12:22:42.884Z",
+        "attempts": 1
+      }
+    },
+    "xe5a": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "xe5a",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | xe5a | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:20:12.384Z",
+        "attempts": 1
+      }
+    },
+    "j7vuu": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "j7vuu",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | j7vuu | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:21:17.754Z",
+        "attempts": 1
+      }
+    },
+    "jao2c": {
+      "brandsnag": {
+        "site": "brandsnag",
+        "username": "jao2c",
+        "verdict": "unknown",
+        "text": "INSTAGRAM | jao2c | vérifier manuellement",
+        "cls": "social-media-block bg-unknown-20 border-transparent",
+        "api": null,
+        "error": "site returned \"unknown\" (cannot reach Instagram)",
+        "checkedAt": "2026-08-20T12:22:22.847Z",
         "attempts": 1
       }
     }
