@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 62,
+  "checked": 63,
   "available": [
     "h3ii",
     "j2eb",
@@ -135,7 +135,8 @@
     "ku9eu",
     "noi2b",
     "p2ima",
-    "pr1ux"
+    "pr1ux",
+    "n6voo"
   ],
   "results": {
     "ba5i": {
@@ -663,11 +664,11 @@
     "n6voo": {
       "site": "vervox",
       "username": "n6voo",
-      "verdict": "unknown",
-      "api": null,
-      "error": "HTTP 0",
-      "checkedAt": "2026-08-21T10:08:49.362Z",
-      "attempts": 2
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"n6voo\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@n6voo semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T13:08:01.747Z",
+      "attempts": 1
     },
     "noi2b": {
       "site": "vervox",
@@ -715,5 +716,5 @@
       "attempts": 2
     }
   },
-  "updatedAt": "2026-08-21T10:16:25.109Z"
+  "updatedAt": "2026-08-21T13:08:13.109Z"
 }

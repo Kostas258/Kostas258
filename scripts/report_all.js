@@ -96,10 +96,12 @@ let doc = `# Pseudos Instagram — identifiants utilisés ou non
 
 | Source | Nature | État |
 |---|---|---|
-| **vervox.app** | API \`/api/tools/username-check\` | opérationnelle — quota par IP sur fenêtre glissante |
-| **socialcal.app** | API \`socialcal-media-proxy\` (Cloudflare Worker) | opérationnelle — quota indépendant, renvoie un niveau de confiance |
+| **socialcal.app** | API \`socialcal-media-proxy\` (Cloudflare Worker) | source principale — renvoie un niveau de confiance ; seuls les \`high\` sont retenus. Son amont s'est épuisé en fin de session (56 des 60 dernières réponses indéterminées), la collecte a donc été arrêtée pour ne pas insister |
+| **vervox.app** | API \`/api/tools/username-check\` | corroboration — quota par IP devenu très restrictif : après 91 min de silence, 1 seule vérification est passée avant un nouveau blocage. Tend par ailleurs à sur-déclarer la disponibilité (voir plus bas) |
+| dnsrobot.net | API \`/api/social-username\` | **arbitre indisponible** : interroge Instagram en direct, donc le mieux placé pour trancher — mais son quota est resté fermé sur 12 tours étalés sur 3 h 30, soit 0 arbitrage sur 15. Il renvoie honnêtement \`available:null\`, jamais un verdict deviné |
+| namecheckly.com | API \`/api/check\` | **écartée** : renvoie « pris » pour tout, y compris pour un pseudo de contrôle certainement libre. Aurait injecté de faux « pris » |
 | brandsnag.com | — | **hors service** pour Instagram : 35/35 réponses indéterminées la session précédente, y compris sur \`instagram\`, \`nike\`, \`cristiano\` |
-| instagram.com direct | — | **inaccessible** depuis cette IP : 302 (mur de connexion) sur les profils, 429 sur l'API d'inscription |
+| instagram.com direct | — | **inaccessible** depuis cette IP : 302 (mur de connexion) sur les profils, 429 sur l'API d'inscription. sherlock, maigret et socialscan échouent tous pour cette raison |
 
 Un verdict n'est retenu que si les champs de la réponse concordent entre eux
 (\`available\` + \`statusCode\` + message côté vervox ; \`status\` + \`confidence: high\`
@@ -168,14 +170,24 @@ ${r1000.filter(r => !r.used).map(r => `\`${r.pseudo}\``).join(', ') || '—'}
 ## Pourquoi tous les identifiants n'ont pas été utilisés
 
 L'objectif fixé pour la liste des 1000 était d'y **trouver 10 pseudos disponibles**, pas
-de la vérifier intégralement : la vérification s'arrête donc dès la cible atteinte.
-La liste des 100, elle, était à vérifier entièrement.
+de la vérifier intégralement. La liste des 100, elle, était à vérifier entièrement.
 
-Le débit reste limité par les quotas par IP des vérificateurs. Deux sources
-indépendantes sont interrogées en parallèle, chacune à une cadence sous son seuil,
-avec silence complet en cas de 429 — sonder pendant un blocage ne fait que prolonger
-la fenêtre glissante. Aucun CAPTCHA n'a été contourné : les challenges sont détectés
-et provoquent l'arrêt.
+Le facteur limitant est le quota par IP des vérificateurs, et il s'est resserré au fil
+de la session :
+
+- **vervox** a bloqué à 70 s d'espacement, puis encore à 105 s. Après 91 minutes de
+  silence complet, une seule vérification est passée avant un nouveau blocage. La
+  fenêtre est glissante et bien plus longue que l'heure annoncée — toute requête émise
+  pendant un blocage la repousse, y compris une simple sonde. La cadence a donc été
+  ramenée à 8 min, et vervox n'est plus sollicité que pour confirmer les pseudos que
+  socialcal déclare libres, au lieu de reparcourir les 1100.
+- **socialcal** a tenu longtemps puis son amont s'est épuisé : sur les 60 dernières
+  réponses, 56 étaient indéterminées. La collecte a été arrêtée à ce moment-là.
+- **dnsrobot**, le seul arbitre possible pour les contradictions, n'a jamais eu son
+  quota Instagram ouvert.
+
+Aucun CAPTCHA n'a été contourné : les challenges sont détectés et provoquent l'arrêt.
+Aucune erreur, aucun 429 et aucun délai d'attente n'a été converti en verdict.
 
 ### Les listes de proxies ne sont pas exploitables ici
 
