@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 63,
+  "checked": 64,
   "available": [
     "h3ii",
     "j2eb",
@@ -136,7 +136,8 @@
     "noi2b",
     "p2ima",
     "pr1ux",
-    "n6voo"
+    "n6voo",
+    "r2xua"
   ],
   "results": {
     "ba5i": {
@@ -714,7 +715,16 @@
       "error": null,
       "checkedAt": "2026-08-21T10:16:13.250Z",
       "attempts": 2
+    },
+    "r2xua": {
+      "site": "vervox",
+      "username": "r2xua",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"r2xua\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@r2xua semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:16:13.682Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-21T13:08:13.109Z"
+  "updatedAt": "2026-08-21T16:16:23.468Z"
 }
