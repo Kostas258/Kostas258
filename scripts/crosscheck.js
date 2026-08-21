@@ -46,7 +46,11 @@ function workList() {
     return !!r && (r.verdict !== 'unknown' || (r.tries || 1) >= MAX_TRIES);
   };
   const tier = u => (verdict(u) === 'available' ? 0 : verdict(u) === 'taken' ? 1 : 2);
-  return all.filter(u => !done(u)).sort((a, b) => tier(a) - tier(b));
+  // The 100 list has to be covered in full; the 1000 list only needs enough
+  // names to reach the target, so it yields within an equal tier.
+  const in100 = new Set(p100.usernames);
+  const rank = u => tier(u) * 2 + (in100.has(u) ? 0 : 1);
+  return all.filter(u => !done(u)).sort((a, b) => rank(a) - rank(b));
 }
 
 (async () => {

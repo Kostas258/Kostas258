@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 51,
+  "checked": 55,
   "available": [
     "h3ii",
     "j2eb",
@@ -130,7 +130,9 @@
     "hb2ol",
     "he4no",
     "hnu1e",
-    "hr4ie"
+    "hr4ie",
+    "k4lae",
+    "ku9eu"
   ],
   "results": {
     "ba5i": {
@@ -591,7 +593,43 @@
       "error": null,
       "checkedAt": "2026-08-21T09:58:19.392Z",
       "attempts": 1
+    },
+    "k4lae": {
+      "site": "vervox",
+      "username": "k4lae",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"k4lae\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@k4lae semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:59:40.672Z",
+      "attempts": 1
+    },
+    "k5mai": {
+      "site": "vervox",
+      "username": "k5mai",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"k5mai\",\"platform\":\"Instagram\"},\"message\":\"@k5mai est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:01:00.972Z",
+      "attempts": 1
+    },
+    "kai8l": {
+      "site": "vervox",
+      "username": "kai8l",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"kai8l\",\"platform\":\"Instagram\"},\"message\":\"@kai8l est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:02:12.887Z",
+      "attempts": 1
+    },
+    "ku9eu": {
+      "site": "vervox",
+      "username": "ku9eu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"ku9eu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@ku9eu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:03:24.872Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-21T09:58:30.608Z"
+  "updatedAt": "2026-08-21T10:03:31.981Z"
 }
