@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkSocialcal, sleep } = require('./socialcal_api.js');
+const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'socialcal.json');
@@ -23,13 +24,13 @@ const LIMIT = +(process.env.SC_LIMIT || 0); // 0 = no cap
 // accept the indeterminate answer instead of looping on it forever.
 const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
 
-const readJson = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+const readJson = readJsonSafe;
 const ts = () => new Date().toISOString().slice(11, 19);
 
 const store = fs.existsSync(OUT) ? readJson(OUT) : { results: {}, updatedAt: null };
 const save = () => {
   store.updatedAt = new Date().toISOString();
-  fs.writeFileSync(OUT, JSON.stringify(store, null, 2));
+  writeJsonAtomic(OUT, store);
 };
 
 /** Rebuilt each pass: the vervox drip keeps adding verdicts underneath us. */

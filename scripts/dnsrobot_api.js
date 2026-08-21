@@ -13,6 +13,8 @@ const { execFile } = require('child_process');
 const API = 'https://dnsrobot.net/api/social-username';
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
+const { assertUsername } = require('./safe.js');
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 function post(username, timeoutMs) {
@@ -38,6 +40,7 @@ function post(username, timeoutMs) {
  * Returns { site:'dnsrobot', username, verdict:'taken'|'available'|'unknown', api, error, checkedAt }
  */
 async function checkDnsrobot(username, { timeoutMs = 90000 } = {}) {
+  assertUsername(username);
   const out = {
     site: 'dnsrobot', username, verdict: 'unknown',
     api: null, error: null, checkedAt: new Date().toISOString(),

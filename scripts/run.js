@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkVervox, sleep } = require('./vervox_api.js');
+const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const P100 = path.join(REPO, 'progress.json');
@@ -27,7 +28,7 @@ const MAX_BACKOFFS = +(process.env.MAX_BACKOFFS || 3);
 const HARD_ERR = /transport|timeout|HTTP \d|unparseable|RATE_LIMITED/i;
 const needsCheck = r => !r || (r.verdict === 'unknown' && (!r.error || HARD_ERR.test(r.error)));
 
-const readJson = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+const readJson = readJsonSafe;
 const ts = () => new Date().toISOString().slice(11, 19);
 
 let delay = DELAY_MS;
@@ -37,7 +38,7 @@ let stop = null;
 
 function save(file, s) {
   s.updatedAt = new Date().toISOString();
-  fs.writeFileSync(file, JSON.stringify(s, null, 2));
+  writeJsonAtomic(file, s);
 }
 
 /** One username, with retry on soft failure and full backoff on 429. */

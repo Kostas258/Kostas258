@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkDnsrobot, sleep } = require('./dnsrobot_api.js');
+const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'dnsrobot.json');
@@ -21,14 +22,14 @@ const GAP_MS = +(process.env.TB_GAP_MS || 25000);        // between names in a r
 const ROUND_MS = +(process.env.TB_ROUND_MS || 10 * 60000); // between rounds
 const MAX_ROUNDS = +(process.env.TB_MAX_ROUNDS || 12);
 
-const readJson = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+const readJson = readJsonSafe;
 const ts = () => new Date().toISOString().slice(11, 19);
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
 const store = fs.existsSync(OUT) ? readJson(OUT) : { results: {}, updatedAt: null };
 const save = () => {
   store.updatedAt = new Date().toISOString();
-  fs.writeFileSync(OUT, JSON.stringify(store, null, 2));
+  writeJsonAtomic(OUT, store);
 };
 
 function conflicts() {

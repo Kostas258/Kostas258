@@ -947,7 +947,128 @@
       "error": "status=unknown confidence=medium",
       "checkedAt": "2026-08-21T10:23:09.424Z",
       "tries": 1
+    },
+    "n6voo": {
+      "site": "socialcal",
+      "username": "n6voo",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"n6voo\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/n6voo/\",\"checkedAt\":\"2026-08-21T10:24:34.076Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:24:33.577Z",
+      "tries": 2
+    },
+    "pk1ue": {
+      "site": "socialcal",
+      "username": "pk1ue",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"pk1ue\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/pk1ue/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:25:36.516Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:25:35.912Z",
+      "tries": 3
+    },
+    "r2xua": {
+      "site": "socialcal",
+      "username": "r2xua",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"r2xua\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/r2xua/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:26:39.194Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:26:38.398Z",
+      "tries": 3
+    },
+    "r9eze": {
+      "site": "socialcal",
+      "username": "r9eze",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"r9eze\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/r9eze/\",\"checkedAt\":\"2026-08-21T10:27:21.047Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:27:20.145Z",
+      "tries": 2
+    },
+    "r9oce": {
+      "site": "socialcal",
+      "username": "r9oce",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"r9oce\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/r9oce/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:28:23.886Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:28:22.790Z",
+      "tries": 3
+    },
+    "rab9i": {
+      "site": "socialcal",
+      "username": "rab9i",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"rab9i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/rab9i/\",\"checkedAt\":\"2026-08-21T10:28:44.697Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:28:43.844Z",
+      "tries": 1
+    },
+    "re1pe": {
+      "site": "socialcal",
+      "username": "re1pe",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"re1pe\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/re1pe/\",\"checkedAt\":\"2026-08-21T10:29:05.554Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:29:04.671Z",
+      "tries": 1
+    },
+    "re2to": {
+      "site": "socialcal",
+      "username": "re2to",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"re2to\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/re2to/\",\"checkedAt\":\"2026-08-21T10:29:26.611Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:29:25.542Z",
+      "tries": 1
+    },
+    "rne5i": {
+      "site": "socialcal",
+      "username": "rne5i",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"rne5i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/rne5i/\",\"checkedAt\":\"2026-08-21T10:29:47.177Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:29:46.574Z",
+      "tries": 1
+    },
+    "s4oum": {
+      "site": "socialcal",
+      "username": "s4oum",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"s4oum\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/s4oum/\",\"checkedAt\":\"2026-08-21T10:30:28.957Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:30:28.114Z",
+      "tries": 2
+    },
+    "sai1n": {
+      "site": "socialcal",
+      "username": "sai1n",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"sai1n\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/sai1n/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:30:49.873Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:30:48.928Z",
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-21T10:23:10.325Z"
+  "updatedAt": "2026-08-21T10:30:49.828Z"
 }

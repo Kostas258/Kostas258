@@ -15,6 +15,8 @@ const API = 'https://vervox.app/api/tools/username-check';
 const REFERER = 'https://vervox.app/fr/outils/verificateur-nom-instagram';
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
+const { assertUsername } = require('./safe.js');
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 function curlJson(username, timeoutMs) {
@@ -56,6 +58,7 @@ function looksLikeChallenge(status, body) {
  *           rateLimited?, captcha?, checkedAt, attempts }
  */
 async function checkVervox(username, { timeoutMs = 45000 } = {}) {
+  assertUsername(username);
   const out = {
     site: 'vervox', username, verdict: 'unknown',
     api: null, error: null, checkedAt: new Date().toISOString(), attempts: 1,

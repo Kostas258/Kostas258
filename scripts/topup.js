@@ -15,6 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const { checkVervox } = require('./vervox_api.js');
 const { checkSocialcal, sleep } = require('./socialcal_api.js');
+const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const P1000 = path.join(REPO, 'progress_1000.json');
@@ -25,7 +26,7 @@ const SC_DELAY = +(process.env.SC_DELAY_MS || 20000);
 const VX_DELAY = +(process.env.VX_DELAY_MS || 70000);
 const MAX_TRIES = 2;
 
-const readJson = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+const readJson = readJsonSafe;
 const ts = () => new Date().toISOString().slice(11, 19);
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
@@ -62,7 +63,7 @@ function confirmed(p1000, sc) {
       s.tries = ((sc.results[next] && sc.results[next].tries) || 0) + 1;
       sc.results[next] = s;
       sc.updatedAt = new Date().toISOString();
-      fs.writeFileSync(SC, JSON.stringify(sc, null, 2));
+      writeJsonAtomic(SC, sc);
       checks++;
       console.log(`${ts()} [sc] ${next} -> ${s.verdict}${s.error ? ' | ' + s.error : ''}`);
       await sleep(SC_DELAY);
@@ -82,7 +83,7 @@ function confirmed(p1000, sc) {
       cur.checked = Object.keys(cur.results).length;
       if (v.verdict === 'available' && !cur.available.includes(next)) cur.available.push(next);
       cur.updatedAt = new Date().toISOString();
-      fs.writeFileSync(P1000, JSON.stringify(cur, null, 2));
+      writeJsonAtomic(P1000, cur);
       checks++;
       console.log(`${ts()} [vx] ${next} -> ${v.verdict}${v.error ? ' | ' + v.error : ''}`);
       await sleep(VX_DELAY);
