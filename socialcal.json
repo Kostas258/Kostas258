@@ -1064,11 +1064,22 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"sai1n\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/sai1n/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:30:49.873Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"sai1n\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/sai1n/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:31:31.506Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T10:30:48.928Z",
-      "tries": 1
+      "checkedAt": "2026-08-21T10:31:30.574Z",
+      "tries": 3
+    },
+    "sc9ej": {
+      "site": "socialcal",
+      "username": "sc9ej",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"sc9ej\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/sc9ej/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:32:13.334Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:32:12.376Z",
+      "tries": 2
     }
   },
-  "updatedAt": "2026-08-21T10:30:49.828Z"
+  "updatedAt": "2026-08-21T10:32:13.278Z"
 }
