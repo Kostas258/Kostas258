@@ -86,8 +86,6 @@ function record(file, u, res) {
 
   if (!await respectCooldown('vervox', DEADLINE)) return;
 
-  // One control only: two would spend a second request before any real work,
-  // and the negative direction is what a rate-limited vervox gets wrong anyway.
   const lastGood = (() => {
     let t = 0;
     for (const f of [P100, P1000])
@@ -97,8 +95,26 @@ function record(file, u, res) {
     return t;
   })();
 
+  // A control is only worth a request while requests are cheap. vervox is now
+  // handing out roughly one per window: at 21:56 the control spent it, and the
+  // first real check eight minutes later hit the wall. So once the ledger shows
+  // the source has been blocking, the control is dropped and its job moves onto
+  // the first real answer — which costs nothing extra and proves the same thing.
+  //
+  // Nothing is weakened by this. A rate-limited reply is detected explicitly and
+  // never becomes a verdict, and a verdict is still only recorded when the
+  // boolean, the status code and the message all agree. What the control adds is
+  // catching an API that answers confidently but wrongly, and the first real
+  // answer catches that just as well.
+  const blocked = lastBlock('vervox');
+  const scarce = blocked && Date.now() - Date.parse(blocked.at) < 24 * 3600000;
+  let mustValidate = false;
+
   if (Date.now() - lastGood < CONTROL_SKIP_MS) {
-    console.log(`${ts()} control skipped — vervox answered correctly at ${ts(new Date(lastGood))}, that is the same evidence for less quota`);
+    console.log(`${ts()} contrôle sauté — vervox a répondu correctement à ${ts(new Date(lastGood))}, même preuve pour moins de quota`);
+  } else if (scarce) {
+    mustValidate = true;
+    console.log(`${ts()} contrôle sauté — vervox a bloqué à ${ts(new Date(blocked.at))} ; un contrôle coûterait la seule requête de la fenêtre. La première vraie réponse en tiendra lieu.`);
   } else {
     const c = await checkVervox('instagram');
     console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}`);
@@ -130,6 +146,18 @@ function record(file, u, res) {
       }
       await sleep(BACKOFF_MS);
       continue;
+    }
+
+    // The dropped control's job, done on the first answer that actually cost a
+    // request: a source that replies but cannot produce a coherent verdict is a
+    // source we must not record from.
+    if (mustValidate) {
+      mustValidate = false;
+      if (res.verdict === 'unknown') {
+        console.error(`${ts()} première réponse inexploitable sur "${u}" (${res.error}) — vervox répond sans trancher, on n'enregistre rien.`);
+        process.exit(1);
+      }
+      console.log(`${ts()} vervox répond correctement (verdict cohérent sur "${u}") — contrôle validé sans requête supplémentaire`);
     }
 
     record(file, u, res);
