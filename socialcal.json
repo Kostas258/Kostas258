@@ -1,0 +1,435 @@
+{
+  "results": {
+    "h3ii": {
+      "site": "socialcal",
+      "username": "h3ii",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"h3ii\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/h3ii/\",\"checkedAt\":\"2026-08-21T09:51:06.700Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:06.003Z"
+    },
+    "j2eb": {
+      "site": "socialcal",
+      "username": "j2eb",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"j2eb\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/j2eb/\",\"checkedAt\":\"2026-08-21T09:51:13.113Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:12.660Z"
+    },
+    "j4ex": {
+      "site": "socialcal",
+      "username": "j4ex",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"j4ex\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/j4ex/\",\"checkedAt\":\"2026-08-21T09:51:19.634Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:19.108Z"
+    },
+    "v8eu": {
+      "site": "socialcal",
+      "username": "v8eu",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"v8eu\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/v8eu/\",\"checkedAt\":\"2026-08-21T09:51:26.168Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:25.607Z"
+    },
+    "x2eh": {
+      "site": "socialcal",
+      "username": "x2eh",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"x2eh\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/x2eh/\",\"checkedAt\":\"2026-08-21T09:51:32.653Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:32.132Z"
+    },
+    "x2iz": {
+      "site": "socialcal",
+      "username": "x2iz",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"x2iz\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/x2iz/\",\"checkedAt\":\"2026-08-21T09:51:39.054Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:38.631Z"
+    },
+    "j7vuu": {
+      "site": "socialcal",
+      "username": "j7vuu",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"j7vuu\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/j7vuu/\",\"checkedAt\":\"2026-08-21T09:51:45.362Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:45.027Z"
+    },
+    "zao8h": {
+      "site": "socialcal",
+      "username": "zao8h",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"zao8h\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/zao8h/\",\"checkedAt\":\"2026-08-21T09:51:51.701Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:51.326Z"
+    },
+    "zir2a": {
+      "site": "socialcal",
+      "username": "zir2a",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"zir2a\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/zir2a/\",\"checkedAt\":\"2026-08-21T09:51:58.265Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:51:57.682Z"
+    },
+    "zuw4i": {
+      "site": "socialcal",
+      "username": "zuw4i",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"zuw4i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/zuw4i/\",\"checkedAt\":\"2026-08-21T09:52:04.923Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:52:04.249Z"
+    },
+    "bg6ae": {
+      "site": "socialcal",
+      "username": "bg6ae",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"bg6ae\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/bg6ae/\",\"checkedAt\":\"2026-08-21T09:52:11.298Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:52:10.899Z"
+    },
+    "bk3ev": {
+      "site": "socialcal",
+      "username": "bk3ev",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"bk3ev\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/bk3ev/\",\"checkedAt\":\"2026-08-21T09:52:30.862Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:52:30.352Z"
+    },
+    "bo7zo": {
+      "site": "socialcal",
+      "username": "bo7zo",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"bo7zo\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/bo7zo/\",\"checkedAt\":\"2026-08-21T09:52:51.366Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:52:50.459Z"
+    },
+    "bp5ef": {
+      "site": "socialcal",
+      "username": "bp5ef",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"bp5ef\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/bp5ef/\",\"checkedAt\":\"2026-08-21T09:52:57.910Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:52:57.334Z"
+    },
+    "c8eoz": {
+      "site": "socialcal",
+      "username": "c8eoz",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"c8eoz\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/c8eoz/\",\"checkedAt\":\"2026-08-21T09:53:04.658Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:03.878Z"
+    },
+    "cp8ux": {
+      "site": "socialcal",
+      "username": "cp8ux",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"cp8ux\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/cp8ux/\",\"checkedAt\":\"2026-08-21T09:53:11.024Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:10.619Z"
+    },
+    "cte9a": {
+      "site": "socialcal",
+      "username": "cte9a",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"cte9a\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/cte9a/\",\"checkedAt\":\"2026-08-21T09:53:17.462Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:16.981Z"
+    },
+    "daa7t": {
+      "site": "socialcal",
+      "username": "daa7t",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"daa7t\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/daa7t/\",\"checkedAt\":\"2026-08-21T09:53:30.326Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:29.910Z"
+    },
+    "deu9v": {
+      "site": "socialcal",
+      "username": "deu9v",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"deu9v\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/deu9v/\",\"checkedAt\":\"2026-08-21T09:53:36.991Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:36.285Z"
+    },
+    "dl4ex": {
+      "site": "socialcal",
+      "username": "dl4ex",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"dl4ex\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/dl4ex/\",\"checkedAt\":\"2026-08-21T09:53:49.685Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:49.367Z"
+    },
+    "f2xau": {
+      "site": "socialcal",
+      "username": "f2xau",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"f2xau\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/f2xau/\",\"checkedAt\":\"2026-08-21T09:53:55.965Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:53:55.642Z"
+    },
+    "gm7ic": {
+      "site": "socialcal",
+      "username": "gm7ic",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"gm7ic\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/gm7ic/\",\"checkedAt\":\"2026-08-21T09:54:02.265Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:01.919Z"
+    },
+    "gmi6i": {
+      "site": "socialcal",
+      "username": "gmi6i",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"gmi6i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/gmi6i/\",\"checkedAt\":\"2026-08-21T09:54:09.006Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:08.244Z"
+    },
+    "h9bui": {
+      "site": "socialcal",
+      "username": "h9bui",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"h9bui\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/h9bui/\",\"checkedAt\":\"2026-08-21T09:54:15.358Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:14.973Z"
+    },
+    "hb2ol": {
+      "site": "socialcal",
+      "username": "hb2ol",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"hb2ol\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/hb2ol/\",\"checkedAt\":\"2026-08-21T09:54:28.057Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:27.745Z"
+    },
+    "m7ia": {
+      "site": "socialcal",
+      "username": "m7ia",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ia\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ia/\",\"checkedAt\":\"2026-08-21T09:54:34.431Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:34.016Z"
+    },
+    "m7iy": {
+      "site": "socialcal",
+      "username": "m7iy",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7iy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7iy/\",\"checkedAt\":\"2026-08-21T09:54:40.809Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:40.410Z"
+    },
+    "m7iv": {
+      "site": "socialcal",
+      "username": "m7iv",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7iv\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7iv/\",\"checkedAt\":\"2026-08-21T09:54:53.661Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:53.275Z"
+    },
+    "m7ir": {
+      "site": "socialcal",
+      "username": "m7ir",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ir\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ir/\",\"checkedAt\":\"2026-08-21T09:55:00.494Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:54:59.621Z"
+    },
+    "m7ae": {
+      "site": "socialcal",
+      "username": "m7ae",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ae\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ae/\",\"checkedAt\":\"2026-08-21T09:55:19.895Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:55:19.473Z"
+    },
+    "m7av": {
+      "site": "socialcal",
+      "username": "m7av",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7av\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7av/\",\"checkedAt\":\"2026-08-21T09:56:05.755Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:56:05.105Z"
+    },
+    "he4no": {
+      "site": "socialcal",
+      "username": "he4no",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"he4no\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/he4no/\",\"checkedAt\":\"2026-08-21T09:55:59.132Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:55:58.789Z"
+    },
+    "m7at": {
+      "site": "socialcal",
+      "username": "m7at",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7at\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7at/\",\"checkedAt\":\"2026-08-21T09:56:25.412Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:56:24.784Z"
+    },
+    "m7ah": {
+      "site": "socialcal",
+      "username": "m7ah",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ah\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ah/\",\"checkedAt\":\"2026-08-21T09:56:31.760Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:56:31.377Z"
+    },
+    "m7ei": {
+      "site": "socialcal",
+      "username": "m7ei",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ei\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ei/\",\"checkedAt\":\"2026-08-21T09:57:04.760Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:04.186Z"
+    },
+    "hnu1e": {
+      "site": "socialcal",
+      "username": "hnu1e",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"hnu1e\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/hnu1e/\",\"checkedAt\":\"2026-08-21T09:57:11.175Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:10.719Z"
+    },
+    "m7ea": {
+      "site": "socialcal",
+      "username": "m7ea",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7ea\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ea/\",\"checkedAt\":\"2026-08-21T09:57:17.551Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:17.134Z"
+    },
+    "ba5i": {
+      "site": "socialcal",
+      "username": "ba5i",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"ba5i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/ba5i/\",\"checkedAt\":\"2026-08-21T09:57:24.076Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:23.513Z"
+    },
+    "c2oj": {
+      "site": "socialcal",
+      "username": "c2oj",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"c2oj\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/c2oj/\",\"checkedAt\":\"2026-08-21T09:57:30.591Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:30.036Z"
+    },
+    "d1ip": {
+      "site": "socialcal",
+      "username": "d1ip",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"d1ip\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/d1ip/\",\"checkedAt\":\"2026-08-21T09:57:50.591Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:57:50.021Z"
+    },
+    "j9in": {
+      "site": "socialcal",
+      "username": "j9in",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"j9in\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/j9in/\",\"checkedAt\":\"2026-08-21T09:58:16.707Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:58:16.180Z"
+    },
+    "ku6i": {
+      "site": "socialcal",
+      "username": "ku6i",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"ku6i\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/ku6i/\",\"checkedAt\":\"2026-08-21T09:58:23.752Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:58:22.673Z"
+    },
+    "m2ue": {
+      "site": "socialcal",
+      "username": "m2ue",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m2ue\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m2ue/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T09:58:30.295Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T09:58:29.721Z"
+    }
+  },
+  "updatedAt": "2026-08-21T09:58:30.247Z"
+}
