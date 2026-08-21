@@ -23,13 +23,17 @@ const BACKOFF_MS = +(process.env.BACKOFF_MS || 65 * 60000); // full silence afte
 const TARGET_AVAILABLE = +(process.env.TARGET_AVAILABLE || 10);
 const MAX_ATTEMPTS = 2;
 const MAX_BACKOFFS = +(process.env.MAX_BACKOFFS || 3);
+// Restarting the runner must not re-probe a service that is still blocking us:
+// a request sent during a rate-limit window pushes the rolling deadline out.
+// QUIET_UNTIL is an ISO instant to stay completely silent until.
+const QUIET_UNTIL = process.env.QUIET_UNTIL ? Date.parse(process.env.QUIET_UNTIL) : 0;
 
 // A verdict is never re-spent; only these are replayed.
 const HARD_ERR = /transport|timeout|HTTP \d|unparseable|RATE_LIMITED/i;
 const needsCheck = r => !r || (r.verdict === 'unknown' && (!r.error || HARD_ERR.test(r.error)));
 
 const readJson = readJsonSafe;
-const ts = () => new Date().toISOString().slice(11, 19);
+const { ts } = require('./time.js');
 
 let delay = DELAY_MS;
 let backoffs = 0;
@@ -127,6 +131,11 @@ async function phase100() {
 }
 
 (async () => {
+  if (QUIET_UNTIL && Date.now() < QUIET_UNTIL) {
+    const mins = Math.ceil((QUIET_UNTIL - Date.now()) / 60000);
+    console.log(`${ts()} silent until ${ts(new Date(QUIET_UNTIL))} (${mins} min) — a rate-limit window is still open`);
+    await sleep(QUIET_UNTIL - Date.now());
+  }
   console.log(`${ts()} START — spacing ${Math.round(delay / 1000)}s, target ${TARGET_AVAILABLE} available on the 1000 list`);
   try {
     await controls();

@@ -27,7 +27,7 @@ const VX_DELAY = +(process.env.VX_DELAY_MS || 70000);
 const MAX_TRIES = 2;
 
 const readJson = readJsonSafe;
-const ts = () => new Date().toISOString().slice(11, 19);
+const { ts } = require('./time.js');
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
 function confirmed(p1000, sc) {

@@ -10,6 +10,8 @@ const path = require('path');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'pseudos_verifies.md');
+const { fmt, offsetLabel } = require('./time.js');
+
 const readJson = f => JSON.parse(fs.readFileSync(path.join(REPO, f), 'utf8'));
 
 const a = readJson('progress.json');
@@ -52,7 +54,8 @@ function rows(names, results) {
       vervox: vx ? LABEL[vx.verdict] : '—',
       socialcal: s ? LABEL[s.verdict] : '—',
       used: !!(vx || s),
-      at: at ? at.replace('T', ' ').slice(0, 19) + 'Z' : '—',
+      atIso: at || null,   // raw UTC, for sorting
+      at: fmt(at),        // Paris, for display
     };
   });
 }
@@ -70,7 +73,14 @@ const free100 = free(r100), free1000 = free(r1000);
 const conflicts = all.filter(r => r.statut === S.CONFLICT);
 const unknowns = all.filter(r => r.statut === S.UNKNOWN);
 
-const stamps = all.filter(r => r.at !== '—').map(r => r.at).sort();
+// Every recorded check, not just the latest one per name: the window is meant
+// to be when work actually started and stopped. Sorted on the raw ISO values —
+// lexicographic order is chronological for ISO, but not for dd/MM/yyyy.
+const stamps = [
+  ...Object.values(a.results),
+  ...Object.values(b.results),
+  ...Object.values(sc.results),
+].map(r => r && r.checkedAt).filter(Boolean).sort();
 const scCount = Object.values(sc.results).filter(r => r.verdict !== 'unknown').length;
 
 const listFree = rows => rows
@@ -79,8 +89,8 @@ const listFree = rows => rows
 
 let doc = `# Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** ${new Date().toISOString().replace('T', ' ').slice(0, 19)} UTC
-**Fenêtre de vérification :** ${stamps[0] || '—'} → ${stamps[stamps.length - 1] || '—'}
+**Généré le :** ${fmt(new Date().toISOString())} (heure de Paris, ${offsetLabel()})
+**Fenêtre de vérification :** ${fmt(stamps[0])} → ${fmt(stamps[stamps.length - 1])} (heure de Paris)
 
 ## Sources
 

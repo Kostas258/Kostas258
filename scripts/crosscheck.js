@@ -25,7 +25,7 @@ const LIMIT = +(process.env.SC_LIMIT || 0); // 0 = no cap
 const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
 
 const readJson = readJsonSafe;
-const ts = () => new Date().toISOString().slice(11, 19);
+const { ts } = require('./time.js');
 
 const store = fs.existsSync(OUT) ? readJson(OUT) : { results: {}, updatedAt: null };
 const save = () => {

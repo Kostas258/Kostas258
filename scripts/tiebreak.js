@@ -23,7 +23,7 @@ const ROUND_MS = +(process.env.TB_ROUND_MS || 10 * 60000); // between rounds
 const MAX_ROUNDS = +(process.env.TB_MAX_ROUNDS || 12);
 
 const readJson = readJsonSafe;
-const ts = () => new Date().toISOString().slice(11, 19);
+const { ts } = require('./time.js');
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
 const store = fs.existsSync(OUT) ? readJson(OUT) : { results: {}, updatedAt: null };
