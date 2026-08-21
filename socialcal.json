@@ -1163,11 +1163,22 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"x1itie\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/x1itie/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:38:07.675Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"x1itie\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/x1itie/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:39:23.572Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T10:38:06.800Z",
-      "tries": 2
+      "checkedAt": "2026-08-21T10:39:22.650Z",
+      "tries": 3
+    },
+    "xp9use": {
+      "site": "socialcal",
+      "username": "xp9use",
+      "verdict": "unknown",
+      "confidence": "medium",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"xp9use\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/xp9use/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T10:39:44.398Z\",\"cached\":false}}}",
+      "error": "status=unknown confidence=medium",
+      "checkedAt": "2026-08-21T10:39:43.547Z",
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-21T10:38:07.622Z"
+  "updatedAt": "2026-08-21T10:39:44.339Z"
 }
