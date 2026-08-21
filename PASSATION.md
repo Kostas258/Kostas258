@@ -1005,3 +1005,28 @@ vrai. Un verdict `taken` ou `available` n'est jamais refait.
 - **Ne pas coder le port du proxy en dur.**
 - **Ne jamais convertir une erreur en « disponible ».** Un pseudo non interrogé est
   « non vérifié », pas « libre ».
+
+## Règle : ne jamais relancer un service qui vient de bloquer
+
+Consigne de l'utilisateur, désormais appliquée par le code (`scripts/cooldown.js`)
+et non par la discipline.
+
+Le 21/08, les runners ont été redémarrés huit fois à la main pour ajuster
+cadences et priorités. Chaque redémarrage relance les contrôles de démarrage :
+cinq requêtes vervox ont ainsi été dépensées à prouver que la source était
+vivante, sur un quota tombé à quelques requêtes par fenêtre. Les contrôles ont
+coûté plus cher que ce qu'ils apprenaient.
+
+`blocks.json` note quel service a bloqué et quand. Avant sa première requête, un
+runner appelle `respectCooldown(source)` et attend ce qu'il reste du délai. Le
+fichier est sur disque, donc la règle survit au processus — et au redémarrage de
+conteneur qui a tué les trois runners à 19:30 sans que personne s'en aperçoive
+pendant deux heures. Une réponse correcte purge l'entrée.
+
+Cooldowns mesurés sur cette IP, pas repris des sites :
+vervox 3 h (65 min ont échoué deux fois), socialcal 15 min, dnsrobot 30 min.
+
+Corollaire appliqué le 21/08 à 21:56 : vervox et socialcal ont été relancés
+(cooldown écoulé, jamais bloqué), **dnsrobot ne l'a pas été**. Il refusait en
+continu depuis environ neuf heures sur deux runs successifs, soit 0 arbitrage
+sur 15 conflits. Insister n'aurait rien produit.

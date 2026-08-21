@@ -30,6 +30,7 @@ const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
 const readJson = readJsonSafe;
 const { ts } = require('./time.js');
 const { Throttle } = require('./throttle.js');
+const { remainingMs, lastBlock } = require('./cooldown.js');
 
 // 60 s is the cadence this source was answering well at; it is the floor.
 const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS });
@@ -39,6 +40,25 @@ const save = () => {
   store.updatedAt = new Date().toISOString();
   writeJsonAtomic(OUT, store);
 };
+
+
+/**
+ * The rule: never restart against a service that just blocked us. Enforced from
+ * the on-disk ledger, so it survives both this process and a container restart.
+ */
+async function respectCooldown(source, deadline) {
+  const left = remainingMs(source);
+  if (!left) return true;
+  const b = lastBlock(source);
+  const until = new Date(Date.now() + left);
+  if (deadline && Date.now() + left >= deadline) {
+    console.log(`${ts()} ${source} a bloqué à ${ts(new Date(b.at))} ; le cooldown court au-delà de l'échéance — on ne le relance pas.`);
+    return false;
+  }
+  console.log(`${ts()} ${source} a bloqué à ${ts(new Date(b.at))} — silence jusqu'à ${ts(until)} (${Math.ceil(left / 60000)} min) avant la moindre requête`);
+  await sleep(left);
+  return true;
+}
 
 /** Rebuilt each pass: the vervox drip keeps adding verdicts underneath us. */
 function workList() {
@@ -72,6 +92,7 @@ function workList() {
 
 (async () => {
   let backoffs = 0, checks = 0;
+  if (!await respectCooldown('socialcal', DEADLINE)) return;
   console.log(`${ts()} SOCIALCAL START — plancher ${DELAY_MS / 1000}s, plafond ${MAX_DELAY_MS / 1000}s` + (DEADLINE ? `, deadline ${ts(new Date(DEADLINE))}` : ''));
 
   // Integrity gate, both directions, before anything is recorded.

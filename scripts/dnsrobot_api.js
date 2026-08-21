@@ -14,6 +14,7 @@ const API = 'https://dnsrobot.net/api/social-username';
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
 const { assertUsername } = require('./safe.js');
+const { recordBlock } = require('./cooldown.js');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 

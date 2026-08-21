@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 66,
+  "checked": 67,
   "available": [
     "h3ii",
     "j2eb",
@@ -139,7 +139,8 @@
     "n6voo",
     "r2xua",
     "rab9i",
-    "s4oum"
+    "s4oum",
+    "wr9era"
   ],
   "results": {
     "ba5i": {
@@ -744,7 +745,16 @@
       "error": null,
       "checkedAt": "2026-08-21T16:30:05.133Z",
       "attempts": 1
+    },
+    "wr9era": {
+      "site": "vervox",
+      "username": "wr9era",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"wr9era\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@wr9era semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:38:16.257Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-21T16:30:16.211Z"
+  "updatedAt": "2026-08-21T16:38:25.628Z"
 }

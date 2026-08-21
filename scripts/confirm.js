@@ -15,6 +15,7 @@ const { checkVervox, sleep } = require('./vervox_api.js');
 const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 const { ts } = require('./time.js');
 const { Throttle } = require('./throttle.js');
+const { remainingMs, lastBlock } = require('./cooldown.js');
 
 const REPO = path.join(__dirname, '..');
 const P100 = path.join(REPO, 'progress.json');
@@ -35,6 +36,25 @@ const CONTROL_SKIP_MS = +(process.env.CONTROL_SKIP_MS || 45 * 60000);
 
 // 8 min is the cadence measured as safe on this source; it is the floor.
 const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS, windowSize: 6 });
+
+
+/**
+ * The rule: never restart against a service that just blocked us. Enforced from
+ * the on-disk ledger, so it survives both this process and a container restart.
+ */
+async function respectCooldown(source, deadline) {
+  const left = remainingMs(source);
+  if (!left) return true;
+  const b = lastBlock(source);
+  const until = new Date(Date.now() + left);
+  if (deadline && Date.now() + left >= deadline) {
+    console.log(`${ts()} ${source} a bloqué à ${ts(new Date(b.at))} ; le cooldown court au-delà de l'échéance — on ne le relance pas.`);
+    return false;
+  }
+  console.log(`${ts()} ${source} a bloqué à ${ts(new Date(b.at))} — silence jusqu'à ${ts(until)} (${Math.ceil(left / 60000)} min) avant la moindre requête`);
+  await sleep(left);
+  return true;
+}
 
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
@@ -63,6 +83,8 @@ function record(file, u, res) {
     console.log(`${ts()} silent until ${ts(new Date(QUIET_UNTIL))} (${mins} min) — letting the rate-limit window close`);
     await sleep(QUIET_UNTIL - Date.now());
   }
+
+  if (!await respectCooldown('vervox', DEADLINE)) return;
 
   // One control only: two would spend a second request before any real work,
   // and the negative direction is what a rate-limited vervox gets wrong anyway.

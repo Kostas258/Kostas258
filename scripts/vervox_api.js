@@ -16,6 +16,7 @@ const REFERER = 'https://vervox.app/fr/outils/verificateur-nom-instagram';
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
 const { assertUsername } = require('./safe.js');
+const { recordBlock, recordSuccess } = require('./cooldown.js');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -75,6 +76,7 @@ async function checkVervox(username, { timeoutMs = 45000 } = {}) {
   if (status === 429 || /IP_RATE_LIMITED|Trop de requ/i.test(body)) {
     out.error = 'RATE_LIMITED';
     out.rateLimited = true;
+    recordBlock('vervox', `HTTP ${status}`);
     return out;
   }
   if (status !== 200) { out.error = `HTTP ${status}`; return out; }
@@ -91,6 +93,7 @@ async function checkVervox(username, { timeoutMs = 45000 } = {}) {
 
   if (free) out.verdict = 'available';
   else if (taken) out.verdict = 'taken';
+  if (out.verdict !== 'unknown') recordSuccess('vervox');
   else {
     out.error = typeof j.available === 'boolean'
       ? `field disagreement (available=${j.available}, statusCode=${j.statusCode})`

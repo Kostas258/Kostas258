@@ -17,6 +17,7 @@ const API = 'https://socialcal-media-proxy.jan-orsula1.workers.dev/username/chec
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
 const { assertUsername } = require('./safe.js');
+const { recordBlock, recordSuccess } = require('./cooldown.js');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -57,7 +58,7 @@ async function checkSocialcal(username, { timeoutMs = 45000 } = {}) {
   const { status, body, err } = await post(username, timeoutMs);
   out.api = body ? body.slice(0, 600) : null;
   if (err) { out.error = `transport: ${err}`; return out; }
-  if (status === 429) { out.error = 'RATE_LIMITED'; out.rateLimited = true; return out; }
+  if (status === 429) { recordBlock('socialcal', `HTTP ${status}`); out.error = 'RATE_LIMITED'; out.rateLimited = true; return out; }
   if (status !== 200) { out.error = `HTTP ${status}`; return out; }
 
   let j;
