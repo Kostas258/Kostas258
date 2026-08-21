@@ -16,8 +16,11 @@ const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'socialcal.json');
 
-const DELAY_MS = +(process.env.SC_DELAY_MS || 6000);
+const DELAY_MS = +(process.env.SC_DELAY_MS || 60000);
+const MAX_DELAY_MS = +(process.env.SC_MAX_DELAY_MS || 300000);
 const BACKOFF_MS = +(process.env.SC_BACKOFF_MS || 15 * 60000);
+// Hard stop, so an unattended overnight run always leaves time to publish.
+const DEADLINE = process.env.DEADLINE ? Date.parse(process.env.DEADLINE) : 0;
 const MAX_BACKOFFS = +(process.env.SC_MAX_BACKOFFS || 3);
 const LIMIT = +(process.env.SC_LIMIT || 0); // 0 = no cap
 // Some names come back "unknown/medium" every time. Retry a few times, then
@@ -26,6 +29,10 @@ const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
 
 const readJson = readJsonSafe;
 const { ts } = require('./time.js');
+const { Throttle } = require('./throttle.js');
+
+// 60 s is the cadence this source was answering well at; it is the floor.
+const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS });
 
 const store = fs.existsSync(OUT) ? readJson(OUT) : { results: {}, updatedAt: null };
 const save = () => {
@@ -65,17 +72,18 @@ function workList() {
 
 (async () => {
   let backoffs = 0, checks = 0;
-  console.log(`${ts()} SOCIALCAL START — spacing ${DELAY_MS / 1000}s`);
+  console.log(`${ts()} SOCIALCAL START — plancher ${DELAY_MS / 1000}s, plafond ${MAX_DELAY_MS / 1000}s` + (DEADLINE ? `, deadline ${ts(new Date(DEADLINE))}` : ''));
 
   // Integrity gate, both directions, before anything is recorded.
   for (const [u, want] of [['instagram', 'taken'], ['zqv7xkq9wzqjj4', 'available']]) {
     const r = await checkSocialcal(u);
     console.log(`${ts()} control ${u} -> ${r.verdict} (expected ${want})`);
     if (r.verdict !== want) { console.error('control failed — refusing to record'); process.exit(1); }
-    await sleep(DELAY_MS);
+    await sleep(throttle.delay);
   }
 
   for (;;) {
+    if (DEADLINE && Date.now() >= DEADLINE) { console.log(`${ts()} deadline reached — stopping`); break; }
     const list = workList();
     if (!list.length) { console.log(`${ts()} nothing left to cross-check`); break; }
     if (LIMIT && checks >= LIMIT) { console.log(`${ts()} limit ${LIMIT} reached`); break; }
@@ -95,10 +103,21 @@ function workList() {
     save();
     checks++;
     console.log(`${ts()} [sc] ${u} -> ${res.verdict}${res.cached ? ' (cached)' : ''}${res.error ? ' | ' + res.error : ''}  | ${list.length - 1} left`);
-    await sleep(DELAY_MS);
+
+    const change = throttle.record(res.verdict !== 'unknown');
+    if (change) {
+      console.log(`${ts()} throttle ${change.from / 1000}s -> ${change.to / 1000}s (${Math.round(change.missRate * 100)}% sans verdict)`);
+    }
+    if (throttle.exhausted()) {
+      console.log(`${ts()} slowing down stopped helping — pausing ${BACKOFF_MS / 60000} min to let the source recover`);
+      await sleep(BACKOFF_MS);
+      throttle.delay = throttle.min;
+    }
+    await sleep(throttle.delay);
   }
 
   const v = Object.values(store.results);
+  console.log(`${ts()} ${throttle.summary()}`);
   console.log(`${ts()} SOCIALCAL END — ${checks} checks this run, ${v.length} stored ` +
     `(${v.filter(r => r.verdict === 'available').length} available, ` +
     `${v.filter(r => r.verdict === 'taken').length} taken, ` +

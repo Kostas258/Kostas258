@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 64,
+  "checked": 66,
   "available": [
     "h3ii",
     "j2eb",
@@ -137,7 +137,9 @@
     "p2ima",
     "pr1ux",
     "n6voo",
-    "r2xua"
+    "r2xua",
+    "rab9i",
+    "s4oum"
   ],
   "results": {
     "ba5i": {
@@ -724,7 +726,25 @@
       "error": null,
       "checkedAt": "2026-08-21T16:16:13.682Z",
       "attempts": 1
+    },
+    "rab9i": {
+      "site": "vervox",
+      "username": "rab9i",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"rab9i\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@rab9i semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:24:23.476Z",
+      "attempts": 1
+    },
+    "s4oum": {
+      "site": "vervox",
+      "username": "s4oum",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"s4oum\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@s4oum semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:30:05.133Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-21T16:16:23.468Z"
+  "updatedAt": "2026-08-21T16:30:16.211Z"
 }

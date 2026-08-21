@@ -2671,13 +2671,13 @@
     "m7vn": {
       "site": "socialcal",
       "username": "m7vn",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7vn\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vn/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T16:21:57.001Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T16:21:55.881Z",
-      "tries": 1
+      "api": "{\"success\":true,\"handle\":\"m7vn\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7vn/\",\"checkedAt\":\"2026-08-21T16:22:58.026Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:22:56.991Z",
+      "tries": 2
     },
     "m7vh": {
       "site": "socialcal",
@@ -2718,9 +2718,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7vw\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vw/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T12:17:37.072Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7vw\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vw/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T16:26:01.712Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T12:17:36.058Z"
+      "checkedAt": "2026-08-21T16:26:00.475Z",
+      "tries": 3
     },
     "m7zi": {
       "site": "socialcal",
@@ -2736,12 +2737,13 @@
     "m7za": {
       "site": "socialcal",
       "username": "m7za",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7za\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7za/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T12:19:01.259Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T12:19:00.438Z"
+      "api": "{\"success\":true,\"handle\":\"m7za\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7za/\",\"checkedAt\":\"2026-08-21T16:27:02.911Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-21T16:27:01.695Z",
+      "tries": 1
     },
     "m7ze": {
       "site": "socialcal",
@@ -2760,9 +2762,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7zo\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7zo/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T12:20:24.608Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7zo\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7zo/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T16:29:06.310Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T12:20:23.667Z"
+      "checkedAt": "2026-08-21T16:29:04.353Z",
+      "tries": 2
     },
     "m7zu": {
       "site": "socialcal",
@@ -4179,5 +4182,5 @@
       "checkedAt": "2026-08-21T14:13:59.515Z"
     }
   },
-  "updatedAt": "2026-08-21T16:21:56.977Z"
+  "updatedAt": "2026-08-21T16:29:06.267Z"
 }

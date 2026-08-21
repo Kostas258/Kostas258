@@ -14,16 +14,27 @@ const path = require('path');
 const { checkVervox, sleep } = require('./vervox_api.js');
 const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 const { ts } = require('./time.js');
+const { Throttle } = require('./throttle.js');
 
 const REPO = path.join(__dirname, '..');
 const P100 = path.join(REPO, 'progress.json');
 const P1000 = path.join(REPO, 'progress_1000.json');
 const SC = path.join(REPO, 'socialcal.json');
 
-const DELAY_MS = +(process.env.DELAY_MS || 480000);          // ~7.5 checks/hour
+const DELAY_MS = +(process.env.DELAY_MS || 480000);          // ~7.5 checks/hour, the measured-safe floor
+const MAX_DELAY_MS = +(process.env.MAX_DELAY_MS || 1800000);
 const BACKOFF_MS = +(process.env.BACKOFF_MS || 3 * 3600000); // a block here lasts hours, not one
-const MAX_BACKOFFS = +(process.env.MAX_BACKOFFS || 2);
+const MAX_BACKOFFS = +(process.env.MAX_BACKOFFS || 4);
 const QUIET_UNTIL = process.env.QUIET_UNTIL ? Date.parse(process.env.QUIET_UNTIL) : 0;
+// Hard stop, so an unattended overnight run always leaves time to publish.
+const DEADLINE = process.env.DEADLINE ? Date.parse(process.env.DEADLINE) : 0;
+// A control costs one request out of a quota that has fallen to a couple per
+// window. If vervox answered correctly a few minutes ago, that IS the evidence
+// the control would buy, so skip it rather than spend the request twice.
+const CONTROL_SKIP_MS = +(process.env.CONTROL_SKIP_MS || 45 * 60000);
+
+// 8 min is the cadence measured as safe on this source; it is the floor.
+const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS, windowSize: 6 });
 
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
@@ -55,16 +66,30 @@ function record(file, u, res) {
 
   // One control only: two would spend a second request before any real work,
   // and the negative direction is what a rate-limited vervox gets wrong anyway.
-  const c = await checkVervox('instagram');
-  console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}`);
-  if (c.verdict !== 'taken') {
-    console.error(`${ts()} control failed — vervox is not answering correctly, recording nothing.`);
-    process.exit(1);
+  const lastGood = (() => {
+    let t = 0;
+    for (const f of [P100, P1000])
+      for (const r of Object.values(readJsonSafe(f).results))
+        if (r && r.site === 'vervox' && r.verdict !== 'unknown' && r.checkedAt)
+          t = Math.max(t, Date.parse(r.checkedAt));
+    return t;
+  })();
+
+  if (Date.now() - lastGood < CONTROL_SKIP_MS) {
+    console.log(`${ts()} control skipped — vervox answered correctly at ${ts(new Date(lastGood))}, that is the same evidence for less quota`);
+  } else {
+    const c = await checkVervox('instagram');
+    console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}`);
+    if (c.verdict !== 'taken') {
+      console.error(`${ts()} control failed — vervox is not answering correctly, recording nothing.`);
+      process.exit(1);
+    }
+    await sleep(throttle.delay);
   }
-  await sleep(DELAY_MS);
 
   let done = 0, backoffs = 0;
   for (;;) {
+    if (DEADLINE && Date.now() >= DEADLINE) { console.log(`${ts()} deadline reached — stopping`); break; }
     const list = pending();
     if (!list.length) { console.log(`${ts()} nothing left to confirm`); break; }
     const { u, file } = list[0];
@@ -74,7 +99,13 @@ function record(file, u, res) {
 
     if (res.rateLimited) {
       if (++backoffs > MAX_BACKOFFS) { console.log(`${ts()} rate limited ${backoffs}x — stopping`); break; }
-      console.log(`${ts()} RATE LIMITED at "${u}" (#${backoffs}) — silent ${BACKOFF_MS / 3600000} h`);
+      const change = throttle.record(false);
+      console.log(`${ts()} RATE LIMITED at "${u}" (#${backoffs}) — silent ${BACKOFF_MS / 3600000} h` +
+        (change ? `, puis ${change.to / 1000}s entre requêtes` : ''));
+      if (DEADLINE && Date.now() + BACKOFF_MS >= DEADLINE) {
+        console.log(`${ts()} the backoff would run past the deadline — stopping now`);
+        break;
+      }
       await sleep(BACKOFF_MS);
       continue;
     }
@@ -83,7 +114,10 @@ function record(file, u, res) {
     done++;
     const agree = res.verdict === 'available' ? 'CONFIRMÉ' : `contredit socialcal (${res.verdict})`;
     console.log(`${ts()} [vx] ${u} -> ${res.verdict}  ${agree}  | ${list.length - 1} restants`);
-    await sleep(DELAY_MS);
+    const change = throttle.record(true);
+    if (change) console.log(`${ts()} throttle ${change.from / 1000}s -> ${change.to / 1000}s`);
+    await sleep(throttle.delay);
   }
+  console.log(`${ts()} ${throttle.summary()}`);
   console.log(`${ts()} CONFIRM END — ${done} confirmations, ${backoffs} blocages`);
 })();
