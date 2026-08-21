@@ -45,10 +45,19 @@ function workList() {
     const r = store.results[u];
     return !!r && (r.verdict !== 'unknown' || (r.tries || 1) >= MAX_TRIES);
   };
-  const tier = u => (verdict(u) === 'available' ? 0 : verdict(u) === 'taken' ? 1 : 2);
+  // Cross-checking a vervox "taken" is the least useful thing this can do: the
+  // two sources have never once disagreed in that direction, while every
+  // disagreement so far has been vervox calling a taken name available. So
+  // "taken" sinks to the bottom, behind names nobody has looked at yet.
   // The 100 list has to be covered in full; the 1000 list only needs enough
   // names to reach the target, so it yields within an equal tier.
   const in100 = new Set(p100.usernames);
+  const tier = u => {
+    const v = verdict(u);
+    if (v === 'available') return 0;
+    if (v === 'taken') return 3;
+    return in100.has(u) ? 1 : 2;
+  };
   const rank = u => tier(u) * 2 + (in100.has(u) ? 0 : 1);
   return all.filter(u => !done(u)).sort((a, b) => rank(a) - rank(b));
 }

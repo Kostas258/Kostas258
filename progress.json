@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 55,
+  "checked": 62,
   "available": [
     "h3ii",
     "j2eb",
@@ -132,7 +132,10 @@
     "hnu1e",
     "hr4ie",
     "k4lae",
-    "ku9eu"
+    "ku9eu",
+    "noi2b",
+    "p2ima",
+    "pr1ux"
   ],
   "results": {
     "ba5i": {
@@ -629,7 +632,88 @@
       "error": null,
       "checkedAt": "2026-08-21T10:03:24.872Z",
       "attempts": 1
+    },
+    "la8ee": {
+      "site": "vervox",
+      "username": "la8ee",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"la8ee\",\"platform\":\"Instagram\"},\"message\":\"@la8ee est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:04:42.051Z",
+      "attempts": 1
+    },
+    "lae2s": {
+      "site": "vervox",
+      "username": "lae2s",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"lae2s\",\"platform\":\"Instagram\"},\"message\":\"@lae2s est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:05:54.258Z",
+      "attempts": 1
+    },
+    "ms9oj": {
+      "site": "vervox",
+      "username": "ms9oj",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"ms9oj\",\"platform\":\"Instagram\"},\"message\":\"@ms9oj est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:07:11.262Z",
+      "attempts": 1
+    },
+    "n6voo": {
+      "site": "vervox",
+      "username": "n6voo",
+      "verdict": "unknown",
+      "api": null,
+      "error": "HTTP 0",
+      "checkedAt": "2026-08-21T10:08:49.362Z",
+      "attempts": 2
+    },
+    "noi2b": {
+      "site": "vervox",
+      "username": "noi2b",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"noi2b\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@noi2b semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:10:05.815Z",
+      "attempts": 1
+    },
+    "p2ima": {
+      "site": "vervox",
+      "username": "p2ima",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"p2ima\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@p2ima semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:11:27.525Z",
+      "attempts": 1
+    },
+    "pk1ue": {
+      "site": "vervox",
+      "username": "pk1ue",
+      "verdict": "unknown",
+      "api": null,
+      "error": "HTTP 0",
+      "checkedAt": "2026-08-21T10:13:13.717Z",
+      "attempts": 2
+    },
+    "poi8w": {
+      "site": "vervox",
+      "username": "poi8w",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"poi8w\",\"platform\":\"Instagram\"},\"message\":\"@poi8w est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:14:35.171Z",
+      "attempts": 1
+    },
+    "pr1ux": {
+      "site": "vervox",
+      "username": "pr1ux",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"pr1ux\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@pr1ux semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T10:16:13.250Z",
+      "attempts": 2
     }
   },
-  "updatedAt": "2026-08-21T10:03:31.981Z"
+  "updatedAt": "2026-08-21T10:16:25.109Z"
 }
