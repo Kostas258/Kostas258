@@ -1,7 +1,7 @@
 {
   "source": "nomutilisateursprare.md (1000 pseudos inspirés de m7ia)",
   "startedAt": "2026-08-20T12:36:26.496Z",
-  "updatedAt": "2026-08-21T08:46:15.577Z",
+  "updatedAt": "2026-08-21T09:18:32.562Z",
   "target": 10,
   "delaySecondsBetweenUsernames": 30,
   "site": "vervox.app",
@@ -1008,7 +1008,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 35,
+  "checked": 36,
   "available": [
     "m7ia",
     "m7iy",
@@ -1371,6 +1371,16 @@
       "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7as\",\"platform\":\"Instagram\"},\"message\":\"@m7as est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
       "error": null,
       "checkedAt": "2026-08-21T08:46:15.577Z",
+      "attempts": 1
+    },
+    "m7aw": {
+      "site": "vervox",
+      "username": "m7aw",
+      "verdict": "taken",
+      "text": "@m7aw | Ce nom est déjà pris. | Trouver des alternatives similaires",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7aw\",\"platform\":\"Instagram\"},\"message\":\"@m7aw est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-21T09:18:32.562Z",
       "attempts": 1
     }
   }
