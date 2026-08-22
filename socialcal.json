@@ -5439,7 +5439,18 @@
       "error": null,
       "checkedAt": "2026-08-22T04:50:18.397Z",
       "tries": 1
+    },
+    "m7isi": {
+      "site": "socialcal",
+      "username": "m7isi",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7isi\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7isi/\",\"checkedAt\":\"2026-08-22T04:51:20.034Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:51:19.207Z",
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-22T04:50:19.142Z"
+  "updatedAt": "2026-08-22T04:51:20.008Z"
 }
