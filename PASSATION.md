@@ -1116,3 +1116,31 @@ heures. Ici, 3 requêtes de diagnostic ont récupéré 3 heures.
 `socialcal_api.js` purge aussi son propre blocage dès qu'il rend un verdict ferme,
 comme le faisait déjà vervox. Sans cela, une source revenue à la normale restait
 marquée bloquée jusqu'à l'expiration du délai.
+
+## Instagram en direct : revérifié le 22 août, toujours inaccessible
+
+Pas repris de la passation précédente — retesté. Les profils renvoient 302 pour
+tout, y compris un pseudo certainement libre : aucun signal distinguant pris de
+libre. L'endpoint interne `api/v1/users/web_profile_info` répond 401
+`require_login` avec le même message pour un pseudo pris et un pseudo libre.
+
+Conséquence à énoncer clairement dans tout rapport : **depuis cet environnement,
+rien ne peut prouver une disponibilité de façon définitive.** Les vérificateurs
+externes donnent une forte présomption, la création du compte donne la preuve.
+
+## Intégrité des listes source (vérifiée)
+
+100 et 1000 entrées, toutes uniques, toutes conformes au format Instagram,
+aucun doublon, aucun chevauchement entre les deux listes.
+Longueurs : liste m7ia 19x4c, 60x5c, 21x6c ; liste 1000 349x4c, 651x5c.
+
+## Arithmétique de la couverture complète (mesurée le 22 août à 19:40)
+
+Cadence réelle de socialcal : 143 s par pseudo tranché, reprises comprises.
+439 pseudos restants sur la liste des 1000 -> ~17,5 h de couverture.
+
+Taux de disponibilité observé : 26 %. Les 439 restants produiront donc ~116
+candidats de plus, soit ~199 avec les 83 en attente. À 8 min par confirmation
+vervox, sans aucun blocage, cela représente ~27 h — et vervox perd 3 h à chaque
+blocage. La confirmation par deux sources des 1000 est donc un travail de
+plusieurs jours, pas d'une nuit. À dire tel quel plutôt que de le maquiller.

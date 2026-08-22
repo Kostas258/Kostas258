@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 74,
+  "checked": 79,
   "available": [
     "m7ia",
     "m7iy",
@@ -1048,7 +1048,12 @@
     "m7rs",
     "m7rw",
     "m7tx",
-    "m7no"
+    "m7no",
+    "m7nq",
+    "m7nx",
+    "m7nh",
+    "m7nj",
+    "m7ns"
   ],
   "results": {
     "m7ii": {
@@ -1717,7 +1722,67 @@
       "checkedAt": "2026-08-22T13:47:24.810Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7nq": {
+      "site": "vervox",
+      "username": "m7nq",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7nq\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7nq semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T16:55:30.908Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7nx": {
+      "site": "vervox",
+      "username": "m7nx",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7nx\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7nx semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:03:39.725Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7nh": {
+      "site": "vervox",
+      "username": "m7nh",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7nh\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7nh semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:11:50.768Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7nj": {
+      "site": "vervox",
+      "username": "m7nj",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7nj\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7nj semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:20:02.288Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ns": {
+      "site": "vervox",
+      "username": "m7ns",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ns\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ns semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:28:08.923Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7hy": {
+      "site": "vervox",
+      "username": "m7hy",
+      "verdict": "unknown",
+      "api": null,
+      "error": "HTTP 0",
+      "checkedAt": "2026-08-22T17:36:19.605Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-22T13:47:30.079Z"
+  "updatedAt": "2026-08-22T17:36:31.008Z"
 }
