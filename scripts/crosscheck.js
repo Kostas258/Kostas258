@@ -30,7 +30,7 @@ const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
 const readJson = readJsonSafe;
 const { ts } = require('./time.js');
 const { Throttle } = require('./throttle.js');
-const { remainingMs, lastBlock } = require('./cooldown.js');
+const { remainingMs, lastBlock, recordBlock, currentCooldownMs } = require('./cooldown.js');
 
 // 60 s is the cadence this source was answering well at; it is the floor.
 const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS });
@@ -99,7 +99,14 @@ function workList() {
   for (const [u, want] of [['instagram', 'taken'], ['zqv7xkq9wzqjj4', 'available']]) {
     const r = await checkSocialcal(u);
     console.log(`${ts()} control ${u} -> ${r.verdict} (expected ${want})`);
-    if (r.verdict !== want) { console.error('control failed — refusing to record'); process.exit(1); }
+    if (r.verdict !== want) {
+      // Recorded, not just logged: a source that cannot pass its own control is
+      // refusing us, and without this the next restart walks straight back into
+      // the same failure. The wait doubles on each repeat.
+      recordBlock('socialcal', `contrôle en échec : ${u} -> ${r.verdict}`);
+      console.error(`${ts()} contrôle en échec (${u} -> ${r.verdict}, attendu ${want}) — rien n'est enregistré, silence ${Math.round(currentCooldownMs('socialcal') / 60000)} min`);
+      process.exit(1);
+    }
     await sleep(throttle.delay);
   }
 

@@ -1,6 +1,6 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 22/08/2026 13:28:31 (heure de Paris, UTC+2)
+**Généré le :** 22/08/2026 15:00:29 (heure de Paris, UTC+2)
 **Fenêtre de vérification :** 20/08/2026 14:07:47 → 22/08/2026 13:13:09 (heure de Paris)
 
 ## Sources
@@ -36,6 +36,39 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Indéterminés | 6 | 57 | 63 |
 
 Vérifications par la seconde source (socialcal) : 519.
+
+## Les deux sources sont-elles indépendantes ?
+
+La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
+même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
+seule. Mesure sur les 138 pseudos que les deux ont tranchés fermement :
+
+| | Nombre |
+|---|---|
+| Accords | 123 (89 %) |
+| vervox « libre » contre socialcal « pris » | 15 |
+| vervox « pris » contre socialcal « libre » | 0 |
+
+Les désaccords sont **entièrement unilatéraux**. Un moteur partagé donnerait soit
+un accord total, soit du bruit dans les deux sens. Cette asymétrie est la
+signature de deux méthodes de détection distinctes, dont l'une — vervox — penche
+systématiquement vers « disponible ». C'est aussi pourquoi ses verdicts seuls ne
+sont jamais retenus ici.
+
+## Les résultats sont-ils plausibles ?
+
+Un vérificateur qui répondrait au hasard produirait un taux de disponibilité
+constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
+
+| Longueur | Pseudos testés | Déclarés libres |
+|---|---|---|
+| 4 caractères | 319 | 64 (20 %) |
+| 5 caractères | 183 | 61 (33 %) |
+| 6 caractères | 17 | 16 (94 %) |
+
+Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
+le comportement attendu d'une mesure réelle sur une plateforme ancienne, où les
+identifiants courts ont été réservés depuis longtemps.
 
 ## Pseudos disponibles
 

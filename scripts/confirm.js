@@ -15,7 +15,7 @@ const { checkVervox, sleep } = require('./vervox_api.js');
 const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 const { ts } = require('./time.js');
 const { Throttle } = require('./throttle.js');
-const { remainingMs, lastBlock } = require('./cooldown.js');
+const { remainingMs, lastBlock, recordBlock, currentCooldownMs } = require('./cooldown.js');
 
 const REPO = path.join(__dirname, '..');
 const P100 = path.join(REPO, 'progress.json');
@@ -134,7 +134,8 @@ function record(file, u, res) {
     const c = await checkVervox('instagram');
     console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}`);
     if (c.verdict !== 'taken') {
-      console.error(`${ts()} control failed — vervox is not answering correctly, recording nothing.`);
+      recordBlock('vervox', `contrôle en échec : instagram -> ${c.verdict}`);
+      console.error(`${ts()} contrôle en échec — vervox ne répond pas correctement, rien n'est enregistré, silence ${Math.round(currentCooldownMs('vervox') / 60000)} min`);
       process.exit(1);
     }
     await sleep(throttle.delay);

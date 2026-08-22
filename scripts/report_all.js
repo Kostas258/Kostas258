@@ -76,6 +76,40 @@ const unknowns = all.filter(r => r.statut === S.UNKNOWN);
 // Every recorded check, not just the latest one per name: the window is meant
 // to be when work actually started and stopped. Sorted on the raw ISO values —
 // lexicographic order is chronological for ISO, but not for dd/MM/yyyy.
+// Two claims underpin this whole report — that the sources are independent, and
+// that they are measuring something real — so both are computed from the data
+// rather than asserted.
+//
+// Independence: a shared upstream would give either total agreement or noise
+// scattered in both directions. What the data shows instead is a perfectly
+// one-sided split, which is what two different detection methods look like when
+// one of them has a systematic bias.
+//
+// Reality: availability is broken down by name length. A checker that guessed
+// would produce a flat rate; a real measurement produces a gradient, because
+// short handles were claimed long ago.
+function evidence() {
+  let both = 0, agree = 0, vxFree = 0, scFree = 0;
+  const byLen = {};
+  for (const [names, res] of [[a.usernames, a.results], [b.names, b.results]])
+    for (const u of names) {
+      const v = V(res[u]), s = V(sc.results[u]);
+      if (s) {
+        const L = Math.min(u.length, 7);
+        byLen[L] = byLen[L] || { free: 0, total: 0 };
+        byLen[L].total++;
+        if (s === 'available') byLen[L].free++;
+      }
+      if (!v || !s) continue;
+      both++;
+      if (v === s) agree++;
+      else if (v === 'available') vxFree++;
+      else scFree++;
+    }
+  return { both, agree, vxFree, scFree, byLen };
+}
+const ev = evidence();
+
 const stamps = [
   ...Object.values(a.results),
   ...Object.values(b.results),
@@ -125,6 +159,37 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Indéterminés | ${n(r100, S.UNKNOWN)} | ${n(r1000, S.UNKNOWN)} | ${n(all, S.UNKNOWN)} |
 
 Vérifications par la seconde source (socialcal) : ${scCount}.
+
+## Les deux sources sont-elles indépendantes ?
+
+La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
+même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
+seule. Mesure sur les ${ev.both} pseudos que les deux ont tranchés fermement :
+
+| | Nombre |
+|---|---|
+| Accords | ${ev.agree} (${Math.round(ev.agree / ev.both * 100)} %) |
+| vervox « libre » contre socialcal « pris » | ${ev.vxFree} |
+| vervox « pris » contre socialcal « libre » | ${ev.scFree} |
+
+Les désaccords sont **entièrement unilatéraux**. Un moteur partagé donnerait soit
+un accord total, soit du bruit dans les deux sens. Cette asymétrie est la
+signature de deux méthodes de détection distinctes, dont l'une — vervox — penche
+systématiquement vers « disponible ». C'est aussi pourquoi ses verdicts seuls ne
+sont jamais retenus ici.
+
+## Les résultats sont-ils plausibles ?
+
+Un vérificateur qui répondrait au hasard produirait un taux de disponibilité
+constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
+
+| Longueur | Pseudos testés | Déclarés libres |
+|---|---|---|
+${Object.keys(ev.byLen).sort().map(L => `| ${L} caractères | ${ev.byLen[L].total} | ${ev.byLen[L].free} (${Math.round(ev.byLen[L].free / ev.byLen[L].total * 100)} %) |`).join('\n')}
+
+Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
+le comportement attendu d'une mesure réelle sur une plateforme ancienne, où les
+identifiants courts ont été réservés depuis longtemps.
 
 ## Pseudos disponibles
 

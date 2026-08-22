@@ -18,6 +18,9 @@ const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 
 const LEDGER = path.join(__dirname, '..', 'blocks.json');
 
+// Past six hours a source is not rate-limiting us, it is refusing us.
+const MAX_COOLDOWN_MS = 6 * 3600000;
+
 /** Default cooldowns, measured on this IP rather than taken from the sites. */
 const COOLDOWN_MS = {
   vervox: 3 * 3600000,    // 65 min was not enough twice; 3 h let it answer again
@@ -33,7 +36,13 @@ const read = () => (fs.existsSync(LEDGER) ? readJsonSafe(LEDGER) : { blocks: {} 
 
 function recordBlock(source, detail = null) {
   const l = read();
-  l.blocks[source] = { at: new Date().toISOString(), detail };
+  const prev = l.blocks[source];
+  // Consecutive blocks compound. Picking a fixed cooldown meant guessing: 65 min
+  // was wrong for vervox twice, and 45 min was wrong for socialcal today. Doubling
+  // after each repeat lets the source itself set the pace, and one good answer
+  // resets it — so a single bad patch never imposes a long wait forever.
+  const streak = prev ? (prev.streak || 1) + 1 : 1;
+  l.blocks[source] = { at: new Date().toISOString(), detail, streak };
   l.updatedAt = new Date().toISOString();
   writeJsonAtomic(LEDGER, l);
 }
@@ -51,11 +60,19 @@ function recordSuccess(source) {
  * How long a runner must stay silent before touching this source.
  * Returns 0 when it is free to go.
  */
-function remainingMs(source, cooldownMs = COOLDOWN_MS[source] || 3600000) {
+function remainingMs(source, base = COOLDOWN_MS[source] || 3600000) {
   const b = read().blocks[source];
   if (!b) return 0;
+  const streak = b.streak || 1;
+  const cooldownMs = Math.min(base * Math.pow(2, streak - 1), MAX_COOLDOWN_MS);
   const left = Date.parse(b.at) + cooldownMs - Date.now();
   return left > 0 ? left : 0;
+}
+
+/** What the next wait would be, for logging before it is served. */
+function currentCooldownMs(source, base = COOLDOWN_MS[source] || 3600000) {
+  const b = read().blocks[source];
+  return Math.min(base * Math.pow(2, ((b && b.streak) || 1) - 1), MAX_COOLDOWN_MS);
 }
 
 function lastBlock(source) {
@@ -63,4 +80,4 @@ function lastBlock(source) {
   return b ? { at: b.at, detail: b.detail } : null;
 }
 
-module.exports = { recordBlock, recordSuccess, remainingMs, lastBlock, COOLDOWN_MS, LEDGER };
+module.exports = { recordBlock, recordSuccess, remainingMs, currentCooldownMs, lastBlock, COOLDOWN_MS, LEDGER };

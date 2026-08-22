@@ -1,8 +1,16 @@
 #!/bin/bash
 # Restarts the verification runners when they die.
 #
-# Covers the failure of the night of 21-22 August: the runners were killed at
-# 19:30 and nothing restarted them for two hours and twenty-five minutes.
+# SCOPE, measured on 22 August: this only helps while the session is active.
+# It was launched with setsid+nohup on the assumption that detaching would let
+# it outlive whatever killed the runners. It did not — at 14:58 the supervisor,
+# both runners and even the orphaned lock holder were all gone together, having
+# been alive at 13:27. Meanwhile harness-managed background tasks ran from 06:23
+# to 05:17 the following morning without interruption.
+#
+# So the reliable mechanism is the harness-managed background task, which also
+# notifies on exit; this script is the in-session safety net on top of it, and
+# recovered socialcal twice (06:35 and 13:15) when only the runner had died.
 #
 # Two bugs found on 22 August at 13:20, both fixed here:
 #

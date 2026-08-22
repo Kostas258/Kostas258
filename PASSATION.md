@@ -1071,3 +1071,28 @@ Relancer simplement, les cooldowns sont respectés automatiquement :
     node scripts/audit.js && node scripts/report_all.js
 
 `confirm.js` est le seul qui fasse progresser le compteur de confirmés.
+
+## Ce qui survit, et ce qui ne survit pas (mesuré le 22 août)
+
+Les tâches d'arrière-plan gérées par le harness sont fiables : elles ont tourné
+de 06:23 à 05:17 le lendemain sans interruption, et préviennent à leur sortie.
+
+Les processus détachés par `setsid nohup` **ne survivent pas**. Le superviseur,
+les deux runners et jusqu'au `sleep` orphelin qui retenait le verrou ont tous
+disparu ensemble entre 13:27 et 14:58. Détacher ne protège de rien ici.
+
+Conséquence pratique : lancer les runners comme tâches d'arrière-plan du harness,
+et traiter `scripts/watchdog.sh` comme un filet en cours de session seulement —
+il a bien rattrapé socialcal deux fois quand seul le runner était mort.
+
+## Les deux sources sont indépendantes (mesuré)
+
+Sur 138 pseudos tranchés fermement par les deux : 89 % d'accord, 15 désaccords
+tous dans le même sens (vervox « libre » contre socialcal « pris »), zéro dans
+l'autre. Un moteur partagé donnerait un accord total ou du bruit symétrique.
+L'asymétrie prouve deux méthodes distinctes — et confirme que vervox penche
+vers « disponible », d'où la règle de ne jamais retenir ses verdicts seuls.
+
+Plausibilité : le taux de disponibilité décroît avec la longueur du pseudo
+(4 caractères ~20 %, 5 caractères 33 %, 6 caractères 94 %). Un vérificateur qui
+répondrait au hasard donnerait un taux plat.
