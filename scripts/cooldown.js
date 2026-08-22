@@ -21,7 +21,11 @@ const LEDGER = path.join(__dirname, '..', 'blocks.json');
 /** Default cooldowns, measured on this IP rather than taken from the sites. */
 const COOLDOWN_MS = {
   vervox: 3 * 3600000,    // 65 min was not enough twice; 3 h let it answer again
-  socialcal: 15 * 60000,
+  // Measured, not guessed: on 21 August socialcal was stopped at 16:14 and was
+  // answering firmly again by 16:39. 45 min gives that margin. A control that
+  // fails on the negative case counts as a block — the source can still say
+  // "taken" but can no longer establish availability, which is what we need.
+  socialcal: 45 * 60000,
   dnsrobot: 30 * 60000,
 };
 

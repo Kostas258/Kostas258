@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 77,
+  "checked": 82,
   "available": [
     "h3ii",
     "j2eb",
@@ -150,7 +150,12 @@
     "g5ukau",
     "hw8aki",
     "m8eume",
-    "mj1amu"
+    "mj1amu",
+    "rv1ajo",
+    "t5ouni",
+    "v7akua",
+    "v9urou",
+    "vj3oxa"
   ],
   "results": {
     "ba5i": {
@@ -854,7 +859,52 @@
       "error": null,
       "checkedAt": "2026-08-22T04:47:43.526Z",
       "attempts": 1
+    },
+    "rv1ajo": {
+      "site": "vervox",
+      "username": "rv1ajo",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"rv1ajo\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@rv1ajo semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:55:50.528Z",
+      "attempts": 1
+    },
+    "t5ouni": {
+      "site": "vervox",
+      "username": "t5ouni",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"t5ouni\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@t5ouni semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T05:04:00.657Z",
+      "attempts": 1
+    },
+    "v7akua": {
+      "site": "vervox",
+      "username": "v7akua",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"v7akua\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@v7akua semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T05:12:14.827Z",
+      "attempts": 1
+    },
+    "v9urou": {
+      "site": "vervox",
+      "username": "v9urou",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"v9urou\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@v9urou semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T05:20:28.153Z",
+      "attempts": 1
+    },
+    "vj3oxa": {
+      "site": "vervox",
+      "username": "vj3oxa",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"vj3oxa\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@vj3oxa semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T05:28:37.328Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-22T04:47:50.427Z"
+  "updatedAt": "2026-08-22T05:28:48.143Z"
 }

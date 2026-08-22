@@ -125,9 +125,20 @@ function workList() {
     checks++;
     console.log(`${ts()} [sc] ${u} -> ${res.verdict}${res.cached ? ' (cached)' : ''}${res.error ? ' | ' + res.error : ''}  | ${list.length - 1} left`);
 
-    const change = throttle.record(res.verdict !== 'unknown');
-    if (change) {
-      console.log(`${ts()} throttle ${change.from / 1000}s -> ${change.to / 1000}s (${Math.round(change.missRate * 100)}% sans verdict)`);
+    // One sample per NAME, taken when that name is finished with — not one per
+    // request. Many names answer "unknown/medium" once or twice and then give a
+    // firm verdict; counting each of those attempts as a miss describes the name,
+    // not the service. Measured over 1353 requests: the throttle was reading a
+    // 62% miss rate while the service's real per-name failure rate was 12%, and
+    // 264 names had resolved on a retry. That false signal had dragged the
+    // cadence from 60s to its 300s ceiling overnight — a fivefold slowdown
+    // caused by the runner misreading its own retries.
+    const settled = res.verdict !== 'unknown' || res.tries >= MAX_TRIES;
+    if (settled) {
+      const change = throttle.record(res.verdict !== 'unknown');
+      if (change) {
+        console.log(`${ts()} throttle ${change.from / 1000}s -> ${change.to / 1000}s (${Math.round(change.missRate * 100)}% de pseudos sans verdict)`);
+      }
     }
     if (throttle.exhausted()) {
       console.log(`${ts()} slowing down stopped helping — pausing ${BACKOFF_MS / 60000} min to let the source recover`);

@@ -1,4 +1,13 @@
 {
-  "blocks": {},
-  "updatedAt": "2026-08-22T02:12:31.335Z"
+  "blocks": {
+    "vervox": {
+      "at": "2026-08-22T10:47:24.700Z",
+      "detail": "HTTP 429"
+    },
+    "socialcal": {
+      "at": "2026-08-22T11:25:07.021Z",
+      "detail": "contrôle négatif en échec : zqv7xkq9wzqjj4 -> unknown/medium"
+    }
+  },
+  "updatedAt": "2026-08-22T11:25:07.021Z"
 }

@@ -33,6 +33,8 @@ const DEADLINE = process.env.DEADLINE ? Date.parse(process.env.DEADLINE) : 0;
 // window. If vervox answered correctly a few minutes ago, that IS the evidence
 // the control would buy, so skip it rather than spend the request twice.
 const CONTROL_SKIP_MS = +(process.env.CONTROL_SKIP_MS || 45 * 60000);
+// A name vervox never settles must not be asked forever on a quota this thin.
+const MAX_TRIES = +(process.env.MAX_TRIES || 3);
 
 // 8 min is the cadence measured as safe on this source; it is the floor.
 const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS, windowSize: 6 });
@@ -58,18 +60,31 @@ async function respectCooldown(source, deadline) {
 
 const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
 
-/** Names socialcal calls available that vervox has not yet answered on. */
+/**
+ * Names socialcal calls available that vervox has not yet answered on.
+ *
+ * The tries cap is what stops a name from being asked forever. A name vervox
+ * cannot settle stays unresolved, so it stays pending, so it comes back as the
+ * head of the queue on the next pass — and this queue is spent against the
+ * scarcest quota in the project, a couple of requests per window. Without the
+ * cap one stubborn name would quietly consume every request and nothing else
+ * would ever be confirmed.
+ */
 function pending() {
   const a = readJsonSafe(P100), b = readJsonSafe(P1000), sc = readJsonSafe(SC);
   const out = [];
   for (const [names, res, file] of [[a.usernames, a.results, P100], [b.names, b.results, P1000]])
-    for (const u of names)
-      if (V(sc.results[u]) === 'available' && !V(res[u])) out.push({ u, file });
+    for (const u of names) {
+      if (V(sc.results[u]) !== 'available' || V(res[u])) continue;
+      if (((res[u] && res[u].tries) || 0) >= MAX_TRIES) continue;
+      out.push({ u, file });
+    }
   return out;
 }
 
 function record(file, u, res) {
   const s = readJsonSafe(file); // socialcal may have written since
+  res.tries = ((s.results[u] && s.results[u].tries) || 0) + 1;
   s.results[u] = res;
   s.checked = Object.keys(s.results).filter(k => s.results[k].verdict !== 'unknown').length;
   if (res.verdict === 'available' && !s.available.includes(u)) s.available.push(u);
