@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 75,
+  "checked": 76,
   "available": [
     "h3ii",
     "j2eb",
@@ -148,7 +148,8 @@
     "f9euvu",
     "fep2ui",
     "g5ukau",
-    "hw8aki"
+    "hw8aki",
+    "m8eume"
   ],
   "results": {
     "ba5i": {
@@ -838,12 +839,12 @@
     "m8eume": {
       "site": "vervox",
       "username": "m8eume",
-      "verdict": "unknown",
-      "api": null,
-      "error": "HTTP 0",
-      "checkedAt": "2026-08-22T04:31:26.325Z",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m8eume\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m8eume semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:39:32.767Z",
       "attempts": 1
     }
   },
-  "updatedAt": "2026-08-22T04:31:32.673Z"
+  "updatedAt": "2026-08-22T04:39:43.489Z"
 }
