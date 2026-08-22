@@ -26,6 +26,10 @@ const LIMIT = +(process.env.SC_LIMIT || 0); // 0 = no cap
 // Some names come back "unknown/medium" every time. Retry a few times, then
 // accept the indeterminate answer instead of looping on it forever.
 const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
+// The integrity control retries too: one transient miss is not proof a source
+// is down, and treating it as proof cost three hours of silence on 22 August.
+const CONTROL_TRIES = +(process.env.SC_CONTROL_TRIES || 3);
+const CONTROL_RETRY_MS = +(process.env.SC_CONTROL_RETRY_MS || 90000);
 
 const readJson = readJsonSafe;
 const { ts } = require('./time.js');
@@ -96,15 +100,28 @@ function workList() {
   console.log(`${ts()} SOCIALCAL START — plancher ${DELAY_MS / 1000}s, plafond ${MAX_DELAY_MS / 1000}s` + (DEADLINE ? `, deadline ${ts(new Date(DEADLINE))}` : ''));
 
   // Integrity gate, both directions, before anything is recorded.
+  //
+  // Retried, because a single sample is not evidence. On 22 August the negative
+  // control failed at 16:32 and the source answered it correctly three minutes
+  // later — one transient miss had condemned socialcal to a three-hour silence
+  // it did not need. Everywhere else this system retries before concluding; the
+  // control is the most consequential decision it makes, so it retries too.
+  // A source that misses the same control three times, spaced, really is down.
   for (const [u, want] of [['instagram', 'taken'], ['zqv7xkq9wzqjj4', 'available']]) {
-    const r = await checkSocialcal(u);
-    console.log(`${ts()} control ${u} -> ${r.verdict} (expected ${want})`);
+    let r;
+    for (let attempt = 1; attempt <= CONTROL_TRIES; attempt++) {
+      r = await checkSocialcal(u);
+      console.log(`${ts()} control ${u} -> ${r.verdict} (attendu ${want})` +
+        (r.verdict === want ? '' : `  essai ${attempt}/${CONTROL_TRIES}`));
+      if (r.verdict === want) break;
+      if (attempt < CONTROL_TRIES) await sleep(CONTROL_RETRY_MS);
+    }
     if (r.verdict !== want) {
       // Recorded, not just logged: a source that cannot pass its own control is
       // refusing us, and without this the next restart walks straight back into
       // the same failure. The wait doubles on each repeat.
-      recordBlock('socialcal', `contrôle en échec : ${u} -> ${r.verdict}`);
-      console.error(`${ts()} contrôle en échec (${u} -> ${r.verdict}, attendu ${want}) — rien n'est enregistré, silence ${Math.round(currentCooldownMs('socialcal') / 60000)} min`);
+      recordBlock('socialcal', `contrôle en échec ${CONTROL_TRIES}x : ${u} -> ${r.verdict}`);
+      console.error(`${ts()} contrôle en échec ${CONTROL_TRIES} fois (${u} -> ${r.verdict}, attendu ${want}) — rien n'est enregistré, silence ${Math.round(currentCooldownMs('socialcal') / 60000)} min`);
       process.exit(1);
     }
     await sleep(throttle.delay);

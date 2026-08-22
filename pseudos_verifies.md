@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 22/08/2026 15:00:29 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 22/08/2026 13:13:09 (heure de Paris)
+**Généré le :** 22/08/2026 16:37:56 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 22/08/2026 16:37:29 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 499 | 599 |
 | Identifiants non utilisés | 0 | 501 | 501 |
-| Disponibles (2 sources) | 43 | 40 | 83 |
-| Disponibles (1 source) | 0 | 58 | 58 |
+| Disponibles (2 sources) | 43 | 41 | 84 |
+| Disponibles (1 source) | 0 | 57 | 57 |
 | Pris | 41 | 339 | 380 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 57 | 63 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 519.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 138 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 139 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 123 (89 %) |
+| Accords | 124 (89 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -114,7 +114,7 @@ identifiants courts ont été réservés depuis longtemps.
 38. **m7rs** — confirmé par 2 sources
 39. **m7rw** — confirmé par 2 sources
 40. **m7tx** — confirmé par 2 sources
-41. **m7no** — 1 source
+41. **m7no** — confirmé par 2 sources
 42. **m7nq** — 1 source
 43. **m7nx** — 1 source
 44. **m7nh** — 1 source
@@ -599,7 +599,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 235 | `m7ni` | Pris | — | Pris | 21/08/2026 15:12:10 |
 | 236 | `m7na` | Pris | — | Pris | 21/08/2026 22:08:25 |
 | 237 | `m7ne` | Pris | — | Pris | 21/08/2026 15:14:17 |
-| 238 | `m7no` | Disponible (1 source) | — | Disponible | 21/08/2026 22:09:26 |
+| 238 | `m7no` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 15:47:24 |
 | 239 | `m7nu` | Pris | — | Pris | 21/08/2026 15:16:23 |
 | 240 | `m7ny` | Pris | — | Pris | 21/08/2026 22:10:27 |
 | 241 | `m7nq` | Disponible (1 source) | — | Disponible | 21/08/2026 22:11:28 |
@@ -860,7 +860,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 496 | `m7eqe` | Pris | — | Pris | 22/08/2026 13:00:15 |
 | 497 | `m7eqo` | Disponible (1 source) | — | Disponible | 22/08/2026 13:02:50 |
 | 498 | `m7equ` | Disponible (1 source) | — | Disponible | 22/08/2026 13:10:34 |
-| 499 | `m7eqy` | Indéterminé | — | Indéterminé | 22/08/2026 13:13:09 |
+| 499 | `m7eqy` | Indéterminé | — | Indéterminé | 22/08/2026 16:37:29 |
 
 ### Identifiants non utilisés de cette liste (501)
 

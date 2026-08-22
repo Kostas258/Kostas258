@@ -6425,11 +6425,11 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7eqy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7eqy/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-22T11:13:10.349Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7eqy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7eqy/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-22T14:37:31.465Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-22T11:13:09.066Z",
-      "tries": 1
+      "checkedAt": "2026-08-22T14:37:29.816Z",
+      "tries": 2
     }
   },
-  "updatedAt": "2026-08-22T11:13:10.020Z"
+  "updatedAt": "2026-08-22T14:37:30.977Z"
 }

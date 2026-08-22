@@ -1096,3 +1096,23 @@ vers « disponible », d'où la règle de ne jamais retenir ses verdicts seuls.
 Plausibilité : le taux de disponibilité décroît avec la longueur du pseudo
 (4 caractères ~20 %, 5 caractères 33 %, 6 caractères 94 %). Un vérificateur qui
 répondrait au hasard donnerait un taux plat.
+
+## Un seul échantillon ne prouve rien — y compris pour le contrôle
+
+Le 22 août à 16:32, le contrôle négatif de socialcal a échoué et le code l'a
+condamné à 3 h de silence. Trois minutes plus tard, la même source répondait
+correctement à ce même pseudo, et à trois autres témoins.
+
+Le défaut était une asymétrie dans ma propre logique : je réessayais trois fois
+avant de conclure sur un pseudo ordinaire, mais je condamnais une source entière
+sur **un seul** échantillon — alors que c'est la décision la plus lourde du
+système. Le contrôle réessaie désormais 3 fois, espacées de 90 s, avant
+d'enregistrer un blocage.
+
+Leçon plus générale : quand un mécanisme de sécurité se déclenche, vérifier qu'il
+avait raison coûte quelques requêtes ; le croire sur parole peut coûter des
+heures. Ici, 3 requêtes de diagnostic ont récupéré 3 heures.
+
+`socialcal_api.js` purge aussi son propre blocage dès qu'il rend un verdict ferme,
+comme le faisait déjà vervox. Sans cela, une source revenue à la normale restait
+marquée bloquée jusqu'à l'expiration du délai.

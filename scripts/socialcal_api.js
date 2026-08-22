@@ -76,6 +76,8 @@ async function checkSocialcal(username, { timeoutMs = 45000 } = {}) {
   else if (r.status === 'available' && r.confidence === 'high') out.verdict = 'available';
   else out.error = `status=${r.status} confidence=${r.confidence}`;
 
+  if (out.verdict !== 'unknown') recordSuccess('socialcal');
+
   return out;
 }
 
