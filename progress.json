@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 67,
+  "checked": 75,
   "available": [
     "h3ii",
     "j2eb",
@@ -140,7 +140,15 @@
     "r2xua",
     "rab9i",
     "s4oum",
-    "wr9era"
+    "wr9era",
+    "x1itie",
+    "c1ueka",
+    "c9uhau",
+    "cew6iu",
+    "f9euvu",
+    "fep2ui",
+    "g5ukau",
+    "hw8aki"
   ],
   "results": {
     "ba5i": {
@@ -754,7 +762,79 @@
       "error": null,
       "checkedAt": "2026-08-21T16:38:16.257Z",
       "attempts": 1
+    },
+    "x1itie": {
+      "site": "vervox",
+      "username": "x1itie",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"x1itie\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@x1itie semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-21T23:04:14.832Z",
+      "attempts": 1
+    },
+    "c1ueka": {
+      "site": "vervox",
+      "username": "c1ueka",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"c1ueka\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@c1ueka semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:12:22.431Z",
+      "attempts": 1
+    },
+    "c9uhau": {
+      "site": "vervox",
+      "username": "c9uhau",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"c9uhau\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@c9uhau semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:20:31.431Z",
+      "attempts": 1
+    },
+    "cew6iu": {
+      "site": "vervox",
+      "username": "cew6iu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"cew6iu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@cew6iu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:28:49.132Z",
+      "attempts": 1
+    },
+    "f9euvu": {
+      "site": "vervox",
+      "username": "f9euvu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"f9euvu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@f9euvu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:36:55.886Z",
+      "attempts": 1
+    },
+    "fep2ui": {
+      "site": "vervox",
+      "username": "fep2ui",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"fep2ui\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@fep2ui semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:45:04.334Z",
+      "attempts": 1
+    },
+    "g5ukau": {
+      "site": "vervox",
+      "username": "g5ukau",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"g5ukau\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@g5ukau semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T02:53:25.550Z",
+      "attempts": 1
+    },
+    "hw8aki": {
+      "site": "vervox",
+      "username": "hw8aki",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"hw8aki\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@hw8aki semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T03:09:42.230Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-21T16:38:25.628Z"
+  "updatedAt": "2026-08-22T03:09:55.535Z"
 }

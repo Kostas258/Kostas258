@@ -1030,3 +1030,44 @@ Corollaire appliqué le 21/08 à 21:56 : vervox et socialcal ont été relancés
 (cooldown écoulé, jamais bloqué), **dnsrobot ne l'a pas été**. Il refusait en
 continu depuis environ neuf heures sur deux runs successifs, soit 0 arbitrage
 sur 15 conflits. Insister n'aurait rien produit.
+
+## Bilan final — 22/08/2026, 05:15 (échéance)
+
+**Liste m7ia : vérifiée intégralement, 100/100.**
+36 disponibles confirmés par deux sources, 7 par une seule, 41 pris,
+10 contradictions, 6 indéterminés.
+
+**Liste nomutilisateursprare : 395/1000 interrogés.**
+5 disponibles confirmés par deux sources, 64 candidats appuyés sur socialcal
+seul, 282 pris, 5 contradictions, 39 indéterminés.
+
+**Objectif « 10 disponibles confirmés » sur la liste des 1000 : non atteint (5).**
+Les candidats existent — 64 — mais la confirmation dépend de vervox, qui a
+bloqué deux fois dans la nuit (22:04 et 01:12), chaque blocage coûtant 3 h de
+silence. Neuf confirmations seulement ont pu passer entre les blocages. Rien
+n'est bloqué techniquement : il faut du temps, pas du code.
+
+### Ce que la nuit a appris
+
+L'auto-throttling a fait exactement son travail sur socialcal. Il a vu le taux
+de réponses inexploitables monter (58 %, 67 %, 83 %), ralenti de 60 s à 300 s,
+déclenché une pause au plafond, puis repris à 60 s et réajusté — neuf
+ajustements au total, 226 vérifications sur la nuit. La veille, à cadence fixe,
+la même source avait fini par répondre 56 fois sur 60 sans rien dire d'utile.
+
+Le journal des blocages a tenu la règle « ne pas relancer un service qui vient
+de bloquer » sans intervention humaine, y compris après le redémarrage de
+conteneur qui avait tué les trois runners à 19:30.
+
+dnsrobot n'a jamais rouvert son quota Instagram. Les 15 contradictions restent
+donc non arbitrées, et sont listées comme telles.
+
+### Pour reprendre
+
+Relancer simplement, les cooldowns sont respectés automatiquement :
+
+    DEADLINE=<iso> node scripts/confirm.js     # vervox, confirme les candidats
+    DEADLINE=<iso> node scripts/crosscheck.js  # socialcal, étend la couverture
+    node scripts/audit.js && node scripts/report_all.js
+
+`confirm.js` est le seul qui fasse progresser le compteur de confirmés.
