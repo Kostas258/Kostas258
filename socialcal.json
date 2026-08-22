@@ -5285,7 +5285,29 @@
       "error": null,
       "checkedAt": "2026-08-22T03:14:36.426Z",
       "tries": 1
+    },
+    "m7inu": {
+      "site": "socialcal",
+      "username": "m7inu",
+      "verdict": "available",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7inu\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7inu/\",\"checkedAt\":\"2026-08-22T04:26:28.449Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:26:27.507Z",
+      "tries": 2
+    },
+    "m7iny": {
+      "site": "socialcal",
+      "username": "m7iny",
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": false,
+      "api": "{\"success\":true,\"handle\":\"m7iny\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7iny/\",\"checkedAt\":\"2026-08-22T04:29:31.421Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:29:30.487Z",
+      "tries": 3
     }
   },
-  "updatedAt": "2026-08-22T03:14:37.530Z"
+  "updatedAt": "2026-08-22T04:29:31.394Z"
 }
