@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 76,
+  "checked": 77,
   "available": [
     "h3ii",
     "j2eb",
@@ -149,7 +149,8 @@
     "fep2ui",
     "g5ukau",
     "hw8aki",
-    "m8eume"
+    "m8eume",
+    "mj1amu"
   ],
   "results": {
     "ba5i": {
@@ -844,7 +845,16 @@
       "error": null,
       "checkedAt": "2026-08-22T04:39:32.767Z",
       "attempts": 1
+    },
+    "mj1amu": {
+      "site": "vervox",
+      "username": "mj1amu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"mj1amu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@mj1amu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T04:47:43.526Z",
+      "attempts": 1
     }
   },
-  "updatedAt": "2026-08-22T04:39:43.489Z"
+  "updatedAt": "2026-08-22T04:47:50.427Z"
 }
