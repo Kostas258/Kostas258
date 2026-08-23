@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 115,
+  "checked": 120,
   "available": [
     "m7ia",
     "m7iy",
@@ -1089,7 +1089,12 @@
     "m7ise",
     "m7isy",
     "m7iwa",
-    "m7iwo"
+    "m7iwo",
+    "m7aqo",
+    "m7aqu",
+    "m7axe",
+    "m7avi",
+    "m7ave"
   ],
   "results": {
     "m7ii": {
@@ -2168,7 +2173,57 @@
       "checkedAt": "2026-08-23T18:50:21.553Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7aqo": {
+      "site": "vervox",
+      "username": "m7aqo",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7aqo\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7aqo semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T18:58:27.300Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7aqu": {
+      "site": "vervox",
+      "username": "m7aqu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7aqu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7aqu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T19:06:33.517Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7axe": {
+      "site": "vervox",
+      "username": "m7axe",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7axe\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7axe semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T19:14:45.594Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7avi": {
+      "site": "vervox",
+      "username": "m7avi",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7avi\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7avi semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T19:22:51.092Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ave": {
+      "site": "vervox",
+      "username": "m7ave",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ave\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ave semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T19:31:27.645Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-23T18:50:27.244Z"
+  "updatedAt": "2026-08-23T19:31:32.911Z"
 }
