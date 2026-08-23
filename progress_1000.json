@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 79,
+  "checked": 83,
   "available": [
     "m7ia",
     "m7iy",
@@ -1053,7 +1053,11 @@
     "m7nx",
     "m7nh",
     "m7nj",
-    "m7ns"
+    "m7ns",
+    "m7hy",
+    "m7hv",
+    "m7hw",
+    "m7je"
   ],
   "results": {
     "m7ii": {
@@ -1776,13 +1780,43 @@
     "m7hy": {
       "site": "vervox",
       "username": "m7hy",
-      "verdict": "unknown",
-      "api": null,
-      "error": "HTTP 0",
-      "checkedAt": "2026-08-22T17:36:19.605Z",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7hy\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7hy semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:44:31.113Z",
+      "attempts": 1,
+      "tries": 2
+    },
+    "m7hv": {
+      "site": "vervox",
+      "username": "m7hv",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7hv\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7hv semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T17:52:42.069Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7hw": {
+      "site": "vervox",
+      "username": "m7hw",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7hw\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7hw semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-22T18:00:53.244Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7je": {
+      "site": "vervox",
+      "username": "m7je",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7je\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7je semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T04:41:38.287Z",
       "attempts": 1,
       "tries": 1
     }
   },
-  "updatedAt": "2026-08-22T17:36:31.008Z"
+  "updatedAt": "2026-08-23T04:41:46.907Z"
 }

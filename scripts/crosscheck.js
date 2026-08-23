@@ -90,7 +90,15 @@ function workList() {
     if (v === 'taken') return 3;
     return in100.has(u) ? 1 : 2;
   };
-  const rank = u => tier(u) * 2 + (in100.has(u) ? 0 : 1);
+  // Breadth first: every name gets a first look before any name gets a second.
+  //
+  // Retrying an indeterminate name immediately costs about 2.4 requests per
+  // settled name, which is why the effective rate is 143 s rather than the 60 s
+  // floor. That trade is fine with unlimited time and wrong against a deadline:
+  // it would leave a few hundred names looked at three times and several hundred
+  // never looked at at all. Coverage first, second opinions with what is left.
+  const tries = u => (store.results[u] && store.results[u].tries) || 0;
+  const rank = u => (tries(u) > 0 ? 1000 : 0) + tier(u) * 2 + (in100.has(u) ? 0 : 1);
   return all.filter(u => !done(u)).sort((a, b) => rank(a) - rank(b));
 }
 
