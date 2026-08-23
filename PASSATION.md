@@ -1144,3 +1144,30 @@ candidats de plus, soit ~199 avec les 83 en attente. À 8 min par confirmation
 vervox, sans aucun blocage, cela représente ~27 h — et vervox perd 3 h à chaque
 blocage. La confirmation par deux sources des 1000 est donc un travail de
 plusieurs jours, pas d'une nuit. À dire tel quel plutôt que de le maquiller.
+
+## Pourquoi 8 h ont été perdues dans la nuit du 22 au 23
+
+Les deux runners ont été tués vers 22:53 et 20:09, et le contrôle horaire planifié
+ne les a pas relancés : `CronCreate` est explicitement « session-only ». Le job
+avait purement disparu au matin — `CronList` ne renvoyait plus rien.
+
+Trois mécanismes de relance ont donc été essayés et aucun ne survit hors session :
+
+| Mécanisme | Survit entre les tours ? |
+|---|---|
+| Tâche d'arrière-plan du harness | oui tant que la session vit ; a tenu 06:23 -> 05:17 |
+| `setsid nohup` (watchdog.sh) | non — tué avec tout le reste |
+| `CronCreate` | non — session-only, disparaît avec la session |
+
+À retenir : dans cet environnement, le travail avance pendant que la session est
+active. Aucun montage local n'y change quoi que ce soit. Il faut donc soit une
+session maintenue active, soit accepter que la progression soit hachée.
+
+## Stratégie sous échéance : largeur d'abord
+
+Sous contrainte de temps, `crosscheck.js` regarde maintenant tous les pseudos une
+première fois avant d'en réessayer aucun. Une reprise immédiate coûtait ~2,4
+requêtes par pseudo tranché — d'où 143 s effectifs contre un plancher de 60 s.
+Ce compromis est bon avec du temps devant soi et mauvais sous échéance : il
+laisserait quelques centaines de pseudos vus trois fois et plusieurs centaines
+jamais vus.
