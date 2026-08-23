@@ -172,6 +172,14 @@ function record(file, u, res) {
         console.log(`${ts()} the backoff would run past the deadline — stopping now`);
         break;
       }
+      // Same logic against the handover window. Sleeping through it would hold
+      // this slot for hours and then exit having done nothing on waking; the
+      // block is recorded in the ledger, so the next run waits it out at startup
+      // and this one frees the slot immediately.
+      if (RUN_MS && Date.now() + BACKOFF_MS >= STARTED_AT + RUN_MS) {
+        console.log(`${ts()} le backoff dépasse la fenêtre de relève — sortie immédiate, le blocage est au journal`);
+        break;
+      }
       await sleep(BACKOFF_MS);
       continue;
     }

@@ -159,6 +159,10 @@ function workList() {
     if (res.rateLimited) {
       if (++backoffs > MAX_BACKOFFS) { console.log(`${ts()} rate limited ${backoffs}x — stopping`); break; }
       console.log(`${ts()} RATE LIMITED at "${u}" (#${backoffs}) — silent ${BACKOFF_MS / 60000} min`);
+      if (RUN_MS && Date.now() + BACKOFF_MS >= STARTED_AT + RUN_MS) {
+        console.log(`${ts()} le backoff dépasse la fenêtre de relève — sortie immédiate, le blocage est au journal`);
+        break;
+      }
       await sleep(BACKOFF_MS);
       continue;
     }
