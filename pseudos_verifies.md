@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 00:44:03 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 00:39:35 (heure de Paris)
+**Généré le :** 24/08/2026 01:29:37 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 01:20:28 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 88 | 131 |
-| Disponibles (1 source) | 0 | 215 | 215 |
+| Disponibles (2 sources) | 43 | 93 | 136 |
+| Disponibles (1 source) | 0 | 210 | 210 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 196 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 201 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 181 (92 %) |
+| Accords | 186 (93 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -162,11 +162,11 @@ identifiants courts ont été réservés depuis longtemps.
 86. **m7avi** — confirmé par 2 sources
 87. **m7ave** — confirmé par 2 sources
 88. **m7aki** — confirmé par 2 sources
-89. **m7ahe** — 1 source
-90. **m7aho** — 1 source
-91. **m7ahu** — 1 source
-92. **m7ahy** — 1 source
-93. **m7aja** — 1 source
+89. **m7ahe** — confirmé par 2 sources
+90. **m7aho** — confirmé par 2 sources
+91. **m7ahu** — confirmé par 2 sources
+92. **m7ahy** — confirmé par 2 sources
+93. **m7aja** — confirmé par 2 sources
 94. **m7awu** — 1 source
 95. **m7eqi** — 1 source
 96. **m7eqa** — 1 source
@@ -1038,12 +1038,12 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 469 | `m7any` | Indéterminé | — | Indéterminé | 22/08/2026 10:34:23 |
 | 470 | `m7ahi` | Pris | — | Pris | 22/08/2026 10:38:30 |
 | 471 | `m7aha` | Pris | — | Pris | 22/08/2026 10:42:36 |
-| 472 | `m7ahe` | Disponible (1 source) | — | Disponible | 22/08/2026 10:50:50 |
-| 473 | `m7aho` | Disponible (1 source) | — | Disponible | 22/08/2026 10:59:03 |
-| 474 | `m7ahu` | Disponible (1 source) | — | Disponible | 22/08/2026 11:03:10 |
-| 475 | `m7ahy` | Disponible (1 source) | — | Disponible | 22/08/2026 11:07:17 |
+| 472 | `m7ahe` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 00:47:47 |
+| 473 | `m7aho` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 00:55:53 |
+| 474 | `m7ahu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 01:04:13 |
+| 475 | `m7ahy` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 01:12:20 |
 | 476 | `m7aji` | Pris | — | Pris | 22/08/2026 11:11:23 |
-| 477 | `m7aja` | Disponible (1 source) | — | Disponible | 22/08/2026 11:19:37 |
+| 477 | `m7aja` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 01:20:28 |
 | 478 | `m7aje` | Indéterminé | — | Indéterminé | 22/08/2026 11:31:57 |
 | 479 | `m7ajo` | Pris | — | Pris | 22/08/2026 11:36:04 |
 | 480 | `m7aju` | Pris | — | Pris | 22/08/2026 11:40:11 |

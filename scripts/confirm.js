@@ -52,11 +52,17 @@ const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS, windowSize: 6 
  * The rule: never restart against a service that just blocked us. Enforced from
  * the on-disk ledger, so it survives both this process and a container restart.
  */
-async function respectCooldown(source, deadline) {
+async function respectCooldown(source, deadline, runMs = 0) {
   const left = remainingMs(source);
   if (!left) return true;
   const b = lastBlock(source);
   const until = new Date(Date.now() + left);
+  // Sleeping past our own handover window would hold the slot for hours and then
+  // exit with nothing done. The block is on disk, so the next stretch picks it up.
+  if (runMs && left >= runMs) {
+    console.log(`${ts()} ${source} est en silence jusqu'à ${ts(until)} (${Math.ceil(left / 60000)} min), au-delà de cette fenêtre de relève — sortie immédiate`);
+    return false;
+  }
   if (deadline && Date.now() + left >= deadline) {
     console.log(`${ts()} ${source} a bloqué à ${ts(new Date(b.at))} ; le cooldown court au-delà de l'échéance — on ne le relance pas.`);
     return false;
@@ -121,7 +127,7 @@ function record(file, u, res) {
     await sleep(QUIET_UNTIL - Date.now());
   }
 
-  if (!await respectCooldown('vervox', DEADLINE)) return;
+  if (!await respectCooldown('vervox', DEADLINE, RUN_MS)) return;
 
   const lastGood = (() => {
     let t = 0;
