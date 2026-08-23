@@ -80,14 +80,22 @@ const V = r => (r && r.verdict && r.verdict !== 'unknown' ? r.verdict : null);
  */
 function pending() {
   const a = readJsonSafe(P100), b = readJsonSafe(P1000), sc = readJsonSafe(SC);
-  const out = [];
+  const candidates = [], orphans = [];
   for (const [names, res, file] of [[a.usernames, a.results, P100], [b.names, b.results, P1000]])
     for (const u of names) {
-      if (V(sc.results[u]) !== 'available' || V(res[u])) continue;
+      if (V(res[u])) continue;
       if (((res[u] && res[u].tries) || 0) >= MAX_TRIES) continue;
-      out.push({ u, file });
+      const s = V(sc.results[u]);
+      if (s === 'available') candidates.push({ u, file });
+      // Names socialcal never settled in three tries. vervox has never looked at
+      // these, because it only ever chased candidates — so they would end up as
+      // blanks in the report, with no verdict from any source at all. Worth a
+      // look once the candidates are done, never before: a candidate might be a
+      // name the user actually claims, while these are, statistically, mostly
+      // taken accounts that answer ambiguously because they are deactivated.
+      else if (!s) orphans.push({ u, file });
     }
-  return out;
+  return candidates.concat(orphans);
 }
 
 function record(file, u, res) {

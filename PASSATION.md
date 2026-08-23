@@ -1171,3 +1171,22 @@ requêtes par pseudo tranché — d'où 143 s effectifs contre un plancher de 60
 Ce compromis est bon avec du temps devant soi et mauvais sous échéance : il
 laisserait quelques centaines de pseudos vus trois fois et plusieurs centaines
 jamais vus.
+
+## socialcal a terminé (23/08, 00:29)
+
+Les 1100 pseudos ont tous été poussés jusqu'à un verdict ferme ou jusqu'à trois
+tentatives infructueuses. Répartition finale côté socialcal :
+346 disponibles, 580 pris, 174 indéterminés.
+
+Croisement des deux sources à ce moment :
+195 pseudos ont deux verdicts, 731 socialcal seul, 7 vervox seul,
+et **167 n'ont aucun verdict** — indéterminés pour socialcal, jamais regardés par
+vervox puisqu'il ne poursuivait que les candidats déclarés libres.
+
+vervox travaille donc désormais en deux phases : les 216 candidats d'abord, puis
+ces 167 orphelins. L'ordre n'est pas négociable — un candidat est un pseudo que
+l'utilisateur pourrait revendiquer, tandis qu'un orphelin est statistiquement un
+compte pris qui répond de façon ambiguë parce qu'il est désactivé.
+
+Arithmétique : 383 pseudos à 8 min font 51 h pour une fenêtre de 35,5 h. Les
+candidats (29 h) tiennent ; les orphelins ne passeront pas tous. À dire tel quel.

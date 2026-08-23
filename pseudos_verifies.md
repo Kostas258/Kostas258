@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 00:16:50 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 00:14:19 (heure de Paris)
+**Généré le :** 24/08/2026 00:30:41 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 00:28:30 (heure de Paris)
 
 ## Sources
 
@@ -35,17 +35,17 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
 
-Vérifications par la seconde source (socialcal) : 925.
+Vérifications par la seconde source (socialcal) : 926.
 
 ## Les deux sources sont-elles indépendantes ?
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 194 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 195 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 179 (92 %) |
+| Accords | 180 (92 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -62,7 +62,7 @@ constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
 
 | Longueur | Pseudos testés | Déclarés libres |
 |---|---|---|
-| 4 caractères | 327 | 64 (20 %) |
+| 4 caractères | 328 | 64 (20 %) |
 | 5 caractères | 581 | 266 (46 %) |
 | 6 caractères | 17 | 16 (94 %) |
 
@@ -586,23 +586,23 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 17 | `m7is` | Pris | Pris | Pris | 21/08/2026 12:20:42 |
 | 18 | `m7iw` | Pris | Pris | Pris | 21/08/2026 12:21:03 |
 | 19 | `m7ai` | Pris | Pris | Pris | 21/08/2026 12:21:24 |
-| 20 | `m7aa` | Pris | Pris | Indéterminé | 24/08/2026 00:14:19 |
+| 20 | `m7aa` | Pris | Pris | Indéterminé | 24/08/2026 00:18:16 |
 | 21 | `m7ae` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:55:19 |
 | 22 | `m7ao` | Pris | Pris | Pris | 21/08/2026 12:22:48 |
-| 23 | `m7au` | Pris | Pris | Indéterminé | 23/08/2026 22:40:23 |
+| 23 | `m7au` | Pris | Pris | Indéterminé | 24/08/2026 00:20:20 |
 | 24 | `m7ay` | Pris | Pris | Pris | 23/08/2026 22:41:24 |
 | 25 | `m7aq` | Pris | Pris | Pris | 23/08/2026 22:42:25 |
-| 26 | `m7ax` | Pris | Pris | Indéterminé | 23/08/2026 22:43:26 |
+| 26 | `m7ax` | Pris | Pris | Indéterminé | 24/08/2026 00:22:22 |
 | 27 | `m7av` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:05 |
-| 28 | `m7az` | Pris | Pris | Indéterminé | 23/08/2026 22:44:27 |
+| 28 | `m7az` | Pris | Pris | Pris | 24/08/2026 00:24:24 |
 | 29 | `m7ak` | Pris | Pris | Pris | 23/08/2026 22:45:28 |
 | 30 | `m7ar` | Pris | Pris | Pris | 23/08/2026 22:46:29 |
 | 31 | `m7at` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:56:24 |
 | 32 | `m7an` | Pris | Pris | Pris | 23/08/2026 22:47:30 |
 | 33 | `m7ah` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:31 |
 | 34 | `m7aj` | Pris | Pris | Pris | 23/08/2026 22:48:31 |
-| 35 | `m7as` | Pris | Pris | Indéterminé | 23/08/2026 22:49:32 |
-| 36 | `m7aw` | Pris | Pris | Indéterminé | 23/08/2026 22:50:33 |
+| 35 | `m7as` | Pris | Pris | Indéterminé | 24/08/2026 00:26:28 |
+| 36 | `m7aw` | Pris | Pris | Indéterminé | 24/08/2026 00:28:30 |
 | 37 | `m7ei` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:04 |
 | 38 | `m7ea` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:17 |
 | 39 | `m7ee` | Pris | — | Pris | 21/08/2026 12:53:15 |
