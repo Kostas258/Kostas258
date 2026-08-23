@@ -35,6 +35,14 @@ const DEADLINE = process.env.DEADLINE ? Date.parse(process.env.DEADLINE) : 0;
 const CONTROL_SKIP_MS = +(process.env.CONTROL_SKIP_MS || 45 * 60000);
 // A name vervox never settles must not be asked forever on a quota this thin.
 const MAX_TRIES = +(process.env.MAX_TRIES || 3);
+// Bounded runs, on purpose. Twice now the runners have been killed with no
+// notification at all — the harness simply lost them, and the loss was only
+// discovered hours later by looking. A run that ends *itself* exits cleanly, and
+// a clean exit produces a completion notification that wakes the session to
+// start the next stretch. Silent death becomes a scheduled handover; progress is
+// checkpointed after every name, so a handover costs nothing.
+const RUN_MS = +(process.env.RUN_MINUTES || 0) * 60000;
+const STARTED_AT = Date.now();
 
 // 8 min is the cadence measured as safe on this source; it is the floor.
 const throttle = new Throttle({ min: DELAY_MS, max: MAX_DELAY_MS, windowSize: 6 });
@@ -144,6 +152,10 @@ function record(file, u, res) {
   let done = 0, backoffs = 0;
   for (;;) {
     if (DEADLINE && Date.now() >= DEADLINE) { console.log(`${ts()} deadline reached — stopping`); break; }
+    if (RUN_MS && Date.now() - STARTED_AT >= RUN_MS) {
+      console.log(`${ts()} relève : ${RUN_MS / 60000} min écoulées, sortie propre pour déclencher la reprise`);
+      break;
+    }
     const list = pending();
     if (!list.length) { console.log(`${ts()} nothing left to confirm`); break; }
     const { u, file } = list[0];

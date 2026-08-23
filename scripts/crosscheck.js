@@ -23,6 +23,14 @@ const BACKOFF_MS = +(process.env.SC_BACKOFF_MS || 15 * 60000);
 const DEADLINE = process.env.DEADLINE ? Date.parse(process.env.DEADLINE) : 0;
 const MAX_BACKOFFS = +(process.env.SC_MAX_BACKOFFS || 3);
 const LIMIT = +(process.env.SC_LIMIT || 0); // 0 = no cap
+// Bounded runs, on purpose. Twice now the runners have been killed with no
+// notification at all — the harness simply lost them, and the loss was only
+// discovered hours later by looking. A run that ends *itself* exits cleanly, and
+// a clean exit produces a completion notification that wakes the session to
+// start the next stretch. Silent death becomes a scheduled handover; progress is
+// checkpointed after every name, so a handover costs nothing.
+const RUN_MS = +(process.env.RUN_MINUTES || 0) * 60000;
+const STARTED_AT = Date.now();
 // Some names come back "unknown/medium" every time. Retry a few times, then
 // accept the indeterminate answer instead of looping on it forever.
 const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
@@ -137,6 +145,10 @@ function workList() {
 
   for (;;) {
     if (DEADLINE && Date.now() >= DEADLINE) { console.log(`${ts()} deadline reached — stopping`); break; }
+    if (RUN_MS && Date.now() - STARTED_AT >= RUN_MS) {
+      console.log(`${ts()} relève : ${RUN_MS / 60000} min écoulées, sortie propre pour déclencher la reprise`);
+      break;
+    }
     const list = workList();
     if (!list.length) { console.log(`${ts()} nothing left to cross-check`); break; }
     if (LIMIT && checks >= LIMIT) { console.log(`${ts()} limit ${LIMIT} reached`); break; }

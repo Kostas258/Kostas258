@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 113,
+  "checked": 115,
   "available": [
     "m7ia",
     "m7iy",
@@ -1087,7 +1087,9 @@
     "m7ijo",
     "m7iju",
     "m7ise",
-    "m7isy"
+    "m7isy",
+    "m7iwa",
+    "m7iwo"
   ],
   "results": {
     "m7ii": {
@@ -2146,7 +2148,27 @@
       "checkedAt": "2026-08-23T12:05:28.731Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7iwa": {
+      "site": "vervox",
+      "username": "m7iwa",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7iwa\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7iwa semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T18:49:29.636Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7iwo": {
+      "site": "vervox",
+      "username": "m7iwo",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7iwo\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7iwo semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-23T18:50:21.553Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-23T12:05:39.621Z"
+  "updatedAt": "2026-08-23T18:50:27.244Z"
 }
