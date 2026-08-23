@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkSocialcal, sleep } = require('./socialcal_api.js');
-const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe, assertUsername, claimSingleInstance } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'socialcal.json');
@@ -111,6 +111,12 @@ function workList() {
 }
 
 (async () => {
+  const claim = claimSingleInstance('socialcal');
+  if (!claim.ok) {
+    console.log(`${ts()} un autre runner socialcal tourne déjà (pid ${claim.pid}) — sortie, deux files sur la même source la feraient bloquer`);
+    return;
+  }
+
   let backoffs = 0, checks = 0;
   if (!await respectCooldown('socialcal', DEADLINE)) return;
   console.log(`${ts()} SOCIALCAL START — plancher ${DELAY_MS / 1000}s, plafond ${MAX_DELAY_MS / 1000}s` + (DEADLINE ? `, deadline ${ts(new Date(DEADLINE))}` : ''));

@@ -59,3 +59,37 @@ function readJsonSafe(file) {
 }
 
 module.exports = { isValidUsername, assertUsername, writeJsonAtomic, readJsonSafe, USERNAME_RE };
+
+/**
+ * Refuses to start when another instance of the same runner is already alive.
+ *
+ * Written after a near miss on 23 August: two confirm.js processes were both
+ * asleep waiting on the same vervox cooldown. The older one happened to exit the
+ * instant the cooldown lifted, so only one went on to send requests — but had
+ * its handover window been longer, both would have woken together and doubled
+ * the rate against the source that blocks hardest. "Never run two queues against
+ * one service" was a rule from the start; luck is not an implementation of it.
+ *
+ * The lock stores a pid and is ignored when that pid is gone, so a killed runner
+ * never leaves a lock that blocks its own replacement.
+ */
+function claimSingleInstance(name) {
+  const fs = require('fs');
+  const lock = `/tmp/kostas-${name}.pid`;
+  try {
+    const prev = parseInt(fs.readFileSync(lock, 'utf8'), 10);
+    if (prev && prev !== process.pid) {
+      try {
+        process.kill(prev, 0); // throws when the pid is gone
+        return { ok: false, pid: prev };
+      } catch { /* stale lock, fall through and take it */ }
+    }
+  } catch { /* no lock yet */ }
+  fs.writeFileSync(lock, String(process.pid));
+  const release = () => { try { fs.unlinkSync(lock); } catch {} };
+  process.on('exit', release);
+  process.on('SIGTERM', () => { release(); process.exit(0); });
+  return { ok: true };
+}
+
+module.exports.claimSingleInstance = claimSingleInstance;

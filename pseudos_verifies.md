@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 00:30:41 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 00:28:30 (heure de Paris)
+**Généré le :** 24/08/2026 00:44:03 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 00:39:35 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 87 | 130 |
-| Disponibles (1 source) | 0 | 216 | 216 |
+| Disponibles (2 sources) | 43 | 88 | 131 |
+| Disponibles (1 source) | 0 | 215 | 215 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 195 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 196 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 180 (92 %) |
+| Accords | 181 (92 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -161,7 +161,7 @@ identifiants courts ont été réservés depuis longtemps.
 85. **m7axe** — confirmé par 2 sources
 86. **m7avi** — confirmé par 2 sources
 87. **m7ave** — confirmé par 2 sources
-88. **m7aki** — 1 source
+88. **m7aki** — confirmé par 2 sources
 89. **m7ahe** — 1 source
 90. **m7aho** — 1 source
 91. **m7ahu** — 1 source
@@ -1012,7 +1012,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 443 | `m7azo` | Pris | — | Pris | 22/08/2026 09:10:20 |
 | 444 | `m7azu` | Pris | — | Pris | 22/08/2026 09:12:22 |
 | 445 | `m7azy` | Indéterminé | — | Indéterminé | 22/08/2026 09:15:26 |
-| 446 | `m7aki` | Disponible (1 source) | — | Disponible | 22/08/2026 09:17:28 |
+| 446 | `m7aki` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 00:39:35 |
 | 447 | `m7aka` | Pris | — | Pris | 22/08/2026 09:18:29 |
 | 448 | `m7ake` | Pris | — | Pris | 22/08/2026 09:19:30 |
 | 449 | `m7ako` | Indéterminé | — | Indéterminé | 22/08/2026 09:22:32 |

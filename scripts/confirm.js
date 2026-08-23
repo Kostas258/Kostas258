@@ -12,7 +12,7 @@
  */
 const path = require('path');
 const { checkVervox, sleep } = require('./vervox_api.js');
-const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe, claimSingleInstance } = require('./safe.js');
 const { ts } = require('./time.js');
 const { Throttle } = require('./throttle.js');
 const { remainingMs, lastBlock, recordBlock, currentCooldownMs } = require('./cooldown.js');
@@ -109,6 +109,12 @@ function record(file, u, res) {
 }
 
 (async () => {
+  const claim = claimSingleInstance('vervox');
+  if (!claim.ok) {
+    console.log(`${ts()} un autre runner vervox tourne déjà (pid ${claim.pid}) — sortie, deux files sur la même source la feraient bloquer`);
+    return;
+  }
+
   if (QUIET_UNTIL && Date.now() < QUIET_UNTIL) {
     const mins = Math.ceil((QUIET_UNTIL - Date.now()) / 60000);
     console.log(`${ts()} silent until ${ts(new Date(QUIET_UNTIL))} (${mins} min) — letting the rate-limit window close`);

@@ -1190,3 +1190,22 @@ compte pris qui répond de façon ambiguë parce qu'il est désactivé.
 
 Arithmétique : 383 pseudos à 8 min font 51 h pour une fenêtre de 35,5 h. Les
 candidats (29 h) tiennent ; les orphelins ne passeront pas tous. À dire tel quel.
+
+## Verrou d'instance unique (23/08, 00:45)
+
+Deux processus confirm.js ont dormi en même temps vers la même expiration de
+cooldown vervox. Le plus ancien est sorti à la seconde où le cooldown a levé —
+sa fenêtre de relève avait expiré pendant son sommeil — donc un seul a envoyé
+des requêtes. C'était de la chance : avec une fenêtre plus longue, les deux se
+seraient réveillés ensemble et auraient doublé la cadence sur la source qui
+bloque le plus dur.
+
+« Ne pas paralléliser deux files sur le même service » figurait dans les règles
+de méthode depuis le début. La chance n'en est pas une implémentation.
+`claimSingleInstance()` dans safe.js pose un verrou nommé contenant le pid ; un
+verrou dont le pid est mort est ignoré, donc un runner tué ne bloque jamais son
+remplaçant.
+
+Précaution pour la suite : ne jamais lancer un runner « pour tester » pendant
+qu'un autre tourne. Le test de ce verrou a lui-même démarré un second vervox
+pendant trois minutes, faute d'avoir vérifié d'abord.
