@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 181,
+  "checked": 183,
   "available": [
     "m7ia",
     "m7iy",
@@ -1155,7 +1155,9 @@
     "m7owa",
     "m7owe",
     "m7owu",
-    "m7uqa"
+    "m7uqa",
+    "m7uqe",
+    "m7uqu"
   ],
   "results": {
     "m7ii": {
@@ -2894,7 +2896,27 @@
       "checkedAt": "2026-08-24T19:43:31.289Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7uqe": {
+      "site": "vervox",
+      "username": "m7uqe",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7uqe\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7uqe semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T22:51:54.488Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7uqu": {
+      "site": "vervox",
+      "username": "m7uqu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7uqu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7uqu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T23:00:01.689Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-24T19:43:53.499Z"
+  "updatedAt": "2026-08-24T23:00:11.238Z"
 }

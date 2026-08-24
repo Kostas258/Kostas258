@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 24/08/2026 21:26:08 (heure de Paris, UTC+2)
+**Généré le :** 25/08/2026 01:12:17 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 145 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 158 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 150 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 153 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 145
+## DISPONIBLE (2 sources) — 150
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -168,16 +168,16 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 624 | `m7oju` | available | available | 24/08/2026 19:32:35 |
 | 625 | `m7ojy` | available | available | 24/08/2026 21:10:56 |
 | 633 | `m7owa` | available | available | 24/08/2026 21:19:06 |
+| 634 | `m7owe` | available | available | 24/08/2026 21:27:16 |
+| 636 | `m7owu` | available | available | 24/08/2026 21:35:23 |
+| 639 | `m7uqa` | available | available | 24/08/2026 21:43:31 |
+| 640 | `m7uqe` | available | available | 25/08/2026 00:51:54 |
+| 642 | `m7uqu` | available | available | 25/08/2026 01:00:01 |
 
-## DISPONIBLE (1 source) — 158
+## DISPONIBLE (1 source) — 153
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 634 | `m7owe` | — | available | 22/08/2026 21:48:04 |
-| 636 | `m7owu` | — | available | 22/08/2026 21:51:07 |
-| 639 | `m7uqa` | — | available | 22/08/2026 21:56:15 |
-| 640 | `m7uqe` | — | available | 22/08/2026 21:59:18 |
-| 642 | `m7uqu` | — | available | 22/08/2026 22:02:20 |
 | 643 | `m7uqy` | — | available | 22/08/2026 22:03:21 |
 | 647 | `m7uxo` | — | available | 22/08/2026 22:09:27 |
 | 649 | `m7uxy` | — | available | 22/08/2026 22:13:32 |
