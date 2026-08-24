@@ -29,8 +29,23 @@ say "── contrôleur ──"
 if alive crosscheck.js; then
   say "socialcal : actif"
 else
-  say "socialcal : arrêté — à relancer par l'appelant (une tâche d'arrière-plan du harness survit, un processus détaché non)"
-  echo "RESTART_SOCIALCAL=1"
+  # Same guard vervox already had: asking for a restart when the queue is empty
+  # would spawn a runner that exits at once, and on a bad day loop doing it.
+  scleft=$(node -e '
+    const a=require("./progress.json"),b=require("./progress_1000.json");
+    const fs=require("fs");
+    const sc=fs.existsSync("./socialcal.json")?require("./socialcal.json").results:{};
+    const V=r=>r&&r.verdict&&r.verdict!=="unknown";
+    let n=0;
+    for (const names of [a.usernames,b.names])
+      for (const u of names) if (!(sc[u] && (V(sc[u]) || (sc[u].tries||0)>=3))) n++;
+    console.log(n);' 2>/dev/null || echo 0)
+  if [ "${scleft:-0}" -gt 0 ]; then
+    say "socialcal : arrêté, $scleft pseudos en attente — à relancer par l'appelant"
+    echo "RESTART_SOCIALCAL=1"
+  else
+    say "socialcal : arrêté, plus rien à vérifier — travail terminé"
+  fi
 fi
 
 if alive confirm.js; then
@@ -82,6 +97,7 @@ say "── intégrité ──"
 if node scripts/audit.js >/tmp/audit.out 2>&1; then
   tail -1 /tmp/audit.out | sed 's/^/   /'
   node scripts/report_all.js | sed 's/^/   /'
+  node scripts/liste_1000.js | sed 's/^/   /'
   git add -A
   if git diff --cached --quiet; then
     say "rien de nouveau à publier"
