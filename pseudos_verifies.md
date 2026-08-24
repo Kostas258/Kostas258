@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 01:29:37 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 01:20:28 (heure de Paris)
+**Généré le :** 24/08/2026 11:44:20 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 04:45:07 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 93 | 136 |
-| Disponibles (1 source) | 0 | 210 | 210 |
+| Disponibles (2 sources) | 43 | 96 | 139 |
+| Disponibles (1 source) | 0 | 207 | 207 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 201 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 204 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 186 (93 %) |
+| Accords | 189 (93 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -167,9 +167,9 @@ identifiants courts ont été réservés depuis longtemps.
 91. **m7ahu** — confirmé par 2 sources
 92. **m7ahy** — confirmé par 2 sources
 93. **m7aja** — confirmé par 2 sources
-94. **m7awu** — 1 source
-95. **m7eqi** — 1 source
-96. **m7eqa** — 1 source
+94. **m7awu** — confirmé par 2 sources
+95. **m7eqi** — confirmé par 2 sources
+96. **m7eqa** — confirmé par 2 sources
 97. **m7eqo** — 1 source
 98. **m7equ** — 1 source
 99. **m7eqy** — 1 source
@@ -1058,10 +1058,10 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 489 | `m7awa` | Pris | — | Pris | 22/08/2026 12:32:49 |
 | 490 | `m7awe` | Pris | — | Pris | 22/08/2026 12:34:26 |
 | 491 | `m7awo` | Indéterminé | — | Indéterminé | 22/08/2026 12:39:17 |
-| 492 | `m7awu` | Disponible (1 source) | — | Disponible | 22/08/2026 12:40:54 |
+| 492 | `m7awu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 04:28:44 |
 | 493 | `m7awy` | Indéterminé | — | Indéterminé | 22/08/2026 12:45:45 |
-| 494 | `m7eqi` | Disponible (1 source) | — | Disponible | 22/08/2026 12:52:31 |
-| 495 | `m7eqa` | Disponible (1 source) | — | Disponible | 22/08/2026 12:55:06 |
+| 494 | `m7eqi` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 04:36:56 |
+| 495 | `m7eqa` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 04:45:07 |
 | 496 | `m7eqe` | Pris | — | Pris | 22/08/2026 13:00:15 |
 | 497 | `m7eqo` | Disponible (1 source) | — | Disponible | 22/08/2026 13:02:50 |
 | 498 | `m7equ` | Disponible (1 source) | — | Disponible | 22/08/2026 13:10:34 |
