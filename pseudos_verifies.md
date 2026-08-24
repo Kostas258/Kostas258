@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 13:25:23 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 13:22:34 (heure de Paris)
+**Généré le :** 24/08/2026 15:09:32 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 15:09:13 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 105 | 148 |
-| Disponibles (1 source) | 0 | 198 | 198 |
+| Disponibles (2 sources) | 43 | 117 | 160 |
+| Disponibles (1 source) | 0 | 186 | 186 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 213 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 225 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 198 (93 %) |
+| Accords | 210 (93 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -194,18 +194,18 @@ Aucun pseudo confirmé n'a jamais été archivé.
 103. **m7evy** — confirmé par 2 sources
 104. **m7eze** — confirmé par 2 sources
 105. **m7ezu** — confirmé par 2 sources
-106. **m7eke** — 1 source
-107. **m7eko** — 1 source
-108. **m7eku** — 1 source
-109. **m7eky** — 1 source
-110. **m7era** — 1 source
-111. **m7ete** — 1 source
-112. **m7ene** — 1 source
-113. **m7enu** — 1 source
-114. **m7ehi** — 1 source
-115. **m7eha** — 1 source
-116. **m7ehu** — 1 source
-117. **m7ehy** — 1 source
+106. **m7eke** — confirmé par 2 sources
+107. **m7eko** — confirmé par 2 sources
+108. **m7eku** — confirmé par 2 sources
+109. **m7eky** — confirmé par 2 sources
+110. **m7era** — confirmé par 2 sources
+111. **m7ete** — confirmé par 2 sources
+112. **m7ene** — confirmé par 2 sources
+113. **m7enu** — confirmé par 2 sources
+114. **m7ehi** — confirmé par 2 sources
+115. **m7eha** — confirmé par 2 sources
+116. **m7ehu** — confirmé par 2 sources
+117. **m7ehy** — confirmé par 2 sources
 118. **m7eji** — 1 source
 119. **m7eja** — 1 source
 120. **m7eje** — 1 source
@@ -1101,34 +1101,34 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 517 | `m7ezy` | Indéterminé | — | Indéterminé | 22/08/2026 17:17:09 |
 | 518 | `m7eki` | Pris | — | Pris | 22/08/2026 17:18:10 |
 | 519 | `m7eka` | Pris | — | Pris | 22/08/2026 17:21:13 |
-| 520 | `m7eke` | Disponible (1 source) | — | Disponible | 22/08/2026 17:22:14 |
-| 521 | `m7eko` | Disponible (1 source) | — | Disponible | 22/08/2026 17:24:16 |
-| 522 | `m7eku` | Disponible (1 source) | — | Disponible | 22/08/2026 17:25:17 |
-| 523 | `m7eky` | Disponible (1 source) | — | Disponible | 22/08/2026 17:26:18 |
+| 520 | `m7eke` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:30:54 |
+| 521 | `m7eko` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:39:02 |
+| 522 | `m7eku` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:47:12 |
+| 523 | `m7eky` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:55:20 |
 | 524 | `m7eri` | Indéterminé | — | Indéterminé | 22/08/2026 17:29:20 |
-| 525 | `m7era` | Disponible (1 source) | — | Disponible | 22/08/2026 17:32:24 |
+| 525 | `m7era` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:11:32 |
 | 526 | `m7ere` | Pris | — | Pris | 22/08/2026 17:35:26 |
 | 527 | `m7ero` | Indéterminé | — | Indéterminé | 22/08/2026 17:38:30 |
 | 528 | `m7eru` | Indéterminé | — | Indéterminé | 22/08/2026 17:41:33 |
 | 529 | `m7ery` | Pris | — | Pris | 22/08/2026 17:43:34 |
 | 530 | `m7eti` | Pris | — | Pris | 22/08/2026 17:44:35 |
 | 531 | `m7eta` | Indéterminé | — | Indéterminé | 22/08/2026 17:47:38 |
-| 532 | `m7ete` | Disponible (1 source) | — | Disponible | 22/08/2026 17:49:40 |
+| 532 | `m7ete` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:19:41 |
 | 533 | `m7eto` | Indéterminé | — | Indéterminé | 22/08/2026 17:52:43 |
 | 534 | `m7etu` | Indéterminé | — | Indéterminé | 22/08/2026 17:55:46 |
 | 535 | `m7ety` | Pris | — | Pris | 22/08/2026 17:57:23 |
 | 536 | `m7eni` | Pris | — | Pris | 22/08/2026 18:00:36 |
 | 537 | `m7ena` | Pris | — | Pris | 22/08/2026 18:02:13 |
-| 538 | `m7ene` | Disponible (1 source) | — | Disponible | 22/08/2026 18:05:27 |
+| 538 | `m7ene` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:27:51 |
 | 539 | `m7eno` | Pris | — | Pris | 22/08/2026 18:07:05 |
-| 540 | `m7enu` | Disponible (1 source) | — | Disponible | 22/08/2026 18:11:56 |
+| 540 | `m7enu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:36:07 |
 | 541 | `m7eny` | Pris | — | Pris | 22/08/2026 18:13:33 |
-| 542 | `m7ehi` | Disponible (1 source) | — | Disponible | 22/08/2026 18:18:24 |
-| 543 | `m7eha` | Disponible (1 source) | — | Disponible | 22/08/2026 18:21:38 |
+| 542 | `m7ehi` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:44:18 |
+| 543 | `m7eha` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 14:52:38 |
 | 544 | `m7ehe` | Pris | — | Pris | 22/08/2026 18:23:15 |
 | 545 | `m7eho` | Pris | — | Pris | 22/08/2026 18:24:51 |
-| 546 | `m7ehu` | Disponible (1 source) | — | Disponible | 22/08/2026 18:28:05 |
-| 547 | `m7ehy` | Disponible (1 source) | — | Disponible | 22/08/2026 18:30:51 |
+| 546 | `m7ehu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:00:46 |
+| 547 | `m7ehy` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:09:13 |
 | 548 | `m7eji` | Disponible (1 source) | — | Disponible | 22/08/2026 18:32:13 |
 | 549 | `m7eja` | Disponible (1 source) | — | Disponible | 22/08/2026 18:33:36 |
 | 550 | `m7eje` | Disponible (1 source) | — | Disponible | 22/08/2026 18:34:58 |

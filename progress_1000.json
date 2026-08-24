@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 138,
+  "checked": 150,
   "available": [
     "m7ia",
     "m7iy",
@@ -1112,7 +1112,19 @@
     "m7evo",
     "m7evy",
     "m7eze",
-    "m7ezu"
+    "m7ezu",
+    "m7eke",
+    "m7eko",
+    "m7eku",
+    "m7eky",
+    "m7era",
+    "m7ete",
+    "m7ene",
+    "m7enu",
+    "m7ehi",
+    "m7eha",
+    "m7ehu",
+    "m7ehy"
   ],
   "results": {
     "m7ii": {
@@ -2421,7 +2433,127 @@
       "checkedAt": "2026-08-24T11:22:34.157Z",
       "attempts": 1,
       "tries": 2
+    },
+    "m7eke": {
+      "site": "vervox",
+      "username": "m7eke",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eke\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eke semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T11:30:54.855Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eko": {
+      "site": "vervox",
+      "username": "m7eko",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eko\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eko semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T11:39:02.855Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eku": {
+      "site": "vervox",
+      "username": "m7eku",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eku\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eku semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T11:47:12.955Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eky": {
+      "site": "vervox",
+      "username": "m7eky",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eky\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eky semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T11:55:20.979Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7era": {
+      "site": "vervox",
+      "username": "m7era",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7era\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7era semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:11:32.632Z",
+      "attempts": 1,
+      "tries": 2
+    },
+    "m7ete": {
+      "site": "vervox",
+      "username": "m7ete",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ete\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ete semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:19:41.258Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ene": {
+      "site": "vervox",
+      "username": "m7ene",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ene\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ene semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:27:51.657Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7enu": {
+      "site": "vervox",
+      "username": "m7enu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7enu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7enu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:36:07.120Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ehi": {
+      "site": "vervox",
+      "username": "m7ehi",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ehi\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ehi semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:44:18.055Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eha": {
+      "site": "vervox",
+      "username": "m7eha",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eha\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eha semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T12:52:38.281Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ehu": {
+      "site": "vervox",
+      "username": "m7ehu",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ehu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ehu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T13:00:46.955Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ehy": {
+      "site": "vervox",
+      "username": "m7ehy",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ehy\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ehy semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T13:09:13.695Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-24T11:22:54.797Z"
+  "updatedAt": "2026-08-24T13:09:27.316Z"
 }
