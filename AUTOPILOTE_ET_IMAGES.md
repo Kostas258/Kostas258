@@ -204,16 +204,6 @@ else
 fi
 ```
 
-### 2.6 Les garde-fous qui rendent l'autopilote sûr
-
-| Fichier | Rôle |
-|---|---|
-| `safe.js` | écritures atomiques (temp+fsync+rename), validation des pseudos, **verrou d'instance** (jamais deux files sur une source) |
-| `throttle.js` | cadence adaptative ; le **plancher est la valeur mesurée sûre**, jamais en dessous |
-| `cooldown.js` | journal des blocages sur disque ; cooldown **exponentiel** ; ne jamais relancer un service qui vient de bloquer |
-| `audit.js` | aucun verdict issu d'une erreur ; chaque verdict adossé à sa réponse brute |
-| `time.js` | affichage heure de Paris, stockage en UTC |
-
 ---
 
 ## 3. 30 prompts d'images pour ChatGPT (outil image)
