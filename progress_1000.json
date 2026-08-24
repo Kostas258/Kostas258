@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 150,
+  "checked": 152,
   "available": [
     "m7ia",
     "m7iy",
@@ -1124,7 +1124,9 @@
     "m7ehi",
     "m7eha",
     "m7ehu",
-    "m7ehy"
+    "m7ehy",
+    "m7eji",
+    "m7eja"
   ],
   "results": {
     "m7ii": {
@@ -2553,7 +2555,37 @@
       "checkedAt": "2026-08-24T13:09:13.695Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7eji": {
+      "site": "vervox",
+      "username": "m7eji",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eji\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eji semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T13:25:57.968Z",
+      "attempts": 1,
+      "tries": 2
+    },
+    "m7eja": {
+      "site": "vervox",
+      "username": "m7eja",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eja\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eja semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-24T13:34:07.856Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eje": {
+      "site": "vervox",
+      "username": "m7eje",
+      "verdict": "unknown",
+      "api": null,
+      "error": "HTTP 0",
+      "checkedAt": "2026-08-24T13:42:25.416Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-24T13:09:27.316Z"
+  "updatedAt": "2026-08-24T13:42:31.858Z"
 }

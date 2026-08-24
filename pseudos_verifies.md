@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 15:09:32 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 15:09:13 (heure de Paris)
+**Généré le :** 24/08/2026 15:46:29 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 15:42:25 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 117 | 160 |
-| Disponibles (1 source) | 0 | 186 | 186 |
+| Disponibles (2 sources) | 43 | 119 | 162 |
+| Disponibles (1 source) | 0 | 184 | 184 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 225 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 227 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 210 (93 %) |
+| Accords | 212 (93 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -206,8 +206,8 @@ Aucun pseudo confirmé n'a jamais été archivé.
 115. **m7eha** — confirmé par 2 sources
 116. **m7ehu** — confirmé par 2 sources
 117. **m7ehy** — confirmé par 2 sources
-118. **m7eji** — 1 source
-119. **m7eja** — 1 source
+118. **m7eji** — confirmé par 2 sources
+119. **m7eja** — confirmé par 2 sources
 120. **m7eje** — 1 source
 121. **m7ejo** — 1 source
 122. **m7eju** — 1 source
@@ -1129,9 +1129,9 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 545 | `m7eho` | Pris | — | Pris | 22/08/2026 18:24:51 |
 | 546 | `m7ehu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:00:46 |
 | 547 | `m7ehy` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:09:13 |
-| 548 | `m7eji` | Disponible (1 source) | — | Disponible | 22/08/2026 18:32:13 |
-| 549 | `m7eja` | Disponible (1 source) | — | Disponible | 22/08/2026 18:33:36 |
-| 550 | `m7eje` | Disponible (1 source) | — | Disponible | 22/08/2026 18:34:58 |
+| 548 | `m7eji` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:25:57 |
+| 549 | `m7eja` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 15:34:07 |
+| 550 | `m7eje` | Disponible (1 source) | Indéterminé | Disponible | 24/08/2026 15:42:25 |
 | 551 | `m7ejo` | Disponible (1 source) | — | Disponible | 22/08/2026 18:37:43 |
 | 552 | `m7eju` | Disponible (1 source) | — | Disponible | 22/08/2026 18:39:06 |
 | 553 | `m7ejy` | Indéterminé | — | Indéterminé | 22/08/2026 18:43:14 |
