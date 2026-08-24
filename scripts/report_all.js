@@ -110,6 +110,9 @@ function evidence() {
 }
 const ev = evidence();
 
+const wb = fs.existsSync(path.join(REPO, 'wayback_audit.json'))
+  ? readJson('wayback_audit.json') : { checked: 0, hits: [] };
+
 const stamps = [
   ...Object.values(a.results),
   ...Object.values(b.results),
@@ -190,6 +193,21 @@ ${Object.keys(ev.byLen).sort().map(L => `| ${L} caractères | ${ev.byLen[L].tota
 Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
 le comportement attendu d'une mesure réelle sur une plateforme ancienne, où les
 identifiants courts ont été réservés depuis longtemps.
+
+## Contre-épreuve indépendante : archive.org
+
+Une archive Wayback d'un profil prouve que le compte existait au passage du
+robot — une preuve qui ne doit rien à vervox ni à socialcal. L'inverse ne dit
+rien : le robot n'a visité qu'une petite part d'Instagram, biaisée vers les
+comptes populaires, et un pseudo pris quelconque n'y figure pas (\`m2ue\`, pris
+selon les deux sources, n'a aucune archive).
+
+Cette asymétrie en fait un démolisseur, pas un promoteur : une seule archive sur
+un pseudo dit disponible signifierait que deux vérificateurs indépendants se sont
+trompés ensemble.
+
+**Résultat : ${wb.checked} pseudos confirmés vérifiés, ${wb.hits.length} contredits.**
+${wb.hits.length ? wb.hits.map(h => `- \`${h.u}\` — archivé le ${h.when}`).join('\n') : "Aucun pseudo confirmé n'a jamais été archivé."}
 
 ## Pseudos disponibles
 

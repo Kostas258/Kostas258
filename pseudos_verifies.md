@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 11:45:35 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 04:45:07 (heure de Paris)
+**Généré le :** 24/08/2026 13:25:23 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 13:22:34 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 96 | 139 |
-| Disponibles (1 source) | 0 | 207 | 207 |
+| Disponibles (2 sources) | 43 | 105 | 148 |
+| Disponibles (1 source) | 0 | 198 | 198 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 204 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 213 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 189 (93 %) |
+| Accords | 198 (93 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -69,6 +69,21 @@ constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
 Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
 le comportement attendu d'une mesure réelle sur une plateforme ancienne, où les
 identifiants courts ont été réservés depuis longtemps.
+
+## Contre-épreuve indépendante : archive.org
+
+Une archive Wayback d'un profil prouve que le compte existait au passage du
+robot — une preuve qui ne doit rien à vervox ni à socialcal. L'inverse ne dit
+rien : le robot n'a visité qu'une petite part d'Instagram, biaisée vers les
+comptes populaires, et un pseudo pris quelconque n'y figure pas (`m2ue`, pris
+selon les deux sources, n'a aucune archive).
+
+Cette asymétrie en fait un démolisseur, pas un promoteur : une seule archive sur
+un pseudo dit disponible signifierait que deux vérificateurs indépendants se sont
+trompés ensemble.
+
+**Résultat : 147 pseudos confirmés vérifiés, 0 contredits.**
+Aucun pseudo confirmé n'a jamais été archivé.
 
 ## Pseudos disponibles
 
@@ -170,15 +185,15 @@ identifiants courts ont été réservés depuis longtemps.
 94. **m7awu** — confirmé par 2 sources
 95. **m7eqi** — confirmé par 2 sources
 96. **m7eqa** — confirmé par 2 sources
-97. **m7eqo** — 1 source
-98. **m7equ** — 1 source
-99. **m7eqy** — 1 source
-100. **m7exi** — 1 source
-101. **m7exa** — 1 source
-102. **m7evo** — 1 source
-103. **m7evy** — 1 source
-104. **m7eze** — 1 source
-105. **m7ezu** — 1 source
+97. **m7eqo** — confirmé par 2 sources
+98. **m7equ** — confirmé par 2 sources
+99. **m7eqy** — confirmé par 2 sources
+100. **m7exi** — confirmé par 2 sources
+101. **m7exa** — confirmé par 2 sources
+102. **m7evo** — confirmé par 2 sources
+103. **m7evy** — confirmé par 2 sources
+104. **m7eze** — confirmé par 2 sources
+105. **m7ezu** — confirmé par 2 sources
 106. **m7eke** — 1 source
 107. **m7eko** — 1 source
 108. **m7eku** — 1 source
@@ -1063,11 +1078,11 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 494 | `m7eqi` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 04:36:56 |
 | 495 | `m7eqa` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 04:45:07 |
 | 496 | `m7eqe` | Pris | — | Pris | 22/08/2026 13:00:15 |
-| 497 | `m7eqo` | Disponible (1 source) | — | Disponible | 22/08/2026 13:02:50 |
-| 498 | `m7equ` | Disponible (1 source) | — | Disponible | 22/08/2026 13:10:34 |
-| 499 | `m7eqy` | Disponible (1 source) | — | Disponible | 22/08/2026 16:38:31 |
-| 500 | `m7exi` | Disponible (1 source) | — | Disponible | 22/08/2026 16:40:32 |
-| 501 | `m7exa` | Disponible (1 source) | — | Disponible | 22/08/2026 16:42:35 |
+| 497 | `m7eqo` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 11:52:53 |
+| 498 | `m7equ` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:01:02 |
+| 499 | `m7eqy` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:09:18 |
+| 500 | `m7exi` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:33:39 |
+| 501 | `m7exa` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:41:51 |
 | 502 | `m7exe` | Pris | — | Pris | 22/08/2026 16:45:38 |
 | 503 | `m7exo` | Pris | — | Pris | 22/08/2026 16:46:38 |
 | 504 | `m7exu` | Indéterminé | — | Indéterminé | 22/08/2026 16:49:42 |
@@ -1075,14 +1090,14 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 506 | `m7evi` | Pris | — | Pris | 22/08/2026 16:53:45 |
 | 507 | `m7eva` | Pris | — | Pris | 22/08/2026 16:56:49 |
 | 508 | `m7eve` | Indéterminé | — | Indéterminé | 22/08/2026 16:59:52 |
-| 509 | `m7evo` | Disponible (1 source) | — | Disponible | 22/08/2026 17:00:53 |
+| 509 | `m7evo` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:50:06 |
 | 510 | `m7evu` | Indéterminé | — | Indéterminé | 22/08/2026 17:03:56 |
-| 511 | `m7evy` | Disponible (1 source) | — | Disponible | 22/08/2026 17:06:59 |
+| 511 | `m7evy` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 12:58:17 |
 | 512 | `m7ezi` | Indéterminé | — | Indéterminé | 22/08/2026 17:10:02 |
 | 513 | `m7eza` | Pris | — | Pris | 22/08/2026 17:11:03 |
-| 514 | `m7eze` | Disponible (1 source) | — | Disponible | 22/08/2026 17:12:04 |
+| 514 | `m7eze` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:06:27 |
 | 515 | `m7ezo` | Pris | — | Pris | 22/08/2026 17:13:05 |
-| 516 | `m7ezu` | Disponible (1 source) | — | Disponible | 22/08/2026 17:14:07 |
+| 516 | `m7ezu` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 13:22:34 |
 | 517 | `m7ezy` | Indéterminé | — | Indéterminé | 22/08/2026 17:17:09 |
 | 518 | `m7eki` | Pris | — | Pris | 22/08/2026 17:18:10 |
 | 519 | `m7eka` | Pris | — | Pris | 22/08/2026 17:21:13 |
