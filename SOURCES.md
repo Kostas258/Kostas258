@@ -45,3 +45,16 @@ Inaccessible depuis cette IP : 302 vers le mur de connexion sur les profils,
 429 sur l'API d'inscription. C'est pour cette raison que sherlock, maigret et
 socialscan échouent tous de la même façon — le verrou est l'adresse IP, pas
 l'outil.
+
+## Pistes testées le 24/08 — toutes fermées
+
+| Piste | Résultat |
+|---|---|
+| Wayback (archive.org) | **retenue** : une archive prouve un pseudo pris. Audit des 147 confirmés → 0 contredit. Attention, 429 après ~150 requêtes : espacer. |
+| Threads (`threads.com/@user`) | 200 pour tout, aucun signal |
+| Common Crawl | hôte hors liste blanche de la passerelle (échec TLS) |
+| archive.today | idem |
+| DuckDuckGo direct | idem |
+| Moteurs de recherche | **dangereux** : renvoient des correspondances approchantes. Une recherche sur `m7iy` remonte `m7iy_`, un autre pseudo. Lu sans attention, cela produirait de faux « pris ». |
+| Instagram signup + CSRF | 429 |
+| Instagram récupération de compte | écarté : enverrait de vrais messages à de vraies personnes |
