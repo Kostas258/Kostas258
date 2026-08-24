@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 21:16:20 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 21:10:56 (heure de Paris)
+**Généré le :** 24/08/2026 21:26:08 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 21:19:06 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 144 | 187 |
-| Disponibles (1 source) | 0 | 159 | 159 |
+| Disponibles (2 sources) | 43 | 145 | 188 |
+| Disponibles (1 source) | 0 | 158 | 158 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 252 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 253 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 237 (94 %) |
+| Accords | 238 (94 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -233,7 +233,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 142. **m7oje** — confirmé par 2 sources
 143. **m7oju** — confirmé par 2 sources
 144. **m7ojy** — confirmé par 2 sources
-145. **m7owa** — 1 source
+145. **m7owa** — confirmé par 2 sources
 146. **m7owe** — 1 source
 147. **m7owu** — 1 source
 148. **m7uqa** — 1 source
@@ -1214,7 +1214,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 630 | `m7osu` | Pris | — | Pris | 22/08/2026 21:41:57 |
 | 631 | `m7osy` | Pris | — | Pris | 22/08/2026 21:43:59 |
 | 632 | `m7owi` | Pris | — | Pris | 22/08/2026 21:46:01 |
-| 633 | `m7owa` | Disponible (1 source) | — | Disponible | 22/08/2026 21:47:02 |
+| 633 | `m7owa` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 21:19:06 |
 | 634 | `m7owe` | Disponible (1 source) | — | Disponible | 22/08/2026 21:48:04 |
 | 635 | `m7owo` | Pris | — | Pris | 22/08/2026 21:50:06 |
 | 636 | `m7owu` | Disponible (1 source) | — | Disponible | 22/08/2026 21:51:07 |
