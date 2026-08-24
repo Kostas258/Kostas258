@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 24/08/2026 19:16:32 (heure de Paris, UTC+2)
+**Généré le :** 24/08/2026 20:19:11 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 141 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 162 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 143 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 160 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 141
+## DISPONIBLE (2 sources) — 143
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -164,13 +164,13 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 607 | `m7oty` | available | available | 24/08/2026 18:59:25 |
 | 614 | `m7ohi` | available | available | 24/08/2026 19:07:31 |
 | 616 | `m7ohe` | available | available | 24/08/2026 19:16:16 |
+| 622 | `m7oje` | available | available | 24/08/2026 19:24:24 |
+| 624 | `m7oju` | available | available | 24/08/2026 19:32:35 |
 
-## DISPONIBLE (1 source) — 162
+## DISPONIBLE (1 source) — 160
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 622 | `m7oje` | — | available | 22/08/2026 21:26:42 |
-| 624 | `m7oju` | — | available | 22/08/2026 21:29:45 |
 | 625 | `m7ojy` | — | available | 22/08/2026 21:30:46 |
 | 633 | `m7owa` | — | available | 22/08/2026 21:47:02 |
 | 634 | `m7owe` | — | available | 22/08/2026 21:48:04 |

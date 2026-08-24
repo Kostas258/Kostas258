@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 24/08/2026 19:16:32 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 19:16:16 (heure de Paris)
+**Généré le :** 24/08/2026 20:19:11 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 24/08/2026 19:32:35 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 141 | 184 |
-| Disponibles (1 source) | 0 | 162 | 162 |
+| Disponibles (2 sources) | 43 | 143 | 186 |
+| Disponibles (1 source) | 0 | 160 | 160 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 249 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 251 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 234 (94 %) |
+| Accords | 236 (94 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -230,8 +230,8 @@ Aucun pseudo confirmé n'a jamais été archivé.
 139. **m7oty** — confirmé par 2 sources
 140. **m7ohi** — confirmé par 2 sources
 141. **m7ohe** — confirmé par 2 sources
-142. **m7oje** — 1 source
-143. **m7oju** — 1 source
+142. **m7oje** — confirmé par 2 sources
+143. **m7oju** — confirmé par 2 sources
 144. **m7ojy** — 1 source
 145. **m7owa** — 1 source
 146. **m7owe** — 1 source
@@ -1203,9 +1203,9 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 619 | `m7ohy` | Pris | — | Pris | 22/08/2026 21:19:35 |
 | 620 | `m7oji` | Pris | — | Pris | 22/08/2026 21:22:38 |
 | 621 | `m7oja` | Indéterminé | — | Indéterminé | 22/08/2026 21:25:41 |
-| 622 | `m7oje` | Disponible (1 source) | — | Disponible | 22/08/2026 21:26:42 |
+| 622 | `m7oje` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 19:24:24 |
 | 623 | `m7ojo` | Pris | — | Pris | 22/08/2026 21:27:43 |
-| 624 | `m7oju` | Disponible (1 source) | — | Disponible | 22/08/2026 21:29:45 |
+| 624 | `m7oju` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 19:32:35 |
 | 625 | `m7ojy` | Disponible (1 source) | — | Disponible | 22/08/2026 21:30:46 |
 | 626 | `m7osi` | Pris | — | Pris | 22/08/2026 21:31:46 |
 | 627 | `m7osa` | Indéterminé | — | Indéterminé | 22/08/2026 21:34:49 |
