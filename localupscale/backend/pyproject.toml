@@ -1,0 +1,36 @@
+[project]
+name = "localupscale-backend"
+version = "0.1.0"
+description = "Backend local de LocalUpscale : upscaling d'images par IA, 100 % hors ligne."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "pillow>=10.0",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+# Moteur IA réel (lourd) : à installer explicitement.
+# Real-ESRGAN s'appuie sur torch ; en l'absence de GPU, le mode CPU de secours
+# est utilisé (nettement plus lent).
+ia = [
+    "torch>=2.1",
+    "torchvision>=0.16",
+    "realesrgan>=0.3.0",
+]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.27",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]

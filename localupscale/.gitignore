@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Node
+node_modules/
+frontend/dist/
+*.local
+
+# Tauri / Rust
+frontend/src-tauri/target/
+
+# Modèles IA (téléchargés manuellement, jamais versionnés)
+backend/models/*.pth
+backend/models/*.bin
+backend/models/*.param
+
+# Sorties de test
+*.tmp
+.DS_Store
