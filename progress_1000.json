@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 237,
+  "checked": 238,
   "available": [
     "m7ia",
     "m7iy",
@@ -1211,7 +1211,8 @@
     "m7yto",
     "m7yne",
     "m7yno",
-    "m7ynu"
+    "m7ynu",
+    "m7yny"
   ],
   "results": {
     "m7ii": {
@@ -3510,7 +3511,17 @@
       "checkedAt": "2026-08-25T11:28:34.765Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7yny": {
+      "site": "vervox",
+      "username": "m7yny",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7yny\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7yny semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-25T18:16:00.881Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-25T11:28:43.350Z"
+  "updatedAt": "2026-08-25T18:16:13.186Z"
 }
