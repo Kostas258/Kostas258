@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 25/08/2026 01:12:17 (heure de Paris, UTC+2)
+**Généré le :** 25/08/2026 06:18:41 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 150 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 153 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 154 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 149 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 150
+## DISPONIBLE (2 sources) — 154
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -173,15 +173,15 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 639 | `m7uqa` | available | available | 24/08/2026 21:43:31 |
 | 640 | `m7uqe` | available | available | 25/08/2026 00:51:54 |
 | 642 | `m7uqu` | available | available | 25/08/2026 01:00:01 |
+| 643 | `m7uqy` | available | available | 25/08/2026 04:20:05 |
+| 647 | `m7uxo` | available | available | 25/08/2026 04:36:23 |
+| 649 | `m7uxy` | available | available | 25/08/2026 04:44:32 |
+| 651 | `m7uva` | available | available | 25/08/2026 04:52:43 |
 
-## DISPONIBLE (1 source) — 153
+## DISPONIBLE (1 source) — 149
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 643 | `m7uqy` | — | available | 22/08/2026 22:03:21 |
-| 647 | `m7uxo` | — | available | 22/08/2026 22:09:27 |
-| 649 | `m7uxy` | — | available | 22/08/2026 22:13:32 |
-| 651 | `m7uva` | — | available | 22/08/2026 22:15:33 |
 | 652 | `m7uve` | — | available | 22/08/2026 22:16:34 |
 | 653 | `m7uvo` | — | available | 22/08/2026 22:18:36 |
 | 657 | `m7uza` | — | available | 22/08/2026 22:25:44 |

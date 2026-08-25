@@ -1,10 +1,10 @@
 {
   "blocks": {
     "vervox": {
-      "at": "2026-08-24T23:11:58.997Z",
-      "detail": "HTTP 429",
+      "at": "2026-08-25T04:18:22.935Z",
+      "detail": "contrôle en échec : instagram -> unknown",
       "streak": 1
     }
   },
-  "updatedAt": "2026-08-24T23:11:58.997Z"
+  "updatedAt": "2026-08-25T04:18:22.935Z"
 }
