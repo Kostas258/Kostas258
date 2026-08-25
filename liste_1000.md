@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 25/08/2026 07:29:36 (heure de Paris, UTC+2)
+**Généré le :** 25/08/2026 11:34:49 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 162 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 141 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 191 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 112 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 162
+## DISPONIBLE (2 sources) — 191
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -185,40 +185,40 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 660 | `m7uzu` | available | available | 25/08/2026 07:16:35 |
 | 664 | `m7uke` | available | available | 25/08/2026 07:24:44 |
 | 666 | `m7uku` | available | available | 25/08/2026 07:28:48 |
+| 667 | `m7uky` | available | available | 25/08/2026 07:36:57 |
+| 672 | `m7uru` | available | available | 25/08/2026 07:45:02 |
+| 676 | `m7ute` | available | available | 25/08/2026 07:53:12 |
+| 678 | `m7utu` | available | available | 25/08/2026 08:01:19 |
+| 679 | `m7uty` | available | available | 25/08/2026 08:09:45 |
+| 682 | `m7une` | available | available | 25/08/2026 08:17:51 |
+| 683 | `m7uno` | available | available | 25/08/2026 08:25:58 |
+| 684 | `m7unu` | available | available | 25/08/2026 08:34:06 |
+| 685 | `m7uny` | available | available | 25/08/2026 08:42:16 |
+| 688 | `m7uhe` | available | available | 25/08/2026 08:50:25 |
+| 691 | `m7uhy` | available | available | 25/08/2026 08:58:33 |
+| 694 | `m7uje` | available | available | 25/08/2026 09:06:42 |
+| 695 | `m7ujo` | available | available | 25/08/2026 09:14:52 |
+| 697 | `m7ujy` | available | available | 25/08/2026 09:23:00 |
+| 702 | `m7usu` | available | available | 25/08/2026 09:31:12 |
+| 704 | `m7uwi` | available | available | 25/08/2026 09:39:46 |
+| 706 | `m7uwe` | available | available | 25/08/2026 09:47:53 |
+| 710 | `m7yqi` | available | available | 25/08/2026 09:56:06 |
+| 711 | `m7yqa` | available | available | 25/08/2026 10:04:17 |
+| 713 | `m7yqo` | available | available | 25/08/2026 10:20:35 |
+| 715 | `m7yqy` | available | available | 25/08/2026 10:28:42 |
+| 716 | `m7yxi` | available | available | 25/08/2026 10:36:52 |
+| 718 | `m7yxe` | available | available | 25/08/2026 10:45:03 |
+| 719 | `m7yxo` | available | available | 25/08/2026 10:53:20 |
+| 721 | `m7yxy` | available | available | 25/08/2026 11:01:28 |
+| 723 | `m7yva` | available | available | 25/08/2026 11:09:45 |
+| 724 | `m7yve` | available | available | 25/08/2026 11:17:55 |
+| 726 | `m7yvu` | available | available | 25/08/2026 11:26:02 |
+| 727 | `m7yvy` | available | available | 25/08/2026 11:34:31 |
 
-## DISPONIBLE (1 source) — 141
+## DISPONIBLE (1 source) — 112
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 667 | `m7uky` | — | available | 22/08/2026 22:41:59 |
-| 672 | `m7uru` | — | available | 22/08/2026 22:51:08 |
-| 676 | `m7ute` | — | available | 23/08/2026 06:46:11 |
-| 678 | `m7utu` | — | available | 23/08/2026 06:48:13 |
-| 679 | `m7uty` | — | available | 23/08/2026 06:49:14 |
-| 682 | `m7une` | — | available | 23/08/2026 06:53:19 |
-| 683 | `m7uno` | — | available | 23/08/2026 06:55:21 |
-| 684 | `m7unu` | — | available | 23/08/2026 06:56:22 |
-| 685 | `m7uny` | — | available | 23/08/2026 06:57:23 |
-| 688 | `m7uhe` | — | available | 23/08/2026 07:00:25 |
-| 691 | `m7uhy` | — | available | 23/08/2026 07:03:28 |
-| 694 | `m7uje` | — | available | 23/08/2026 07:08:33 |
-| 695 | `m7ujo` | — | available | 23/08/2026 07:09:33 |
-| 697 | `m7ujy` | — | available | 23/08/2026 07:11:35 |
-| 702 | `m7usu` | — | available | 23/08/2026 07:18:42 |
-| 704 | `m7uwi` | — | available | 23/08/2026 07:21:45 |
-| 706 | `m7uwe` | — | available | 23/08/2026 07:23:46 |
-| 710 | `m7yqi` | — | available | 23/08/2026 07:29:51 |
-| 711 | `m7yqa` | — | available | 23/08/2026 07:30:52 |
-| 713 | `m7yqo` | — | available | 23/08/2026 07:33:54 |
-| 715 | `m7yqy` | — | available | 23/08/2026 07:38:58 |
-| 716 | `m7yxi` | — | available | 23/08/2026 07:41:00 |
-| 718 | `m7yxe` | — | available | 23/08/2026 07:45:05 |
-| 719 | `m7yxo` | — | available | 23/08/2026 07:46:06 |
-| 721 | `m7yxy` | — | available | 23/08/2026 07:50:09 |
-| 723 | `m7yva` | — | available | 23/08/2026 07:52:11 |
-| 724 | `m7yve` | — | available | 23/08/2026 07:54:12 |
-| 726 | `m7yvu` | — | available | 23/08/2026 07:56:14 |
-| 727 | `m7yvy` | — | available | 23/08/2026 07:58:15 |
 | 729 | `m7yza` | — | available | 23/08/2026 08:02:19 |
 | 730 | `m7yze` | — | available | 23/08/2026 08:03:20 |
 | 731 | `m7yzo` | — | available | 23/08/2026 08:04:20 |
