@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 25/08/2026 07:19:19 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 25/08/2026 07:16:35 (heure de Paris)
+**Généré le :** 25/08/2026 07:29:36 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 25/08/2026 07:28:48 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 160 | 203 |
-| Disponibles (1 source) | 0 | 143 | 143 |
+| Disponibles (2 sources) | 43 | 162 | 205 |
+| Disponibles (1 source) | 0 | 141 | 141 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 268 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 270 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 253 (94 %) |
+| Accords | 255 (94 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -249,8 +249,8 @@ Aucun pseudo confirmé n'a jamais été archivé.
 158. **m7uze** — confirmé par 2 sources
 159. **m7uzo** — confirmé par 2 sources
 160. **m7uzu** — confirmé par 2 sources
-161. **m7uke** — 1 source
-162. **m7uku** — 1 source
+161. **m7uke** — confirmé par 2 sources
+162. **m7uku** — confirmé par 2 sources
 163. **m7uky** — 1 source
 164. **m7uru** — 1 source
 165. **m7ute** — 1 source
@@ -1245,9 +1245,9 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 661 | `m7uzy` | Pris | — | Pris | 22/08/2026 22:31:49 |
 | 662 | `m7uki` | Pris | — | Pris | 22/08/2026 22:32:50 |
 | 663 | `m7uka` | Pris | — | Pris | 22/08/2026 22:33:51 |
-| 664 | `m7uke` | Disponible (1 source) | — | Disponible | 22/08/2026 22:35:53 |
+| 664 | `m7uke` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 07:24:44 |
 | 665 | `m7uko` | Indéterminé | — | Indéterminé | 22/08/2026 22:38:56 |
-| 666 | `m7uku` | Disponible (1 source) | — | Disponible | 22/08/2026 22:39:57 |
+| 666 | `m7uku` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 07:28:48 |
 | 667 | `m7uky` | Disponible (1 source) | — | Disponible | 22/08/2026 22:41:59 |
 | 668 | `m7uri` | Indéterminé | — | Indéterminé | 22/08/2026 22:45:01 |
 | 669 | `m7ura` | Indéterminé | — | Indéterminé | 22/08/2026 22:48:05 |

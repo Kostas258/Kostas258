@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 25/08/2026 07:19:20 (heure de Paris, UTC+2)
+**Généré le :** 25/08/2026 07:29:36 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 160 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 143 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 162 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 141 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 160
+## DISPONIBLE (2 sources) — 162
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -183,13 +183,13 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 658 | `m7uze` | available | available | 25/08/2026 06:52:00 |
 | 659 | `m7uzo` | available | available | 25/08/2026 07:08:20 |
 | 660 | `m7uzu` | available | available | 25/08/2026 07:16:35 |
+| 664 | `m7uke` | available | available | 25/08/2026 07:24:44 |
+| 666 | `m7uku` | available | available | 25/08/2026 07:28:48 |
 
-## DISPONIBLE (1 source) — 143
+## DISPONIBLE (1 source) — 141
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 664 | `m7uke` | — | available | 22/08/2026 22:35:53 |
-| 666 | `m7uku` | — | available | 22/08/2026 22:39:57 |
 | 667 | `m7uky` | — | available | 22/08/2026 22:41:59 |
 | 672 | `m7uru` | — | available | 22/08/2026 22:51:08 |
 | 676 | `m7ute` | — | available | 23/08/2026 06:46:11 |
