@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 25/08/2026 11:34:49 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 25/08/2026 11:34:31 (heure de Paris)
+**Généré le :** 25/08/2026 13:37:08 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 25/08/2026 13:28:34 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 191 | 234 |
-| Disponibles (1 source) | 0 | 112 | 112 |
+| Disponibles (2 sources) | 43 | 204 | 247 |
+| Disponibles (1 source) | 0 | 99 | 99 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 299 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 312 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 284 (95 %) |
+| Accords | 297 (95 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -280,19 +280,19 @@ Aucun pseudo confirmé n'a jamais été archivé.
 189. **m7yve** — confirmé par 2 sources
 190. **m7yvu** — confirmé par 2 sources
 191. **m7yvy** — confirmé par 2 sources
-192. **m7yza** — 1 source
-193. **m7yze** — 1 source
-194. **m7yzo** — 1 source
-195. **m7yzy** — 1 source
-196. **m7yki** — 1 source
-197. **m7yku** — 1 source
-198. **m7yre** — 1 source
-199. **m7yro** — 1 source
-200. **m7yru** — 1 source
-201. **m7yto** — 1 source
-202. **m7yne** — 1 source
-203. **m7yno** — 1 source
-204. **m7ynu** — 1 source
+192. **m7yza** — confirmé par 2 sources
+193. **m7yze** — confirmé par 2 sources
+194. **m7yzo** — confirmé par 2 sources
+195. **m7yzy** — confirmé par 2 sources
+196. **m7yki** — confirmé par 2 sources
+197. **m7yku** — confirmé par 2 sources
+198. **m7yre** — confirmé par 2 sources
+199. **m7yro** — confirmé par 2 sources
+200. **m7yru** — confirmé par 2 sources
+201. **m7yto** — confirmé par 2 sources
+202. **m7yne** — confirmé par 2 sources
+203. **m7yno** — confirmé par 2 sources
+204. **m7ynu** — confirmé par 2 sources
 205. **m7yny** — 1 source
 206. **m7yhe** — 1 source
 207. **m7yho** — 1 source
@@ -1310,34 +1310,34 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 726 | `m7yvu` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 11:26:02 |
 | 727 | `m7yvy` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 11:34:31 |
 | 728 | `m7yzi` | Pris | — | Pris | 23/08/2026 08:00:17 |
-| 729 | `m7yza` | Disponible (1 source) | — | Disponible | 23/08/2026 08:02:19 |
-| 730 | `m7yze` | Disponible (1 source) | — | Disponible | 23/08/2026 08:03:20 |
-| 731 | `m7yzo` | Disponible (1 source) | — | Disponible | 23/08/2026 08:04:20 |
+| 729 | `m7yza` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 11:42:38 |
+| 730 | `m7yze` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 11:50:48 |
+| 731 | `m7yzo` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 11:58:55 |
 | 732 | `m7yzu` | Pris | — | Pris | 23/08/2026 08:05:22 |
-| 733 | `m7yzy` | Disponible (1 source) | — | Disponible | 23/08/2026 08:06:22 |
-| 734 | `m7yki` | Disponible (1 source) | — | Disponible | 23/08/2026 08:07:23 |
+| 733 | `m7yzy` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:07:01 |
+| 734 | `m7yki` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:15:10 |
 | 735 | `m7yka` | Indéterminé | — | Indéterminé | 23/08/2026 08:10:26 |
 | 736 | `m7yke` | Pris | — | Pris | 23/08/2026 08:11:27 |
 | 737 | `m7yko` | Pris | — | Pris | 23/08/2026 08:12:28 |
-| 738 | `m7yku` | Disponible (1 source) | — | Disponible | 23/08/2026 08:13:29 |
+| 738 | `m7yku` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:23:17 |
 | 739 | `m7yky` | Pris | — | Pris | 23/08/2026 08:15:31 |
 | 740 | `m7yri` | Pris | — | Pris | 23/08/2026 08:17:33 |
 | 741 | `m7yra` | Pris | — | Pris | 23/08/2026 08:18:34 |
-| 742 | `m7yre` | Disponible (1 source) | — | Disponible | 23/08/2026 08:20:36 |
-| 743 | `m7yro` | Disponible (1 source) | — | Disponible | 23/08/2026 08:21:37 |
-| 744 | `m7yru` | Disponible (1 source) | — | Disponible | 23/08/2026 08:22:38 |
+| 742 | `m7yre` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:31:27 |
+| 743 | `m7yro` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:39:35 |
+| 744 | `m7yru` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:47:44 |
 | 745 | `m7yry` | Pris | — | Pris | 23/08/2026 08:24:39 |
 | 746 | `m7yti` | Indéterminé | — | Indéterminé | 23/08/2026 08:27:42 |
 | 747 | `m7yta` | Indéterminé | — | Indéterminé | 23/08/2026 08:30:45 |
 | 748 | `m7yte` | Pris | — | Pris | 23/08/2026 08:32:47 |
-| 749 | `m7yto` | Disponible (1 source) | — | Disponible | 23/08/2026 08:33:48 |
+| 749 | `m7yto` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 12:55:51 |
 | 750 | `m7ytu` | Indéterminé | — | Indéterminé | 23/08/2026 08:36:51 |
 | 751 | `m7yty` | Pris | — | Pris | 23/08/2026 08:38:53 |
 | 752 | `m7yni` | Pris | — | Pris | 23/08/2026 08:39:54 |
 | 753 | `m7yna` | Pris | — | Pris | 23/08/2026 08:41:56 |
-| 754 | `m7yne` | Disponible (1 source) | — | Disponible | 23/08/2026 08:43:57 |
-| 755 | `m7yno` | Disponible (1 source) | — | Disponible | 23/08/2026 08:45:59 |
-| 756 | `m7ynu` | Disponible (1 source) | — | Disponible | 23/08/2026 08:46:59 |
+| 754 | `m7yne` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 13:11:59 |
+| 755 | `m7yno` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 13:20:08 |
+| 756 | `m7ynu` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 13:28:34 |
 | 757 | `m7yny` | Disponible (1 source) | — | Disponible | 23/08/2026 08:48:00 |
 | 758 | `m7yhi` | Indéterminé | — | Indéterminé | 23/08/2026 08:51:04 |
 | 759 | `m7yha` | Pris | — | Pris | 23/08/2026 08:52:04 |
