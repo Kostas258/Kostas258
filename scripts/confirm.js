@@ -159,11 +159,20 @@ function record(file, u, res) {
     mustValidate = true;
     console.log(`${ts()} contrôle sauté — vervox a bloqué à ${ts(new Date(blocked.at))} ; un contrôle coûterait la seule requête de la fenêtre. La première vraie réponse en tiendra lieu.`);
   } else {
-    const c = await checkVervox('instagram');
-    console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}`);
+    // Le contrôle réessaie : un seul échantillon ne prouve rien. Un HTTP 0
+    // (bruit réseau ponctuel) a déjà condamné vervox à 180 min à tort le 25/08 —
+    // même défaut que celui corrigé pour socialcal. Trois échecs espacés = vrai.
+    let c;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      c = await checkVervox('instagram');
+      console.log(`${ts()} control instagram -> ${c.verdict}${c.error ? ' | ' + c.error : ''}` +
+        (c.verdict === 'taken' ? '' : `  essai ${attempt}/3`));
+      if (c.verdict === 'taken') break;
+      if (attempt < 3) await sleep(60000);
+    }
     if (c.verdict !== 'taken') {
-      recordBlock('vervox', `contrôle en échec : instagram -> ${c.verdict}`);
-      console.error(`${ts()} contrôle en échec — vervox ne répond pas correctement, rien n'est enregistré, silence ${Math.round(currentCooldownMs('vervox') / 60000)} min`);
+      recordBlock('vervox', `contrôle en échec 3x : instagram -> ${c.verdict}`);
+      console.error(`${ts()} contrôle en échec 3 fois — vervox ne répond pas correctement, rien n'est enregistré, silence ${Math.round(currentCooldownMs('vervox') / 60000)} min`);
       process.exit(1);
     }
     await sleep(throttle.delay);
