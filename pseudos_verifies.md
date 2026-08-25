@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 25/08/2026 20:16:19 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 25/08/2026 20:16:00 (heure de Paris)
+**Généré le :** 26/08/2026 00:13:35 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 00:05:00 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 205 | 248 |
-| Disponibles (1 source) | 0 | 98 | 98 |
+| Disponibles (2 sources) | 43 | 210 | 253 |
+| Disponibles (1 source) | 0 | 93 | 93 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 313 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 318 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 298 (95 %) |
+| Accords | 303 (95 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -294,11 +294,11 @@ Aucun pseudo confirmé n'a jamais été archivé.
 203. **m7yno** — confirmé par 2 sources
 204. **m7ynu** — confirmé par 2 sources
 205. **m7yny** — confirmé par 2 sources
-206. **m7yhe** — 1 source
-207. **m7yho** — 1 source
-208. **m7yji** — 1 source
-209. **m7yjo** — 1 source
-210. **m7yju** — 1 source
+206. **m7yhe** — confirmé par 2 sources
+207. **m7yho** — confirmé par 2 sources
+208. **m7yji** — confirmé par 2 sources
+209. **m7yjo** — confirmé par 2 sources
+210. **m7yju** — confirmé par 2 sources
 211. **m7yjy** — 1 source
 212. **m7yse** — 1 source
 213. **m7ywi** — 1 source
@@ -1341,15 +1341,15 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 757 | `m7yny` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 20:16:00 |
 | 758 | `m7yhi` | Indéterminé | — | Indéterminé | 23/08/2026 08:51:04 |
 | 759 | `m7yha` | Pris | — | Pris | 23/08/2026 08:52:04 |
-| 760 | `m7yhe` | Disponible (1 source) | — | Disponible | 23/08/2026 08:53:05 |
-| 761 | `m7yho` | Disponible (1 source) | — | Disponible | 23/08/2026 08:54:06 |
+| 760 | `m7yhe` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 20:24:13 |
+| 761 | `m7yho` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 20:32:20 |
 | 762 | `m7yhu` | Indéterminé | — | Indéterminé | 23/08/2026 08:57:09 |
 | 763 | `m7yhy` | Pris | — | Pris | 23/08/2026 09:00:12 |
-| 764 | `m7yji` | Disponible (1 source) | — | Disponible | 23/08/2026 09:02:14 |
+| 764 | `m7yji` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 20:48:42 |
 | 765 | `m7yja` | Indéterminé | — | Indéterminé | 23/08/2026 09:05:16 |
 | 766 | `m7yje` | Pris | — | Pris | 23/08/2026 09:06:17 |
-| 767 | `m7yjo` | Disponible (1 source) | — | Disponible | 23/08/2026 09:07:18 |
-| 768 | `m7yju` | Disponible (1 source) | — | Disponible | 23/08/2026 09:08:19 |
+| 767 | `m7yjo` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 20:56:53 |
+| 768 | `m7yju` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 00:05:00 |
 | 769 | `m7yjy` | Disponible (1 source) | — | Disponible | 23/08/2026 09:09:20 |
 | 770 | `m7ysi` | Pris | — | Pris | 23/08/2026 09:10:21 |
 | 771 | `m7ysa` | Pris | — | Pris | 23/08/2026 09:11:22 |
