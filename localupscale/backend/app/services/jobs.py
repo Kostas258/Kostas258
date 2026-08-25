@@ -1,9 +1,12 @@
 """File d'attente de traitement par lot.
 
 Un unique thread de travail consomme les tâches (les moteurs IA saturent
-déjà le GPU/CPU ; paralléliser n'apporterait rien). Chaque tâche expose sa
-progression, peut être annulée, et toute erreur est consignée dans un
+déjà le GPU/processeur ; paralléliser n'apporterait rien). Chaque tâche expose
+sa progression, peut être annulée, et toute erreur est consignée dans un
 journal consultable par l'interface.
+
+Le moteur est résolu tâche par tâche à partir du mode demandé : une tâche
+« ia » n'est jamais exécutée par le moteur classique, et inversement.
 """
 
 from __future__ import annotations
@@ -11,12 +14,15 @@ from __future__ import annotations
 import queue
 import threading
 import uuid
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from app.engine.base import UpscaleCancelledError, UpscaleEngine, UpscaleTask
 from app.models.schemas import ErrorEntry, JobInfo, UpscaleSettings
 from app.services.files import build_output_path
+
+EngineResolver = Callable[[str], UpscaleEngine]
 
 
 @dataclass
@@ -33,6 +39,7 @@ class _Job:
             id=self.id,
             input_path=str(self.task.input_path),
             output_path=str(self.task.output_path) if self.status == "done" else None,
+            mode=self.task.mode,  # type: ignore[arg-type]
             status=self.status,  # type: ignore[arg-type]
             progress=round(self.progress, 3),
             error=self.error,
@@ -40,13 +47,16 @@ class _Job:
 
 
 class JobQueue:
-    def __init__(self, engine: UpscaleEngine) -> None:
-        self._engine = engine
+    def __init__(self, engine_resolver: EngineResolver) -> None:
+        self._resolve_engine = engine_resolver
         self._jobs: dict[str, _Job] = {}
         self._order: list[str] = []
         self._queue: "queue.Queue[str]" = queue.Queue()
         self._lock = threading.Lock()
         self._errors: list[ErrorEntry] = []
+        # Chemins déjà attribués mais pas encore écrits : évite que deux
+        # sources homonymes d'un même lot visent le même fichier de sortie.
+        self._reserved: set[Path] = set()
         self._worker = threading.Thread(target=self._run, daemon=True)
         self._worker.start()
 
@@ -57,8 +67,14 @@ class JobQueue:
             for raw in paths:
                 src = Path(raw)
                 out = build_output_path(
-                    src, settings.output_dir, settings.scale, settings.output_format
+                    src,
+                    settings.output_dir,
+                    settings.scale,
+                    settings.output_format,
+                    settings.mode,
+                    self._reserved,
                 )
+                self._reserved.add(out.resolve())
                 job = _Job(
                     id=uuid.uuid4().hex[:12],
                     task=UpscaleTask(
@@ -66,6 +82,7 @@ class JobQueue:
                         output_path=out,
                         scale=settings.scale,
                         model=settings.model,
+                        mode=settings.mode,
                         face_enhance=settings.face_enhance,
                         output_format=settings.output_format,
                     ),
@@ -141,7 +158,8 @@ class JobQueue:
                 j.progress = max(0.0, min(1.0, value))
 
             try:
-                self._engine.upscale(job.task, on_progress, job.cancel_event)
+                engine = self._resolve_engine(job.task.mode)
+                engine.upscale(job.task, on_progress, job.cancel_event)
                 with self._lock:
                     job.status = "done"
                     job.progress = 1.0

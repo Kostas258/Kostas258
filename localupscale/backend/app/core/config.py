@@ -31,6 +31,25 @@ AI_DISCLAIMER_FR = (
 )
 
 CPU_FALLBACK_WARNING_FR = (
-    "Aucun GPU compatible détecté : le mode CPU de secours est utilisé. "
+    "Aucun GPU compatible détecté : le moteur IA s'exécute sur le processeur. "
     "Le traitement sera NETTEMENT plus lent (plusieurs minutes par image possibles)."
 )
+
+# Mode « classique » : rééchantillonnage Pillow. Ce n'est PAS de l'IA et cela
+# ne doit jamais être présenté ni utilisé comme un repli transparent.
+CLASSIC_MODE_LABEL_FR = "Redimensionnement classique — sans IA"
+
+CLASSIC_MODE_WARNING_FR = (
+    "Ce mode agrandit l'image par interpolation (Lanczos). Aucun détail n'est "
+    "généré et le résultat n'est PAS un agrandissement par IA. Les fichiers "
+    "produits portent le suffixe _redim_xN et non _upscaled_xN."
+)
+
+
+def ai_engine_unavailable_message(raison: str) -> str:
+    """Message d'erreur explicite quand le moteur IA ne peut pas fonctionner."""
+    return (
+        "Aucun traitement IA n'a été effectué : le moteur Real-ESRGAN est "
+        f"indisponible. {raison} Vous pouvez, si vous le souhaitez, choisir "
+        f"« {CLASSIC_MODE_LABEL_FR} » — mais ce mode ne génère aucun détail."
+    )

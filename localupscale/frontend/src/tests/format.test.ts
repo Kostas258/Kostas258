@@ -5,6 +5,8 @@ import {
   formatBytes,
   isSupportedFile,
   outputFileName,
+  sanitizeStem,
+  uniqueOutputName,
 } from "../lib/format";
 
 describe("formatBytes", () => {
@@ -33,19 +35,74 @@ describe("isSupportedFile", () => {
   });
 });
 
-describe("outputFileName", () => {
-  it("ajoute le suffixe _upscaled_x2", () => {
-    expect(outputFileName("chat.png", 2, "png")).toBe("chat_upscaled_x2.png");
+describe("outputFileName — suffixe distinct par mode", () => {
+  it("utilise _upscaled_xN pour l'agrandissement IA", () => {
+    expect(outputFileName("chat.png", 2, "png", "ia")).toBe("chat_upscaled_x2.png");
+    expect(outputFileName("chat.png", 4, "webp", "ia")).toBe("chat_upscaled_x4.webp");
   });
 
-  it("ajoute le suffixe _upscaled_x4 et change d'extension", () => {
-    expect(outputFileName("photo de vacances.jpeg", 4, "webp")).toBe(
-      "photo de vacances_upscaled_x4.webp",
-    );
+  it("utilise _redim_xN pour le redimensionnement sans IA", () => {
+    const nom = outputFileName("chat.png", 4, "png", "classique");
+    expect(nom).toBe("chat_redim_x4.png");
+    expect(nom).not.toContain("upscaled");
   });
 
   it("gère un nom sans extension", () => {
-    expect(outputFileName("capture", 2, "jpg")).toBe("capture_upscaled_x2.jpg");
+    expect(outputFileName("capture", 2, "jpg", "ia")).toBe("capture_upscaled_x2.jpg");
+  });
+
+  it("préserve les points internes d'un nom composé", () => {
+    expect(outputFileName("photo.finale.v2.jpeg", 2, "png", "ia")).toBe(
+      "photo.finale.v2_upscaled_x2.png",
+    );
+  });
+});
+
+describe("sanitizeStem", () => {
+  it.each([
+    ["photo:test", "photo_test"],
+    ['gui"llemets', "gui_llemets"],
+    ["chemin/interdit", "chemin_interdit"],
+    ["pipe|etoile*", "pipe_etoile_"],
+    ["fin en points...", "fin en points"],
+    ["   ", "image"],
+    ["CON", "CON_"],
+  ])("nettoie %s", (entree, attendu) => {
+    expect(sanitizeStem(entree)).toBe(attendu);
+  });
+
+  it("préserve accents et espaces", () => {
+    expect(sanitizeStem("été à Nîmes")).toBe("été à Nîmes");
+  });
+
+  it("remplace les caractères de contrôle", () => {
+    expect(sanitizeStem("a\u0001b")).toBe("a_b");
+  });
+
+  it("tronque les noms démesurés", () => {
+    expect(sanitizeStem("a".repeat(400)).length).toBe(150);
+  });
+});
+
+describe("uniqueOutputName — collisions", () => {
+  it("renvoie le nom simple quand rien n'est pris", () => {
+    expect(uniqueOutputName("image.png", 4, "png", "ia", [])).toBe("image_upscaled_x4.png");
+  });
+
+  it("ajoute _1 puis _2 en cas de collision", () => {
+    const pris = ["image_upscaled_x4.png"];
+    expect(uniqueOutputName("image.png", 4, "png", "ia", pris)).toBe("image_upscaled_x4_1.png");
+    expect(
+      uniqueOutputName("image.png", 4, "png", "ia", [...pris, "image_upscaled_x4_1.png"]),
+    ).toBe("image_upscaled_x4_2.png");
+  });
+
+  it("distingue deux sources homonymes d'un même lot", () => {
+    const attribues: string[] = [];
+    attribues.push(uniqueOutputName("photo.png", 2, "png", "ia", attribues));
+    attribues.push(uniqueOutputName("photo.png", 2, "png", "ia", attribues));
+    expect(attribues).toEqual(["photo_upscaled_x2.png", "photo_upscaled_x2_1.png"]);
+    expect(new Set(attribues).size).toBe(2);
   });
 });
 

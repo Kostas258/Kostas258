@@ -1,8 +1,10 @@
-"""Moteur de repli Pillow (SANS IA).
+"""Redimensionnement classique Pillow — SANS IA.
 
-Simple rééchantillonnage Lanczos : utile pour les tests automatisés et pour
-un aperçu quand les dépendances IA ne sont pas installées. L'interface doit
-indiquer clairement qu'aucun détail n'est généré par ce moteur.
+Rééchantillonnage Lanczos : l'image est agrandie par interpolation, aucun
+détail n'est généré. Ce moteur n'est JAMAIS utilisé comme repli automatique ;
+il n'est employé que lorsque l'utilisateur choisit explicitement le mode
+« Redimensionnement classique — sans IA », et ses fichiers portent le suffixe
+_redim_xN pour ne pas être confondus avec un résultat Real-ESRGAN.
 """
 
 from __future__ import annotations
@@ -45,7 +47,6 @@ class PillowEngine(UpscaleEngine):
         if progress:
             progress(0.1)
         with Image.open(task.input_path) as im:
-            im = im.convert("RGB") if task.output_format == "jpg" else im
             new_size = (im.width * task.scale, im.height * task.scale)
             if cancel_event is not None and cancel_event.is_set():
                 raise UpscaleCancelledError("Traitement annulé par l'utilisateur.")

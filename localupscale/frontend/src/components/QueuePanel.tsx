@@ -17,7 +17,8 @@ interface Props {
   onSelectResult: (job: JobInfo) => void;
 }
 
-/** File d'attente : progression par image, annulation, journal d'erreurs. */
+/** File d'attente : progression par image, annulation, journal d'erreurs.
+ *  Chaque tâche affiche le mode réellement employé (IA ou sans IA). */
 export function QueuePanel({ jobs, errors, onCancel, onCancelAll, onSelectResult }: Props) {
   const actifs = jobs.some((j) => j.status === "pending" || j.status === "running");
   return (
@@ -36,6 +37,9 @@ export function QueuePanel({ jobs, errors, onCancel, onCancelAll, onSelectResult
           <li key={job.id} className={`file__item file__item--${job.status}`}>
             <span className="file__nom" title={job.input_path}>
               {job.input_path.split(/[\\/]/).pop()}
+            </span>
+            <span className={`badge badge--${job.mode}`}>
+              {job.mode === "ia" ? fr.traitement.badgeIa : fr.traitement.badgeClassique}
             </span>
             <progress max={1} value={job.progress} aria-label={LIBELLES[job.status]} />
             <span>{LIBELLES[job.status]}</span>

@@ -1,38 +1,25 @@
-"""Sélection du moteur actif.
+"""Sélection du moteur en fonction du mode demandé.
 
-Ordre de préférence : Real-ESRGAN (IA) puis repli Pillow (sans IA).
-Un futur moteur NCNN/Vulkan s'insérera simplement dans cette liste.
+Règle absolue : AUCUN repli automatique. Si l'utilisateur demande un
+agrandissement IA et que Real-ESRGAN est indisponible, le traitement échoue
+avec un message explicite — il ne bascule jamais silencieusement vers Pillow,
+qui produirait un fichier ne contenant aucun détail généré par IA.
+
+Le redimensionnement Pillow n'est accessible que si l'utilisateur choisit
+explicitement le mode « classique ».
 """
 
 from __future__ import annotations
-
-import os
 
 from app.engine.base import UpscaleEngine
 from app.engine.pillow_engine import PillowEngine
 from app.engine.realesrgan_engine import RealESRGANEngine
 
-_engine: UpscaleEngine | None = None
 
-
-def get_engine(force: str | None = None) -> UpscaleEngine:
-    """Retourne le moteur actif (mis en cache).
-
-    force / LOCALUPSCALE_ENGINE : "realesrgan" ou "pillow" pour forcer un moteur
-    (utilisé par les tests).
-    """
-    global _engine
-    forced = force or os.environ.get("LOCALUPSCALE_ENGINE")
-    if forced == "pillow":
-        return PillowEngine()
-    if forced == "realesrgan":
+def get_engine(mode: str = "ia") -> UpscaleEngine:
+    """Retourne le moteur correspondant au mode ("ia" ou "classique")."""
+    if mode == "ia":
         return RealESRGANEngine()
-    if _engine is None:
-        real = RealESRGANEngine()
-        _engine = real if real.is_available() else PillowEngine()
-    return _engine
-
-
-def reset_engine_cache() -> None:
-    global _engine
-    _engine = None
+    if mode == "classique":
+        return PillowEngine()
+    raise ValueError(f"Mode de traitement inconnu : {mode!r} (attendu : 'ia' ou 'classique').")

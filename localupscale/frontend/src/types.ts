@@ -5,7 +5,13 @@ export type ModelKind = "photo" | "anime";
 export type OutputFormat = "png" | "jpg" | "webp";
 export type JobStatus = "pending" | "running" | "done" | "error" | "cancelled";
 
+/** Deux traitements distincts, jamais interchangeables :
+ *  - "ia"        : agrandissement Real-ESRGAN (détails générés) ;
+ *  - "classique" : redimensionnement Pillow, sans IA, choisi explicitement. */
+export type ProcessingMode = "ia" | "classique";
+
 export interface UpscaleSettings {
+  mode: ProcessingMode;
   scale: Scale;
   model: ModelKind;
   face_enhance: boolean;
@@ -28,6 +34,7 @@ export interface JobInfo {
   id: string;
   input_path: string;
   output_path: string | null;
+  mode: ProcessingMode;
   status: JobStatus;
   progress: number;
   error: string | null;
@@ -40,11 +47,16 @@ export interface ErrorEntry {
 }
 
 export interface SystemInfo {
-  engine: string;
-  engine_available: boolean;
+  ai_engine: string;
+  ai_engine_available: boolean;
+  ai_engine_unavailable_reason: string | null;
   device: "gpu" | "cpu";
   cpu_fallback: boolean;
   cpu_fallback_warning: string | null;
+  face_enhance_available: boolean;
+  face_enhance_unavailable_reason: string | null;
+  classic_mode_label: string;
+  classic_mode_warning: string;
   ai_disclaimer: string;
 }
 

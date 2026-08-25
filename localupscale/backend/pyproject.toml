@@ -1,7 +1,7 @@
 [project]
 name = "localupscale-backend"
 version = "0.1.0"
-description = "Backend local de LocalUpscale : upscaling d'images par IA, 100 % hors ligne."
+description = "Backend local de LocalUpscale : agrandissement d'images par IA, 100 % hors ligne."
 requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
@@ -12,13 +12,21 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Moteur IA réel (lourd) : à installer explicitement.
-# Real-ESRGAN s'appuie sur torch ; en l'absence de GPU, le mode CPU de secours
-# est utilisé (nettement plus lent).
+# Moteur IA Real-ESRGAN (lourd) : à installer explicitement.
+# Sans GPU, le moteur s'exécute sur le processeur — nettement plus lent.
+# basicsr est déclaré explicitement : realesrgan l'importe (RRDBNet) sans
+# toujours le tirer de façon fiable.
 ia = [
     "torch>=2.1",
     "torchvision>=0.16",
+    "basicsr>=1.4.2",
     "realesrgan>=0.3.0",
+]
+# Amélioration des visages (GFPGAN) : installation SÉPARÉE et facultative.
+# L'application fonctionne normalement sans cet extra ; l'option est alors
+# désactivée dans l'interface, avec la raison affichée.
+visages = [
+    "gfpgan>=1.3.8",
 ]
 dev = [
     "pytest>=8.0",

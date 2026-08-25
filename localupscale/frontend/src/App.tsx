@@ -10,6 +10,7 @@ import { fr } from "./i18n/fr";
 import type { ErrorEntry, ImageInfo, JobInfo, ModelInfo, SystemInfo, UpscaleSettings } from "./types";
 
 const REGLAGES_DEFAUT: UpscaleSettings = {
+  mode: "ia",
   scale: 2,
   model: "photo",
   face_enhance: false, // désactivé par défaut
@@ -26,6 +27,7 @@ export default function App() {
   const [models, setModels] = useState<ModelInfo[]>([]);
   const [resultat, setResultat] = useState<JobInfo | null>(null);
   const [backendAbsent, setBackendAbsent] = useState(false);
+  const [erreurLancement, setErreurLancement] = useState<string | null>(null);
 
   const chargerModeles = useCallback(() => {
     api.models().then(setModels).catch(() => undefined);
@@ -80,13 +82,21 @@ export default function App() {
     );
   }, [settings.scale]);
 
+  // Le moteur IA est demandé mais indisponible : on bloque explicitement le
+  // lancement plutôt que de basculer en douce vers un traitement sans IA.
+  const iaBloquee = system !== null && !system.ai_engine_available && settings.mode === "ia";
+  const aucuneImageValide = images.length === 0 || images.every((i) => Boolean(i.error));
+
   const lancer = () => {
+    setErreurLancement(null);
     const valides = images.filter((i) => !i.error).map((i) => i.path);
     if (valides.length === 0 || !settings.output_dir) return;
     api
       .createJobs(valides, settings)
       .then((created) => setJobs((prev) => [...prev, ...created]))
-      .catch(() => undefined);
+      .catch((e: unknown) =>
+        setErreurLancement(e instanceof Error ? e.message : String(e)),
+      );
   };
 
   return (
@@ -113,16 +123,26 @@ export default function App() {
         onRemove={(path) => setImages((prev) => prev.filter((i) => i.path !== path))}
       />
 
-      <SettingsPanel settings={settings} onChange={setSettings} />
+      <SettingsPanel settings={settings} system={system} onChange={setSettings} />
 
       <button
         type="button"
         className="principal"
-        disabled={images.every((i) => Boolean(i.error)) || !settings.output_dir}
+        disabled={aucuneImageValide || !settings.output_dir || iaBloquee}
         onClick={lancer}
       >
         {fr.traitement.lancer}
       </button>
+      {iaBloquee && (
+        <p className="avertissement" role="alert">
+          {system?.ai_engine_unavailable_reason ?? fr.avertissements.iaIndisponible}
+        </p>
+      )}
+      {erreurLancement && (
+        <p className="avertissement" role="alert">
+          {erreurLancement}
+        </p>
+      )}
       <p className="muet">{fr.avertissements.sourcesPreservees}</p>
 
       <QueuePanel

@@ -1,7 +1,7 @@
 """Abstraction UpscaleEngine.
 
-Cette interface isole le reste de l'application du moteur IA concret.
-Aujourd'hui : Real-ESRGAN (PyTorch) et un repli Pillow sans IA.
+Cette interface isole le reste de l'application du moteur concret.
+Aujourd'hui : Real-ESRGAN (IA) et un redimensionnement Pillow (sans IA).
 Demain : un moteur NCNN/Vulkan pourra être ajouté en implémentant
 simplement cette classe, sans toucher à l'API ni à la file d'attente.
 """
@@ -33,16 +33,18 @@ class UpscaleTask:
     output_path: Path
     scale: int  # 2 ou 4
     model: str  # "photo" ou "anime"
+    mode: str = "ia"  # "ia" (Real-ESRGAN) ou "classique" (Pillow, sans IA)
     face_enhance: bool = False
     output_format: str = "png"  # png | jpg | webp
 
 
 class UpscaleEngine(ABC):
-    """Interface commune à tous les moteurs d'agrandissement."""
+    """Interface commune à tous les moteurs de traitement."""
 
     #: identifiant technique du moteur (ex. "realesrgan", "pillow", "ncnn")
     name: str = "abstract"
-    #: True si le moteur produit de vrais détails IA (False pour le repli Pillow)
+    #: True si le moteur produit réellement des détails par IA.
+    #: False = simple interpolation ; l'interface doit le dire explicitement.
     is_ai: bool = True
 
     @abstractmethod
@@ -55,7 +57,7 @@ class UpscaleEngine(ABC):
 
     @abstractmethod
     def uses_gpu(self) -> bool:
-        """True si un GPU sera utilisé ; False = mode CPU de secours."""
+        """True si un GPU sera utilisé ; False = exécution sur processeur."""
 
     @abstractmethod
     def upscale(
@@ -64,7 +66,7 @@ class UpscaleEngine(ABC):
         progress: ProgressCallback | None = None,
         cancel_event: threading.Event | None = None,
     ) -> Path:
-        """Agrandit l'image et retourne le chemin du fichier produit.
+        """Traite l'image et retourne le chemin du fichier produit.
 
         Doit lever UpscaleCancelledError si cancel_event est déclenché,
         et ne JAMAIS écrire sur le fichier source.

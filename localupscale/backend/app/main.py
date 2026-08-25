@@ -19,7 +19,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="LocalUpscale",
         version=__version__,
-        description="Upscaler d'images par IA, 100 % local et hors ligne.",
+        description="Agrandissement d'images par IA, 100 % local et hors ligne.",
     )
     # Seule l'application Tauri locale (et le serveur de dev Vite) consomme l'API.
     app.add_middleware(
@@ -32,8 +32,9 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    app.state.engine = get_engine()
-    app.state.job_queue = JobQueue(app.state.engine)
+    # Le moteur est choisi tâche par tâche selon le mode demandé : aucun repli
+    # automatique de l'IA vers le redimensionnement classique.
+    app.state.job_queue = JobQueue(get_engine)
     app.include_router(router, prefix="/api")
     return app
 
