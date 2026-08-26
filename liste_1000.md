@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 26/08/2026 00:13:35 (heure de Paris, UTC+2)
+**Généré le :** 26/08/2026 03:13:52 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 210 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 93 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 211 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 92 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 210
+## DISPONIBLE (2 sources) — 211
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -233,12 +233,12 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 764 | `m7yji` | available | available | 25/08/2026 20:48:42 |
 | 767 | `m7yjo` | available | available | 25/08/2026 20:56:53 |
 | 768 | `m7yju` | available | available | 26/08/2026 00:05:00 |
+| 769 | `m7yjy` | available | available | 26/08/2026 03:13:33 |
 
-## DISPONIBLE (1 source) — 93
+## DISPONIBLE (1 source) — 92
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 769 | `m7yjy` | — | available | 23/08/2026 09:09:20 |
 | 772 | `m7yse` | — | available | 23/08/2026 09:12:23 |
 | 776 | `m7ywi` | — | available | 23/08/2026 09:19:28 |
 | 778 | `m7ywe` | — | available | 23/08/2026 09:21:30 |
