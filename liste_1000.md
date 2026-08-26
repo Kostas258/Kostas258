@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 26/08/2026 09:41:04 (heure de Paris, UTC+2)
+**Généré le :** 26/08/2026 12:24:28 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 253 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 50 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 263 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 40 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 253
+## DISPONIBLE (2 sources) — 263
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -276,22 +276,22 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 848 | `m7qyt` | available | available | 26/08/2026 09:13:22 |
 | 849 | `m7qyn` | available | available | 26/08/2026 09:30:04 |
 | 850 | `m7qyh` | available | available | 26/08/2026 09:38:12 |
+| 851 | `m7qyj` | available | available | 26/08/2026 09:46:19 |
+| 852 | `m7qys` | available | available | 26/08/2026 09:54:25 |
+| 853 | `m7qyw` | available | available | 26/08/2026 10:02:32 |
+| 862 | `m7xih` | available | available | 26/08/2026 10:10:40 |
+| 868 | `m7xav` | available | available | 26/08/2026 10:18:52 |
+| 872 | `m7xat` | available | available | 26/08/2026 10:26:59 |
+| 906 | `m7xuk` | available | available | 26/08/2026 10:35:08 |
+| 910 | `m7xuh` | available | available | 26/08/2026 10:43:20 |
+| 911 | `m7xuj` | available | available | 26/08/2026 10:51:40 |
+| 913 | `m7xuw` | available | available | 26/08/2026 10:59:51 |
 
-## DISPONIBLE (1 source) — 50
+## DISPONIBLE (1 source) — 40
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 851 | `m7qyj` | — | available | 23/08/2026 11:51:43 |
-| 852 | `m7qys` | — | available | 23/08/2026 11:54:46 |
-| 853 | `m7qyw` | — | available | 23/08/2026 11:55:46 |
-| 862 | `m7xih` | — | available | 23/08/2026 12:17:05 |
-| 868 | `m7xav` | — | available | 23/08/2026 12:30:17 |
-| 872 | `m7xat` | — | available | 23/08/2026 12:39:25 |
-| 906 | `m7xuk` | — | available | 23/08/2026 20:52:21 |
-| 910 | `m7xuh` | — | available | 23/08/2026 20:56:26 |
-| 911 | `m7xuj` | — | available | 23/08/2026 23:00:03 |
-| 913 | `m7xuw` | — | available | 23/08/2026 23:03:06 |
-| 915 | `m7xyx` | — | available | 23/08/2026 21:01:32 |
+| 915 | `m7xyx` | — | available | 26/08/2026 11:07:59 |
 | 916 | `m7xyv` | — | available | 23/08/2026 21:02:33 |
 | 918 | `m7xyk` | — | available | 23/08/2026 23:05:08 |
 | 923 | `m7xyj` | — | available | 23/08/2026 21:09:41 |
