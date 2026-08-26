@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 26/08/2026 07:18:50 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 07:18:32 (heure de Paris)
+**Généré le :** 26/08/2026 09:41:04 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 09:38:12 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 240 | 283 |
-| Disponibles (1 source) | 0 | 63 | 63 |
+| Disponibles (2 sources) | 43 | 253 | 296 |
+| Disponibles (1 source) | 0 | 50 | 50 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 348 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 361 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 333 (96 %) |
+| Accords | 346 (96 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -329,19 +329,19 @@ Aucun pseudo confirmé n'a jamais été archivé.
 238. **m7qow** — confirmé par 2 sources
 239. **m7quq** — confirmé par 2 sources
 240. **m7qux** — confirmé par 2 sources
-241. **m7quv** — 1 source
-242. **m7quz** — 1 source
-243. **m7quk** — 1 source
-244. **m7qut** — 1 source
-245. **m7qun** — 1 source
-246. **m7quh** — 1 source
-247. **m7qus** — 1 source
-248. **m7quw** — 1 source
-249. **m7qyk** — 1 source
-250. **m7qyr** — 1 source
-251. **m7qyt** — 1 source
-252. **m7qyn** — 1 source
-253. **m7qyh** — 1 source
+241. **m7quv** — confirmé par 2 sources
+242. **m7quz** — confirmé par 2 sources
+243. **m7quk** — confirmé par 2 sources
+244. **m7qut** — confirmé par 2 sources
+245. **m7qun** — confirmé par 2 sources
+246. **m7quh** — confirmé par 2 sources
+247. **m7qus** — confirmé par 2 sources
+248. **m7quw** — confirmé par 2 sources
+249. **m7qyk** — confirmé par 2 sources
+250. **m7qyr** — confirmé par 2 sources
+251. **m7qyt** — confirmé par 2 sources
+252. **m7qyn** — confirmé par 2 sources
+253. **m7qyh** — confirmé par 2 sources
 254. **m7qyj** — 1 source
 255. **m7qys** — 1 source
 256. **m7qyw** — 1 source
@@ -1413,25 +1413,25 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 829 | `m7qow` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:01:57 |
 | 830 | `m7quq` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:10:05 |
 | 831 | `m7qux` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:18:32 |
-| 832 | `m7quv` | Disponible (1 source) | — | Disponible | 23/08/2026 11:08:05 |
-| 833 | `m7quz` | Disponible (1 source) | — | Disponible | 23/08/2026 11:09:05 |
-| 834 | `m7quk` | Disponible (1 source) | — | Disponible | 23/08/2026 11:11:07 |
+| 832 | `m7quv` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:26:39 |
+| 833 | `m7quz` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:43:03 |
+| 834 | `m7quk` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:51:17 |
 | 835 | `m7qur` | Pris | — | Pris | 23/08/2026 11:14:09 |
-| 836 | `m7qut` | Disponible (1 source) | — | Disponible | 23/08/2026 11:15:10 |
-| 837 | `m7qun` | Disponible (1 source) | — | Disponible | 23/08/2026 11:17:12 |
-| 838 | `m7quh` | Disponible (1 source) | — | Disponible | 23/08/2026 11:20:15 |
+| 836 | `m7qut` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:59:25 |
+| 837 | `m7qun` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:07:36 |
+| 838 | `m7quh` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:24:14 |
 | 839 | `m7quj` | Indéterminé | — | Indéterminé | 23/08/2026 11:23:17 |
-| 840 | `m7qus` | Disponible (1 source) | — | Disponible | 23/08/2026 11:24:18 |
-| 841 | `m7quw` | Disponible (1 source) | — | Disponible | 23/08/2026 11:27:21 |
+| 840 | `m7qus` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:32:23 |
+| 841 | `m7quw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:48:42 |
 | 842 | `m7qyq` | Indéterminé | — | Indéterminé | 23/08/2026 11:30:24 |
 | 843 | `m7qyx` | Pris | — | Pris | 23/08/2026 11:32:26 |
 | 844 | `m7qyv` | Indéterminé | — | Indéterminé | 23/08/2026 11:35:29 |
 | 845 | `m7qyz` | Indéterminé | — | Indéterminé | 23/08/2026 11:38:32 |
-| 846 | `m7qyk` | Disponible (1 source) | — | Disponible | 23/08/2026 11:40:33 |
-| 847 | `m7qyr` | Disponible (1 source) | — | Disponible | 23/08/2026 11:42:35 |
-| 848 | `m7qyt` | Disponible (1 source) | — | Disponible | 23/08/2026 11:44:37 |
-| 849 | `m7qyn` | Disponible (1 source) | — | Disponible | 23/08/2026 11:47:40 |
-| 850 | `m7qyh` | Disponible (1 source) | — | Disponible | 23/08/2026 11:48:41 |
+| 846 | `m7qyk` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:56:57 |
+| 847 | `m7qyr` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:05:10 |
+| 848 | `m7qyt` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:13:22 |
+| 849 | `m7qyn` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:30:04 |
+| 850 | `m7qyh` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:38:12 |
 | 851 | `m7qyj` | Disponible (1 source) | — | Disponible | 23/08/2026 11:51:43 |
 | 852 | `m7qys` | Disponible (1 source) | — | Disponible | 23/08/2026 11:54:46 |
 | 853 | `m7qyw` | Disponible (1 source) | — | Disponible | 23/08/2026 11:55:46 |
