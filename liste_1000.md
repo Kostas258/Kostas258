@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 26/08/2026 03:13:52 (heure de Paris, UTC+2)
+**Généré le :** 26/08/2026 07:18:50 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 211 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 92 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 240 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 63 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 211
+## DISPONIBLE (2 sources) — 240
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -234,40 +234,40 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 767 | `m7yjo` | available | available | 25/08/2026 20:56:53 |
 | 768 | `m7yju` | available | available | 26/08/2026 00:05:00 |
 | 769 | `m7yjy` | available | available | 26/08/2026 03:13:33 |
+| 772 | `m7yse` | available | available | 26/08/2026 03:21:42 |
+| 776 | `m7ywi` | available | available | 26/08/2026 03:29:51 |
+| 778 | `m7ywe` | available | available | 26/08/2026 03:46:06 |
+| 779 | `m7ywo` | available | available | 26/08/2026 03:54:15 |
+| 781 | `m7ywy` | available | available | 26/08/2026 04:02:30 |
+| 782 | `m7qiq` | available | available | 26/08/2026 04:10:37 |
+| 784 | `m7qiv` | available | available | 26/08/2026 04:18:49 |
+| 789 | `m7qin` | available | available | 26/08/2026 04:26:54 |
+| 790 | `m7qih` | available | available | 26/08/2026 04:35:01 |
+| 792 | `m7qis` | available | available | 26/08/2026 04:43:16 |
+| 796 | `m7qav` | available | available | 26/08/2026 04:51:25 |
+| 798 | `m7qak` | available | available | 26/08/2026 04:59:33 |
+| 803 | `m7qaj` | available | available | 26/08/2026 05:07:40 |
+| 804 | `m7qas` | available | available | 26/08/2026 05:15:47 |
+| 807 | `m7qex` | available | available | 26/08/2026 05:23:55 |
+| 808 | `m7qev` | available | available | 26/08/2026 05:32:03 |
+| 810 | `m7qek` | available | available | 26/08/2026 05:40:09 |
+| 813 | `m7qen` | available | available | 26/08/2026 05:48:15 |
+| 815 | `m7qej` | available | available | 26/08/2026 05:56:33 |
+| 817 | `m7qew` | available | available | 26/08/2026 06:04:42 |
+| 820 | `m7qov` | available | available | 26/08/2026 06:12:55 |
+| 821 | `m7qoz` | available | available | 26/08/2026 06:21:04 |
+| 822 | `m7qok` | available | available | 26/08/2026 06:29:13 |
+| 824 | `m7qot` | available | available | 26/08/2026 06:37:23 |
+| 825 | `m7qon` | available | available | 26/08/2026 06:45:32 |
+| 827 | `m7qoj` | available | available | 26/08/2026 06:53:39 |
+| 829 | `m7qow` | available | available | 26/08/2026 07:01:57 |
+| 830 | `m7quq` | available | available | 26/08/2026 07:10:05 |
+| 831 | `m7qux` | available | available | 26/08/2026 07:18:32 |
 
-## DISPONIBLE (1 source) — 92
+## DISPONIBLE (1 source) — 63
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 772 | `m7yse` | — | available | 23/08/2026 09:12:23 |
-| 776 | `m7ywi` | — | available | 23/08/2026 09:19:28 |
-| 778 | `m7ywe` | — | available | 23/08/2026 09:21:30 |
-| 779 | `m7ywo` | — | available | 23/08/2026 09:23:31 |
-| 781 | `m7ywy` | — | available | 23/08/2026 09:27:36 |
-| 782 | `m7qiq` | — | available | 23/08/2026 09:29:38 |
-| 784 | `m7qiv` | — | available | 23/08/2026 09:33:42 |
-| 789 | `m7qin` | — | available | 23/08/2026 09:45:53 |
-| 790 | `m7qih` | — | available | 23/08/2026 09:47:55 |
-| 792 | `m7qis` | — | available | 23/08/2026 09:51:58 |
-| 796 | `m7qav` | — | available | 23/08/2026 10:02:07 |
-| 798 | `m7qak` | — | available | 23/08/2026 10:05:09 |
-| 803 | `m7qaj` | — | available | 23/08/2026 10:12:16 |
-| 804 | `m7qas` | — | available | 23/08/2026 10:14:17 |
-| 807 | `m7qex` | — | available | 23/08/2026 10:22:25 |
-| 808 | `m7qev` | — | available | 23/08/2026 10:23:26 |
-| 810 | `m7qek` | — | available | 23/08/2026 10:26:28 |
-| 813 | `m7qen` | — | available | 23/08/2026 10:31:33 |
-| 815 | `m7qej` | — | available | 23/08/2026 10:35:36 |
-| 817 | `m7qew` | — | available | 23/08/2026 10:38:39 |
-| 820 | `m7qov` | — | available | 23/08/2026 10:45:46 |
-| 821 | `m7qoz` | — | available | 23/08/2026 10:48:48 |
-| 822 | `m7qok` | — | available | 23/08/2026 10:49:49 |
-| 824 | `m7qot` | — | available | 23/08/2026 10:53:53 |
-| 825 | `m7qon` | — | available | 23/08/2026 10:56:55 |
-| 827 | `m7qoj` | — | available | 23/08/2026 11:00:59 |
-| 829 | `m7qow` | — | available | 23/08/2026 11:05:02 |
-| 830 | `m7quq` | — | available | 23/08/2026 11:06:03 |
-| 831 | `m7qux` | — | available | 23/08/2026 11:07:04 |
 | 832 | `m7quv` | — | available | 23/08/2026 11:08:05 |
 | 833 | `m7quz` | — | available | 23/08/2026 11:09:05 |
 | 834 | `m7quk` | — | available | 23/08/2026 11:11:07 |
