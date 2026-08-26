@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 26/08/2026 12:24:28 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 11:07:59 (heure de Paris)
+**Généré le :** 26/08/2026 16:13:39 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 16:05:08 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 263 | 306 |
-| Disponibles (1 source) | 0 | 40 | 40 |
+| Disponibles (2 sources) | 43 | 268 | 311 |
+| Disponibles (1 source) | 0 | 35 | 35 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 371 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 376 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 356 (96 %) |
+| Accords | 361 (96 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -352,11 +352,11 @@ Aucun pseudo confirmé n'a jamais été archivé.
 261. **m7xuh** — confirmé par 2 sources
 262. **m7xuj** — confirmé par 2 sources
 263. **m7xuw** — confirmé par 2 sources
-264. **m7xyx** — 1 source
-265. **m7xyv** — 1 source
-266. **m7xyk** — 1 source
-267. **m7xyj** — 1 source
-268. **m7xyw** — 1 source
+264. **m7xyx** — confirmé par 2 sources
+265. **m7xyv** — confirmé par 2 sources
+266. **m7xyk** — confirmé par 2 sources
+267. **m7xyj** — confirmé par 2 sources
+268. **m7xyw** — confirmé par 2 sources
 269. **m7viq** — 1 source
 270. **m7vir** — 1 source
 271. **m7vin** — 1 source
@@ -1496,17 +1496,17 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 912 | `m7xus` | Indéterminé | — | Indéterminé | 23/08/2026 23:02:05 |
 | 913 | `m7xuw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:59:51 |
 | 914 | `m7xyq` | Pris | — | Pris | 23/08/2026 21:00:31 |
-| 915 | `m7xyx` | Disponible (1 source) | Indéterminé | Disponible | 26/08/2026 11:07:59 |
-| 916 | `m7xyv` | Disponible (1 source) | — | Disponible | 23/08/2026 21:02:33 |
+| 915 | `m7xyx` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:32:12 |
+| 916 | `m7xyv` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:40:27 |
 | 917 | `m7xyz` | Pris | — | Pris | 23/08/2026 21:03:34 |
-| 918 | `m7xyk` | Disponible (1 source) | — | Disponible | 23/08/2026 23:05:08 |
+| 918 | `m7xyk` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:48:48 |
 | 919 | `m7xyr` | Pris | — | Pris | 23/08/2026 21:05:37 |
 | 920 | `m7xyt` | Pris | — | Pris | 23/08/2026 21:06:38 |
 | 921 | `m7xyn` | Pris | — | Pris | 23/08/2026 23:06:09 |
 | 922 | `m7xyh` | Indéterminé | — | Indéterminé | 23/08/2026 23:08:11 |
-| 923 | `m7xyj` | Disponible (1 source) | — | Disponible | 23/08/2026 21:09:41 |
+| 923 | `m7xyj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:56:58 |
 | 924 | `m7xys` | Pris | — | Pris | 23/08/2026 21:10:42 |
-| 925 | `m7xyw` | Disponible (1 source) | — | Disponible | 23/08/2026 21:11:43 |
+| 925 | `m7xyw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 16:05:08 |
 | 926 | `m7viq` | Disponible (1 source) | — | Disponible | 23/08/2026 21:12:44 |
 | 927 | `m7vix` | Pris | — | Pris | 23/08/2026 21:13:45 |
 | 928 | `m7viv` | Pris | — | Pris | 23/08/2026 23:09:12 |

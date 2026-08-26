@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 26/08/2026 12:24:28 (heure de Paris, UTC+2)
+**Généré le :** 26/08/2026 16:13:40 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 263 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 40 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 268 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 35 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 263
+## DISPONIBLE (2 sources) — 268
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -286,16 +286,16 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 910 | `m7xuh` | available | available | 26/08/2026 10:43:20 |
 | 911 | `m7xuj` | available | available | 26/08/2026 10:51:40 |
 | 913 | `m7xuw` | available | available | 26/08/2026 10:59:51 |
+| 915 | `m7xyx` | available | available | 26/08/2026 12:32:12 |
+| 916 | `m7xyv` | available | available | 26/08/2026 12:40:27 |
+| 918 | `m7xyk` | available | available | 26/08/2026 12:48:48 |
+| 923 | `m7xyj` | available | available | 26/08/2026 12:56:58 |
+| 925 | `m7xyw` | available | available | 26/08/2026 16:05:08 |
 
-## DISPONIBLE (1 source) — 40
+## DISPONIBLE (1 source) — 35
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 915 | `m7xyx` | — | available | 26/08/2026 11:07:59 |
-| 916 | `m7xyv` | — | available | 23/08/2026 21:02:33 |
-| 918 | `m7xyk` | — | available | 23/08/2026 23:05:08 |
-| 923 | `m7xyj` | — | available | 23/08/2026 21:09:41 |
-| 925 | `m7xyw` | — | available | 23/08/2026 21:11:43 |
 | 926 | `m7viq` | — | available | 23/08/2026 21:12:44 |
 | 931 | `m7vir` | — | available | 23/08/2026 21:17:49 |
 | 933 | `m7vin` | — | available | 23/08/2026 21:19:51 |
