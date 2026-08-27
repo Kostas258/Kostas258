@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 27/08/2026 13:39:42 (heure de Paris, UTC+2)
+**Généré le :** 27/08/2026 17:13:16 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 269 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 34 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 289 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 14 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 269
+## DISPONIBLE (2 sources) — 289
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -292,32 +292,32 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 923 | `m7xyj` | available | available | 26/08/2026 12:56:58 |
 | 925 | `m7xyw` | available | available | 26/08/2026 16:05:08 |
 | 926 | `m7viq` | available | available | 27/08/2026 13:33:27 |
+| 931 | `m7vir` | available | available | 27/08/2026 13:48:42 |
+| 933 | `m7vin` | available | available | 27/08/2026 13:56:43 |
+| 934 | `m7vih` | available | available | 27/08/2026 14:04:44 |
+| 935 | `m7vij` | available | available | 27/08/2026 14:12:45 |
+| 939 | `m7vax` | available | available | 27/08/2026 14:20:53 |
+| 940 | `m7vav` | available | available | 27/08/2026 14:29:01 |
+| 941 | `m7vaz` | available | available | 27/08/2026 14:37:18 |
+| 944 | `m7vat` | available | available | 27/08/2026 14:45:38 |
+| 945 | `m7van` | available | available | 27/08/2026 14:53:55 |
+| 950 | `m7veq` | available | available | 27/08/2026 15:02:03 |
+| 953 | `m7vez` | available | available | 27/08/2026 15:10:09 |
+| 954 | `m7vek` | available | available | 27/08/2026 15:18:17 |
+| 956 | `m7vet` | available | available | 27/08/2026 15:26:26 |
+| 959 | `m7vej` | available | available | 27/08/2026 15:42:47 |
+| 962 | `m7voq` | available | available | 27/08/2026 15:50:54 |
+| 964 | `m7vov` | available | available | 27/08/2026 15:59:10 |
+| 965 | `m7voz` | available | available | 27/08/2026 16:07:22 |
+| 968 | `m7vot` | available | available | 27/08/2026 16:15:29 |
+| 969 | `m7von` | available | available | 27/08/2026 16:23:43 |
+| 973 | `m7vow` | available | available | 27/08/2026 16:48:25 |
 
-## DISPONIBLE (1 source) — 34
+## DISPONIBLE (1 source) — 14
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 931 | `m7vir` | — | available | 23/08/2026 21:17:49 |
-| 933 | `m7vin` | — | available | 23/08/2026 21:19:51 |
-| 934 | `m7vih` | — | available | 23/08/2026 23:12:15 |
-| 935 | `m7vij` | — | available | 23/08/2026 21:21:54 |
-| 939 | `m7vax` | — | available | 23/08/2026 23:17:21 |
-| 940 | `m7vav` | — | available | 23/08/2026 21:26:59 |
-| 941 | `m7vaz` | — | available | 23/08/2026 23:18:22 |
-| 944 | `m7vat` | — | available | 23/08/2026 21:33:27 |
-| 945 | `m7van` | — | available | 23/08/2026 21:34:28 |
-| 950 | `m7veq` | — | available | 23/08/2026 23:28:33 |
-| 953 | `m7vez` | — | available | 23/08/2026 21:42:37 |
-| 954 | `m7vek` | — | available | 23/08/2026 21:43:38 |
-| 956 | `m7vet` | — | available | 23/08/2026 21:45:40 |
-| 959 | `m7vej` | — | available | 23/08/2026 21:48:43 |
-| 962 | `m7voq` | — | available | 23/08/2026 23:37:59 |
-| 964 | `m7vov` | — | available | 23/08/2026 21:53:49 |
-| 965 | `m7voz` | — | available | 23/08/2026 21:54:50 |
-| 968 | `m7vot` | — | available | 23/08/2026 21:57:53 |
-| 969 | `m7von` | — | available | 23/08/2026 21:58:54 |
-| 973 | `m7vow` | — | available | 23/08/2026 22:02:59 |
-| 974 | `m7vuq` | — | available | 23/08/2026 23:46:09 |
+| 974 | `m7vuq` | — | available | 27/08/2026 17:04:56 |
 | 976 | `m7vuv` | — | available | 23/08/2026 23:47:10 |
 | 977 | `m7vuz` | — | available | 23/08/2026 22:07:04 |
 | 978 | `m7vuk` | — | available | 23/08/2026 23:48:11 |
