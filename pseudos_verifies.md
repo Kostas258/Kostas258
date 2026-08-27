@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 01:39:46 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 27/08/2026 17:04:56 (heure de Paris)
+**Généré le :** 28/08/2026 01:48:30 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 01:40:22 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 289 | 332 |
-| Disponibles (1 source) | 0 | 14 | 14 |
+| Disponibles (2 sources) | 43 | 290 | 333 |
+| Disponibles (1 source) | 0 | 13 | 13 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 397 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 398 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 382 (96 %) |
+| Accords | 383 (96 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -378,7 +378,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 287. **m7vot** — confirmé par 2 sources
 288. **m7von** — confirmé par 2 sources
 289. **m7vow** — confirmé par 2 sources
-290. **m7vuq** — 1 source
+290. **m7vuq** — confirmé par 2 sources
 291. **m7vuv** — 1 source
 292. **m7vuz** — 1 source
 293. **m7vuk** — 1 source
@@ -1555,7 +1555,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 971 | `m7voj` | Indéterminé | — | Indéterminé | 23/08/2026 23:43:04 |
 | 972 | `m7vos` | Indéterminé | — | Indéterminé | 23/08/2026 23:45:08 |
 | 973 | `m7vow` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:48:25 |
-| 974 | `m7vuq` | Disponible (1 source) | Indéterminé | Disponible | 27/08/2026 17:04:56 |
+| 974 | `m7vuq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 01:40:22 |
 | 975 | `m7vux` | Pris | — | Pris | 23/08/2026 22:05:02 |
 | 976 | `m7vuv` | Disponible (1 source) | — | Disponible | 23/08/2026 23:47:10 |
 | 977 | `m7vuz` | Disponible (1 source) | — | Disponible | 23/08/2026 22:07:04 |
