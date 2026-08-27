@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 26/08/2026 16:13:39 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 26/08/2026 16:05:08 (heure de Paris)
+**Généré le :** 27/08/2026 13:33:45 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 27/08/2026 13:33:27 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 43 | 268 | 311 |
-| Disponibles (1 source) | 0 | 35 | 35 |
+| Disponibles (2 sources) | 43 | 269 | 312 |
+| Disponibles (1 source) | 0 | 34 | 34 |
 | Pris | 41 | 531 | 572 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 6 | 161 | 167 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 926.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 376 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 377 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 361 (96 %) |
+| Accords | 362 (96 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -357,7 +357,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 266. **m7xyk** — confirmé par 2 sources
 267. **m7xyj** — confirmé par 2 sources
 268. **m7xyw** — confirmé par 2 sources
-269. **m7viq** — 1 source
+269. **m7viq** — confirmé par 2 sources
 270. **m7vir** — 1 source
 271. **m7vin** — 1 source
 272. **m7vih** — 1 source
@@ -1507,7 +1507,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 923 | `m7xyj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:56:58 |
 | 924 | `m7xys` | Pris | — | Pris | 23/08/2026 21:10:42 |
 | 925 | `m7xyw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 16:05:08 |
-| 926 | `m7viq` | Disponible (1 source) | — | Disponible | 23/08/2026 21:12:44 |
+| 926 | `m7viq` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 13:33:27 |
 | 927 | `m7vix` | Pris | — | Pris | 23/08/2026 21:13:45 |
 | 928 | `m7viv` | Pris | — | Pris | 23/08/2026 23:09:12 |
 | 929 | `m7viz` | Pris | — | Pris | 23/08/2026 21:15:47 |

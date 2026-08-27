@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 301,
+  "checked": 302,
   "available": [
     "m7ia",
     "m7iy",
@@ -1275,7 +1275,8 @@
     "m7xyv",
     "m7xyk",
     "m7xyj",
-    "m7xyw"
+    "m7xyw",
+    "m7viq"
   ],
   "results": {
     "m7ii": {
@@ -4214,7 +4215,17 @@
       "checkedAt": "2026-08-26T14:05:08.064Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7viq": {
+      "site": "vervox",
+      "username": "m7viq",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7viq\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7viq semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-27T11:33:27.532Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-26T14:05:18.022Z"
+  "updatedAt": "2026-08-27T11:33:33.351Z"
 }
