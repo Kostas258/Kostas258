@@ -30,16 +30,38 @@ function post(username, timeoutMs) {
     '-A', UA,
     '--data-binary', JSON.stringify({ handle: username, platforms: ['instagram'] }),
     '--max-time', String(Math.round(timeoutMs / 1000)),
-    '-w', '\n__HTTP__%{http_code}',
+    '-w', '\n__RA__%header{retry-after}\n__HTTP__%{http_code}',
   ];
   return new Promise(resolve => {
     execFile('curl', args, { maxBuffer: 4 << 20 }, (err, stdout, stderr) => {
-      if (err && !stdout) return resolve({ status: 0, body: '', err: (stderr || err.message).trim().split('\n')[0] });
-      const i = stdout.lastIndexOf('\n__HTTP__');
-      const status = i === -1 ? 0 : parseInt(stdout.slice(i + 9), 10);
-      resolve({ status, body: i === -1 ? stdout : stdout.slice(0, i), err: null });
+      if (err && !stdout) return resolve({ status: 0, body: '', retryAfterMs: null, err: (stderr || err.message).trim().split('\n')[0] });
+      const h = stdout.lastIndexOf('\n__HTTP__');
+      const status = h === -1 ? 0 : parseInt(stdout.slice(h + 9), 10);
+      const rest = h === -1 ? stdout : stdout.slice(0, h);
+      const r = rest.lastIndexOf('\n__RA__');
+      resolve({
+        status,
+        body: r === -1 ? rest : rest.slice(0, r),
+        retryAfterMs: parseRetryAfter(r === -1 ? '' : rest.slice(r + 7).trim()),
+        err: null,
+      });
     });
   });
+}
+
+/** Retry-After : secondes ou date HTTP (RFC 9110). null si absent, illisible ou
+ *  déjà passé — jamais 0, qui autoriserait à repartir immédiatement. */
+function parseRetryAfter(v) {
+  if (!v) return null;
+  const s = String(v).trim();
+  if (/^\d+$/.test(s)) {
+    const ms = parseInt(s, 10) * 1000;
+    return ms > 0 ? ms : null;
+  }
+  const t = Date.parse(s);
+  if (Number.isNaN(t)) return null;
+  const ms = t - Date.now();
+  return ms > 0 ? ms : null;
 }
 
 /**
@@ -55,10 +77,22 @@ async function checkSocialcal(username, { timeoutMs = 45000 } = {}) {
     checkedAt: new Date().toISOString(),
   };
 
-  const { status, body, err } = await post(username, timeoutMs);
+  const { status, body, retryAfterMs, err } = await post(username, timeoutMs);
   out.api = body ? body.slice(0, 600) : null;
+  if (retryAfterMs) out.retryAfterMs = retryAfterMs;
   if (err) { out.error = `transport: ${err}`; return out; }
-  if (status === 429) { recordBlock('socialcal', `HTTP ${status}`); out.error = 'RATE_LIMITED'; out.rateLimited = true; return out; }
+  if (status === 429) {
+    recordBlock('socialcal', retryAfterMs
+      ? `HTTP ${status}, Retry-After ${Math.round(retryAfterMs / 1000)}s`
+      : `HTTP ${status}, sans Retry-After`, retryAfterMs);
+    out.error = 'RATE_LIMITED'; out.rateLimited = true; return out;
+  }
+  // 403 : politique d'accès, pas cadence. Réessayer ne sert à rien et nuit.
+  if (status === 403) {
+    recordBlock('socialcal', `HTTP 403 (politique d'accès)`, retryAfterMs);
+    out.error = 'FORBIDDEN — refus de politique : vérifier l\'accès, pas la cadence.';
+    out.rateLimited = true; return out;
+  }
   if (status !== 200) { out.error = `HTTP ${status}`; return out; }
 
   let j;
