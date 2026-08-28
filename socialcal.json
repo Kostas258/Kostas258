@@ -6803,24 +6803,24 @@
     "m7eto": {
       "site": "socialcal",
       "username": "m7eto",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7eto\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7eto/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-22T15:52:45.027Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-22T15:52:43.318Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7eto\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7eto/\",\"checkedAt\":\"2026-08-28T11:20:51.474Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T11:20:50.531Z",
+      "tries": 4
     },
     "m7etu": {
       "site": "socialcal",
       "username": "m7etu",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7etu\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7etu/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-22T15:55:47.882Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-22T15:55:46.061Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7etu\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7etu/\",\"checkedAt\":\"2026-08-28T11:21:52.412Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T11:21:51.447Z",
+      "tries": 4
     },
     "m7ety": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T11:19:50.462Z"
+  "updatedAt": "2026-08-28T11:21:52.272Z"
 }

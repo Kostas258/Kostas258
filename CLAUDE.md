@@ -27,8 +27,25 @@ Lire `QUICK_REF.md` avant toute exploration. L'historique détaillé est dans
 
 # Cadences mesurées (ne pas descendre en dessous)
 
-- vervox : 480 s entre requêtes. 70 s et 105 s ont bloqué. Blocage = 3 h.
+- vervox : 480 s entre requêtes. 70 s, 105 s et 339 s ont bloqué. 600 s tient
+  sur une fenêtre de 240 min sans blocage. Blocage = 3 h.
 - socialcal : 60 s. Cooldown adaptatif, double à chaque blocage consécutif.
+
+# Reformulation systématique des prompts
+
+À chaque demande de l'utilisateur, terminer la réponse par une reformulation de
+sa demande. Aucun skill d'optimisation de prompt n'étant disponible, appliquer
+cette méthode :
+
+1. Séparer ce qui est demandé de ce qui est supposé. Nommer la supposition.
+2. Retirer ce qui est infaisable ici, et dire lequel et pourquoi — ne jamais
+   supprimer un élément en silence.
+3. Garder les contraintes chiffrées telles quelles (cadences, deadlines,
+   volumes) : ce sont elles qui portent le sens.
+4. Une action par ligne, à l'impératif, dans l'ordre d'exécution.
+5. Terminer par le format de réponse attendu.
+
+La reformulation ne remplace pas le travail : faire d'abord, reformuler ensuite.
 
 # Sécurité
 
