@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 08:52:45 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 11:51:49 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 291 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 12 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 303 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 0 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 291
+## DISPONIBLE (2 sources) — 303
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -314,23 +314,18 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 973 | `m7vow` | available | available | 27/08/2026 16:48:25 |
 | 974 | `m7vuq` | available | available | 28/08/2026 01:40:22 |
 | 976 | `m7vuv` | available | available | 28/08/2026 08:51:57 |
-
-## DISPONIBLE (1 source) — 12
-
-| # | Pseudo | Vervox | SocialCal | Vérifié le |
-|---|---|---|---|---|
-| 977 | `m7vuz` | — | available | 23/08/2026 22:07:04 |
-| 978 | `m7vuk` | — | available | 23/08/2026 23:48:11 |
-| 979 | `m7vur` | — | available | 23/08/2026 22:09:06 |
-| 982 | `m7vuh` | — | available | 23/08/2026 22:14:57 |
-| 983 | `m7vuj` | — | available | 23/08/2026 22:15:59 |
-| 985 | `m7vuw` | — | available | 23/08/2026 22:18:01 |
-| 987 | `m7vyx` | — | available | 23/08/2026 22:20:02 |
-| 991 | `m7vyr` | — | available | 23/08/2026 22:24:06 |
-| 994 | `m7vyh` | — | available | 23/08/2026 22:27:09 |
-| 996 | `m7vys` | — | available | 23/08/2026 22:29:11 |
-| 997 | `m7vyw` | — | available | 23/08/2026 22:30:12 |
-| 998 | `m7ziq` | — | available | 23/08/2026 22:31:13 |
+| 977 | `m7vuz` | available | available | 28/08/2026 09:02:09 |
+| 978 | `m7vuk` | available | available | 28/08/2026 09:22:47 |
+| 979 | `m7vur` | available | available | 28/08/2026 09:32:56 |
+| 982 | `m7vuh` | available | available | 28/08/2026 09:53:12 |
+| 983 | `m7vuj` | available | available | 28/08/2026 10:03:21 |
+| 985 | `m7vuw` | available | available | 28/08/2026 10:23:49 |
+| 987 | `m7vyx` | available | available | 28/08/2026 10:33:55 |
+| 991 | `m7vyr` | available | available | 28/08/2026 10:44:01 |
+| 994 | `m7vyh` | available | available | 28/08/2026 10:54:08 |
+| 996 | `m7vys` | available | available | 28/08/2026 11:14:29 |
+| 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
+| 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
 
 ## CONTRADICTION — 5
 

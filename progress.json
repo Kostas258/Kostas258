@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 82,
+  "checked": 84,
   "available": [
     "h3ii",
     "j2eb",
@@ -155,7 +155,8 @@
     "t5ouni",
     "v7akua",
     "v9urou",
-    "vj3oxa"
+    "vj3oxa",
+    "pk1ue"
   ],
   "results": {
     "ba5i": {
@@ -710,11 +711,12 @@
     "pk1ue": {
       "site": "vervox",
       "username": "pk1ue",
-      "verdict": "unknown",
-      "api": null,
-      "error": "HTTP 0",
-      "checkedAt": "2026-08-21T10:13:13.717Z",
-      "attempts": 2
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"pk1ue\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@pk1ue semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T09:04:17.057Z",
+      "attempts": 1,
+      "tries": 1
     },
     "poi8w": {
       "site": "vervox",
@@ -904,7 +906,17 @@
       "error": null,
       "checkedAt": "2026-08-22T05:28:37.328Z",
       "attempts": 1
+    },
+    "voz9a": {
+      "site": "vervox",
+      "username": "voz9a",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"voz9a\",\"platform\":\"Instagram\"},\"message\":\"@voz9a est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-28T09:44:55.856Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-22T05:28:48.143Z"
+  "updatedAt": "2026-08-28T09:44:57.251Z"
 }
