@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 382,
+  "checked": 383,
   "available": [
     "m7ia",
     "m7iy",
@@ -5104,7 +5104,17 @@
       "checkedAt": "2026-08-28T20:27:46.281Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7qz": {
+      "site": "vervox",
+      "username": "m7qz",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7qz\",\"platform\":\"Instagram\"},\"message\":\"@m7qz est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-28T20:48:20.221Z",
+      "attempts": 1,
+      "tries": 2
     }
   },
-  "updatedAt": "2026-08-28T20:27:49.683Z"
+  "updatedAt": "2026-08-28T20:48:22.123Z"
 }
