@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 84,
+  "checked": 86,
   "available": [
     "h3ii",
     "j2eb",
@@ -156,7 +156,9 @@
     "v7akua",
     "v9urou",
     "vj3oxa",
-    "pk1ue"
+    "pk1ue",
+    "j9eovo",
+    "xp9use"
   ],
   "results": {
     "ba5i": {
@@ -916,7 +918,27 @@
       "checkedAt": "2026-08-28T09:44:55.856Z",
       "attempts": 1,
       "tries": 1
+    },
+    "j9eovo": {
+      "site": "vervox",
+      "username": "j9eovo",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"j9eovo\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@j9eovo semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T09:54:57.257Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "xp9use": {
+      "site": "vervox",
+      "username": "xp9use",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"xp9use\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@xp9use semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T10:05:04.278Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-28T09:44:57.251Z"
+  "updatedAt": "2026-08-28T10:05:23.816Z"
 }
