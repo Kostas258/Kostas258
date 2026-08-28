@@ -93,6 +93,14 @@ console.log("   liste 1000 : "+settled+"/1000 tranchés, "+todo+" restants");
 console.log("   confirmés 2 sources : "+conf+" | candidats en attente : "+cand);
 '
 
+# dnsrobot est le seul arbitre possible des contradictions : il interroge
+# Instagram en direct, là où socialcal et vervox ne peuvent que se contredire.
+# Son amont est saturé depuis le 24/08, mais il répond « try again in a few
+# minutes » et rend unknown honnêtement plutôt que d'inventer. Une requête par
+# relève suffit à savoir s'il s'ouvre, sans y consacrer la moindre attention.
+say "── arbitre (dnsrobot) ──"
+node scripts/dnsrobot_probe.js 2>&1 | sed 's/^/   /' || true
+
 say "── intégrité ──"
 if node scripts/audit.js >/tmp/audit.out 2>&1; then
   tail -1 /tmp/audit.out | sed 's/^/   /'

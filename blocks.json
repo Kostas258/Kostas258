@@ -1,4 +1,10 @@
 {
-  "blocks": {},
-  "updatedAt": "2026-08-28T06:52:09.650Z"
+  "blocks": {
+    "dnsrobot": {
+      "at": "2026-08-28T12:47:26.924Z",
+      "detail": "upstream: Rate limited — try again in a few minutes",
+      "streak": 1
+    }
+  },
+  "updatedAt": "2026-08-28T12:47:26.924Z"
 }
