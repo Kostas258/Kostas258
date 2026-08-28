@@ -7430,13 +7430,13 @@
     "m7oki": {
       "site": "socialcal",
       "username": "m7oki",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7oki\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7oki/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-22T18:19:41.256Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-22T18:19:38.729Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7oki\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7oki/\",\"checkedAt\":\"2026-08-28T11:34:03.171Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T11:34:02.454Z",
+      "tries": 4
     },
     "m7oka": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T11:33:02.418Z"
+  "updatedAt": "2026-08-28T11:34:03.022Z"
 }
