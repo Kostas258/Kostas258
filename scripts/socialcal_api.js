@@ -78,7 +78,13 @@ async function checkSocialcal(username, { timeoutMs = 45000 } = {}) {
   };
 
   const { status, body, retryAfterMs, err } = await post(username, timeoutMs);
-  out.api = body ? body.slice(0, 600) : null;
+  // socialcal renvoie un profileUrl pointant vers le compte du tiers. Il n'entre
+  // dans aucune vérification — audit.js ne lit que "status":"<verdict>" — et ce
+  // dépôt est public. On ne le conserve donc pas. Retrait par expression
+  // régulière et non par re-sérialisation : le corps stocké est la preuve, le
+  // réécrire changerait des octets que l'audit compare.
+  out.api = body ? body.replace(/,?"profileUrl":"[^"]*"(,)?/g,
+    (m, apres) => (m.startsWith(',') && apres) ? ',' : (apres ? ',' : '')).slice(0, 600) : null;
   if (retryAfterMs) out.retryAfterMs = retryAfterMs;
   if (err) { out.error = `transport: ${err}`; return out; }
   if (status === 429) {
