@@ -11610,13 +11610,13 @@
     "m7voh": {
       "site": "socialcal",
       "username": "m7voh",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7voh\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7voh/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T21:41:04.654Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T21:41:02.676Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7voh\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7voh/\",\"checkedAt\":\"2026-08-28T12:48:14.353Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:48:13.371Z",
+      "tries": 4
     },
     "m7voj": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T12:47:13.304Z"
+  "updatedAt": "2026-08-28T12:48:14.185Z"
 }

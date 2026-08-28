@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 14:48:01 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 14:47:11 (heure de Paris)
+**Généré le :** 28/08/2026 14:48:23 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 14:48:13 (heure de Paris)
 
 ## Sources
 
@@ -31,11 +31,11 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Identifiants non utilisés | 0 | 0 | 0 |
 | Disponibles (2 sources) | 48 | 315 | 363 |
 | Disponibles (1 source) | 0 | 21 | 21 |
-| Pris | 42 | 599 | 641 |
+| Pris | 42 | 600 | 642 |
 | Contradictions | 10 | 5 | 15 |
-| Indéterminés | 0 | 60 | 60 |
+| Indéterminés | 0 | 59 | 59 |
 
-Vérifications par la seconde source (socialcal) : 1032.
+Vérifications par la seconde source (socialcal) : 1033.
 
 ## Les deux sources sont-elles indépendantes ?
 
@@ -63,7 +63,7 @@ constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
 | Longueur | Pseudos testés | Déclarés libres |
 |---|---|---|
 | 4 caractères | 353 | 69 (20 %) |
-| 5 caractères | 658 | 295 (45 %) |
+| 5 caractères | 659 | 295 (45 %) |
 | 6 caractères | 21 | 20 (95 %) |
 
 Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
@@ -503,11 +503,11 @@ Ces pseudos ont reçu deux verdicts opposés. Aucun n'est retenu comme disponibl
 | `m7ei` | Disponible | Pris |
 | `m7ea` | Disponible | Pris |
 
-## Indéterminés (60)
+## Indéterminés (59)
 
 Interrogés, mais aucune réponse exploitable. À revérifier — surtout pas à considérer comme libres.
 
-`m7yy`, `m7qz`, `m7xz`, `m7ko`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `j7ia`, `m9ia`, `m7izi`, `m7ako`, `m7asa`, `m7awi`, `m7awo`, `m7evu`, `m7ezi`, `m7ezy`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ozi`, `m7ony`, `m7osa`, `m7ose`, `m7ura`, `m7uja`, `m7yqu`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xak`, `m7xaw`, `m7xer`, `m7xew`, `m7xor`, `m7xoj`, `m7xuv`, `m7xuz`, `m7xur`, `m7xus`, `m7vak`, `m7ver`, `m7veh`, `m7voh`, `m7voj`, `m7vos`, `m7vut`, `m7vun`, `m7vyn`, `m7vyj`, `m7zix`, `m7ziv`
+`m7yy`, `m7qz`, `m7xz`, `m7ko`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `j7ia`, `m9ia`, `m7izi`, `m7ako`, `m7asa`, `m7awi`, `m7awo`, `m7evu`, `m7ezi`, `m7ezy`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ozi`, `m7ony`, `m7osa`, `m7ose`, `m7ura`, `m7uja`, `m7yqu`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xak`, `m7xaw`, `m7xer`, `m7xew`, `m7xor`, `m7xoj`, `m7xuv`, `m7xuz`, `m7xur`, `m7xus`, `m7vak`, `m7ver`, `m7veh`, `m7voj`, `m7vos`, `m7vut`, `m7vun`, `m7vyn`, `m7vyj`, `m7zix`, `m7ziv`
 
 ## Liste m7ia — 100 identifiants
 
@@ -1589,7 +1589,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 967 | `m7vor` | Pris | — | Pris | 23/08/2026 21:56:52 |
 | 968 | `m7vot` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:15:29 |
 | 969 | `m7von` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:23:43 |
-| 970 | `m7voh` | Indéterminé | — | Indéterminé | 23/08/2026 23:41:02 |
+| 970 | `m7voh` | Pris | — | Pris | 28/08/2026 14:48:13 |
 | 971 | `m7voj` | Indéterminé | — | Indéterminé | 23/08/2026 23:43:04 |
 | 972 | `m7vos` | Indéterminé | — | Indéterminé | 23/08/2026 23:45:08 |
 | 973 | `m7vow` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:48:25 |
