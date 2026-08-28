@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 19:24:12 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 19:18:59 (heure de Paris)
+**Généré le :** 28/08/2026 19:30:55 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 19:28:09 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 48 | 335 | 383 |
-| Disponibles (1 source) | 0 | 13 | 13 |
+| Disponibles (2 sources) | 48 | 336 | 384 |
+| Disponibles (1 source) | 0 | 12 | 12 |
 | Pris | 42 | 617 | 659 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 0 | 30 | 30 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 1067.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 453 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 454 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 438 (97 %) |
+| Accords | 439 (97 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -380,7 +380,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 289. **m7xat** — confirmé par 2 sources
 290. **m7xaw** — confirmé par 2 sources
 291. **m7xex** — confirmé par 2 sources
-292. **m7xen** — 1 source
+292. **m7xen** — confirmé par 2 sources
 293. **m7xew** — 1 source
 294. **m7xok** — 1 source
 295. **m7xow** — 1 source
@@ -1516,7 +1516,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 882 | `m7xek` | Pris | — | Pris | 23/08/2026 13:02:48 |
 | 883 | `m7xer` | Pris | — | Pris | 28/08/2026 18:25:13 |
 | 884 | `m7xet` | Pris | — | Pris | 28/08/2026 14:24:50 |
-| 885 | `m7xen` | Disponible (1 source) | — | Disponible | 28/08/2026 14:25:50 |
+| 885 | `m7xen` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 19:28:09 |
 | 886 | `m7xeh` | Pris | — | Pris | 28/08/2026 14:26:51 |
 | 887 | `m7xej` | Pris | — | Pris | 28/08/2026 14:27:52 |
 | 888 | `m7xes` | Pris | — | Pris | 23/08/2026 13:20:05 |

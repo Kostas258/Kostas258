@@ -126,6 +126,7 @@ if node scripts/audit.js >/tmp/audit.out 2>&1; then
   tail -1 /tmp/audit.out | sed 's/^/   /'
   node scripts/report_all.js | sed 's/^/   /'
   node scripts/liste_1000.js | sed 's/^/   /'
+  node scripts/disponibles.js | sed 's/^/   /'
   git add -A
   if git diff --cached --quiet; then
     say "rien de nouveau à publier"

@@ -1,0 +1,435 @@
+# Pseudos Instagram disponibles
+
+**Liste provisoire — la vérification n'est pas finie.** 12 pseudo(s) attendent une confirmation par la seconde source et 30 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
+
+Généré le 19:30:55 (heure de Paris).
+
+| | nombre |
+|---|---|
+| Disponibles, confirmés par 2 sources | **384** |
+| Disponibles, vus par 1 source seulement | 12 |
+| Pris | 659 |
+| Contradictions entre sources | 15 |
+| Indéterminés | 30 |
+
+## Confirmés par 2 sources — 384
+
+socialcal et vervox disent tous deux « disponible ». C'est le niveau de
+preuve le plus élevé atteint ici.
+
+| # | pseudo | origine |
+|---|---|---|
+| 1 | `j2eb` | liste de 100 |
+| 2 | `x2eh` | liste de 100 |
+| 3 | `j7vuu` | liste de 100 |
+| 4 | `zao8h` | liste de 100 |
+| 5 | `zuw4i` | liste de 100 |
+| 6 | `bg6ae` | liste de 100 |
+| 7 | `bp5ef` | liste de 100 |
+| 8 | `c8eoz` | liste de 100 |
+| 9 | `cp8ux` | liste de 100 |
+| 10 | `cte9a` | liste de 100 |
+| 11 | `daa7t` | liste de 100 |
+| 12 | `deu9v` | liste de 100 |
+| 13 | `dl4ex` | liste de 100 |
+| 14 | `gm7ic` | liste de 100 |
+| 15 | `gmi6i` | liste de 100 |
+| 16 | `h9bui` | liste de 100 |
+| 17 | `hb2ol` | liste de 100 |
+| 18 | `hnu1e` | liste de 100 |
+| 19 | `hr4ie` | liste de 100 |
+| 20 | `k4lae` | liste de 100 |
+| 21 | `ku9eu` | liste de 100 |
+| 22 | `n6voo` | liste de 100 |
+| 23 | `p2ima` | liste de 100 |
+| 24 | `pk1ue` | liste de 100 |
+| 25 | `pr1ux` | liste de 100 |
+| 26 | `r2xua` | liste de 100 |
+| 27 | `rab9i` | liste de 100 |
+| 28 | `s4oum` | liste de 100 |
+| 29 | `j9eovo` | liste de 100 |
+| 30 | `wr9era` | liste de 100 |
+| 31 | `x1itie` | liste de 100 |
+| 32 | `xp9use` | liste de 100 |
+| 33 | `b6oedi` | liste de 100 |
+| 34 | `c1ueka` | liste de 100 |
+| 35 | `c9uhau` | liste de 100 |
+| 36 | `cew6iu` | liste de 100 |
+| 37 | `d3uaci` | liste de 100 |
+| 38 | `f9euvu` | liste de 100 |
+| 39 | `fep2ui` | liste de 100 |
+| 40 | `g5ukau` | liste de 100 |
+| 41 | `hw8aki` | liste de 100 |
+| 42 | `m8eume` | liste de 100 |
+| 43 | `mj1amu` | liste de 100 |
+| 44 | `rv1ajo` | liste de 100 |
+| 45 | `t5ouni` | liste de 100 |
+| 46 | `v7akua` | liste de 100 |
+| 47 | `v9urou` | liste de 100 |
+| 48 | `vj3oxa` | liste de 100 |
+| 49 | `m7iy` | liste de 1000 |
+| 50 | `m7iv` | liste de 1000 |
+| 51 | `m7ir` | liste de 1000 |
+| 52 | `m7av` | liste de 1000 |
+| 53 | `m7ah` | liste de 1000 |
+| 54 | `m7en` | liste de 1000 |
+| 55 | `m7oi` | liste de 1000 |
+| 56 | `m7os` | liste de 1000 |
+| 57 | `m7ow` | liste de 1000 |
+| 58 | `m7uo` | liste de 1000 |
+| 59 | `m7ux` | liste de 1000 |
+| 60 | `m7uz` | liste de 1000 |
+| 61 | `m7ur` | liste de 1000 |
+| 62 | `m7yi` | liste de 1000 |
+| 63 | `m7ye` | liste de 1000 |
+| 64 | `m7yo` | liste de 1000 |
+| 65 | `m7yu` | liste de 1000 |
+| 66 | `m7yq` | liste de 1000 |
+| 67 | `m7yv` | liste de 1000 |
+| 68 | `m7yj` | liste de 1000 |
+| 69 | `m7qk` | liste de 1000 |
+| 70 | `m7qs` | liste de 1000 |
+| 71 | `m7xu` | liste de 1000 |
+| 72 | `m7xy` | liste de 1000 |
+| 73 | `m7xx` | liste de 1000 |
+| 74 | `m7xh` | liste de 1000 |
+| 75 | `m7xj` | liste de 1000 |
+| 76 | `m7xw` | liste de 1000 |
+| 77 | `m7vi` | liste de 1000 |
+| 78 | `m7vv` | liste de 1000 |
+| 79 | `m7vz` | liste de 1000 |
+| 80 | `m7ze` | liste de 1000 |
+| 81 | `m7zk` | liste de 1000 |
+| 82 | `m7zn` | liste de 1000 |
+| 83 | `m7zs` | liste de 1000 |
+| 84 | `m7kn` | liste de 1000 |
+| 85 | `m7kj` | liste de 1000 |
+| 86 | `m7kw` | liste de 1000 |
+| 87 | `m7rz` | liste de 1000 |
+| 88 | `m7rr` | liste de 1000 |
+| 89 | `m7rs` | liste de 1000 |
+| 90 | `m7rw` | liste de 1000 |
+| 91 | `m7tx` | liste de 1000 |
+| 92 | `m7no` | liste de 1000 |
+| 93 | `m7nq` | liste de 1000 |
+| 94 | `m7nx` | liste de 1000 |
+| 95 | `m7nh` | liste de 1000 |
+| 96 | `m7nj` | liste de 1000 |
+| 97 | `m7ns` | liste de 1000 |
+| 98 | `m7hy` | liste de 1000 |
+| 99 | `m7hv` | liste de 1000 |
+| 100 | `m7hw` | liste de 1000 |
+| 101 | `m7je` | liste de 1000 |
+| 102 | `m7jy` | liste de 1000 |
+| 103 | `m7jv` | liste de 1000 |
+| 104 | `m7jw` | liste de 1000 |
+| 105 | `m7su` | liste de 1000 |
+| 106 | `m7sv` | liste de 1000 |
+| 107 | `m7sz` | liste de 1000 |
+| 108 | `m7sn` | liste de 1000 |
+| 109 | `m7wo` | liste de 1000 |
+| 110 | `m7wy` | liste de 1000 |
+| 111 | `m7ws` | liste de 1000 |
+| 112 | `r7ia` | liste de 1000 |
+| 113 | `n7ia` | liste de 1000 |
+| 114 | `h7ia` | liste de 1000 |
+| 115 | `m5ia` | liste de 1000 |
+| 116 | `m7iqu` | liste de 1000 |
+| 117 | `m7iqy` | liste de 1000 |
+| 118 | `m7iva` | liste de 1000 |
+| 119 | `m7ivu` | liste de 1000 |
+| 120 | `m7iza` | liste de 1000 |
+| 121 | `m7izo` | liste de 1000 |
+| 122 | `m7ira` | liste de 1000 |
+| 123 | `m7iti` | liste de 1000 |
+| 124 | `m7inu` | liste de 1000 |
+| 125 | `m7ihi` | liste de 1000 |
+| 126 | `m7iha` | liste de 1000 |
+| 127 | `m7ihe` | liste de 1000 |
+| 128 | `m7ihu` | liste de 1000 |
+| 129 | `m7ihy` | liste de 1000 |
+| 130 | `m7ije` | liste de 1000 |
+| 131 | `m7ijo` | liste de 1000 |
+| 132 | `m7iju` | liste de 1000 |
+| 133 | `m7ise` | liste de 1000 |
+| 134 | `m7isy` | liste de 1000 |
+| 135 | `m7iwa` | liste de 1000 |
+| 136 | `m7iwo` | liste de 1000 |
+| 137 | `m7aqo` | liste de 1000 |
+| 138 | `m7aqu` | liste de 1000 |
+| 139 | `m7axe` | liste de 1000 |
+| 140 | `m7axo` | liste de 1000 |
+| 141 | `m7avi` | liste de 1000 |
+| 142 | `m7ave` | liste de 1000 |
+| 143 | `m7aki` | liste de 1000 |
+| 144 | `m7ahe` | liste de 1000 |
+| 145 | `m7aho` | liste de 1000 |
+| 146 | `m7ahu` | liste de 1000 |
+| 147 | `m7ahy` | liste de 1000 |
+| 148 | `m7aja` | liste de 1000 |
+| 149 | `m7awo` | liste de 1000 |
+| 150 | `m7awu` | liste de 1000 |
+| 151 | `m7eqi` | liste de 1000 |
+| 152 | `m7eqa` | liste de 1000 |
+| 153 | `m7eqo` | liste de 1000 |
+| 154 | `m7equ` | liste de 1000 |
+| 155 | `m7eqy` | liste de 1000 |
+| 156 | `m7exi` | liste de 1000 |
+| 157 | `m7exa` | liste de 1000 |
+| 158 | `m7eve` | liste de 1000 |
+| 159 | `m7evo` | liste de 1000 |
+| 160 | `m7evy` | liste de 1000 |
+| 161 | `m7eze` | liste de 1000 |
+| 162 | `m7ezu` | liste de 1000 |
+| 163 | `m7eke` | liste de 1000 |
+| 164 | `m7eko` | liste de 1000 |
+| 165 | `m7eku` | liste de 1000 |
+| 166 | `m7eky` | liste de 1000 |
+| 167 | `m7era` | liste de 1000 |
+| 168 | `m7ete` | liste de 1000 |
+| 169 | `m7ene` | liste de 1000 |
+| 170 | `m7enu` | liste de 1000 |
+| 171 | `m7ehi` | liste de 1000 |
+| 172 | `m7eha` | liste de 1000 |
+| 173 | `m7ehu` | liste de 1000 |
+| 174 | `m7ehy` | liste de 1000 |
+| 175 | `m7eji` | liste de 1000 |
+| 176 | `m7eja` | liste de 1000 |
+| 177 | `m7eje` | liste de 1000 |
+| 178 | `m7ejo` | liste de 1000 |
+| 179 | `m7eju` | liste de 1000 |
+| 180 | `m7ejy` | liste de 1000 |
+| 181 | `m7esu` | liste de 1000 |
+| 182 | `m7esy` | liste de 1000 |
+| 183 | `m7ewe` | liste de 1000 |
+| 184 | `m7ewo` | liste de 1000 |
+| 185 | `m7ewu` | liste de 1000 |
+| 186 | `m7ewy` | liste de 1000 |
+| 187 | `m7oqi` | liste de 1000 |
+| 188 | `m7oqa` | liste de 1000 |
+| 189 | `m7oqu` | liste de 1000 |
+| 190 | `m7oqy` | liste de 1000 |
+| 191 | `m7oxu` | liste de 1000 |
+| 192 | `m7ovu` | liste de 1000 |
+| 193 | `m7ovy` | liste de 1000 |
+| 194 | `m7ozu` | liste de 1000 |
+| 195 | `m7ozy` | liste de 1000 |
+| 196 | `m7oke` | liste de 1000 |
+| 197 | `m7oky` | liste de 1000 |
+| 198 | `m7ora` | liste de 1000 |
+| 199 | `m7oti` | liste de 1000 |
+| 200 | `m7otu` | liste de 1000 |
+| 201 | `m7oty` | liste de 1000 |
+| 202 | `m7ohi` | liste de 1000 |
+| 203 | `m7ohe` | liste de 1000 |
+| 204 | `m7oje` | liste de 1000 |
+| 205 | `m7oju` | liste de 1000 |
+| 206 | `m7ojy` | liste de 1000 |
+| 207 | `m7ose` | liste de 1000 |
+| 208 | `m7owa` | liste de 1000 |
+| 209 | `m7owe` | liste de 1000 |
+| 210 | `m7owu` | liste de 1000 |
+| 211 | `m7uqa` | liste de 1000 |
+| 212 | `m7uqe` | liste de 1000 |
+| 213 | `m7uqu` | liste de 1000 |
+| 214 | `m7uqy` | liste de 1000 |
+| 215 | `m7uxo` | liste de 1000 |
+| 216 | `m7uxy` | liste de 1000 |
+| 217 | `m7uva` | liste de 1000 |
+| 218 | `m7uve` | liste de 1000 |
+| 219 | `m7uvo` | liste de 1000 |
+| 220 | `m7uza` | liste de 1000 |
+| 221 | `m7uze` | liste de 1000 |
+| 222 | `m7uzo` | liste de 1000 |
+| 223 | `m7uzu` | liste de 1000 |
+| 224 | `m7uke` | liste de 1000 |
+| 225 | `m7uku` | liste de 1000 |
+| 226 | `m7uky` | liste de 1000 |
+| 227 | `m7uri` | liste de 1000 |
+| 228 | `m7uru` | liste de 1000 |
+| 229 | `m7ute` | liste de 1000 |
+| 230 | `m7utu` | liste de 1000 |
+| 231 | `m7uty` | liste de 1000 |
+| 232 | `m7une` | liste de 1000 |
+| 233 | `m7uno` | liste de 1000 |
+| 234 | `m7unu` | liste de 1000 |
+| 235 | `m7uny` | liste de 1000 |
+| 236 | `m7uhe` | liste de 1000 |
+| 237 | `m7uhy` | liste de 1000 |
+| 238 | `m7uje` | liste de 1000 |
+| 239 | `m7ujo` | liste de 1000 |
+| 240 | `m7ujy` | liste de 1000 |
+| 241 | `m7usu` | liste de 1000 |
+| 242 | `m7uwi` | liste de 1000 |
+| 243 | `m7uwe` | liste de 1000 |
+| 244 | `m7yqi` | liste de 1000 |
+| 245 | `m7yqa` | liste de 1000 |
+| 246 | `m7yqo` | liste de 1000 |
+| 247 | `m7yqu` | liste de 1000 |
+| 248 | `m7yqy` | liste de 1000 |
+| 249 | `m7yxi` | liste de 1000 |
+| 250 | `m7yxe` | liste de 1000 |
+| 251 | `m7yxo` | liste de 1000 |
+| 252 | `m7yxu` | liste de 1000 |
+| 253 | `m7yxy` | liste de 1000 |
+| 254 | `m7yva` | liste de 1000 |
+| 255 | `m7yve` | liste de 1000 |
+| 256 | `m7yvu` | liste de 1000 |
+| 257 | `m7yvy` | liste de 1000 |
+| 258 | `m7yza` | liste de 1000 |
+| 259 | `m7yze` | liste de 1000 |
+| 260 | `m7yzo` | liste de 1000 |
+| 261 | `m7yzy` | liste de 1000 |
+| 262 | `m7yki` | liste de 1000 |
+| 263 | `m7yku` | liste de 1000 |
+| 264 | `m7yre` | liste de 1000 |
+| 265 | `m7yro` | liste de 1000 |
+| 266 | `m7yru` | liste de 1000 |
+| 267 | `m7yta` | liste de 1000 |
+| 268 | `m7yto` | liste de 1000 |
+| 269 | `m7yne` | liste de 1000 |
+| 270 | `m7yno` | liste de 1000 |
+| 271 | `m7ynu` | liste de 1000 |
+| 272 | `m7yny` | liste de 1000 |
+| 273 | `m7yhe` | liste de 1000 |
+| 274 | `m7yho` | liste de 1000 |
+| 275 | `m7yhu` | liste de 1000 |
+| 276 | `m7yji` | liste de 1000 |
+| 277 | `m7yja` | liste de 1000 |
+| 278 | `m7yjo` | liste de 1000 |
+| 279 | `m7yju` | liste de 1000 |
+| 280 | `m7yjy` | liste de 1000 |
+| 281 | `m7yse` | liste de 1000 |
+| 282 | `m7ywi` | liste de 1000 |
+| 283 | `m7ywe` | liste de 1000 |
+| 284 | `m7ywo` | liste de 1000 |
+| 285 | `m7ywu` | liste de 1000 |
+| 286 | `m7ywy` | liste de 1000 |
+| 287 | `m7qiq` | liste de 1000 |
+| 288 | `m7qiv` | liste de 1000 |
+| 289 | `m7qit` | liste de 1000 |
+| 290 | `m7qin` | liste de 1000 |
+| 291 | `m7qih` | liste de 1000 |
+| 292 | `m7qis` | liste de 1000 |
+| 293 | `m7qav` | liste de 1000 |
+| 294 | `m7qak` | liste de 1000 |
+| 295 | `m7qah` | liste de 1000 |
+| 296 | `m7qaj` | liste de 1000 |
+| 297 | `m7qas` | liste de 1000 |
+| 298 | `m7qex` | liste de 1000 |
+| 299 | `m7qev` | liste de 1000 |
+| 300 | `m7qek` | liste de 1000 |
+| 301 | `m7qer` | liste de 1000 |
+| 302 | `m7qen` | liste de 1000 |
+| 303 | `m7qej` | liste de 1000 |
+| 304 | `m7qew` | liste de 1000 |
+| 305 | `m7qov` | liste de 1000 |
+| 306 | `m7qoz` | liste de 1000 |
+| 307 | `m7qok` | liste de 1000 |
+| 308 | `m7qot` | liste de 1000 |
+| 309 | `m7qon` | liste de 1000 |
+| 310 | `m7qoh` | liste de 1000 |
+| 311 | `m7qoj` | liste de 1000 |
+| 312 | `m7qow` | liste de 1000 |
+| 313 | `m7quq` | liste de 1000 |
+| 314 | `m7qux` | liste de 1000 |
+| 315 | `m7quv` | liste de 1000 |
+| 316 | `m7quz` | liste de 1000 |
+| 317 | `m7quk` | liste de 1000 |
+| 318 | `m7qut` | liste de 1000 |
+| 319 | `m7qun` | liste de 1000 |
+| 320 | `m7quh` | liste de 1000 |
+| 321 | `m7qus` | liste de 1000 |
+| 322 | `m7quw` | liste de 1000 |
+| 323 | `m7qyq` | liste de 1000 |
+| 324 | `m7qyv` | liste de 1000 |
+| 325 | `m7qyk` | liste de 1000 |
+| 326 | `m7qyr` | liste de 1000 |
+| 327 | `m7qyt` | liste de 1000 |
+| 328 | `m7qyn` | liste de 1000 |
+| 329 | `m7qyh` | liste de 1000 |
+| 330 | `m7qyj` | liste de 1000 |
+| 331 | `m7qys` | liste de 1000 |
+| 332 | `m7qyw` | liste de 1000 |
+| 333 | `m7xih` | liste de 1000 |
+| 334 | `m7xav` | liste de 1000 |
+| 335 | `m7xak` | liste de 1000 |
+| 336 | `m7xar` | liste de 1000 |
+| 337 | `m7xat` | liste de 1000 |
+| 338 | `m7xaw` | liste de 1000 |
+| 339 | `m7xex` | liste de 1000 |
+| 340 | `m7xen` | liste de 1000 |
+| 341 | `m7xuk` | liste de 1000 |
+| 342 | `m7xuh` | liste de 1000 |
+| 343 | `m7xuj` | liste de 1000 |
+| 344 | `m7xuw` | liste de 1000 |
+| 345 | `m7xyx` | liste de 1000 |
+| 346 | `m7xyv` | liste de 1000 |
+| 347 | `m7xyk` | liste de 1000 |
+| 348 | `m7xyj` | liste de 1000 |
+| 349 | `m7xyw` | liste de 1000 |
+| 350 | `m7viq` | liste de 1000 |
+| 351 | `m7vir` | liste de 1000 |
+| 352 | `m7vin` | liste de 1000 |
+| 353 | `m7vih` | liste de 1000 |
+| 354 | `m7vij` | liste de 1000 |
+| 355 | `m7vax` | liste de 1000 |
+| 356 | `m7vav` | liste de 1000 |
+| 357 | `m7vaz` | liste de 1000 |
+| 358 | `m7vat` | liste de 1000 |
+| 359 | `m7van` | liste de 1000 |
+| 360 | `m7veq` | liste de 1000 |
+| 361 | `m7vez` | liste de 1000 |
+| 362 | `m7vek` | liste de 1000 |
+| 363 | `m7vet` | liste de 1000 |
+| 364 | `m7vej` | liste de 1000 |
+| 365 | `m7voq` | liste de 1000 |
+| 366 | `m7vov` | liste de 1000 |
+| 367 | `m7voz` | liste de 1000 |
+| 368 | `m7vot` | liste de 1000 |
+| 369 | `m7von` | liste de 1000 |
+| 370 | `m7vow` | liste de 1000 |
+| 371 | `m7vuq` | liste de 1000 |
+| 372 | `m7vuv` | liste de 1000 |
+| 373 | `m7vuz` | liste de 1000 |
+| 374 | `m7vuk` | liste de 1000 |
+| 375 | `m7vur` | liste de 1000 |
+| 376 | `m7vuh` | liste de 1000 |
+| 377 | `m7vuj` | liste de 1000 |
+| 378 | `m7vuw` | liste de 1000 |
+| 379 | `m7vyx` | liste de 1000 |
+| 380 | `m7vyr` | liste de 1000 |
+| 381 | `m7vyh` | liste de 1000 |
+| 382 | `m7vys` | liste de 1000 |
+| 383 | `m7vyw` | liste de 1000 |
+| 384 | `m7ziq` | liste de 1000 |
+
+## Vus par une seule source — 12
+
+Une seule source a répondu. À traiter comme une piste, pas comme un acquis :
+vervox sur-déclare la disponibilité, donc un « disponible » vervox non
+corroboré est le cas le plus fragile.
+
+| # | pseudo | source | origine |
+|---|---|---|---|
+| 1 | `m7xew` | socialcal | liste de 1000 |
+| 2 | `m7xok` | socialcal | liste de 1000 |
+| 3 | `m7xow` | socialcal | liste de 1000 |
+| 4 | `m7xyh` | socialcal | liste de 1000 |
+| 5 | `m7vaj` | socialcal | liste de 1000 |
+| 6 | `m7ver` | socialcal | liste de 1000 |
+| 7 | `m7veh` | socialcal | liste de 1000 |
+| 8 | `m7vew` | socialcal | liste de 1000 |
+| 9 | `m7vut` | socialcal | liste de 1000 |
+| 10 | `m7vun` | socialcal | liste de 1000 |
+| 11 | `m7vyj` | socialcal | liste de 1000 |
+| 12 | `m7zix` | socialcal | liste de 1000 |
+
+## Ce que cette liste ne dit pas
+
+- Un pseudo **absent** d'ici n'est pas forcément pris : il peut être
+  indéterminé, ou en contradiction entre les deux sources.
+- La disponibilité est datée. Un pseudo libre aujourd'hui peut être pris
+  demain ; recontrôler avant de compter dessus.
+- Le détail par pseudo, avec les réponses brutes, est dans
+  `pseudos_verifies.md` et `liste_1000.md`.
