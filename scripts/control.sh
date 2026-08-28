@@ -55,7 +55,15 @@ else
     const h = last ? (Date.now()-Date.parse(last))/3600000 : 999;
     console.log(n+" "+h.toFixed(1));' 2>/dev/null || echo "0 999")"
 
-  CACHE_H="${SC_CACHE_HOURS:-3}"
+  # 3 h était une hypothèse. Mesure du 28/08 à 22:21, exactement 3 h après la
+  # passe précédente : 45 requêtes, 27 réponses encore servies par le cache
+  # amont, UN seul verdict gagné. Le cache tient donc bien au-delà de 3 h, et
+  # reprendre à ce rythme dépense trois quarts d'heure de quota pour rien.
+  #
+  # 24 h est un pas prudent, pas une durée mesurée — la vraie TTL reste inconnue.
+  # Ce qui fait avancer ces pseudos entre-temps est vervox : ce sont ses
+  # orphelins, et il leur donne un premier verdict sans dépendre de ce cache.
+  CACHE_H="${SC_CACHE_HOURS:-24}"
   if [ "${scleft:-0}" -eq 0 ]; then
     say "socialcal : arrêté, plus rien à vérifier — travail terminé"
   elif awk "BEGIN{exit !(${schours:-999} >= $CACHE_H)}"; then
