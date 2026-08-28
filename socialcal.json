@@ -9795,13 +9795,13 @@
     "m7qaw": {
       "site": "socialcal",
       "username": "m7qaw",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7qaw\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7qaw/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T08:17:21.429Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T08:17:20.528Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7qaw\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7qaw/\",\"checkedAt\":\"2026-08-28T12:02:28.444Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:02:27.469Z",
+      "tries": 4
     },
     "m7qeq": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T12:01:27.417Z"
+  "updatedAt": "2026-08-28T12:02:28.285Z"
 }
