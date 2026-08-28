@@ -71,20 +71,30 @@ fi
 if alive confirm.js; then
   say "vervox : actif"
 else
-  # Only worth running while candidates remain, otherwise it exits immediately.
-  left=$(node -e '
+  # Ce compte doit reproduire pending() de confirm.js, sans quoi le contrôleur
+  # annonce « rien à faire » alors que le runner a du travail. C'est arrivé le
+  # 28/08 au soir : ne comptant que les candidats, il déclarait vervox terminé
+  # avec 30 orphelins en file. Un orphelin est un pseudo que socialcal n'a
+  # jamais tranché ; vervox est alors la seule source qui puisse lui donner un
+  # premier verdict, faute de quoi il reste sans verdict d'aucune source.
+  read -r cand orph <<<"$(node -e '
     const a=require("./progress.json"),b=require("./progress_1000.json"),sc=require("./socialcal.json").results;
     const V=r=>r&&r.verdict&&r.verdict!=="unknown"?r.verdict:null;
-    let n=0;
+    let c=0,o=0;
     for (const [names,res] of [[a.usernames,a.results],[b.names,b.results]])
-      for (const u of names)
-        if (V(sc[u])==="available" && !V(res[u]) && ((res[u]&&res[u].tries)||0) < 3) n++;
-    console.log(n);' 2>/dev/null || echo 0)
-  if [ "${left:-0}" -gt 0 ]; then
-    say "vervox : arrêté, $left candidats en attente — à relancer par l'appelant"
+      for (const u of names) {
+        if (V(res[u])) continue;
+        if (((res[u]&&res[u].tries)||0) >= 3) continue;
+        const s=V(sc[u]);
+        if (s==="available") c++; else if (!s) o++;
+      }
+    console.log(c+" "+o);' 2>/dev/null || echo "0 0")"
+  left=$(( ${cand:-0} + ${orph:-0} ))
+  if [ "$left" -gt 0 ]; then
+    say "vervox : arrêté, $left en file (${cand:-0} candidats, ${orph:-0} orphelins) — à relancer par l'appelant"
     echo "RESTART_VERVOX=1"
   else
-    say "vervox : arrêté, plus aucun candidat — rien à faire"
+    say "vervox : arrêté, file vide — rien à faire"
   fi
 fi
 

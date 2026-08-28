@@ -2001,8 +2001,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"m7yy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7yy/\",\"checkedAt\":\"2026-08-28T10:18:45.625Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T15:52:35.483Z",
-      "tries": 7
+      "checkedAt": "2026-08-28T20:23:50.050Z",
+      "tries": 8
     },
     "m7yq": {
       "site": "socialcal",
@@ -2243,8 +2243,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"m7qz\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7qz/\",\"checkedAt\":\"2026-08-28T10:20:47.898Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T15:53:36.148Z",
-      "tries": 7
+      "checkedAt": "2026-08-28T20:24:50.804Z",
+      "tries": 8
     },
     "m7qk": {
       "site": "socialcal",
@@ -2441,8 +2441,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"m7xz\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7xz/\",\"checkedAt\":\"2026-08-28T10:22:49.975Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T15:54:36.884Z",
-      "tries": 7
+      "checkedAt": "2026-08-28T20:25:51.528Z",
+      "tries": 8
     },
     "m7xk": {
       "site": "socialcal",
@@ -3244,8 +3244,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"m7rk\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7rk/\",\"checkedAt\":\"2026-08-28T15:56:41.696Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T16:44:33.325Z",
-      "tries": 8
+      "checkedAt": "2026-08-28T20:26:52.286Z",
+      "tries": 9
     },
     "m7rr": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 6
     }
   },
-  "updatedAt": "2026-08-28T17:19:00.125Z"
+  "updatedAt": "2026-08-28T20:26:52.898Z"
 }
