@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 18:51:48 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 18:51:42 (heure de Paris)
+**Généré le :** 28/08/2026 19:23:54 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 19:18:59 (heure de Paris)
 
 ## Sources
 
@@ -29,23 +29,23 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 48 | 332 | 380 |
-| Disponibles (1 source) | 0 | 15 | 15 |
-| Pris | 42 | 614 | 656 |
+| Disponibles (2 sources) | 48 | 335 | 383 |
+| Disponibles (1 source) | 0 | 13 | 13 |
+| Pris | 42 | 617 | 659 |
 | Contradictions | 10 | 5 | 15 |
-| Indéterminés | 0 | 34 | 34 |
+| Indéterminés | 0 | 30 | 30 |
 
-Vérifications par la seconde source (socialcal) : 1061.
+Vérifications par la seconde source (socialcal) : 1067.
 
 ## Les deux sources sont-elles indépendantes ?
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 448 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 453 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 433 (97 %) |
+| Accords | 438 (97 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -62,8 +62,8 @@ constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
 
 | Longueur | Pseudos testés | Déclarés libres |
 |---|---|---|
-| 4 caractères | 357 | 69 (19 %) |
-| 5 caractères | 683 | 306 (45 %) |
+| 4 caractères | 359 | 69 (19 %) |
+| 5 caractères | 687 | 307 (45 %) |
 | 6 caractères | 21 | 20 (95 %) |
 
 Le gradient est monotone : plus un pseudo est court, plus il est déjà pris. C'est
@@ -376,10 +376,10 @@ Aucun pseudo confirmé n'a jamais été archivé.
 285. **m7xih** — confirmé par 2 sources
 286. **m7xav** — confirmé par 2 sources
 287. **m7xak** — confirmé par 2 sources
-288. **m7xar** — 1 source
+288. **m7xar** — confirmé par 2 sources
 289. **m7xat** — confirmé par 2 sources
-290. **m7xaw** — 1 source
-291. **m7xex** — 1 source
+290. **m7xaw** — confirmé par 2 sources
+291. **m7xex** — confirmé par 2 sources
 292. **m7xen** — 1 source
 293. **m7xew** — 1 source
 294. **m7xok** — 1 source
@@ -432,10 +432,11 @@ Aucun pseudo confirmé n'a jamais été archivé.
 341. **m7vyx** — confirmé par 2 sources
 342. **m7vyr** — confirmé par 2 sources
 343. **m7vyh** — confirmé par 2 sources
-344. **m7vys** — confirmé par 2 sources
-345. **m7vyw** — confirmé par 2 sources
-346. **m7ziq** — confirmé par 2 sources
-347. **m7zix** — 1 source
+344. **m7vyj** — 1 source
+345. **m7vys** — confirmé par 2 sources
+346. **m7vyw** — confirmé par 2 sources
+347. **m7ziq** — confirmé par 2 sources
+348. **m7zix** — 1 source
 
 ### Liste m7ia
 
@@ -514,11 +515,11 @@ Ces pseudos ont reçu deux verdicts opposés. Aucun n'est retenu comme disponibl
 | `m7ei` | Disponible | Pris |
 | `m7ea` | Disponible | Pris |
 
-## Indéterminés (34)
+## Indéterminés (30)
 
 Interrogés, mais aucune réponse exploitable. À revérifier — surtout pas à considérer comme libres.
 
-`m7yy`, `m7qz`, `m7xz`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `m9ia`, `m7izi`, `m7awi`, `m7evu`, `m7ezi`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ony`, `m7uja`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xoj`, `m7xuv`, `m7xuz`, `m7xur`, `m7xus`, `m7vos`, `m7vyj`
+`m7yy`, `m7qz`, `m7xz`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `m9ia`, `m7izi`, `m7awi`, `m7evu`, `m7ezi`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ony`, `m7uja`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xuz`, `m7xus`, `m7vos`
 
 ## Liste m7ia — 100 identifiants
 
@@ -650,13 +651,13 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 17 | `m7is` | Pris | Pris | Pris | 21/08/2026 12:20:42 |
 | 18 | `m7iw` | Pris | Pris | Pris | 21/08/2026 12:21:03 |
 | 19 | `m7ai` | Pris | Pris | Pris | 21/08/2026 12:21:24 |
-| 20 | `m7aa` | Pris | Pris | Indéterminé | 28/08/2026 18:41:29 |
+| 20 | `m7aa` | Pris | Pris | Indéterminé | 28/08/2026 19:14:07 |
 | 21 | `m7ae` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:55:19 |
 | 22 | `m7ao` | Pris | Pris | Pris | 21/08/2026 12:22:48 |
 | 23 | `m7au` | Pris | Pris | Pris | 28/08/2026 15:01:24 |
 | 24 | `m7ay` | Pris | Pris | Pris | 23/08/2026 22:41:24 |
 | 25 | `m7aq` | Pris | Pris | Pris | 23/08/2026 22:42:25 |
-| 26 | `m7ax` | Pris | Pris | Indéterminé | 28/08/2026 18:42:31 |
+| 26 | `m7ax` | Pris | Pris | Pris | 28/08/2026 19:17:22 |
 | 27 | `m7av` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:05 |
 | 28 | `m7az` | Pris | Pris | Pris | 24/08/2026 00:24:24 |
 | 29 | `m7ak` | Pris | Pris | Pris | 23/08/2026 22:45:28 |
@@ -666,7 +667,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 33 | `m7ah` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:31 |
 | 34 | `m7aj` | Pris | Pris | Pris | 23/08/2026 22:48:31 |
 | 35 | `m7as` | Pris | Pris | Pris | 28/08/2026 15:03:28 |
-| 36 | `m7aw` | Pris | Pris | Indéterminé | 28/08/2026 18:43:32 |
+| 36 | `m7aw` | Pris | Pris | Pris | 28/08/2026 19:18:59 |
 | 37 | `m7ei` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:04 |
 | 38 | `m7ea` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:17 |
 | 39 | `m7ee` | Pris | — | Pris | 21/08/2026 12:53:15 |
@@ -976,7 +977,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 343 | `y7ia` | Pris | — | Pris | 22/08/2026 01:53:08 |
 | 344 | `m2ia` | Pris | — | Pris | 22/08/2026 01:54:45 |
 | 345 | `m4ia` | Pris | — | Pris | 22/08/2026 01:59:36 |
-| 346 | `m9ia` | Indéterminé | — | Indéterminé | 28/08/2026 18:51:42 |
+| 346 | `m9ia` | Indéterminé | — | Indéterminé | 28/08/2026 18:52:43 |
 | 347 | `m3ia` | Pris | — | Pris | 22/08/2026 02:06:04 |
 | 348 | `m6ia` | Pris | — | Pris | 28/08/2026 12:47:15 |
 | 349 | `m5ia` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 13:16:51 |
@@ -1243,7 +1244,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 610 | `m7one` | Pris | — | Pris | 22/08/2026 21:00:56 |
 | 611 | `m7ono` | Pris | — | Pris | 22/08/2026 21:03:17 |
 | 612 | `m7onu` | Pris | — | Pris | 22/08/2026 21:05:38 |
-| 613 | `m7ony` | Indéterminé | — | Indéterminé | 28/08/2026 18:12:59 |
+| 613 | `m7ony` | Indéterminé | — | Indéterminé | 28/08/2026 18:53:46 |
 | 614 | `m7ohi` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 19:07:31 |
 | 615 | `m7oha` | Pris | — | Pris | 22/08/2026 21:11:32 |
 | 616 | `m7ohe` | Disponible (2 sources) | Disponible | Disponible | 24/08/2026 19:16:16 |
@@ -1323,7 +1324,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 690 | `m7uhu` | Pris | — | Pris | 23/08/2026 07:02:27 |
 | 691 | `m7uhy` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 08:58:33 |
 | 692 | `m7uji` | Pris | — | Pris | 23/08/2026 07:04:29 |
-| 693 | `m7uja` | Indéterminé | — | Indéterminé | 28/08/2026 18:14:00 |
+| 693 | `m7uja` | Indéterminé | — | Indéterminé | 28/08/2026 18:54:46 |
 | 694 | `m7uje` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 09:06:42 |
 | 695 | `m7ujo` | Disponible (2 sources) | Disponible | Disponible | 25/08/2026 09:14:52 |
 | 696 | `m7uju` | Pris | — | Pris | 23/08/2026 07:10:34 |
@@ -1424,7 +1425,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 791 | `m7qij` | Pris | — | Pris | 23/08/2026 09:48:55 |
 | 792 | `m7qis` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 04:43:16 |
 | 793 | `m7qiw` | Pris | — | Pris | 23/08/2026 09:53:00 |
-| 794 | `m7qaq` | Indéterminé | — | Indéterminé | 28/08/2026 18:16:03 |
+| 794 | `m7qaq` | Indéterminé | — | Indéterminé | 28/08/2026 18:55:47 |
 | 795 | `m7qax` | Pris | — | Pris | 28/08/2026 14:00:25 |
 | 796 | `m7qav` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 04:51:25 |
 | 797 | `m7qaz` | Pris | — | Pris | 23/08/2026 10:03:08 |
@@ -1436,7 +1437,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 803 | `m7qaj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:07:40 |
 | 804 | `m7qas` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:15:47 |
 | 805 | `m7qaw` | Pris | — | Pris | 28/08/2026 14:02:27 |
-| 806 | `m7qeq` | Indéterminé | — | Indéterminé | 28/08/2026 18:17:04 |
+| 806 | `m7qeq` | Indéterminé | — | Indéterminé | 28/08/2026 18:57:49 |
 | 807 | `m7qex` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:23:55 |
 | 808 | `m7qev` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:32:03 |
 | 809 | `m7qez` | Pris | — | Pris | 23/08/2026 10:25:27 |
@@ -1444,7 +1445,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 811 | `m7qer` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 16:40:30 |
 | 812 | `m7qet` | Pris | — | Pris | 23/08/2026 10:30:32 |
 | 813 | `m7qen` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:48:15 |
-| 814 | `m7qeh` | Indéterminé | — | Indéterminé | 28/08/2026 18:18:05 |
+| 814 | `m7qeh` | Indéterminé | — | Indéterminé | 28/08/2026 18:58:50 |
 | 815 | `m7qej` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 05:56:33 |
 | 816 | `m7qes` | Pris | — | Pris | 23/08/2026 10:37:38 |
 | 817 | `m7qew` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 06:04:42 |
@@ -1458,7 +1459,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 825 | `m7qon` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 06:45:32 |
 | 826 | `m7qoh` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 16:50:39 |
 | 827 | `m7qoj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 06:53:39 |
-| 828 | `m7qos` | Indéterminé | — | Indéterminé | 28/08/2026 18:19:07 |
+| 828 | `m7qos` | Indéterminé | — | Indéterminé | 28/08/2026 18:59:51 |
 | 829 | `m7qow` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:01:57 |
 | 830 | `m7quq` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:10:05 |
 | 831 | `m7qux` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 07:18:32 |
@@ -1475,7 +1476,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 842 | `m7qyq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 18:06:45 |
 | 843 | `m7qyx` | Pris | — | Pris | 23/08/2026 11:32:26 |
 | 844 | `m7qyv` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 18:27:06 |
-| 845 | `m7qyz` | Indéterminé | — | Indéterminé | 28/08/2026 18:20:08 |
+| 845 | `m7qyz` | Indéterminé | — | Indéterminé | 28/08/2026 19:00:52 |
 | 846 | `m7qyk` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 08:56:57 |
 | 847 | `m7qyr` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:05:10 |
 | 848 | `m7qyt` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 09:13:22 |
@@ -1501,15 +1502,15 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 868 | `m7xav` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:18:52 |
 | 869 | `m7xaz` | Pris | — | Pris | 23/08/2026 12:32:19 |
 | 870 | `m7xak` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 18:37:14 |
-| 871 | `m7xar` | Disponible (1 source) | Indéterminé | Disponible | 28/08/2026 18:47:24 |
+| 871 | `m7xar` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 18:57:36 |
 | 872 | `m7xat` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:26:59 |
 | 873 | `m7xan` | Pris | — | Pris | 23/08/2026 12:40:26 |
 | 874 | `m7xah` | Pris | — | Pris | 28/08/2026 14:20:45 |
 | 875 | `m7xaj` | Pris | — | Pris | 23/08/2026 12:46:32 |
 | 876 | `m7xas` | Pris | — | Pris | 23/08/2026 12:49:35 |
-| 877 | `m7xaw` | Disponible (1 source) | — | Disponible | 28/08/2026 18:24:12 |
+| 877 | `m7xaw` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 19:07:47 |
 | 878 | `m7xeq` | Pris | — | Pris | 23/08/2026 12:53:39 |
-| 879 | `m7xex` | Disponible (1 source) | — | Disponible | 28/08/2026 14:22:48 |
+| 879 | `m7xex` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 19:18:00 |
 | 880 | `m7xev` | Pris | — | Pris | 23/08/2026 12:57:42 |
 | 881 | `m7xez` | Pris | — | Pris | 23/08/2026 12:59:44 |
 | 882 | `m7xek` | Pris | — | Pris | 23/08/2026 13:02:48 |
@@ -1529,20 +1530,20 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 896 | `m7xot` | Pris | — | Pris | 23/08/2026 13:53:39 |
 | 897 | `m7xon` | Pris | — | Pris | 23/08/2026 13:55:16 |
 | 898 | `m7xoh` | Pris | — | Pris | 28/08/2026 14:32:57 |
-| 899 | `m7xoj` | Indéterminé | — | Indéterminé | 28/08/2026 18:28:17 |
+| 899 | `m7xoj` | Pris | — | Pris | 28/08/2026 19:01:52 |
 | 900 | `m7xos` | Pris | — | Pris | 28/08/2026 14:34:59 |
 | 901 | `m7xow` | Disponible (1 source) | — | Disponible | 28/08/2026 14:36:01 |
 | 902 | `m7xuq` | Pris | — | Pris | 23/08/2026 14:16:17 |
 | 903 | `m7xux` | Pris | — | Pris | 23/08/2026 14:21:27 |
-| 904 | `m7xuv` | Indéterminé | — | Indéterminé | 28/08/2026 18:29:18 |
-| 905 | `m7xuz` | Indéterminé | — | Indéterminé | 28/08/2026 18:30:19 |
+| 904 | `m7xuv` | Pris | — | Pris | 28/08/2026 19:02:53 |
+| 905 | `m7xuz` | Indéterminé | — | Indéterminé | 28/08/2026 19:04:56 |
 | 906 | `m7xuk` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:35:08 |
-| 907 | `m7xur` | Indéterminé | — | Indéterminé | 28/08/2026 18:31:20 |
+| 907 | `m7xur` | Pris | — | Pris | 28/08/2026 19:05:57 |
 | 908 | `m7xut` | Pris | — | Pris | 23/08/2026 22:58:00 |
 | 909 | `m7xun` | Pris | — | Pris | 23/08/2026 20:55:24 |
 | 910 | `m7xuh` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:43:20 |
 | 911 | `m7xuj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:51:40 |
-| 912 | `m7xus` | Indéterminé | — | Indéterminé | 28/08/2026 18:32:21 |
+| 912 | `m7xus` | Indéterminé | — | Indéterminé | 28/08/2026 19:08:00 |
 | 913 | `m7xuw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:59:51 |
 | 914 | `m7xyq` | Pris | — | Pris | 23/08/2026 21:00:31 |
 | 915 | `m7xyx` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:32:12 |
@@ -1602,7 +1603,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 969 | `m7von` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:23:43 |
 | 970 | `m7voh` | Pris | — | Pris | 28/08/2026 14:48:13 |
 | 971 | `m7voj` | Pris | — | Pris | 28/08/2026 14:49:14 |
-| 972 | `m7vos` | Indéterminé | — | Indéterminé | 28/08/2026 18:36:25 |
+| 972 | `m7vos` | Indéterminé | — | Indéterminé | 28/08/2026 19:10:02 |
 | 973 | `m7vow` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:48:25 |
 | 974 | `m7vuq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 01:40:22 |
 | 975 | `m7vux` | Pris | — | Pris | 23/08/2026 22:05:02 |
@@ -1625,7 +1626,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 992 | `m7vyt` | Pris | — | Pris | 23/08/2026 23:53:16 |
 | 993 | `m7vyn` | Pris | — | Pris | 28/08/2026 14:53:18 |
 | 994 | `m7vyh` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 10:54:08 |
-| 995 | `m7vyj` | Indéterminé | — | Indéterminé | 28/08/2026 18:37:26 |
+| 995 | `m7vyj` | Disponible (1 source) | — | Disponible | 28/08/2026 19:12:04 |
 | 996 | `m7vys` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:14:29 |
 | 997 | `m7vyw` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:34:48 |
