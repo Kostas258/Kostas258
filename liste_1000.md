@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 19:51:23 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 20:51:38 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 337 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 11 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 342 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 6 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 617 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 30 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 337
+## DISPONIBLE (2 sources) — 342
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -316,6 +316,8 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 879 | `m7xex` | available | available | 28/08/2026 19:18:00 |
 | 885 | `m7xen` | available | available | 28/08/2026 19:28:09 |
 | 889 | `m7xew` | available | available | 28/08/2026 19:48:46 |
+| 894 | `m7xok` | available | available | 28/08/2026 19:59:06 |
+| 901 | `m7xow` | available | available | 28/08/2026 20:09:22 |
 | 906 | `m7xuk` | available | available | 26/08/2026 10:35:08 |
 | 910 | `m7xuh` | available | available | 26/08/2026 10:43:20 |
 | 911 | `m7xuj` | available | available | 26/08/2026 10:51:40 |
@@ -323,6 +325,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 915 | `m7xyx` | available | available | 26/08/2026 12:32:12 |
 | 916 | `m7xyv` | available | available | 26/08/2026 12:40:27 |
 | 918 | `m7xyk` | available | available | 26/08/2026 12:48:48 |
+| 922 | `m7xyh` | available | available | 28/08/2026 20:30:03 |
 | 923 | `m7xyj` | available | available | 26/08/2026 12:56:58 |
 | 925 | `m7xyw` | available | available | 26/08/2026 16:05:08 |
 | 926 | `m7viq` | available | available | 27/08/2026 13:33:27 |
@@ -335,9 +338,11 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 941 | `m7vaz` | available | available | 27/08/2026 14:37:18 |
 | 944 | `m7vat` | available | available | 27/08/2026 14:45:38 |
 | 945 | `m7van` | available | available | 27/08/2026 14:53:55 |
+| 947 | `m7vaj` | available | available | 28/08/2026 20:40:31 |
 | 950 | `m7veq` | available | available | 27/08/2026 15:02:03 |
 | 953 | `m7vez` | available | available | 27/08/2026 15:10:09 |
 | 954 | `m7vek` | available | available | 27/08/2026 15:18:17 |
+| 955 | `m7ver` | available | available | 28/08/2026 20:50:38 |
 | 956 | `m7vet` | available | available | 27/08/2026 15:26:26 |
 | 959 | `m7vej` | available | available | 27/08/2026 15:42:47 |
 | 962 | `m7voq` | available | available | 27/08/2026 15:50:54 |
@@ -361,15 +366,10 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
 
-## DISPONIBLE (1 source) — 11
+## DISPONIBLE (1 source) — 6
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 894 | `m7xok` | — | available | 28/08/2026 14:30:56 |
-| 901 | `m7xow` | — | available | 28/08/2026 14:36:01 |
-| 922 | `m7xyh` | — | available | 28/08/2026 14:41:06 |
-| 947 | `m7vaj` | — | available | 28/08/2026 14:44:09 |
-| 955 | `m7ver` | — | available | 28/08/2026 18:34:23 |
 | 958 | `m7veh` | — | available | 28/08/2026 18:35:24 |
 | 961 | `m7vew` | — | available | 28/08/2026 14:47:11 |
 | 980 | `m7vut` | — | available | 28/08/2026 14:51:16 |

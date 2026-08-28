@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 19:51:23 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 19:48:46 (heure de Paris)
+**Généré le :** 28/08/2026 20:51:38 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 20:50:38 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 48 | 337 | 385 |
-| Disponibles (1 source) | 0 | 11 | 11 |
+| Disponibles (2 sources) | 48 | 342 | 390 |
+| Disponibles (1 source) | 0 | 6 | 6 |
 | Pris | 42 | 617 | 659 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 0 | 30 | 30 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 1067.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 455 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 460 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 440 (97 %) |
+| Accords | 445 (97 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -382,8 +382,8 @@ Aucun pseudo confirmé n'a jamais été archivé.
 291. **m7xex** — confirmé par 2 sources
 292. **m7xen** — confirmé par 2 sources
 293. **m7xew** — confirmé par 2 sources
-294. **m7xok** — 1 source
-295. **m7xow** — 1 source
+294. **m7xok** — confirmé par 2 sources
+295. **m7xow** — confirmé par 2 sources
 296. **m7xuk** — confirmé par 2 sources
 297. **m7xuh** — confirmé par 2 sources
 298. **m7xuj** — confirmé par 2 sources
@@ -391,7 +391,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 300. **m7xyx** — confirmé par 2 sources
 301. **m7xyv** — confirmé par 2 sources
 302. **m7xyk** — confirmé par 2 sources
-303. **m7xyh** — 1 source
+303. **m7xyh** — confirmé par 2 sources
 304. **m7xyj** — confirmé par 2 sources
 305. **m7xyw** — confirmé par 2 sources
 306. **m7viq** — confirmé par 2 sources
@@ -404,11 +404,11 @@ Aucun pseudo confirmé n'a jamais été archivé.
 313. **m7vaz** — confirmé par 2 sources
 314. **m7vat** — confirmé par 2 sources
 315. **m7van** — confirmé par 2 sources
-316. **m7vaj** — 1 source
+316. **m7vaj** — confirmé par 2 sources
 317. **m7veq** — confirmé par 2 sources
 318. **m7vez** — confirmé par 2 sources
 319. **m7vek** — confirmé par 2 sources
-320. **m7ver** — 1 source
+320. **m7ver** — confirmé par 2 sources
 321. **m7vet** — confirmé par 2 sources
 322. **m7veh** — 1 source
 323. **m7vej** — confirmé par 2 sources
@@ -1525,14 +1525,14 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 891 | `m7xox` | Pris | — | Pris | 28/08/2026 14:29:55 |
 | 892 | `m7xov` | Pris | — | Pris | 23/08/2026 13:34:16 |
 | 893 | `m7xoz` | Pris | — | Pris | 23/08/2026 13:39:07 |
-| 894 | `m7xok` | Disponible (1 source) | — | Disponible | 28/08/2026 14:30:56 |
+| 894 | `m7xok` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 19:59:06 |
 | 895 | `m7xor` | Pris | — | Pris | 28/08/2026 18:27:15 |
 | 896 | `m7xot` | Pris | — | Pris | 23/08/2026 13:53:39 |
 | 897 | `m7xon` | Pris | — | Pris | 23/08/2026 13:55:16 |
 | 898 | `m7xoh` | Pris | — | Pris | 28/08/2026 14:32:57 |
 | 899 | `m7xoj` | Pris | — | Pris | 28/08/2026 19:01:52 |
 | 900 | `m7xos` | Pris | — | Pris | 28/08/2026 14:34:59 |
-| 901 | `m7xow` | Disponible (1 source) | — | Disponible | 28/08/2026 14:36:01 |
+| 901 | `m7xow` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 20:09:22 |
 | 902 | `m7xuq` | Pris | — | Pris | 23/08/2026 14:16:17 |
 | 903 | `m7xux` | Pris | — | Pris | 23/08/2026 14:21:27 |
 | 904 | `m7xuv` | Pris | — | Pris | 28/08/2026 19:02:53 |
@@ -1553,7 +1553,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 919 | `m7xyr` | Pris | — | Pris | 23/08/2026 21:05:37 |
 | 920 | `m7xyt` | Pris | — | Pris | 23/08/2026 21:06:38 |
 | 921 | `m7xyn` | Pris | — | Pris | 23/08/2026 23:06:09 |
-| 922 | `m7xyh` | Disponible (1 source) | — | Disponible | 28/08/2026 14:41:06 |
+| 922 | `m7xyh` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 20:30:03 |
 | 923 | `m7xyj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:56:58 |
 | 924 | `m7xys` | Pris | — | Pris | 23/08/2026 21:10:42 |
 | 925 | `m7xyw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 16:05:08 |
@@ -1578,7 +1578,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 944 | `m7vat` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 14:45:38 |
 | 945 | `m7van` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 14:53:55 |
 | 946 | `m7vah` | Pris | — | Pris | 23/08/2026 23:23:28 |
-| 947 | `m7vaj` | Disponible (1 source) | — | Disponible | 28/08/2026 14:44:09 |
+| 947 | `m7vaj` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 20:40:31 |
 | 948 | `m7vas` | Pris | — | Pris | 23/08/2026 21:37:31 |
 | 949 | `m7vaw` | Pris | — | Pris | 23/08/2026 23:27:32 |
 | 950 | `m7veq` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 15:02:03 |
@@ -1586,7 +1586,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 952 | `m7vev` | Pris | — | Pris | 23/08/2026 21:41:36 |
 | 953 | `m7vez` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 15:10:09 |
 | 954 | `m7vek` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 15:18:17 |
-| 955 | `m7ver` | Disponible (1 source) | — | Disponible | 28/08/2026 18:34:23 |
+| 955 | `m7ver` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 20:50:38 |
 | 956 | `m7vet` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 15:26:26 |
 | 957 | `m7ven` | Pris | — | Pris | 23/08/2026 21:46:41 |
 | 958 | `m7veh` | Disponible (1 source) | — | Disponible | 28/08/2026 18:35:24 |

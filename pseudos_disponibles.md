@@ -1,18 +1,18 @@
 # Pseudos Instagram disponibles
 
-**Liste provisoire — la vérification n'est pas finie.** 11 pseudo(s) attendent une confirmation par la seconde source et 30 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
+**Liste provisoire — la vérification n'est pas finie.** 6 pseudo(s) attendent une confirmation par la seconde source et 30 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
 
-Généré le 19:51:23 (heure de Paris).
+Généré le 20:51:39 (heure de Paris).
 
 | | nombre |
 |---|---|
-| Disponibles, confirmés par 2 sources | **385** |
-| Disponibles, vus par 1 source seulement | 11 |
+| Disponibles, confirmés par 2 sources | **390** |
+| Disponibles, vus par 1 source seulement | 6 |
 | Pris | 659 |
 | Contradictions entre sources | 15 |
 | Indéterminés | 30 |
 
-## Confirmés par 2 sources — 385
+## Confirmés par 2 sources — 390
 
 socialcal et vervox disent tous deux « disponible ». C'est le niveau de
 preuve le plus élevé atteint ici.
@@ -360,52 +360,57 @@ preuve le plus élevé atteint ici.
 | 339 | `m7xex` | liste de 1000 |
 | 340 | `m7xen` | liste de 1000 |
 | 341 | `m7xew` | liste de 1000 |
-| 342 | `m7xuk` | liste de 1000 |
-| 343 | `m7xuh` | liste de 1000 |
-| 344 | `m7xuj` | liste de 1000 |
-| 345 | `m7xuw` | liste de 1000 |
-| 346 | `m7xyx` | liste de 1000 |
-| 347 | `m7xyv` | liste de 1000 |
-| 348 | `m7xyk` | liste de 1000 |
-| 349 | `m7xyj` | liste de 1000 |
-| 350 | `m7xyw` | liste de 1000 |
-| 351 | `m7viq` | liste de 1000 |
-| 352 | `m7vir` | liste de 1000 |
-| 353 | `m7vin` | liste de 1000 |
-| 354 | `m7vih` | liste de 1000 |
-| 355 | `m7vij` | liste de 1000 |
-| 356 | `m7vax` | liste de 1000 |
-| 357 | `m7vav` | liste de 1000 |
-| 358 | `m7vaz` | liste de 1000 |
-| 359 | `m7vat` | liste de 1000 |
-| 360 | `m7van` | liste de 1000 |
-| 361 | `m7veq` | liste de 1000 |
-| 362 | `m7vez` | liste de 1000 |
-| 363 | `m7vek` | liste de 1000 |
-| 364 | `m7vet` | liste de 1000 |
-| 365 | `m7vej` | liste de 1000 |
-| 366 | `m7voq` | liste de 1000 |
-| 367 | `m7vov` | liste de 1000 |
-| 368 | `m7voz` | liste de 1000 |
-| 369 | `m7vot` | liste de 1000 |
-| 370 | `m7von` | liste de 1000 |
-| 371 | `m7vow` | liste de 1000 |
-| 372 | `m7vuq` | liste de 1000 |
-| 373 | `m7vuv` | liste de 1000 |
-| 374 | `m7vuz` | liste de 1000 |
-| 375 | `m7vuk` | liste de 1000 |
-| 376 | `m7vur` | liste de 1000 |
-| 377 | `m7vuh` | liste de 1000 |
-| 378 | `m7vuj` | liste de 1000 |
-| 379 | `m7vuw` | liste de 1000 |
-| 380 | `m7vyx` | liste de 1000 |
-| 381 | `m7vyr` | liste de 1000 |
-| 382 | `m7vyh` | liste de 1000 |
-| 383 | `m7vys` | liste de 1000 |
-| 384 | `m7vyw` | liste de 1000 |
-| 385 | `m7ziq` | liste de 1000 |
+| 342 | `m7xok` | liste de 1000 |
+| 343 | `m7xow` | liste de 1000 |
+| 344 | `m7xuk` | liste de 1000 |
+| 345 | `m7xuh` | liste de 1000 |
+| 346 | `m7xuj` | liste de 1000 |
+| 347 | `m7xuw` | liste de 1000 |
+| 348 | `m7xyx` | liste de 1000 |
+| 349 | `m7xyv` | liste de 1000 |
+| 350 | `m7xyk` | liste de 1000 |
+| 351 | `m7xyh` | liste de 1000 |
+| 352 | `m7xyj` | liste de 1000 |
+| 353 | `m7xyw` | liste de 1000 |
+| 354 | `m7viq` | liste de 1000 |
+| 355 | `m7vir` | liste de 1000 |
+| 356 | `m7vin` | liste de 1000 |
+| 357 | `m7vih` | liste de 1000 |
+| 358 | `m7vij` | liste de 1000 |
+| 359 | `m7vax` | liste de 1000 |
+| 360 | `m7vav` | liste de 1000 |
+| 361 | `m7vaz` | liste de 1000 |
+| 362 | `m7vat` | liste de 1000 |
+| 363 | `m7van` | liste de 1000 |
+| 364 | `m7vaj` | liste de 1000 |
+| 365 | `m7veq` | liste de 1000 |
+| 366 | `m7vez` | liste de 1000 |
+| 367 | `m7vek` | liste de 1000 |
+| 368 | `m7ver` | liste de 1000 |
+| 369 | `m7vet` | liste de 1000 |
+| 370 | `m7vej` | liste de 1000 |
+| 371 | `m7voq` | liste de 1000 |
+| 372 | `m7vov` | liste de 1000 |
+| 373 | `m7voz` | liste de 1000 |
+| 374 | `m7vot` | liste de 1000 |
+| 375 | `m7von` | liste de 1000 |
+| 376 | `m7vow` | liste de 1000 |
+| 377 | `m7vuq` | liste de 1000 |
+| 378 | `m7vuv` | liste de 1000 |
+| 379 | `m7vuz` | liste de 1000 |
+| 380 | `m7vuk` | liste de 1000 |
+| 381 | `m7vur` | liste de 1000 |
+| 382 | `m7vuh` | liste de 1000 |
+| 383 | `m7vuj` | liste de 1000 |
+| 384 | `m7vuw` | liste de 1000 |
+| 385 | `m7vyx` | liste de 1000 |
+| 386 | `m7vyr` | liste de 1000 |
+| 387 | `m7vyh` | liste de 1000 |
+| 388 | `m7vys` | liste de 1000 |
+| 389 | `m7vyw` | liste de 1000 |
+| 390 | `m7ziq` | liste de 1000 |
 
-## Vus par une seule source — 11
+## Vus par une seule source — 6
 
 Une seule source a répondu. À traiter comme une piste, pas comme un acquis :
 vervox sur-déclare la disponibilité, donc un « disponible » vervox non
@@ -413,17 +418,12 @@ corroboré est le cas le plus fragile.
 
 | # | pseudo | source | origine |
 |---|---|---|---|
-| 1 | `m7xok` | socialcal | liste de 1000 |
-| 2 | `m7xow` | socialcal | liste de 1000 |
-| 3 | `m7xyh` | socialcal | liste de 1000 |
-| 4 | `m7vaj` | socialcal | liste de 1000 |
-| 5 | `m7ver` | socialcal | liste de 1000 |
-| 6 | `m7veh` | socialcal | liste de 1000 |
-| 7 | `m7vew` | socialcal | liste de 1000 |
-| 8 | `m7vut` | socialcal | liste de 1000 |
-| 9 | `m7vun` | socialcal | liste de 1000 |
-| 10 | `m7vyj` | socialcal | liste de 1000 |
-| 11 | `m7zix` | socialcal | liste de 1000 |
+| 1 | `m7veh` | socialcal | liste de 1000 |
+| 2 | `m7vew` | socialcal | liste de 1000 |
+| 3 | `m7vut` | socialcal | liste de 1000 |
+| 4 | `m7vun` | socialcal | liste de 1000 |
+| 5 | `m7vyj` | socialcal | liste de 1000 |
+| 6 | `m7zix` | socialcal | liste de 1000 |
 
 ## Ce que cette liste ne dit pas
 
