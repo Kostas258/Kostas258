@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 19:30:55 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 19:51:23 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 336 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 12 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 337 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 11 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 617 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 30 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 336
+## DISPONIBLE (2 sources) — 337
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -315,6 +315,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 877 | `m7xaw` | available | available | 28/08/2026 19:07:47 |
 | 879 | `m7xex` | available | available | 28/08/2026 19:18:00 |
 | 885 | `m7xen` | available | available | 28/08/2026 19:28:09 |
+| 889 | `m7xew` | available | available | 28/08/2026 19:48:46 |
 | 906 | `m7xuk` | available | available | 26/08/2026 10:35:08 |
 | 910 | `m7xuh` | available | available | 26/08/2026 10:43:20 |
 | 911 | `m7xuj` | available | available | 26/08/2026 10:51:40 |
@@ -360,11 +361,10 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
 
-## DISPONIBLE (1 source) — 12
+## DISPONIBLE (1 source) — 11
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 889 | `m7xew` | — | available | 28/08/2026 18:26:14 |
 | 894 | `m7xok` | — | available | 28/08/2026 14:30:56 |
 | 901 | `m7xow` | — | available | 28/08/2026 14:36:01 |
 | 922 | `m7xyh` | — | available | 28/08/2026 14:41:06 |
