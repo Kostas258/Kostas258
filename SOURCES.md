@@ -79,6 +79,37 @@ mince : socialcal et vervox interrogent bien Instagram depuis leur propre
 infrastructure. Ce qui les distingue en pratique est qu'ils sont gratuits, sans
 compte, dédiés à la disponibilité, et déjà mesurés ici sur plus de mille pseudos.
 
+### Onze URL soumises le 28/08 — toutes écartées, et l'outil qui les trie
+
+`scripts/probe_source.sh <url>` fait le triage en une commande. Résultats :
+
+| URL | Mesure | Verdict |
+|---|---|---|
+| dnsrobot.net `?u=` | **237 286 octets identiques** pour les trois témoins : le paramètre ne déclenche aucun rendu serveur | même application cliente, pas de nouvelle voie |
+| miniwebtool.com | vrai formulaire Django (POST, `csrfmiddlewaretoken`) — la meilleure piste — mais `mwt_run_token` est injecté par JS via `/_api/usage/` : HTTP 400 sans lui, et 400 « enable cookie » sur l'endpoint de jeton | mur du navigateur |
+| toolsbatch.com | tailles différentes, mais l'écart correspond au pseudo échoé ; « disponible/pris » sont des chaînes d'interface présentes à l'identique sur les trois | Next.js sans verdict serveur |
+| creatorflow.so, creatorsjet.com | **octet pour octet identiques** sur les trois témoins | aucun rendu serveur |
+| postnext.io | 66 247 octets, trois fois | idem |
+| whatismyname.org, anyonlinetool.com | identiques une fois l'écho du pseudo retiré | idem |
+| instausername.com | écart pris/libre 37 o, **bruit propre de la page 31 o** | l'écart est du bruit |
+| plixi.com | écart 252 o, **bruit 176 o** | idem |
+| namechk.com | HTTP 403 | fermée |
+
+**Deux pièges que ce triage a fait apparaître, et qui valent pour la suite.**
+
+1. *Le témoin ne doit pas être un mot de la page.* La mesure retire le pseudo
+   avant de peser la page. Avec `instagram` comme témoin « pris », on ampute les
+   centaines d'occurrences du nom de la plateforme : cinq sources rendant des
+   pages rigoureusement identiques ont d'abord été classées candidates. Témoin
+   remplacé par `cristiano`, et le script refuse désormais un témoin présent
+   dans l'URL.
+2. *Une taille différente ne prouve pas un verdict.* Horodatages, nonces,
+   publicités : deux appels à la même page ne rendent pas les mêmes octets.
+   `instausername` et `plixi` ont survécu au premier test pour cette seule
+   raison. Le script demande donc chaque témoin deux fois pour mesurer le bruit
+   propre de la page, et n'annonce une candidate que si l'écart le dépasse
+   nettement.
+
 ### Threads réexaminé le 28/08 — négatif, et instructif
 
 Threads partage le namespace d'Instagram : le handle Threads **est** le handle

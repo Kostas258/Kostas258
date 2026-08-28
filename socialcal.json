@@ -533,13 +533,13 @@
     "jao2c": {
       "site": "socialcal",
       "username": "jao2c",
-      "verdict": "unknown",
-      "confidence": "medium",
-      "cached": false,
-      "api": "{\"success\":true,\"handle\":\"jao2c\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/jao2c/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T22:09:30.248Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T22:09:28.089Z",
-      "tries": 3
+      "verdict": "taken",
+      "confidence": "high",
+      "cached": true,
+      "api": "{\"success\":true,\"handle\":\"jao2c\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/jao2c/\",\"checkedAt\":\"2026-08-28T08:57:40.072Z\",\"cached\":true}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:57:21.653Z",
+      "tries": 4
     },
     "jre5e": {
       "site": "socialcal",
@@ -580,10 +580,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"x7eec\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/x7eec/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T22:12:44.500Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T22:12:42.288Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"x7eec\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/x7eec/\",\"checkedAt\":\"2026-08-28T12:58:24.043Z\",\"cached\":false}}}",
+      "error": "status=available confidence=medium",
+      "checkedAt": "2026-08-28T12:58:22.088Z",
+      "tries": 4
     },
     "b3iid": {
       "site": "socialcal",
@@ -921,10 +921,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7aa\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7aa/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T22:18:18.429Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7aa\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7aa/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-28T13:00:25.154Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T22:18:16.224Z",
-      "tries": 3
+      "checkedAt": "2026-08-28T13:00:24.365Z",
+      "tries": 4
     },
     "m7ao": {
       "site": "socialcal",
@@ -1132,8 +1132,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"voz9a\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/voz9a/\",\"checkedAt\":\"2026-08-28T09:17:48.766Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T09:43:31.575Z",
-      "tries": 31
+      "checkedAt": "2026-08-28T12:59:23.871Z",
+      "tries": 32
     },
     "j9eovo": {
       "site": "socialcal",
@@ -11731,13 +11731,13 @@
     "m7vun": {
       "site": "socialcal",
       "username": "m7vun",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "available",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7vun\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vun/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T21:52:17.251Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T21:52:15.088Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7vun\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7vun/\",\"checkedAt\":\"2026-08-28T12:52:18.626Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:52:17.663Z",
+      "tries": 4
     },
     "m7vuh": {
       "site": "socialcal",
@@ -11863,13 +11863,13 @@
     "m7vyn": {
       "site": "socialcal",
       "username": "m7vyn",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7vyn\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vyn/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T21:56:32.208Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T21:56:30.357Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7vyn\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7vyn/\",\"checkedAt\":\"2026-08-28T12:53:19.357Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:53:18.507Z",
+      "tries": 4
     },
     "m7vyh": {
       "site": "socialcal",
@@ -11888,10 +11888,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7vyj\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vyj/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T21:59:47.131Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7vyj\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7vyj/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-28T12:54:20.063Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T21:59:44.389Z",
-      "tries": 3
+      "checkedAt": "2026-08-28T12:54:19.229Z",
+      "tries": 4
     },
     "m7vys": {
       "site": "socialcal",
@@ -11929,13 +11929,13 @@
     "m7zix": {
       "site": "socialcal",
       "username": "m7zix",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "available",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7zix\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7zix/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T22:03:01.666Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T22:02:59.211Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7zix\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7zix/\",\"checkedAt\":\"2026-08-28T12:55:20.790Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T12:55:19.936Z",
+      "tries": 4
     },
     "m7ziv": {
       "site": "socialcal",
@@ -11943,10 +11943,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7ziv\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7ziv/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-23T22:06:16.159Z\",\"cached\":false}}}",
+      "api": "{\"success\":true,\"handle\":\"m7ziv\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7ziv/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-28T12:56:21.791Z\",\"cached\":false}}}",
       "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-23T22:06:13.808Z",
-      "tries": 3
+      "checkedAt": "2026-08-28T12:56:20.663Z",
+      "tries": 4
     },
     "m7ay": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T12:51:17.598Z"
+  "updatedAt": "2026-08-28T13:00:24.949Z"
 }
