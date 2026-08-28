@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 343,
+  "checked": 344,
   "available": [
     "m7ia",
     "m7iy",
@@ -1317,7 +1317,8 @@
     "m7ws",
     "m5ia",
     "m7iza",
-    "m7axo"
+    "m7axo",
+    "m7eve"
   ],
   "results": {
     "m7ii": {
@@ -4676,7 +4677,17 @@
       "checkedAt": "2026-08-28T11:47:16.395Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7eve": {
+      "site": "vervox",
+      "username": "m7eve",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eve\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eve semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T11:57:29.391Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-28T11:47:29.282Z"
+  "updatedAt": "2026-08-28T11:57:35.577Z"
 }

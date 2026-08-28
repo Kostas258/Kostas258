@@ -42,7 +42,39 @@ contourner un blocage visant cette adresse.
 | Apify, Zyla, Bright Data, HikerAPI, SearchAPI | Non testées, et c'est volontaire. Ce sont des marketplaces de scraping dont le service vendu est précisément le pool d'IP. Les appeler reviendrait à louer l'IP de rebond refusée ailleurs. | Écartées sur le critère, sans dépense de requête. |
 
 Aucune troisième source retenue. Le couple socialcal + vervox reste le dispositif
-complet, et les 111 indéterminés restent indéterminés.
+complet, et les indéterminés restent indéterminés.
+
+### Threads réexaminé le 28/08 — négatif, et instructif
+
+Threads partage le namespace d'Instagram : le handle Threads **est** le handle
+Instagram, édité depuis Instagram. La piste méritait donc mieux qu'un coup d'oeil
+au code HTTP, et une première sonde a semblé la valider :
+
+| Témoin | URL finale | Titre |
+|---|---|---|
+| `instagram` (pris) | `/@instagram` | `Instagram (@instagram) • Threads` |
+| `zqv7xkq9wzqjj4` (libre) | **`/login/`** | `Threads • Log in` |
+| `m7yy` (indéterminé) | `/@m7yy` | `M (@m7yy) • Threads` |
+
+Trois témoins, trois comportements distincts : le protocole passait. **Il avait
+tort.** Deux mesures l'ont démoli :
+
+1. **À l'échelle.** 20 pseudos — 10 que nos deux sources donnent pris, 10 qu'elles
+   donnent libres — ont tous redirigé vers `/login`. Un signal qui répond pareil
+   aux deux populations ne sépare rien.
+2. **Dans le temps.** `m7eta` a répondu `/login` puis `/@m7eta` à dix minutes
+   d'intervalle. Espacés à 8 s, les mêmes pseudos répondent tous `profil`,
+   titre `Threads`, y compris le témoin certainement libre. Groupés à 3 s, tous
+   répondent `login`.
+
+La redirection vers `/login` mesure donc **notre débit de requêtes**, pas le
+pseudo. Une source dont la réponse dépend de la cadence et non de la question ne
+peut fonder aucun verdict, et le piège est qu'elle produit d'abord des résultats
+parfaitement cohérents.
+
+À retenir pour la prochaine piste : trois témoins ne suffisent pas. Il faut aussi
+**le même témoin plusieurs fois, espacé**, et **les deux populations déjà
+tranchées**. Un signal se juge sur sa stabilité autant que sur sa netteté.
 
 ## Pourquoi la voie navigateur est fermée
 
@@ -70,7 +102,7 @@ l'outil.
 |---|---|
 | Wayback (archive.org) | **retenue** : une archive prouve un pseudo pris. Audit des 147 confirmés → 0 contredit. Attention, 429 après ~150 requêtes : espacer. |
 | Wayback sur les **non tranchés** (28/08, `scripts/wayback_orphans.js`) | **sans rendement** : 171/171 interrogés, **0 archive**, 0 erreur. L'idée était de trancher des orphelins sans dépenser de requête vervox ; le crawler d'archive.org ne visite qu'une frange populaire d'Instagram et n'a jamais vu ces pseudos de 4–5 caractères. Le script est conservé — il ne coûte rien et resterait valable sur une liste de pseudos notoires — mais ne pas en attendre d'accélération ici. |
-| Threads (`threads.com/@user`) | 200 pour tout, aucun signal |
+| Threads (`threads.com/@user`) | 200 pour tout, aucun signal. **Réexaminé le 28/08 et confirmé négatif** — voir ci-dessous, la piste avait l'air prometteuse et ne l'était pas. |
 | Common Crawl | hôte hors liste blanche de la passerelle (échec TLS) |
 | archive.today | idem |
 | DuckDuckGo direct | idem |
