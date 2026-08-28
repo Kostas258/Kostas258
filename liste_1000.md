@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 20:51:48 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 21:51:26 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 342 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 6 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 347 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 1 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 617 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 30 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 342
+## DISPONIBLE (2 sources) — 347
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -344,7 +344,9 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 954 | `m7vek` | available | available | 27/08/2026 15:18:17 |
 | 955 | `m7ver` | available | available | 28/08/2026 20:50:38 |
 | 956 | `m7vet` | available | available | 27/08/2026 15:26:26 |
+| 958 | `m7veh` | available | available | 28/08/2026 21:00:49 |
 | 959 | `m7vej` | available | available | 27/08/2026 15:42:47 |
+| 961 | `m7vew` | available | available | 28/08/2026 21:10:58 |
 | 962 | `m7voq` | available | available | 27/08/2026 15:50:54 |
 | 964 | `m7vov` | available | available | 27/08/2026 15:59:10 |
 | 965 | `m7voz` | available | available | 27/08/2026 16:07:22 |
@@ -356,25 +358,23 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 977 | `m7vuz` | available | available | 28/08/2026 09:02:09 |
 | 978 | `m7vuk` | available | available | 28/08/2026 09:22:47 |
 | 979 | `m7vur` | available | available | 28/08/2026 09:32:56 |
+| 980 | `m7vut` | available | available | 28/08/2026 21:21:06 |
+| 981 | `m7vun` | available | available | 28/08/2026 21:31:12 |
 | 982 | `m7vuh` | available | available | 28/08/2026 09:53:12 |
 | 983 | `m7vuj` | available | available | 28/08/2026 10:03:21 |
 | 985 | `m7vuw` | available | available | 28/08/2026 10:23:49 |
 | 987 | `m7vyx` | available | available | 28/08/2026 10:33:55 |
 | 991 | `m7vyr` | available | available | 28/08/2026 10:44:01 |
 | 994 | `m7vyh` | available | available | 28/08/2026 10:54:08 |
+| 995 | `m7vyj` | available | available | 28/08/2026 21:41:20 |
 | 996 | `m7vys` | available | available | 28/08/2026 11:14:29 |
 | 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
 
-## DISPONIBLE (1 source) — 6
+## DISPONIBLE (1 source) — 1
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 958 | `m7veh` | — | available | 28/08/2026 18:35:24 |
-| 961 | `m7vew` | — | available | 28/08/2026 14:47:11 |
-| 980 | `m7vut` | — | available | 28/08/2026 14:51:16 |
-| 981 | `m7vun` | — | available | 28/08/2026 14:52:17 |
-| 995 | `m7vyj` | — | available | 28/08/2026 19:12:04 |
 | 999 | `m7zix` | — | available | 28/08/2026 14:55:19 |
 
 ## CONTRADICTION — 5
