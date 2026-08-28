@@ -44,6 +44,41 @@ contourner un blocage visant cette adresse.
 Aucune troisième source retenue. Le couple socialcal + vervox reste le dispositif
 complet, et les indéterminés restent indéterminés.
 
+### Revue complète par familles — 28/08
+
+Neuf familles, dix-neuf candidates. Aucune retenue. Le tableau existe pour que
+la prochaine session ne refasse pas le tour.
+
+| Famille | Candidates | Mesure | Verdict |
+|---|---|---|---|
+| **Vérificateurs à API HTTP** | socialcal, vervox | en service | les deux seules qui marchent |
+| | domscan.net | joignable ; 401 `AUTH_REQUIRED` sur 3 témoins ; 10 000 crédits/mois gratuits **mais Instagram absent de sa liste de plateformes** | rejetée : ne couvre pas la cible |
+| | namecheckly | « pris » pour tout, y compris un témoin certainement libre | rejetée : fabriquerait de faux « pris » |
+| | brandsnag | 35/35 indéterminés, y compris `instagram`, `nike` | hors service |
+| | hopperhq | seul endpoint = validateur d'e-mail | pas d'API de disponibilité |
+| | namecheckup, namecheck.com | pages en 200, **404 sur tous les chemins d'API testés** | pas d'API publique |
+| | platformhandlechecker | JS client qui fetch `instagram.com` depuis le navigateur | voie fermée ici, hôte bloqué |
+| | instantusername, namechk, dnschecker | interstitiel Cloudflare (403) | détecté, jamais contourné |
+| | theblue.social, handle.tools | 405/403 sur tous chemins | pas d'API |
+| **Marketplaces / pools d'IP** | Apify, Zyla, Bright Data, HikerAPI, ScraperAPI, UnifAPI | non testées, volontairement | ce qu'elles vendent est l'accès depuis *leurs* IP : louer le rebond refusé ailleurs, et facturé au record |
+| **API officielle** | Instagram Graph API | aucun endpoint de disponibilité de pseudo | inexistante |
+| **Archives** | Wayback | retenue en contre-épreuve ; **0 archive sur 171 orphelins** | valide en audit, sans rendement ici |
+| | Common Crawl, archive.today | hors liste blanche de la passerelle (échec TLS) | injoignables |
+| **Plateforme sœur** | Threads | signal instable, voir ci-dessous | rejetée |
+| **OSINT auto-hébergé** | sherlock, maigret, socialscan, WhatsMyName/Naminter | tous vers `instagram.com` : 302 / 429 / 401 mesurés le 28/08 | le verrou est l'IP, pas l'outil |
+| **Moteurs de recherche** | DuckDuckGo, Google, Bing | correspondances approchantes : `m7iy` remonte `m7iy_` | dangereuse : produirait de faux « pris » |
+| **Jeux de données** | Kaggle « 650 000 Instagram user info » | statique et daté | prouverait « pris » à une date passée, jamais « libre » |
+| **DNS / arbitre direct** | dnsrobot | interroge Instagram en direct — le meilleur arbitre possible — mais son quota ne s'est jamais ouvert : 15 tours, 0 arbitrage | à retenter, gratuit |
+
+**Pourquoi c'est structurel.** La seule information sur la disponibilité d'un
+pseudo Instagram vient d'Instagram. Toute « source » est donc soit un revendeur
+d'accès Instagram depuis d'autres IP (payant, et c'est le rebond refusé), soit un
+service cassé ou qui invente, soit un service qui ne couvre pas Instagram. La
+frontière entre « vérificateur public » et « proxy de scraping » est d'ailleurs
+mince : socialcal et vervox interrogent bien Instagram depuis leur propre
+infrastructure. Ce qui les distingue en pratique est qu'ils sont gratuits, sans
+compte, dédiés à la disponibilité, et déjà mesurés ici sur plus de mille pseudos.
+
 ### Threads réexaminé le 28/08 — négatif, et instructif
 
 Threads partage le namespace d'Instagram : le handle Threads **est** le handle
