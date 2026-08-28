@@ -3827,8 +3827,8 @@
       "cached": true,
       "api": "{\"success\":true,\"handle\":\"m7hz\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7hz/\",\"checkedAt\":\"2026-08-28T16:45:35.426Z\",\"cached\":true}}}",
       "error": "status=available confidence=medium",
-      "checkedAt": "2026-08-28T16:46:35.277Z",
-      "tries": 9
+      "checkedAt": "2026-08-28T20:27:52.967Z",
+      "tries": 10
     },
     "m7hk": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 6
     }
   },
-  "updatedAt": "2026-08-28T20:26:52.898Z"
+  "updatedAt": "2026-08-28T20:27:53.391Z"
 }
