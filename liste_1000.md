@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 08:51:52 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 08:52:45 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 290 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 13 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 291 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 12 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 531 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 161 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 290
+## DISPONIBLE (2 sources) — 291
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -313,12 +313,12 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 969 | `m7von` | available | available | 27/08/2026 16:23:43 |
 | 973 | `m7vow` | available | available | 27/08/2026 16:48:25 |
 | 974 | `m7vuq` | available | available | 28/08/2026 01:40:22 |
+| 976 | `m7vuv` | available | available | 28/08/2026 08:51:57 |
 
-## DISPONIBLE (1 source) — 13
+## DISPONIBLE (1 source) — 12
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 976 | `m7vuv` | — | available | 23/08/2026 23:47:10 |
 | 977 | `m7vuz` | — | available | 23/08/2026 22:07:04 |
 | 978 | `m7vuk` | — | available | 23/08/2026 23:48:11 |
 | 979 | `m7vur` | — | available | 23/08/2026 22:09:06 |
