@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 87,
+  "checked": 88,
   "available": [
     "h3ii",
     "j2eb",
@@ -159,7 +159,8 @@
     "pk1ue",
     "j9eovo",
     "xp9use",
-    "b6oedi"
+    "b6oedi",
+    "d3uaci"
   ],
   "results": {
     "ba5i": {
@@ -949,7 +950,17 @@
       "checkedAt": "2026-08-28T10:15:23.896Z",
       "attempts": 1,
       "tries": 1
+    },
+    "d3uaci": {
+      "site": "vervox",
+      "username": "d3uaci",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"d3uaci\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@d3uaci semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T10:25:35.288Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-28T10:15:35.180Z"
+  "updatedAt": "2026-08-28T10:25:44.922Z"
 }
