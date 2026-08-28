@@ -26,6 +26,24 @@ d'éviter de retester ce qui a déjà échoué.
 | beplan.io, poster.ly | Aucune API exposée dans la page. |
 | creatorsjet, outfame, upgrow, tacticsocial, aidelly, bulkoid, tareno, contentrabbit, adaptlypost, instantnamechecker, creatorflow, instausername, post-bridge | Aucun endpoint JSON trouvé : applications React/Next dont la vérification passe par une *server action*, non appelable sans navigateur. |
 
+## Recherche d'une troisième source — 28/08
+
+Le critère de tri n'est pas « service tiers ou non ». socialcal et vervox sont
+eux-mêmes des services tiers qui résolvent depuis leur propre infrastructure :
+appliquer ce critère supprimerait les deux sources du projet. La ligne est entre
+un **vérificateur public qui expose une API** — même classe que nos sources — et
+un **service dont le produit est la rotation d'IP**, qui sert d'IP de rebond pour
+contourner un blocage visant cette adresse.
+
+| Candidate | Mesure | Verdict |
+|---|---|---|
+| **domscan.net** `GET /v1/social?handle=` | Hôte **joignable** à travers la passerelle. Les trois témoins (`instagram`, `zqv7xkq9wzqjj4`, `m7yy`) renvoient le même `401 AUTH_REQUIRED`. | Rejetée **en l'état**, pas sur le fond : c'est une vraie API serveur, correctement gatée. Redeviendrait testable avec une clé (compte à créer par l'utilisateur, pas par l'agent). |
+| **platformhandlechecker.com** | Page en 200, mais aucune API serveur : le JS construit `instagram.com/${n}` et le récupère **depuis le navigateur** du visiteur. | Rejetée deux fois : voie navigateur fermée ici, et cible l'hôte bloqué depuis cette IP. |
+| Apify, Zyla, Bright Data, HikerAPI, SearchAPI | Non testées, et c'est volontaire. Ce sont des marketplaces de scraping dont le service vendu est précisément le pool d'IP. Les appeler reviendrait à louer l'IP de rebond refusée ailleurs. | Écartées sur le critère, sans dépense de requête. |
+
+Aucune troisième source retenue. Le couple socialcal + vervox reste le dispositif
+complet, et les 111 indéterminés restent indéterminés.
+
 ## Pourquoi la voie navigateur est fermée
 
 Chromium est bien présent (`/opt/pw-browsers/chromium-1194`), et `playwright-core`
