@@ -55,11 +55,25 @@ async function checkDnsrobot(username, { timeoutMs = 90000 } = {}) {
   out.api = line.slice(0, 600);
 
   let j;
-  try { j = JSON.parse(line); } catch (e) { out.error = 'unparseable Instagram line'; return out; }
+  try { j = JSON.parse(line); } catch { out.error = 'unparseable Instagram line'; return out; }
 
   if (j.available === true) out.verdict = 'available';
   else if (j.available === false) out.verdict = 'taken';
   else out.error = j.error ? `upstream: ${j.error}` : `available=${j.available} status=${j.status}`;
+
+  // Un amont qui dit « rate limited » est un refus, et il doit entrer au journal
+  // ici plutôt que chez chaque appelant. recordBlock était importé depuis le
+  // début sans jamais être appelé — vestige d'une intention abandonnée, signalé
+  // par eslint. Conséquence concrète : dnsrobot_probe.js enregistrait le blocage
+  // de son côté, mais tiebreak.js appelait cette fonction sans rien enregistrer
+  // et pouvait donc réinterroger en boucle une source qui venait de refuser.
+  //
+  // Le verdict n'est pas touché : il reste « unknown », comme il doit l'être.
+  // On note seulement qu'il ne sert à rien d'insister tout de suite.
+  if (out.verdict === 'unknown' && /rate limit|too many requests/i.test(out.error || '')) {
+    out.rateLimited = true;
+    recordBlock('dnsrobot', out.error);
+  }
 
   return out;
 }

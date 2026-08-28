@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkSocialcal, sleep } = require('./socialcal_api.js');
-const { writeJsonAtomic, readJsonSafe, assertUsername, claimSingleInstance } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe, claimSingleInstance } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'socialcal.json');

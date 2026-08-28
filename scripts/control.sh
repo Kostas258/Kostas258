@@ -13,7 +13,10 @@
 # Usage: bash scripts/control.sh [--no-push]
 
 cd /home/user/Kostas258 || exit 1
-DEADLINE="${DEADLINE:-2026-08-23T20:00:00Z}"
+# Pas de date en dur : celle qui traînait ici était périmée depuis cinq jours.
+# Une échéance dépassée fait sortir immédiatement tout runner qui la lit, sans
+# rien dire d'utile. Vide = pas d'échéance ; l'appelant la fixe s'il en veut une.
+DEADLINE="${DEADLINE:-}"
 PUSH=1
 [ "$1" = "--no-push" ] && PUSH=0
 

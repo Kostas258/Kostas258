@@ -37,6 +37,17 @@ node scripts/report_all.js >/dev/null && node scripts/liste_1000.js >/dev/null \
 echo "── travail restant visible (faux terminé) ──"
 node scripts/session_issues.js | tail -1 || fail=1
 
+# CONFIDENTIALITE.md affirme qu'aucun lien vers un compte de tiers n'est publié.
+# Une affirmation que rien ne vérifie redevient fausse au premier oubli : la
+# source les retire à l'enregistrement, ce contrôle garantit qu'elle continue.
+echo "── aucun lien vers un compte de tiers ──"
+if grep -l 'profileUrl' ./*.json >/dev/null 2>&1; then
+  echo "  ÉCHEC : profileUrl présent dans $(grep -l 'profileUrl' ./*.json | tr '\n' ' ')"
+  echo "  corriger avec : node scripts/purge_profile_urls.js --appliquer"; fail=1
+else
+  echo "  ok"
+fi
+
 echo "── pas de secret dans le diff ──"
 if git diff --cached -U0 | grep -inE '(password|secret|api[_-]?key|token)\s*[:=]\s*\S' ; then
   echo "  ÉCHEC : secret potentiel"; fail=1

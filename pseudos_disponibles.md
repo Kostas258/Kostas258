@@ -2,7 +2,7 @@
 
 **Liste provisoire — la vérification n'est pas finie.** 0 pseudo(s) attendent une confirmation par la seconde source et 24 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
 
-Généré le 00:22:00 (heure de Paris).
+Généré le 00:24:32 (heure de Paris).
 
 | | nombre |
 |---|---|

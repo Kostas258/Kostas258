@@ -102,7 +102,7 @@ async function checkSocialcal(username, { timeoutMs = 45000 } = {}) {
   if (status !== 200) { out.error = `HTTP ${status}`; return out; }
 
   let j;
-  try { j = JSON.parse(body); } catch (e) { out.error = 'unparseable JSON response'; return out; }
+  try { j = JSON.parse(body); } catch { out.error = 'unparseable JSON response'; return out; }
 
   const r = j && j.results && j.results.instagram;
   if (!j.success || !r) { out.error = 'no instagram result in response'; return out; }

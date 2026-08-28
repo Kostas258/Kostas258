@@ -9,10 +9,9 @@
  * during a block pushes the deadline out further. So a 429 means going fully
  * silent, not probing to see whether it lifted.
  */
-const fs = require('fs');
 const path = require('path');
 const { checkVervox, sleep } = require('./vervox_api.js');
-const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const P100 = path.join(REPO, 'progress.json');

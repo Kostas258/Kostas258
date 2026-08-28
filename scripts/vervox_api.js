@@ -130,7 +130,7 @@ async function checkVervox(username, { timeoutMs = 45000 } = {}) {
   if (status !== 200) { out.error = `HTTP ${status}`; return out; }
 
   let j;
-  try { j = JSON.parse(body); } catch (e) { out.error = 'unparseable JSON response'; return out; }
+  try { j = JSON.parse(body); } catch { out.error = 'unparseable JSON response'; return out; }
 
   // Three independent fields of the same answer must agree before a verdict is
   // recorded: the boolean, the status code, and the human-readable message.

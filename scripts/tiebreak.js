@@ -13,7 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { checkDnsrobot, sleep } = require('./dnsrobot_api.js');
-const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const OUT = path.join(REPO, 'dnsrobot.json');

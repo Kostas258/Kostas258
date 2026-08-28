@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const { checkVervox } = require('./vervox_api.js');
 const { checkSocialcal, sleep } = require('./socialcal_api.js');
-const { writeJsonAtomic, readJsonSafe, assertUsername } = require('./safe.js');
+const { writeJsonAtomic, readJsonSafe } = require('./safe.js');
 
 const REPO = path.join(__dirname, '..');
 const P1000 = path.join(REPO, 'progress_1000.json');
