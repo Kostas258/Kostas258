@@ -105,7 +105,28 @@ else
     say "vervox : arrêté, $left en file (${cand:-0} candidats, ${orph:-0} orphelins) — à relancer par l'appelant"
     echo "RESTART_VERVOX=1"
   else
-    say "vervox : arrêté, file vide — rien à faire"
+    # File vide ne veut pas dire travail fini. Les contradictions restent, et la
+    # seule chose utile qu'on puisse encore leur faire est de redemander : leurs
+    # verdicts vervox datent de ~8 jours, et une mesure vieille n'engage pas la
+    # source d'aujourd'hui. socialcal a été redemandé le 28/08 — 11 maintiennent
+    # « pris », 0 résolu — donc c'est le côté vervox qui reste à remesurer.
+    nconf=$(node -e '
+      const a=require("./progress.json"),b=require("./progress_1000.json"),sc=require("./socialcal.json").results;
+      const V=r=>r&&r.verdict&&r.verdict!=="unknown"?r.verdict:null;
+      const vx={...a.results,...b.results};
+      let n=0;
+      for (const u of [...a.usernames,...b.names]) {
+        const v=V(vx[u]), s=V(sc[u]);
+        if (v&&s&&v!==s) n++;
+      }
+      console.log(n);' 2>/dev/null || echo 0)
+    if [ "${nconf:-0}" -gt 0 ]; then
+      say "vervox : file vide, mais $nconf contradictions à remesurer"
+      say "   node scripts/recheck_conflicts.js vervox"
+      echo "RECHECK_CONFLICTS=1"
+    else
+      say "vervox : arrêté, file vide — rien à faire"
+    fi
   fi
 fi
 
