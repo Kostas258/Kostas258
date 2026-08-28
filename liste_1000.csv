@@ -18,13 +18,13 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 17,m7is,PRIS,taken,taken,21/08/2026 12:20:42
 18,m7iw,PRIS,taken,taken,21/08/2026 12:21:03
 19,m7ai,PRIS,taken,taken,21/08/2026 12:21:24
-20,m7aa,PRIS,taken,—,28/08/2026 15:00:24
+20,m7aa,PRIS,taken,—,28/08/2026 18:41:29
 21,m7ae,CONTRADICTION,available,taken,21/08/2026 11:55:19
 22,m7ao,PRIS,taken,taken,21/08/2026 12:22:48
 23,m7au,PRIS,taken,taken,28/08/2026 15:01:24
 24,m7ay,PRIS,taken,taken,23/08/2026 22:41:24
 25,m7aq,PRIS,taken,taken,23/08/2026 22:42:25
-26,m7ax,PRIS,taken,—,28/08/2026 15:02:26
+26,m7ax,PRIS,taken,—,28/08/2026 18:42:31
 27,m7av,DISPONIBLE (2 sources),available,available,21/08/2026 11:56:05
 28,m7az,PRIS,taken,taken,24/08/2026 00:24:24
 29,m7ak,PRIS,taken,taken,23/08/2026 22:45:28
@@ -34,7 +34,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 33,m7ah,DISPONIBLE (2 sources),available,available,21/08/2026 11:56:31
 34,m7aj,PRIS,taken,taken,23/08/2026 22:48:31
 35,m7as,PRIS,taken,taken,28/08/2026 15:03:28
-36,m7aw,PRIS,taken,—,28/08/2026 15:04:29
+36,m7aw,PRIS,taken,—,28/08/2026 18:43:32
 37,m7ei,CONTRADICTION,available,taken,21/08/2026 11:57:04
 38,m7ea,CONTRADICTION,available,taken,21/08/2026 11:57:17
 39,m7ee,PRIS,—,taken,21/08/2026 12:53:15
@@ -207,7 +207,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 206,m7rx,PRIS,—,taken,21/08/2026 19:20:18
 207,m7rv,PRIS,—,taken,21/08/2026 14:50:29
 208,m7rz,DISPONIBLE (2 sources),available,available,22/08/2026 12:06:32
-209,m7rk,INDÉTERMINÉ,—,—,28/08/2026 15:14:36
+209,m7rk,INDÉTERMINÉ,—,—,28/08/2026 18:44:33
 210,m7rr,DISPONIBLE (2 sources),available,available,22/08/2026 12:14:40
 211,m7rt,PRIS,—,taken,21/08/2026 21:58:15
 212,m7rn,PRIS,—,taken,21/08/2026 21:59:16
@@ -260,14 +260,14 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 259,m7hq,PRIS,—,taken,21/08/2026 22:19:37
 260,m7hx,PRIS,—,taken,21/08/2026 15:34:39
 261,m7hv,DISPONIBLE (2 sources),available,available,22/08/2026 19:52:42
-262,m7hz,INDÉTERMINÉ,—,—,28/08/2026 15:16:40
+262,m7hz,INDÉTERMINÉ,—,—,28/08/2026 18:46:35
 263,m7hk,PRIS,—,taken,21/08/2026 22:23:42
 264,m7hr,PRIS,—,taken,21/08/2026 22:24:43
 265,m7ht,PRIS,—,taken,21/08/2026 22:25:45
 266,m7hn,PRIS,—,taken,21/08/2026 15:39:56
 267,m7hh,PRIS,—,taken,21/08/2026 15:40:17
 268,m7hj,PRIS,—,taken,21/08/2026 22:26:46
-269,m7hs,INDÉTERMINÉ,—,—,28/08/2026 15:18:42
+269,m7hs,INDÉTERMINÉ,—,—,28/08/2026 18:48:37
 270,m7hw,DISPONIBLE (2 sources),available,available,22/08/2026 20:00:53
 271,m7ji,PRIS,—,taken,21/08/2026 22:31:53
 272,m7ja,PRIS,—,taken,21/08/2026 22:32:54
@@ -275,7 +275,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 274,m7jo,PRIS,—,taken,21/08/2026 22:34:56
 275,m7ju,PRIS,—,taken,21/08/2026 22:35:57
 276,m7jy,DISPONIBLE (2 sources),available,available,23/08/2026 06:49:46
-277,m7jq,INDÉTERMINÉ,—,—,28/08/2026 15:20:45
+277,m7jq,INDÉTERMINÉ,—,—,28/08/2026 18:50:39
 278,m7jx,PRIS,—,taken,21/08/2026 15:51:13
 279,m7jv,DISPONIBLE (2 sources),available,available,23/08/2026 06:57:59
 280,m7jz,PRIS,—,taken,21/08/2026 15:53:19
@@ -344,7 +344,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 343,y7ia,PRIS,—,taken,22/08/2026 01:53:08
 344,m2ia,PRIS,—,taken,22/08/2026 01:54:45
 345,m4ia,PRIS,—,taken,22/08/2026 01:59:36
-346,m9ia,INDÉTERMINÉ,—,—,28/08/2026 15:23:48
+346,m9ia,INDÉTERMINÉ,—,—,28/08/2026 18:51:42
 347,m3ia,PRIS,—,taken,22/08/2026 02:06:04
 348,m6ia,PRIS,—,taken,28/08/2026 12:47:15
 349,m5ia,DISPONIBLE (2 sources),available,available,28/08/2026 13:16:51
@@ -366,7 +366,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 365,m7ivo,PRIS,—,taken,22/08/2026 03:42:00
 366,m7ivu,DISPONIBLE (2 sources),available,available,23/08/2026 09:10:12
 367,m7ivy,PRIS,—,taken,22/08/2026 03:54:21
-368,m7izi,INDÉTERMINÉ,—,—,28/08/2026 15:25:51
+368,m7izi,INDÉTERMINÉ,—,—,28/08/2026 18:01:50
 369,m7iza,DISPONIBLE (2 sources),available,available,28/08/2026 13:37:09
 370,m7ize,PRIS,—,taken,22/08/2026 04:35:03
 371,m7izo,DISPONIBLE (2 sources),available,available,23/08/2026 09:18:34
@@ -486,7 +486,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 485,m7aso,PRIS,—,taken,22/08/2026 12:20:51
 486,m7asu,PRIS,—,taken,22/08/2026 12:23:54
 487,m7asy,PRIS,—,taken,22/08/2026 12:25:56
-488,m7awi,INDÉTERMINÉ,—,—,28/08/2026 15:30:57
+488,m7awi,INDÉTERMINÉ,—,—,28/08/2026 18:02:50
 489,m7awa,PRIS,—,taken,22/08/2026 12:32:49
 490,m7awe,PRIS,—,taken,22/08/2026 12:34:26
 491,m7awo,DISPONIBLE (2 sources),available,available,28/08/2026 15:39:18
@@ -508,28 +508,28 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 507,m7eva,PRIS,—,taken,22/08/2026 16:56:49
 508,m7eve,DISPONIBLE (2 sources),available,available,28/08/2026 13:57:29
 509,m7evo,DISPONIBLE (2 sources),available,available,24/08/2026 12:50:06
-510,m7evu,INDÉTERMINÉ,—,—,28/08/2026 15:35:13
+510,m7evu,INDÉTERMINÉ,—,—,28/08/2026 18:03:51
 511,m7evy,DISPONIBLE (2 sources),available,available,24/08/2026 12:58:17
-512,m7ezi,INDÉTERMINÉ,—,—,28/08/2026 15:38:26
+512,m7ezi,INDÉTERMINÉ,—,—,28/08/2026 18:04:52
 513,m7eza,PRIS,—,taken,22/08/2026 17:11:03
 514,m7eze,DISPONIBLE (2 sources),available,available,24/08/2026 13:06:27
 515,m7ezo,PRIS,—,taken,22/08/2026 17:13:05
 516,m7ezu,DISPONIBLE (2 sources),available,available,24/08/2026 13:22:34
-517,m7ezy,INDÉTERMINÉ,—,—,28/08/2026 15:41:40
+517,m7ezy,PRIS,—,taken,28/08/2026 18:05:53
 518,m7eki,PRIS,—,taken,22/08/2026 17:18:10
 519,m7eka,PRIS,—,taken,22/08/2026 17:21:13
 520,m7eke,DISPONIBLE (2 sources),available,available,24/08/2026 13:30:54
 521,m7eko,DISPONIBLE (2 sources),available,available,24/08/2026 13:39:02
 522,m7eku,DISPONIBLE (2 sources),available,available,24/08/2026 13:47:12
 523,m7eky,DISPONIBLE (2 sources),available,available,24/08/2026 13:55:20
-524,m7eri,INDÉTERMINÉ,—,—,28/08/2026 15:44:53
+524,m7eri,INDÉTERMINÉ,—,—,28/08/2026 18:06:54
 525,m7era,DISPONIBLE (2 sources),available,available,24/08/2026 14:11:32
 526,m7ere,PRIS,—,taken,22/08/2026 17:35:26
-527,m7ero,INDÉTERMINÉ,—,—,28/08/2026 15:48:06
-528,m7eru,INDÉTERMINÉ,—,—,28/08/2026 15:51:20
+527,m7ero,INDÉTERMINÉ,—,—,28/08/2026 18:07:55
+528,m7eru,INDÉTERMINÉ,—,—,28/08/2026 18:08:56
 529,m7ery,PRIS,—,taken,22/08/2026 17:43:34
 530,m7eti,PRIS,—,taken,22/08/2026 17:44:35
-531,m7eta,INDÉTERMINÉ,—,—,28/08/2026 15:54:34
+531,m7eta,INDÉTERMINÉ,—,—,28/08/2026 18:09:57
 532,m7ete,DISPONIBLE (2 sources),available,available,24/08/2026 14:19:41
 533,m7eto,PRIS,—,taken,28/08/2026 13:20:50
 534,m7etu,PRIS,—,taken,28/08/2026 13:21:51
@@ -552,7 +552,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 551,m7ejo,DISPONIBLE (2 sources),available,available,24/08/2026 16:06:54
 552,m7eju,DISPONIBLE (2 sources),available,available,24/08/2026 16:15:13
 553,m7ejy,DISPONIBLE (2 sources),available,available,28/08/2026 14:07:35
-554,m7esi,INDÉTERMINÉ,—,—,28/08/2026 15:57:48
+554,m7esi,INDÉTERMINÉ,—,—,28/08/2026 18:10:57
 555,m7esa,PRIS,—,taken,22/08/2026 18:51:30
 556,m7ese,PRIS,—,taken,22/08/2026 18:52:53
 557,m7eso,PRIS,—,taken,22/08/2026 18:54:16
@@ -578,7 +578,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 577,m7oxy,PRIS,—,taken,22/08/2026 19:46:35
 578,m7ovi,PRIS,—,taken,22/08/2026 19:47:57
 579,m7ova,PRIS,—,taken,22/08/2026 19:49:20
-580,m7ove,INDÉTERMINÉ,—,—,28/08/2026 16:01:01
+580,m7ove,INDÉTERMINÉ,—,—,28/08/2026 18:11:58
 581,m7ovo,PRIS,—,taken,28/08/2026 13:30:59
 582,m7ovu,DISPONIBLE (2 sources),available,available,24/08/2026 17:37:18
 583,m7ovy,DISPONIBLE (2 sources),available,available,28/08/2026 14:48:15
@@ -611,7 +611,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 610,m7one,PRIS,—,taken,22/08/2026 21:00:56
 611,m7ono,PRIS,—,taken,22/08/2026 21:03:17
 612,m7onu,PRIS,—,taken,22/08/2026 21:05:38
-613,m7ony,INDÉTERMINÉ,—,—,28/08/2026 16:07:29
+613,m7ony,INDÉTERMINÉ,—,—,28/08/2026 18:12:59
 614,m7ohi,DISPONIBLE (2 sources),available,available,24/08/2026 19:07:31
 615,m7oha,PRIS,—,taken,22/08/2026 21:11:32
 616,m7ohe,DISPONIBLE (2 sources),available,available,24/08/2026 19:16:16
@@ -691,7 +691,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 690,m7uhu,PRIS,—,taken,23/08/2026 07:02:27
 691,m7uhy,DISPONIBLE (2 sources),available,available,25/08/2026 08:58:33
 692,m7uji,PRIS,—,taken,23/08/2026 07:04:29
-693,m7uja,INDÉTERMINÉ,—,—,28/08/2026 13:44:12
+693,m7uja,INDÉTERMINÉ,—,—,28/08/2026 18:14:00
 694,m7uje,DISPONIBLE (2 sources),available,available,25/08/2026 09:06:42
 695,m7ujo,DISPONIBLE (2 sources),available,available,25/08/2026 09:14:52
 696,m7uju,PRIS,—,taken,23/08/2026 07:10:34
@@ -712,7 +712,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 711,m7yqa,DISPONIBLE (2 sources),available,available,25/08/2026 10:04:17
 712,m7yqe,PRIS,—,taken,23/08/2026 07:31:53
 713,m7yqo,DISPONIBLE (2 sources),available,available,25/08/2026 10:20:35
-714,m7yqu,INDÉTERMINÉ,—,—,28/08/2026 13:45:13
+714,m7yqu,DISPONIBLE (2 sources),available,available,28/08/2026 18:16:57
 715,m7yqy,DISPONIBLE (2 sources),available,available,25/08/2026 10:28:42
 716,m7yxi,DISPONIBLE (2 sources),available,available,25/08/2026 10:36:52
 717,m7yxa,PRIS,—,taken,23/08/2026 07:43:01
@@ -792,7 +792,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 791,m7qij,PRIS,—,taken,23/08/2026 09:48:55
 792,m7qis,DISPONIBLE (2 sources),available,available,26/08/2026 04:43:16
 793,m7qiw,PRIS,—,taken,23/08/2026 09:53:00
-794,m7qaq,INDÉTERMINÉ,—,—,28/08/2026 13:59:24
+794,m7qaq,INDÉTERMINÉ,—,—,28/08/2026 18:16:03
 795,m7qax,PRIS,—,taken,28/08/2026 14:00:25
 796,m7qav,DISPONIBLE (2 sources),available,available,26/08/2026 04:51:25
 797,m7qaz,PRIS,—,taken,23/08/2026 10:03:08
@@ -804,7 +804,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 803,m7qaj,DISPONIBLE (2 sources),available,available,26/08/2026 05:07:40
 804,m7qas,DISPONIBLE (2 sources),available,available,26/08/2026 05:15:47
 805,m7qaw,PRIS,—,taken,28/08/2026 14:02:27
-806,m7qeq,INDÉTERMINÉ,—,—,28/08/2026 14:03:28
+806,m7qeq,INDÉTERMINÉ,—,—,28/08/2026 18:17:04
 807,m7qex,DISPONIBLE (2 sources),available,available,26/08/2026 05:23:55
 808,m7qev,DISPONIBLE (2 sources),available,available,26/08/2026 05:32:03
 809,m7qez,PRIS,—,taken,23/08/2026 10:25:27
@@ -812,7 +812,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 811,m7qer,DISPONIBLE (2 sources),available,available,28/08/2026 16:40:30
 812,m7qet,PRIS,—,taken,23/08/2026 10:30:32
 813,m7qen,DISPONIBLE (2 sources),available,available,26/08/2026 05:48:15
-814,m7qeh,INDÉTERMINÉ,—,—,28/08/2026 14:05:30
+814,m7qeh,INDÉTERMINÉ,—,—,28/08/2026 18:18:05
 815,m7qej,DISPONIBLE (2 sources),available,available,26/08/2026 05:56:33
 816,m7qes,PRIS,—,taken,23/08/2026 10:37:38
 817,m7qew,DISPONIBLE (2 sources),available,available,26/08/2026 06:04:42
@@ -826,7 +826,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 825,m7qon,DISPONIBLE (2 sources),available,available,26/08/2026 06:45:32
 826,m7qoh,DISPONIBLE (2 sources),available,available,28/08/2026 16:50:39
 827,m7qoj,DISPONIBLE (2 sources),available,available,26/08/2026 06:53:39
-828,m7qos,INDÉTERMINÉ,—,—,28/08/2026 14:07:31
+828,m7qos,INDÉTERMINÉ,—,—,28/08/2026 18:19:07
 829,m7qow,DISPONIBLE (2 sources),available,available,26/08/2026 07:01:57
 830,m7quq,DISPONIBLE (2 sources),available,available,26/08/2026 07:10:05
 831,m7qux,DISPONIBLE (2 sources),available,available,26/08/2026 07:18:32
@@ -840,10 +840,10 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 839,m7quj,PRIS,—,taken,28/08/2026 14:08:33
 840,m7qus,DISPONIBLE (2 sources),available,available,26/08/2026 08:32:23
 841,m7quw,DISPONIBLE (2 sources),available,available,26/08/2026 08:48:42
-842,m7qyq,DISPONIBLE (1 source),—,available,28/08/2026 14:09:34
+842,m7qyq,DISPONIBLE (2 sources),available,available,28/08/2026 18:06:45
 843,m7qyx,PRIS,—,taken,23/08/2026 11:32:26
-844,m7qyv,DISPONIBLE (1 source),—,available,28/08/2026 14:10:35
-845,m7qyz,INDÉTERMINÉ,—,—,28/08/2026 14:11:36
+844,m7qyv,DISPONIBLE (2 sources),available,available,28/08/2026 18:27:06
+845,m7qyz,INDÉTERMINÉ,—,—,28/08/2026 18:20:08
 846,m7qyk,DISPONIBLE (2 sources),available,available,26/08/2026 08:56:57
 847,m7qyr,DISPONIBLE (2 sources),available,available,26/08/2026 09:05:10
 848,m7qyt,DISPONIBLE (2 sources),available,available,26/08/2026 09:13:22
@@ -858,8 +858,8 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 857,m7xiz,PRIS,—,taken,23/08/2026 12:04:54
 858,m7xik,PRIS,—,taken,23/08/2026 12:06:56
 859,m7xir,PRIS,—,taken,23/08/2026 12:08:58
-860,m7xit,INDÉTERMINÉ,—,—,28/08/2026 14:14:39
-861,m7xin,INDÉTERMINÉ,—,—,28/08/2026 14:15:40
+860,m7xit,INDÉTERMINÉ,—,—,28/08/2026 18:21:10
+861,m7xin,INDÉTERMINÉ,—,—,28/08/2026 18:22:10
 862,m7xih,DISPONIBLE (2 sources),available,available,26/08/2026 10:10:40
 863,m7xij,PRIS,—,taken,23/08/2026 12:20:08
 864,m7xis,PRIS,—,taken,23/08/2026 12:21:09
@@ -868,49 +868,49 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 867,m7xax,PRIS,—,taken,28/08/2026 14:17:42
 868,m7xav,DISPONIBLE (2 sources),available,available,26/08/2026 10:18:52
 869,m7xaz,PRIS,—,taken,23/08/2026 12:32:19
-870,m7xak,INDÉTERMINÉ,—,—,28/08/2026 14:18:43
-871,m7xar,DISPONIBLE (1 source),—,available,28/08/2026 14:19:44
+870,m7xak,DISPONIBLE (2 sources),available,available,28/08/2026 18:37:14
+871,m7xar,DISPONIBLE (1 source),—,available,28/08/2026 18:47:24
 872,m7xat,DISPONIBLE (2 sources),available,available,26/08/2026 10:26:59
 873,m7xan,PRIS,—,taken,23/08/2026 12:40:26
 874,m7xah,PRIS,—,taken,28/08/2026 14:20:45
 875,m7xaj,PRIS,—,taken,23/08/2026 12:46:32
 876,m7xas,PRIS,—,taken,23/08/2026 12:49:35
-877,m7xaw,INDÉTERMINÉ,—,—,28/08/2026 14:21:46
+877,m7xaw,DISPONIBLE (1 source),—,available,28/08/2026 18:24:12
 878,m7xeq,PRIS,—,taken,23/08/2026 12:53:39
 879,m7xex,DISPONIBLE (1 source),—,available,28/08/2026 14:22:48
 880,m7xev,PRIS,—,taken,23/08/2026 12:57:42
 881,m7xez,PRIS,—,taken,23/08/2026 12:59:44
 882,m7xek,PRIS,—,taken,23/08/2026 13:02:48
-883,m7xer,INDÉTERMINÉ,—,—,28/08/2026 14:23:48
+883,m7xer,PRIS,—,taken,28/08/2026 18:25:13
 884,m7xet,PRIS,—,taken,28/08/2026 14:24:50
 885,m7xen,DISPONIBLE (1 source),—,available,28/08/2026 14:25:50
 886,m7xeh,PRIS,—,taken,28/08/2026 14:26:51
 887,m7xej,PRIS,—,taken,28/08/2026 14:27:52
 888,m7xes,PRIS,—,taken,23/08/2026 13:20:05
-889,m7xew,INDÉTERMINÉ,—,—,28/08/2026 14:28:53
+889,m7xew,DISPONIBLE (1 source),—,available,28/08/2026 18:26:14
 890,m7xoq,PRIS,—,taken,23/08/2026 13:26:11
 891,m7xox,PRIS,—,taken,28/08/2026 14:29:55
 892,m7xov,PRIS,—,taken,23/08/2026 13:34:16
 893,m7xoz,PRIS,—,taken,23/08/2026 13:39:07
 894,m7xok,DISPONIBLE (1 source),—,available,28/08/2026 14:30:56
-895,m7xor,INDÉTERMINÉ,—,—,28/08/2026 14:31:56
+895,m7xor,PRIS,—,taken,28/08/2026 18:27:15
 896,m7xot,PRIS,—,taken,23/08/2026 13:53:39
 897,m7xon,PRIS,—,taken,23/08/2026 13:55:16
 898,m7xoh,PRIS,—,taken,28/08/2026 14:32:57
-899,m7xoj,INDÉTERMINÉ,—,—,28/08/2026 14:33:58
+899,m7xoj,INDÉTERMINÉ,—,—,28/08/2026 18:28:17
 900,m7xos,PRIS,—,taken,28/08/2026 14:34:59
 901,m7xow,DISPONIBLE (1 source),—,available,28/08/2026 14:36:01
 902,m7xuq,PRIS,—,taken,23/08/2026 14:16:17
 903,m7xux,PRIS,—,taken,23/08/2026 14:21:27
-904,m7xuv,INDÉTERMINÉ,—,—,28/08/2026 14:37:02
-905,m7xuz,INDÉTERMINÉ,—,—,28/08/2026 14:38:03
+904,m7xuv,INDÉTERMINÉ,—,—,28/08/2026 18:29:18
+905,m7xuz,INDÉTERMINÉ,—,—,28/08/2026 18:30:19
 906,m7xuk,DISPONIBLE (2 sources),available,available,26/08/2026 10:35:08
-907,m7xur,INDÉTERMINÉ,—,—,28/08/2026 14:39:04
+907,m7xur,INDÉTERMINÉ,—,—,28/08/2026 18:31:20
 908,m7xut,PRIS,—,taken,23/08/2026 22:58:00
 909,m7xun,PRIS,—,taken,23/08/2026 20:55:24
 910,m7xuh,DISPONIBLE (2 sources),available,available,26/08/2026 10:43:20
 911,m7xuj,DISPONIBLE (2 sources),available,available,26/08/2026 10:51:40
-912,m7xus,INDÉTERMINÉ,—,—,28/08/2026 14:40:05
+912,m7xus,INDÉTERMINÉ,—,—,28/08/2026 18:32:21
 913,m7xuw,DISPONIBLE (2 sources),available,available,26/08/2026 10:59:51
 914,m7xyq,PRIS,—,taken,23/08/2026 21:00:31
 915,m7xyx,DISPONIBLE (2 sources),available,available,26/08/2026 12:32:12
@@ -940,7 +940,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 939,m7vax,DISPONIBLE (2 sources),available,available,27/08/2026 14:20:53
 940,m7vav,DISPONIBLE (2 sources),available,available,27/08/2026 14:29:01
 941,m7vaz,DISPONIBLE (2 sources),available,available,27/08/2026 14:37:18
-942,m7vak,INDÉTERMINÉ,—,—,28/08/2026 14:43:08
+942,m7vak,PRIS,—,taken,28/08/2026 18:33:22
 943,m7var,PRIS,—,taken,23/08/2026 23:21:26
 944,m7vat,DISPONIBLE (2 sources),available,available,27/08/2026 14:45:38
 945,m7van,DISPONIBLE (2 sources),available,available,27/08/2026 14:53:55
@@ -953,10 +953,10 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 952,m7vev,PRIS,—,taken,23/08/2026 21:41:36
 953,m7vez,DISPONIBLE (2 sources),available,available,27/08/2026 15:10:09
 954,m7vek,DISPONIBLE (2 sources),available,available,27/08/2026 15:18:17
-955,m7ver,INDÉTERMINÉ,—,—,28/08/2026 14:45:09
+955,m7ver,DISPONIBLE (1 source),—,available,28/08/2026 18:34:23
 956,m7vet,DISPONIBLE (2 sources),available,available,27/08/2026 15:26:26
 957,m7ven,PRIS,—,taken,23/08/2026 21:46:41
-958,m7veh,INDÉTERMINÉ,—,—,28/08/2026 14:46:10
+958,m7veh,DISPONIBLE (1 source),—,available,28/08/2026 18:35:24
 959,m7vej,DISPONIBLE (2 sources),available,available,27/08/2026 15:42:47
 960,m7ves,PRIS,—,taken,23/08/2026 21:49:44
 961,m7vew,DISPONIBLE (1 source),—,available,28/08/2026 14:47:11
@@ -970,7 +970,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 969,m7von,DISPONIBLE (2 sources),available,available,27/08/2026 16:23:43
 970,m7voh,PRIS,—,taken,28/08/2026 14:48:13
 971,m7voj,PRIS,—,taken,28/08/2026 14:49:14
-972,m7vos,INDÉTERMINÉ,—,—,28/08/2026 14:50:15
+972,m7vos,INDÉTERMINÉ,—,—,28/08/2026 18:36:25
 973,m7vow,DISPONIBLE (2 sources),available,available,27/08/2026 16:48:25
 974,m7vuq,DISPONIBLE (2 sources),available,available,28/08/2026 01:40:22
 975,m7vux,PRIS,—,taken,23/08/2026 22:05:02
@@ -993,9 +993,9 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 992,m7vyt,PRIS,—,taken,23/08/2026 23:53:16
 993,m7vyn,PRIS,—,taken,28/08/2026 14:53:18
 994,m7vyh,DISPONIBLE (2 sources),available,available,28/08/2026 10:54:08
-995,m7vyj,INDÉTERMINÉ,—,—,28/08/2026 14:54:19
+995,m7vyj,INDÉTERMINÉ,—,—,28/08/2026 18:37:26
 996,m7vys,DISPONIBLE (2 sources),available,available,28/08/2026 11:14:29
 997,m7vyw,DISPONIBLE (2 sources),available,available,28/08/2026 11:24:39
 998,m7ziq,DISPONIBLE (2 sources),available,available,28/08/2026 11:34:48
 999,m7zix,DISPONIBLE (1 source),—,available,28/08/2026 14:55:19
-1000,m7ziv,INDÉTERMINÉ,—,—,28/08/2026 14:56:20
+1000,m7ziv,PRIS,—,taken,28/08/2026 18:38:27
