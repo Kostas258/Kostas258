@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 15:01:00 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 15:00:24 (heure de Paris)
+**Généré le :** 28/08/2026 15:08:25 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 15:07:31 (heure de Paris)
 
 ## Sources
 
@@ -35,17 +35,17 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 0 | 54 | 54 |
 
-Vérifications par la seconde source (socialcal) : 1039.
+Vérifications par la seconde source (socialcal) : 1041.
 
 ## Les deux sources sont-elles indépendantes ?
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 431 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 433 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 416 (97 %) |
+| Accords | 418 (97 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -62,7 +62,7 @@ constant quelle que soit la longueur du pseudo. Ce n'est pas ce qu'on observe :
 
 | Longueur | Pseudos testés | Déclarés libres |
 |---|---|---|
-| 4 caractères | 353 | 69 (20 %) |
+| 4 caractères | 355 | 69 (19 %) |
 | 5 caractères | 665 | 298 (45 %) |
 | 6 caractères | 21 | 20 (95 %) |
 
@@ -645,10 +645,10 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 20 | `m7aa` | Pris | Pris | Indéterminé | 28/08/2026 15:00:24 |
 | 21 | `m7ae` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:55:19 |
 | 22 | `m7ao` | Pris | Pris | Pris | 21/08/2026 12:22:48 |
-| 23 | `m7au` | Pris | Pris | Indéterminé | 24/08/2026 00:20:20 |
+| 23 | `m7au` | Pris | Pris | Pris | 28/08/2026 15:01:24 |
 | 24 | `m7ay` | Pris | Pris | Pris | 23/08/2026 22:41:24 |
 | 25 | `m7aq` | Pris | Pris | Pris | 23/08/2026 22:42:25 |
-| 26 | `m7ax` | Pris | Pris | Indéterminé | 24/08/2026 00:22:22 |
+| 26 | `m7ax` | Pris | Pris | Indéterminé | 28/08/2026 15:02:26 |
 | 27 | `m7av` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:05 |
 | 28 | `m7az` | Pris | Pris | Pris | 24/08/2026 00:24:24 |
 | 29 | `m7ak` | Pris | Pris | Pris | 23/08/2026 22:45:28 |
@@ -657,8 +657,8 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 32 | `m7an` | Pris | Pris | Pris | 23/08/2026 22:47:30 |
 | 33 | `m7ah` | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 11:56:31 |
 | 34 | `m7aj` | Pris | Pris | Pris | 23/08/2026 22:48:31 |
-| 35 | `m7as` | Pris | Pris | Indéterminé | 24/08/2026 00:26:28 |
-| 36 | `m7aw` | Pris | Pris | Indéterminé | 24/08/2026 00:28:30 |
+| 35 | `m7as` | Pris | Pris | Pris | 28/08/2026 15:03:28 |
+| 36 | `m7aw` | Pris | Pris | Indéterminé | 28/08/2026 15:04:29 |
 | 37 | `m7ei` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:04 |
 | 38 | `m7ea` | Contradiction entre sources | Disponible | Pris | 21/08/2026 11:57:17 |
 | 39 | `m7ee` | Pris | — | Pris | 21/08/2026 12:53:15 |
@@ -718,7 +718,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 93 | `m7ye` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 08:50:14 |
 | 94 | `m7yo` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 12:35:44 |
 | 95 | `m7yu` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:15:04 |
-| 96 | `m7yy` | Indéterminé | — | Indéterminé | 28/08/2026 12:18:44 |
+| 96 | `m7yy` | Indéterminé | — | Indéterminé | 28/08/2026 15:06:31 |
 | 97 | `m7yq` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:23:14 |
 | 98 | `m7yx` | Pris | — | Pris | 21/08/2026 13:30:58 |
 | 99 | `m7yv` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:31:21 |
@@ -740,7 +740,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 115 | `m7qq` | Pris | — | Pris | 21/08/2026 13:41:46 |
 | 116 | `m7qx` | Pris | — | Pris | 21/08/2026 17:41:07 |
 | 117 | `m7qv` | Pris | — | Pris | 21/08/2026 13:43:10 |
-| 118 | `m7qz` | Indéterminé | — | Indéterminé | 28/08/2026 12:20:46 |
+| 118 | `m7qz` | Indéterminé | — | Indéterminé | 28/08/2026 15:07:31 |
 | 119 | `m7qk` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:47:34 |
 | 120 | `m7qr` | Pris | — | Pris | 21/08/2026 13:44:55 |
 | 121 | `m7qt` | Pris | — | Pris | 21/08/2026 17:47:15 |

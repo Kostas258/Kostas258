@@ -21,10 +21,10 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 20,m7aa,PRIS,taken,—,28/08/2026 15:00:24
 21,m7ae,CONTRADICTION,available,taken,21/08/2026 11:55:19
 22,m7ao,PRIS,taken,taken,21/08/2026 12:22:48
-23,m7au,PRIS,taken,—,24/08/2026 00:20:20
+23,m7au,PRIS,taken,taken,28/08/2026 15:01:24
 24,m7ay,PRIS,taken,taken,23/08/2026 22:41:24
 25,m7aq,PRIS,taken,taken,23/08/2026 22:42:25
-26,m7ax,PRIS,taken,—,24/08/2026 00:22:22
+26,m7ax,PRIS,taken,—,28/08/2026 15:02:26
 27,m7av,DISPONIBLE (2 sources),available,available,21/08/2026 11:56:05
 28,m7az,PRIS,taken,taken,24/08/2026 00:24:24
 29,m7ak,PRIS,taken,taken,23/08/2026 22:45:28
@@ -33,8 +33,8 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 32,m7an,PRIS,taken,taken,23/08/2026 22:47:30
 33,m7ah,DISPONIBLE (2 sources),available,available,21/08/2026 11:56:31
 34,m7aj,PRIS,taken,taken,23/08/2026 22:48:31
-35,m7as,PRIS,taken,—,24/08/2026 00:26:28
-36,m7aw,PRIS,taken,—,24/08/2026 00:28:30
+35,m7as,PRIS,taken,taken,28/08/2026 15:03:28
+36,m7aw,PRIS,taken,—,28/08/2026 15:04:29
 37,m7ei,CONTRADICTION,available,taken,21/08/2026 11:57:04
 38,m7ea,CONTRADICTION,available,taken,21/08/2026 11:57:17
 39,m7ee,PRIS,—,taken,21/08/2026 12:53:15
@@ -94,7 +94,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 93,m7ye,DISPONIBLE (2 sources),available,available,22/08/2026 08:50:14
 94,m7yo,DISPONIBLE (2 sources),available,available,28/08/2026 12:35:44
 95,m7yu,DISPONIBLE (2 sources),available,available,22/08/2026 09:15:04
-96,m7yy,INDÉTERMINÉ,—,—,28/08/2026 12:18:44
+96,m7yy,INDÉTERMINÉ,—,—,28/08/2026 15:06:31
 97,m7yq,DISPONIBLE (2 sources),available,available,22/08/2026 09:23:14
 98,m7yx,PRIS,—,taken,21/08/2026 13:30:58
 99,m7yv,DISPONIBLE (2 sources),available,available,22/08/2026 09:31:21
@@ -116,7 +116,7 @@ rang,pseudo,statut,vervox,socialcal,verifie_le
 115,m7qq,PRIS,—,taken,21/08/2026 13:41:46
 116,m7qx,PRIS,—,taken,21/08/2026 17:41:07
 117,m7qv,PRIS,—,taken,21/08/2026 13:43:10
-118,m7qz,INDÉTERMINÉ,—,—,28/08/2026 12:20:46
+118,m7qz,INDÉTERMINÉ,—,—,28/08/2026 15:07:31
 119,m7qk,DISPONIBLE (2 sources),available,available,22/08/2026 09:47:34
 120,m7qr,PRIS,—,taken,21/08/2026 13:44:55
 121,m7qt,PRIS,—,taken,21/08/2026 17:47:15
