@@ -8,7 +8,7 @@ d'éviter de retester ce qui a déjà échoué.
 
 | Source | Appel | État |
 |---|---|---|
-| socialcal.app | `POST socialcal-media-proxy.jan-orsula1.workers.dev/username/check` | source principale, quota large, renvoie un niveau de confiance |
+| socialcal.app | `POST socialcal-media-proxy.jan-orsula1.workers.dev/username/check` | source principale, quota large, renvoie un niveau de confiance. **Son amont a récupéré le 28/08** après s'être épuisé le 23/08 : sonde sur `jao2c` → `taken`/`high`, non caché. Les 174 « unknown » du 23/08 étaient des victimes de la panne, pas des cas durs — `RETRY_UNKNOWN=1` les remet dans la file. |
 | vervox.app | `POST vervox.app/api/tools/username-check` | corroboration seulement — sur-déclare la disponibilité, quota très restrictif |
 
 ## Écartées après mesure
@@ -51,6 +51,7 @@ l'outil.
 | Piste | Résultat |
 |---|---|
 | Wayback (archive.org) | **retenue** : une archive prouve un pseudo pris. Audit des 147 confirmés → 0 contredit. Attention, 429 après ~150 requêtes : espacer. |
+| Wayback sur les **non tranchés** (28/08, `scripts/wayback_orphans.js`) | **sans rendement** : 171/171 interrogés, **0 archive**, 0 erreur. L'idée était de trancher des orphelins sans dépenser de requête vervox ; le crawler d'archive.org ne visite qu'une frange populaire d'Instagram et n'a jamais vu ces pseudos de 4–5 caractères. Le script est conservé — il ne coûte rien et resterait valable sur une liste de pseudos notoires — mais ne pas en attendre d'accélération ici. |
 | Threads (`threads.com/@user`) | 200 pour tout, aucun signal |
 | Common Crawl | hôte hors liste blanche de la passerelle (échec TLS) |
 | archive.today | idem |

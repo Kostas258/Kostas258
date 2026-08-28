@@ -87,9 +87,17 @@ function workList() {
     const r = p100.results[u] || p1000.results[u];
     return r ? r.verdict : null;
   };
+  // MAX_TRIES épuisé veut dire « la source ne tranchait pas ce jour-là », pas
+  // « ce pseudo est intranchable ». L'amont de socialcal s'est épuisé le 23/08 et
+  // a récupéré depuis : les 174 « unknown » de cette période sont des victimes de
+  // la panne, pas des cas durs. RETRY_UNKNOWN=1 les remet dans la file. Un
+  // « unknown » reste un « unknown » — on ne fait que redemander, jamais promouvoir.
+  const RETRY_UNKNOWN = process.env.RETRY_UNKNOWN === '1';
   const done = u => {
     const r = store.results[u];
-    return !!r && (r.verdict !== 'unknown' || (r.tries || 1) >= MAX_TRIES);
+    if (!r) return false;
+    if (r.verdict !== 'unknown') return true;
+    return RETRY_UNKNOWN ? false : (r.tries || 1) >= MAX_TRIES;
   };
   // Cross-checking a vervox "taken" is the least useful thing this can do: the
   // two sources have never once disagreed in that direction, while every
