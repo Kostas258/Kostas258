@@ -2964,13 +2964,13 @@
     "m7ko": {
       "site": "socialcal",
       "username": "m7ko",
-      "verdict": "unknown",
-      "confidence": "medium",
+      "verdict": "taken",
+      "confidence": "high",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7ko\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7ko/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-28T13:12:36.276Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-28T13:12:35.138Z",
-      "tries": 6
+      "api": "{\"success\":true,\"handle\":\"m7ko\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"taken\",\"confidence\":\"high\",\"profileUrl\":\"https://www.instagram.com/m7ko/\",\"checkedAt\":\"2026-08-28T15:55:39.554Z\",\"cached\":false}}}",
+      "error": null,
+      "checkedAt": "2026-08-28T15:55:37.548Z",
+      "tries": 7
     },
     "m7ku": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 4
     }
   },
-  "updatedAt": "2026-08-28T15:54:37.501Z"
+  "updatedAt": "2026-08-28T15:55:39.529Z"
 }
