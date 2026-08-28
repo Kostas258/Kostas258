@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 21:51:26 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 21:41:20 (heure de Paris)
+**Généré le :** 28/08/2026 22:02:05 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 21:51:39 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 48 | 347 | 395 |
-| Disponibles (1 source) | 0 | 1 | 1 |
+| Disponibles (2 sources) | 48 | 348 | 396 |
+| Disponibles (1 source) | 0 | 0 | 0 |
 | Pris | 42 | 617 | 659 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 0 | 30 | 30 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 1067.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 465 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 466 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 450 (97 %) |
+| Accords | 451 (97 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -436,7 +436,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 345. **m7vys** — confirmé par 2 sources
 346. **m7vyw** — confirmé par 2 sources
 347. **m7ziq** — confirmé par 2 sources
-348. **m7zix** — 1 source
+348. **m7zix** — confirmé par 2 sources
 
 ### Liste m7ia
 
@@ -1630,7 +1630,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 996 | `m7vys` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:14:29 |
 | 997 | `m7vyw` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 11:34:48 |
-| 999 | `m7zix` | Disponible (1 source) | — | Disponible | 28/08/2026 14:55:19 |
+| 999 | `m7zix` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 21:51:39 |
 | 1000 | `m7ziv` | Pris | — | Pris | 28/08/2026 18:38:27 |
 
 ### Identifiants non utilisés de cette liste (0)

@@ -1,14 +1,14 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 21:51:26 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 22:02:05 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 347 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 1 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 348 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 0 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
 | PRIS | 617 | au moins une source a trouvé le compte |
 | INDÉTERMINÉ | 30 | interrogé, mais aucune réponse exploitable |
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 347
+## DISPONIBLE (2 sources) — 348
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -370,12 +370,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 996 | `m7vys` | available | available | 28/08/2026 11:14:29 |
 | 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
-
-## DISPONIBLE (1 source) — 1
-
-| # | Pseudo | Vervox | SocialCal | Vérifié le |
-|---|---|---|---|---|
-| 999 | `m7zix` | — | available | 28/08/2026 14:55:19 |
+| 999 | `m7zix` | available | available | 28/08/2026 21:51:39 |
 
 ## CONTRADICTION — 5
 

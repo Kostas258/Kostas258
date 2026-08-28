@@ -1,18 +1,18 @@
 # Pseudos Instagram disponibles
 
-**Liste provisoire — la vérification n'est pas finie.** 1 pseudo(s) attendent une confirmation par la seconde source et 30 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
+**Liste provisoire — la vérification n'est pas finie.** 0 pseudo(s) attendent une confirmation par la seconde source et 30 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
 
-Généré le 21:51:26 (heure de Paris).
+Généré le 22:02:05 (heure de Paris).
 
 | | nombre |
 |---|---|
-| Disponibles, confirmés par 2 sources | **395** |
-| Disponibles, vus par 1 source seulement | 1 |
+| Disponibles, confirmés par 2 sources | **396** |
+| Disponibles, vus par 1 source seulement | 0 |
 | Pris | 659 |
 | Contradictions entre sources | 15 |
 | Indéterminés | 30 |
 
-## Confirmés par 2 sources — 395
+## Confirmés par 2 sources — 396
 
 socialcal et vervox disent tous deux « disponible ». C'est le niveau de
 preuve le plus élevé atteint ici.
@@ -414,16 +414,15 @@ preuve le plus élevé atteint ici.
 | 393 | `m7vys` | liste de 1000 |
 | 394 | `m7vyw` | liste de 1000 |
 | 395 | `m7ziq` | liste de 1000 |
+| 396 | `m7zix` | liste de 1000 |
 
-## Vus par une seule source — 1
+## Vus par une seule source — 0
 
 Une seule source a répondu. À traiter comme une piste, pas comme un acquis :
 vervox sur-déclare la disponibilité, donc un « disponible » vervox non
 corroboré est le cas le plus fragile.
 
-| # | pseudo | source | origine |
-|---|---|---|---|
-| 1 | `m7zix` | socialcal | liste de 1000 |
+_Aucun._
 
 ## Ce que cette liste ne dit pas
 
