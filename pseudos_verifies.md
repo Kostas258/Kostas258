@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 28/08/2026 12:14:09 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 12:13:53 (heure de Paris)
+**Généré le :** 28/08/2026 12:18:57 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 28/08/2026 12:18:44 (heure de Paris)
 
 ## Sources
 
@@ -29,8 +29,8 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 |---|---|---|---|
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
-| Disponibles (2 sources) | 46 | 303 | 349 |
-| Disponibles (1 source) | 2 | 1 | 3 |
+| Disponibles (2 sources) | 47 | 303 | 350 |
+| Disponibles (1 source) | 1 | 1 | 2 |
 | Pris | 42 | 535 | 577 |
 | Contradictions | 10 | 5 | 15 |
 | Indéterminés | 0 | 156 | 156 |
@@ -41,11 +41,11 @@ Vérifications par la seconde source (socialcal) : 936.
 
 La question n'est pas rhétorique : si les deux vérificateurs interrogeaient le
 même moteur en amont, « confirmé par deux sources » ne vaudrait pas mieux qu'une
-seule. Mesure sur les 414 pseudos que les deux ont tranchés fermement :
+seule. Mesure sur les 415 pseudos que les deux ont tranchés fermement :
 
 | | Nombre |
 |---|---|
-| Accords | 399 (96 %) |
+| Accords | 400 (96 %) |
 | vervox « libre » contre socialcal « pris » | 15 |
 | vervox « pris » contre socialcal « libre » | 0 |
 
@@ -428,7 +428,7 @@ Aucun pseudo confirmé n'a jamais été archivé.
 30. **wr9era** — confirmé par 2 sources
 31. **x1itie** — confirmé par 2 sources
 32. **xp9use** — confirmé par 2 sources
-33. **b6oedi** — 1 source
+33. **b6oedi** — confirmé par 2 sources
 34. **c1ueka** — confirmé par 2 sources
 35. **c9uhau** — confirmé par 2 sources
 36. **cew6iu** — confirmé par 2 sources
@@ -564,7 +564,7 @@ Interrogés, mais aucune réponse exploitable. À revérifier — surtout pas à
 | 81 | `wr9era` | oui | Disponible (2 sources) | Disponible | Disponible | 21/08/2026 18:38:16 |
 | 82 | `x1itie` | oui | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 01:04:14 |
 | 83 | `xp9use` | oui | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 12:05:04 |
-| 84 | `b6oedi` | oui | Disponible (1 source) | — | Disponible | 28/08/2026 11:53:49 |
+| 84 | `b6oedi` | oui | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 12:15:23 |
 | 85 | `c1ueka` | oui | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 04:12:22 |
 | 86 | `c9uhau` | oui | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 04:20:31 |
 | 87 | `caz4aa` | oui | Pris | — | Pris | 21/08/2026 12:43:31 |
@@ -683,7 +683,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 93 | `m7ye` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 08:50:14 |
 | 94 | `m7yo` | Disponible (1 source) | — | Disponible | 28/08/2026 12:13:53 |
 | 95 | `m7yu` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:15:04 |
-| 96 | `m7yy` | Indéterminé | — | Indéterminé | 21/08/2026 17:30:54 |
+| 96 | `m7yy` | Indéterminé | — | Indéterminé | 28/08/2026 12:18:44 |
 | 97 | `m7yq` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:23:14 |
 | 98 | `m7yx` | Pris | — | Pris | 21/08/2026 13:30:58 |
 | 99 | `m7yv` | Disponible (2 sources) | Disponible | Disponible | 22/08/2026 09:31:21 |

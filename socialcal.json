@@ -1999,10 +1999,10 @@
       "verdict": "unknown",
       "confidence": "medium",
       "cached": false,
-      "api": "{\"success\":true,\"handle\":\"m7yy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"unknown\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7yy/\",\"reason\":\"http_429\",\"checkedAt\":\"2026-08-21T15:30:55.842Z\",\"cached\":false}}}",
-      "error": "status=unknown confidence=medium",
-      "checkedAt": "2026-08-21T15:30:54.674Z",
-      "tries": 3
+      "api": "{\"success\":true,\"handle\":\"m7yy\",\"results\":{\"instagram\":{\"platform\":\"instagram\",\"status\":\"available\",\"confidence\":\"medium\",\"profileUrl\":\"https://www.instagram.com/m7yy/\",\"checkedAt\":\"2026-08-28T10:18:45.625Z\",\"cached\":false}}}",
+      "error": "status=available confidence=medium",
+      "checkedAt": "2026-08-28T10:18:44.377Z",
+      "tries": 4
     },
     "m7yq": {
       "site": "socialcal",
@@ -12059,5 +12059,5 @@
       "tries": 3
     }
   },
-  "updatedAt": "2026-08-28T10:13:53.689Z"
+  "updatedAt": "2026-08-28T10:18:45.509Z"
 }

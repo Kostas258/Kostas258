@@ -34,6 +34,17 @@ const STARTED_AT = Date.now();
 // Some names come back "unknown/medium" every time. Retry a few times, then
 // accept the indeterminate answer instead of looping on it forever.
 const MAX_TRIES = +(process.env.SC_MAX_TRIES || 3);
+// Reprise des « unknown » laissés par une panne de la source (voir SOURCES.md,
+// amont épuisé le 23/08 puis rétabli le 28/08). Deux choses en dépendent, et il
+// faut les deux : la file doit reprendre ces noms, et le throttle doit cesser de
+// les traiter comme des noms réglés du premier coup.
+const RETRY_UNKNOWN = process.env.RETRY_UNKNOWN === '1';
+// Essais effectués pendant CE run, par pseudo. Le compteur persistant
+// (results[u].tries) décrit l'historique, y compris celui d'une panne ; celui-ci
+// décrit la session en cours, seule mesure honnête de « ce nom résiste-t-il à une
+// source aujourd'hui saine ».
+const RUN_TRIES = new Map();
+const runTries = u => RUN_TRIES.get(u) || 0;
 // The integrity control retries too: one transient miss is not proof a source
 // is down, and treating it as proof cost three hours of silence on 22 August.
 const CONTROL_TRIES = +(process.env.SC_CONTROL_TRIES || 3);
@@ -92,12 +103,16 @@ function workList() {
   // a récupéré depuis : les 174 « unknown » de cette période sont des victimes de
   // la panne, pas des cas durs. RETRY_UNKNOWN=1 les remet dans la file. Un
   // « unknown » reste un « unknown » — on ne fait que redemander, jamais promouvoir.
-  const RETRY_UNKNOWN = process.env.RETRY_UNKNOWN === '1';
   const done = u => {
     const r = store.results[u];
     if (!r) return false;
     if (r.verdict !== 'unknown') return true;
-    return RETRY_UNKNOWN ? false : (r.tries || 1) >= MAX_TRIES;
+    // Sous RETRY_UNKNOWN, le compteur historique ne décide plus : ces noms ont
+    // épuisé leurs essais pendant la panne du 23/08, pas contre une source
+    // saine. Ils repartent avec un budget neuf, compté sur CE run seulement,
+    // pour que la reprise ne devienne pas une boucle sans fin sur les mêmes.
+    if (RETRY_UNKNOWN) return runTries(u) >= MAX_TRIES;
+    return (r.tries || 1) >= MAX_TRIES;
   };
   // Cross-checking a vervox "taken" is the least useful thing this can do: the
   // two sources have never once disagreed in that direction, while every
@@ -119,7 +134,15 @@ function workList() {
   // floor. That trade is fine with unlimited time and wrong against a deadline:
   // it would leave a few hundred names looked at three times and several hundred
   // never looked at at all. Coverage first, second opinions with what is left.
-  const tries = u => (store.results[u] && store.results[u].tries) || 0;
+  // Même piège que pour le throttle : sous RETRY_UNKNOWN, le compteur persistant
+  // vaut 3+ pour TOUS les noms de la file, donc « déjà regardé » ne distingue plus
+  // rien, le tri stable garde le même nom en tête et le runner le réinterroge
+  // jusqu'à épuisement avant de passer au suivant. C'est le comportement en
+  // profondeur que ce bloc dit justement d'éviter. Le budget du run rétablit le
+  // parcours en largeur : un premier tour complet, les seconds avis ensuite.
+  const tries = u => (RETRY_UNKNOWN
+    ? runTries(u)
+    : (store.results[u] && store.results[u].tries) || 0);
   const rank = u => (tries(u) > 0 ? 1000 : 0) + tier(u) * 2 + (in100.has(u) ? 0 : 1);
   return all.filter(u => !done(u)).sort((a, b) => rank(a) - rank(b));
 }
@@ -187,6 +210,7 @@ function workList() {
       continue;
     }
 
+    RUN_TRIES.set(u, runTries(u) + 1);
     res.tries = ((store.results[u] && store.results[u].tries) || 0) + 1;
     store.results[u] = res;
     save();
@@ -201,7 +225,15 @@ function workList() {
     // 264 names had resolved on a retry. That false signal had dragged the
     // cadence from 60s to its 300s ceiling overnight — a fivefold slowdown
     // caused by the runner misreading its own retries.
-    const settled = res.verdict !== 'unknown' || res.tries >= MAX_TRIES;
+    // Sous RETRY_UNKNOWN, res.tries vaut déjà 3 ou plus dès la première tentative
+    // (ces noms traînent le compteur de la panne du 23/08). Le lire ici ferait
+    // exactement l'erreur décrite au-dessus : chaque premier essai compterait
+    // comme un nom réglé, et comme la file ne contient QUE les noms les plus durs,
+    // le throttle lirait un taux d'échec voisin de 100 % et grimperait aussitôt à
+    // son plafond. C'est ce qui s'est produit le 28/08 à 12:01, 153 s -> 246 s.
+    // Le budget du run est la seule mesure valable pour cette décision.
+    const attempts = RETRY_UNKNOWN ? runTries(u) : res.tries;
+    const settled = res.verdict !== 'unknown' || attempts >= MAX_TRIES;
     if (settled) {
       const change = throttle.record(res.verdict !== 'unknown');
       if (change) {

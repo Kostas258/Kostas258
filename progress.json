@@ -101,7 +101,7 @@
     "v9urou",
     "vj3oxa"
   ],
-  "checked": 86,
+  "checked": 87,
   "available": [
     "h3ii",
     "j2eb",
@@ -158,7 +158,8 @@
     "vj3oxa",
     "pk1ue",
     "j9eovo",
-    "xp9use"
+    "xp9use",
+    "b6oedi"
   ],
   "results": {
     "ba5i": {
@@ -938,7 +939,17 @@
       "checkedAt": "2026-08-28T10:05:04.278Z",
       "attempts": 1,
       "tries": 1
+    },
+    "b6oedi": {
+      "site": "vervox",
+      "username": "b6oedi",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"b6oedi\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@b6oedi semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-28T10:15:23.896Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-28T10:05:23.816Z"
+  "updatedAt": "2026-08-28T10:15:35.180Z"
 }
