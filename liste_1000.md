@@ -1,17 +1,17 @@
 # Liste nomutilisateursprare — les 1000 identifiants, pris ou non
 
-**Généré le :** 28/08/2026 15:08:25 (heure de Paris, UTC+2)
+**Généré le :** 28/08/2026 17:55:04 (heure de Paris, UTC+2)
 
 Les pseudos sont regroupés par statut, du plus sûr au moins sûr. Le détail de la
 méthode, des sources et de leurs limites est dans `pseudos_verifies.md`.
 
 | Statut | Nombre | Ce que ça veut dire |
 |---|---:|---|
-| **DISPONIBLE (2 sources)** | 317 | vervox et socialcal disent tous deux « libre » |
-| DISPONIBLE (1 source) | 22 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
+| **DISPONIBLE (2 sources)** | 328 | vervox et socialcal disent tous deux « libre » |
+| DISPONIBLE (1 source) | 13 | une seule source l'a vérifié ; l'autre ne l'a pas encore fait |
 | CONTRADICTION | 5 | les deux sources se contredisent — aucune n'est retenue |
-| PRIS | 602 | au moins une source a trouvé le compte |
-| INDÉTERMINÉ | 54 | interrogé, mais aucune réponse exploitable |
+| PRIS | 608 | au moins une source a trouvé le compte |
+| INDÉTERMINÉ | 46 | interrogé, mais aucune réponse exploitable |
 | **Total** | **1000** | |
 
 ⚠️ Aucun vérificateur externe ne peut prouver qu'un pseudo est libre. Instagram
@@ -19,7 +19,7 @@ réserve certains identifiants (marques, comptes désactivés) sans qu'aucun out
 le sache, et depuis cet environnement Instagram lui-même répond 302 pour tout
 pseudo, pris ou libre. **La seule preuve est la création du compte.**
 
-## DISPONIBLE (2 sources) — 317
+## DISPONIBLE (2 sources) — 328
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
@@ -123,6 +123,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 474 | `m7ahu` | available | available | 24/08/2026 01:04:13 |
 | 475 | `m7ahy` | available | available | 24/08/2026 01:12:20 |
 | 477 | `m7aja` | available | available | 24/08/2026 01:20:28 |
+| 491 | `m7awo` | available | available | 28/08/2026 15:39:18 |
 | 492 | `m7awu` | available | available | 24/08/2026 04:28:44 |
 | 494 | `m7eqi` | available | available | 24/08/2026 04:36:56 |
 | 495 | `m7eqa` | available | available | 24/08/2026 04:45:07 |
@@ -180,6 +181,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 622 | `m7oje` | available | available | 24/08/2026 19:24:24 |
 | 624 | `m7oju` | available | available | 24/08/2026 19:32:35 |
 | 625 | `m7ojy` | available | available | 24/08/2026 21:10:56 |
+| 628 | `m7ose` | available | available | 28/08/2026 16:20:07 |
 | 633 | `m7owa` | available | available | 24/08/2026 21:19:06 |
 | 634 | `m7owe` | available | available | 24/08/2026 21:27:16 |
 | 636 | `m7owu` | available | available | 24/08/2026 21:35:23 |
@@ -223,6 +225,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 716 | `m7yxi` | available | available | 25/08/2026 10:36:52 |
 | 718 | `m7yxe` | available | available | 25/08/2026 10:45:03 |
 | 719 | `m7yxo` | available | available | 25/08/2026 10:53:20 |
+| 720 | `m7yxu` | available | available | 28/08/2026 15:08:34 |
 | 721 | `m7yxy` | available | available | 25/08/2026 11:01:28 |
 | 723 | `m7yva` | available | available | 25/08/2026 11:09:45 |
 | 724 | `m7yve` | available | available | 25/08/2026 11:17:55 |
@@ -237,6 +240,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 742 | `m7yre` | available | available | 25/08/2026 12:31:27 |
 | 743 | `m7yro` | available | available | 25/08/2026 12:39:35 |
 | 744 | `m7yru` | available | available | 25/08/2026 12:47:44 |
+| 747 | `m7yta` | available | available | 28/08/2026 15:18:44 |
 | 749 | `m7yto` | available | available | 25/08/2026 12:55:51 |
 | 754 | `m7yne` | available | available | 25/08/2026 13:11:59 |
 | 755 | `m7yno` | available | available | 25/08/2026 13:20:08 |
@@ -244,7 +248,9 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 757 | `m7yny` | available | available | 25/08/2026 20:16:00 |
 | 760 | `m7yhe` | available | available | 25/08/2026 20:24:13 |
 | 761 | `m7yho` | available | available | 25/08/2026 20:32:20 |
+| 762 | `m7yhu` | available | available | 28/08/2026 15:29:01 |
 | 764 | `m7yji` | available | available | 25/08/2026 20:48:42 |
+| 765 | `m7yja` | available | available | 28/08/2026 15:49:27 |
 | 767 | `m7yjo` | available | available | 25/08/2026 20:56:53 |
 | 768 | `m7yju` | available | available | 26/08/2026 00:05:00 |
 | 769 | `m7yjy` | available | available | 26/08/2026 03:13:33 |
@@ -252,19 +258,23 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 776 | `m7ywi` | available | available | 26/08/2026 03:29:51 |
 | 778 | `m7ywe` | available | available | 26/08/2026 03:46:06 |
 | 779 | `m7ywo` | available | available | 26/08/2026 03:54:15 |
+| 780 | `m7ywu` | available | available | 28/08/2026 15:59:34 |
 | 781 | `m7ywy` | available | available | 26/08/2026 04:02:30 |
 | 782 | `m7qiq` | available | available | 26/08/2026 04:10:37 |
 | 784 | `m7qiv` | available | available | 26/08/2026 04:18:49 |
+| 788 | `m7qit` | available | available | 28/08/2026 16:09:43 |
 | 789 | `m7qin` | available | available | 26/08/2026 04:26:54 |
 | 790 | `m7qih` | available | available | 26/08/2026 04:35:01 |
 | 792 | `m7qis` | available | available | 26/08/2026 04:43:16 |
 | 796 | `m7qav` | available | available | 26/08/2026 04:51:25 |
 | 798 | `m7qak` | available | available | 26/08/2026 04:59:33 |
+| 802 | `m7qah` | available | available | 28/08/2026 16:30:16 |
 | 803 | `m7qaj` | available | available | 26/08/2026 05:07:40 |
 | 804 | `m7qas` | available | available | 26/08/2026 05:15:47 |
 | 807 | `m7qex` | available | available | 26/08/2026 05:23:55 |
 | 808 | `m7qev` | available | available | 26/08/2026 05:32:03 |
 | 810 | `m7qek` | available | available | 26/08/2026 05:40:09 |
+| 811 | `m7qer` | available | available | 28/08/2026 16:40:30 |
 | 813 | `m7qen` | available | available | 26/08/2026 05:48:15 |
 | 815 | `m7qej` | available | available | 26/08/2026 05:56:33 |
 | 817 | `m7qew` | available | available | 26/08/2026 06:04:42 |
@@ -273,6 +283,7 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 822 | `m7qok` | available | available | 26/08/2026 06:29:13 |
 | 824 | `m7qot` | available | available | 26/08/2026 06:37:23 |
 | 825 | `m7qon` | available | available | 26/08/2026 06:45:32 |
+| 826 | `m7qoh` | available | available | 28/08/2026 16:50:39 |
 | 827 | `m7qoj` | available | available | 26/08/2026 06:53:39 |
 | 829 | `m7qow` | available | available | 26/08/2026 07:01:57 |
 | 830 | `m7quq` | available | available | 26/08/2026 07:10:05 |
@@ -341,19 +352,10 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 997 | `m7vyw` | available | available | 28/08/2026 11:24:39 |
 | 998 | `m7ziq` | available | available | 28/08/2026 11:34:48 |
 
-## DISPONIBLE (1 source) — 22
+## DISPONIBLE (1 source) — 13
 
 | # | Pseudo | Vervox | SocialCal | Vérifié le |
 |---|---|---|---|---|
-| 720 | `m7yxu` | — | available | 28/08/2026 13:46:14 |
-| 747 | `m7yta` | — | available | 28/08/2026 13:49:16 |
-| 762 | `m7yhu` | — | available | 28/08/2026 13:52:19 |
-| 765 | `m7yja` | — | available | 28/08/2026 13:53:20 |
-| 780 | `m7ywu` | — | available | 28/08/2026 13:55:22 |
-| 788 | `m7qit` | — | available | 28/08/2026 13:58:23 |
-| 802 | `m7qah` | — | available | 28/08/2026 14:01:26 |
-| 811 | `m7qer` | — | available | 28/08/2026 14:04:29 |
-| 826 | `m7qoh` | — | available | 28/08/2026 14:06:30 |
 | 842 | `m7qyq` | — | available | 28/08/2026 14:09:34 |
 | 844 | `m7qyv` | — | available | 28/08/2026 14:10:35 |
 | 871 | `m7xar` | — | available | 28/08/2026 14:19:44 |
@@ -378,10 +380,10 @@ pseudo, pris ou libre. **La seule preuve est la création du compte.**
 | 37 | `m7ei` | available | taken | 21/08/2026 11:57:04 |
 | 38 | `m7ea` | available | taken | 21/08/2026 11:57:17 |
 
-## PRIS — 602
+## PRIS — 608
 
-`m7ii`, `m7ie`, `m7io`, `m7iu`, `m7iq`, `m7ix`, `m7iz`, `m7ik`, `m7it`, `m7in`, `m7ih`, `m7ij`, `m7is`, `m7iw`, `m7ai`, `m7aa`, `m7ao`, `m7au`, `m7ay`, `m7aq`, `m7ax`, `m7az`, `m7ak`, `m7ar`, `m7an`, `m7aj`, `m7as`, `m7aw`, `m7ee`, `m7eo`, `m7eu`, `m7ey`, `m7eq`, `m7ex`, `m7ev`, `m7ez`, `m7ek`, `m7er`, `m7et`, `m7eh`, `m7ej`, `m7es`, `m7ew`, `m7oa`, `m7oe`, `m7oo`, `m7ou`, `m7oy`, `m7oq`, `m7ox`, `m7ov`, `m7oz`, `m7ok`, `m7or`, `m7ot`, `m7on`, `m7oh`, `m7oj`, `m7ui`, `m7ua`, `m7ue`, `m7uu`, `m7uy`, `m7uq`, `m7uv`, `m7uk`, `m7ut`, `m7un`, `m7uh`, `m7uj`, `m7us`, `m7uw`, `m7ya`, `m7yx`, `m7yz`, `m7yk`, `m7yr`, `m7yt`, `m7yn`, `m7yh`, `m7ys`, `m7yw`, `m7qi`, `m7qa`, `m7qe`, `m7qo`, `m7qu`, `m7qy`, `m7qq`, `m7qx`, `m7qv`, `m7qr`, `m7qt`, `m7qn`, `m7qh`, `m7qj`, `m7qw`, `m7xi`, `m7xa`, `m7xe`, `m7xo`, `m7xq`, `m7xv`, `m7xk`, `m7xr`, `m7xt`, `m7xn`, `m7xs`, `m7va`, `m7ve`, `m7vo`, `m7vu`, `m7vy`, `m7vq`, `m7vx`, `m7vk`, `m7vr`, `m7vt`, `m7vn`, `m7vh`, `m7vj`, `m7vs`, `m7vw`, `m7zi`, `m7za`, `m7zo`, `m7zu`, `m7zy`, `m7zq`, `m7zx`, `m7zv`, `m7zz`, `m7zr`, `m7zt`, `m7zh`, `m7zj`, `m7zw`, `m7ki`, `m7ka`, `m7ke`, `m7ku`, `m7ky`, `m7kq`, `m7kx`, `m7kv`, `m7kz`, `m7kk`, `m7kr`, `m7kt`, `m7kh`, `m7ks`, `m7ri`, `m7ra`, `m7re`, `m7ro`, `m7ru`, `m7ry`, `m7rq`, `m7rx`, `m7rv`, `m7rt`, `m7rn`, `m7rh`, `m7rj`, `m7ti`, `m7ta`, `m7te`, `m7to`, `m7tu`, `m7ty`, `m7tq`, `m7tv`, `m7tz`, `m7tk`, `m7tr`, `m7tt`, `m7tn`, `m7th`, `m7tj`, `m7ts`, `m7tw`, `m7ni`, `m7na`, `m7ne`, `m7nu`, `m7ny`, `m7nv`, `m7nz`, `m7nk`, `m7nr`, `m7nt`, `m7nn`, `m7nw`, `m7hi`, `m7ha`, `m7he`, `m7ho`, `m7hu`, `m7hq`, `m7hx`, `m7hk`, `m7hr`, `m7ht`, `m7hn`, `m7hh`, `m7hj`, `m7ji`, `m7ja`, `m7jo`, `m7ju`, `m7jx`, `m7jz`, `m7jk`, `m7jr`, `m7jt`, `m7jn`, `m7jh`, `m7jj`, `m7js`, `m7si`, `m7sa`, `m7se`, `m7so`, `m7sy`, `m7sq`, `m7sx`, `m7sk`, `m7sr`, `m7st`, `m7sh`, `m7sj`, `m7ss`, `m7sw`, `m7wi`, `m7wa`, `m7we`, `m7wu`, `m7wq`, `m7wx`, `m7wv`, `m7wz`, `m7wk`, `m7wr`, `m7wt`, `m7wn`, `m7wh`, `m7wj`, `m7ww`, `q7ia`, `x7ia`, `v7ia`, `z7ia`, `k7ia`, `t7ia`, `s7ia`, `w7ia`, `l7ia`, `i7ia`, `a7ia`, `e7ia`, `o7ia`, `u7ia`, `y7ia`, `m2ia`, `m4ia`, `m3ia`, `m6ia`, `m7iqi`, `m7iqa`, `m7iqe`, `m7iqo`, `m7ixi`, `m7ixa`, `m7ixe`, `m7ixo`, `m7ixu`, `m7ixy`, `m7ivi`, `m7ive`, `m7ivo`, `m7ivy`, `m7ize`, `m7izu`, `m7izy`, `m7iki`, `m7ika`, `m7ike`, `m7iko`, `m7iku`, `m7iky`, `m7iri`, `m7ire`, `m7iro`, `m7iru`, `m7iry`, `m7ita`, `m7ite`, `m7ito`, `m7itu`, `m7ity`, `m7ini`, `m7ina`, `m7ine`, `m7ino`, `m7iny`, `m7iho`, `m7iji`, `m7ija`, `m7ijy`, `m7isi`, `m7isa`, `m7iso`, `m7isu`, `m7iwi`, `m7iwe`, `m7iwu`, `m7iwy`, `m7aqi`, `m7aqa`, `m7aqe`, `m7aqy`, `m7axi`, `m7axa`, `m7axu`, `m7axy`, `m7ava`, `m7avo`, `m7avu`, `m7avy`, `m7azi`, `m7aza`, `m7aze`, `m7azo`, `m7azu`, `m7azy`, `m7aka`, `m7ake`, `m7aku`, `m7aky`, `m7ari`, `m7ara`, `m7are`, `m7aro`, `m7aru`, `m7ary`, `m7ati`, `m7ata`, `m7ate`, `m7ato`, `m7atu`, `m7aty`, `m7ani`, `m7ana`, `m7ane`, `m7ano`, `m7anu`, `m7any`, `m7ahi`, `m7aha`, `m7aji`, `m7aje`, `m7ajo`, `m7aju`, `m7ajy`, `m7asi`, `m7ase`, `m7aso`, `m7asu`, `m7asy`, `m7awa`, `m7awe`, `m7awy`, `m7eqe`, `m7exe`, `m7exo`, `m7exu`, `m7exy`, `m7evi`, `m7eva`, `m7eza`, `m7ezo`, `m7eki`, `m7eka`, `m7ere`, `m7ery`, `m7eti`, `m7eto`, `m7etu`, `m7ety`, `m7eni`, `m7ena`, `m7eno`, `m7eny`, `m7ehe`, `m7eho`, `m7esa`, `m7ese`, `m7eso`, `m7ewi`, `m7ewa`, `m7oqe`, `m7oqo`, `m7oxi`, `m7oxa`, `m7oxe`, `m7oxo`, `m7oxy`, `m7ovi`, `m7ova`, `m7ovo`, `m7oza`, `m7oze`, `m7ozo`, `m7oki`, `m7oka`, `m7oko`, `m7oku`, `m7ori`, `m7ore`, `m7oro`, `m7oru`, `m7ory`, `m7ota`, `m7ote`, `m7oto`, `m7oni`, `m7ona`, `m7one`, `m7ono`, `m7onu`, `m7oha`, `m7oho`, `m7ohu`, `m7ohy`, `m7oji`, `m7oja`, `m7ojo`, `m7osi`, `m7oso`, `m7osu`, `m7osy`, `m7owi`, `m7owo`, `m7owy`, `m7uqi`, `m7uqo`, `m7uxi`, `m7uxa`, `m7uxe`, `m7uxu`, `m7uvi`, `m7uvu`, `m7uvy`, `m7uzi`, `m7uzy`, `m7uki`, `m7uka`, `m7uko`, `m7ure`, `m7uro`, `m7ury`, `m7uti`, `m7uta`, `m7uto`, `m7uni`, `m7una`, `m7uhi`, `m7uha`, `m7uho`, `m7uhu`, `m7uji`, `m7uju`, `m7usi`, `m7usa`, `m7use`, `m7uso`, `m7usy`, `m7uwa`, `m7uwo`, `m7uwu`, `m7uwy`, `m7yqe`, `m7yxa`, `m7yvi`, `m7yvo`, `m7yzi`, `m7yzu`, `m7yka`, `m7yke`, `m7yko`, `m7yky`, `m7yri`, `m7yra`, `m7yry`, `m7yti`, `m7yte`, `m7ytu`, `m7yty`, `m7yni`, `m7yna`, `m7yhi`, `m7yha`, `m7yhy`, `m7yje`, `m7ysi`, `m7ysa`, `m7yso`, `m7ysu`, `m7ysy`, `m7ywa`, `m7qix`, `m7qiz`, `m7qik`, `m7qir`, `m7qij`, `m7qiw`, `m7qax`, `m7qaz`, `m7qar`, `m7qat`, `m7qan`, `m7qaw`, `m7qez`, `m7qet`, `m7qes`, `m7qoq`, `m7qox`, `m7qor`, `m7qur`, `m7quj`, `m7qyx`, `m7xiq`, `m7xix`, `m7xiv`, `m7xiz`, `m7xik`, `m7xir`, `m7xij`, `m7xis`, `m7xiw`, `m7xaq`, `m7xax`, `m7xaz`, `m7xan`, `m7xah`, `m7xaj`, `m7xas`, `m7xeq`, `m7xev`, `m7xez`, `m7xek`, `m7xet`, `m7xeh`, `m7xej`, `m7xes`, `m7xoq`, `m7xox`, `m7xov`, `m7xoz`, `m7xot`, `m7xon`, `m7xoh`, `m7xos`, `m7xuq`, `m7xux`, `m7xut`, `m7xun`, `m7xyq`, `m7xyz`, `m7xyr`, `m7xyt`, `m7xyn`, `m7xys`, `m7vix`, `m7viv`, `m7viz`, `m7vik`, `m7vit`, `m7vis`, `m7viw`, `m7vaq`, `m7var`, `m7vah`, `m7vas`, `m7vaw`, `m7vex`, `m7vev`, `m7ven`, `m7ves`, `m7vox`, `m7vok`, `m7vor`, `m7voh`, `m7voj`, `m7vux`, `m7vus`, `m7vyq`, `m7vyv`, `m7vyz`, `m7vyk`, `m7vyt`, `m7vyn`
+`m7ii`, `m7ie`, `m7io`, `m7iu`, `m7iq`, `m7ix`, `m7iz`, `m7ik`, `m7it`, `m7in`, `m7ih`, `m7ij`, `m7is`, `m7iw`, `m7ai`, `m7aa`, `m7ao`, `m7au`, `m7ay`, `m7aq`, `m7ax`, `m7az`, `m7ak`, `m7ar`, `m7an`, `m7aj`, `m7as`, `m7aw`, `m7ee`, `m7eo`, `m7eu`, `m7ey`, `m7eq`, `m7ex`, `m7ev`, `m7ez`, `m7ek`, `m7er`, `m7et`, `m7eh`, `m7ej`, `m7es`, `m7ew`, `m7oa`, `m7oe`, `m7oo`, `m7ou`, `m7oy`, `m7oq`, `m7ox`, `m7ov`, `m7oz`, `m7ok`, `m7or`, `m7ot`, `m7on`, `m7oh`, `m7oj`, `m7ui`, `m7ua`, `m7ue`, `m7uu`, `m7uy`, `m7uq`, `m7uv`, `m7uk`, `m7ut`, `m7un`, `m7uh`, `m7uj`, `m7us`, `m7uw`, `m7ya`, `m7yx`, `m7yz`, `m7yk`, `m7yr`, `m7yt`, `m7yn`, `m7yh`, `m7ys`, `m7yw`, `m7qi`, `m7qa`, `m7qe`, `m7qo`, `m7qu`, `m7qy`, `m7qq`, `m7qx`, `m7qv`, `m7qr`, `m7qt`, `m7qn`, `m7qh`, `m7qj`, `m7qw`, `m7xi`, `m7xa`, `m7xe`, `m7xo`, `m7xq`, `m7xv`, `m7xk`, `m7xr`, `m7xt`, `m7xn`, `m7xs`, `m7va`, `m7ve`, `m7vo`, `m7vu`, `m7vy`, `m7vq`, `m7vx`, `m7vk`, `m7vr`, `m7vt`, `m7vn`, `m7vh`, `m7vj`, `m7vs`, `m7vw`, `m7zi`, `m7za`, `m7zo`, `m7zu`, `m7zy`, `m7zq`, `m7zx`, `m7zv`, `m7zz`, `m7zr`, `m7zt`, `m7zh`, `m7zj`, `m7zw`, `m7ki`, `m7ka`, `m7ke`, `m7ku`, `m7ky`, `m7kq`, `m7kx`, `m7kv`, `m7kz`, `m7kk`, `m7kr`, `m7kt`, `m7kh`, `m7ks`, `m7ri`, `m7ra`, `m7re`, `m7ro`, `m7ru`, `m7ry`, `m7rq`, `m7rx`, `m7rv`, `m7rt`, `m7rn`, `m7rh`, `m7rj`, `m7ti`, `m7ta`, `m7te`, `m7to`, `m7tu`, `m7ty`, `m7tq`, `m7tv`, `m7tz`, `m7tk`, `m7tr`, `m7tt`, `m7tn`, `m7th`, `m7tj`, `m7ts`, `m7tw`, `m7ni`, `m7na`, `m7ne`, `m7nu`, `m7ny`, `m7nv`, `m7nz`, `m7nk`, `m7nr`, `m7nt`, `m7nn`, `m7nw`, `m7hi`, `m7ha`, `m7he`, `m7ho`, `m7hu`, `m7hq`, `m7hx`, `m7hk`, `m7hr`, `m7ht`, `m7hn`, `m7hh`, `m7hj`, `m7ji`, `m7ja`, `m7jo`, `m7ju`, `m7jx`, `m7jz`, `m7jk`, `m7jr`, `m7jt`, `m7jn`, `m7jh`, `m7jj`, `m7js`, `m7si`, `m7sa`, `m7se`, `m7so`, `m7sy`, `m7sq`, `m7sx`, `m7sk`, `m7sr`, `m7st`, `m7sh`, `m7sj`, `m7ss`, `m7sw`, `m7wi`, `m7wa`, `m7we`, `m7wu`, `m7wq`, `m7wx`, `m7wv`, `m7wz`, `m7wk`, `m7wr`, `m7wt`, `m7wn`, `m7wh`, `m7wj`, `m7ww`, `q7ia`, `x7ia`, `v7ia`, `z7ia`, `k7ia`, `t7ia`, `j7ia`, `s7ia`, `w7ia`, `l7ia`, `i7ia`, `a7ia`, `e7ia`, `o7ia`, `u7ia`, `y7ia`, `m2ia`, `m4ia`, `m3ia`, `m6ia`, `m7iqi`, `m7iqa`, `m7iqe`, `m7iqo`, `m7ixi`, `m7ixa`, `m7ixe`, `m7ixo`, `m7ixu`, `m7ixy`, `m7ivi`, `m7ive`, `m7ivo`, `m7ivy`, `m7ize`, `m7izu`, `m7izy`, `m7iki`, `m7ika`, `m7ike`, `m7iko`, `m7iku`, `m7iky`, `m7iri`, `m7ire`, `m7iro`, `m7iru`, `m7iry`, `m7ita`, `m7ite`, `m7ito`, `m7itu`, `m7ity`, `m7ini`, `m7ina`, `m7ine`, `m7ino`, `m7iny`, `m7iho`, `m7iji`, `m7ija`, `m7ijy`, `m7isi`, `m7isa`, `m7iso`, `m7isu`, `m7iwi`, `m7iwe`, `m7iwu`, `m7iwy`, `m7aqi`, `m7aqa`, `m7aqe`, `m7aqy`, `m7axi`, `m7axa`, `m7axu`, `m7axy`, `m7ava`, `m7avo`, `m7avu`, `m7avy`, `m7azi`, `m7aza`, `m7aze`, `m7azo`, `m7azu`, `m7azy`, `m7aka`, `m7ake`, `m7ako`, `m7aku`, `m7aky`, `m7ari`, `m7ara`, `m7are`, `m7aro`, `m7aru`, `m7ary`, `m7ati`, `m7ata`, `m7ate`, `m7ato`, `m7atu`, `m7aty`, `m7ani`, `m7ana`, `m7ane`, `m7ano`, `m7anu`, `m7any`, `m7ahi`, `m7aha`, `m7aji`, `m7aje`, `m7ajo`, `m7aju`, `m7ajy`, `m7asi`, `m7asa`, `m7ase`, `m7aso`, `m7asu`, `m7asy`, `m7awa`, `m7awe`, `m7awy`, `m7eqe`, `m7exe`, `m7exo`, `m7exu`, `m7exy`, `m7evi`, `m7eva`, `m7eza`, `m7ezo`, `m7eki`, `m7eka`, `m7ere`, `m7ery`, `m7eti`, `m7eto`, `m7etu`, `m7ety`, `m7eni`, `m7ena`, `m7eno`, `m7eny`, `m7ehe`, `m7eho`, `m7esa`, `m7ese`, `m7eso`, `m7ewi`, `m7ewa`, `m7oqe`, `m7oqo`, `m7oxi`, `m7oxa`, `m7oxe`, `m7oxo`, `m7oxy`, `m7ovi`, `m7ova`, `m7ovo`, `m7ozi`, `m7oza`, `m7oze`, `m7ozo`, `m7oki`, `m7oka`, `m7oko`, `m7oku`, `m7ori`, `m7ore`, `m7oro`, `m7oru`, `m7ory`, `m7ota`, `m7ote`, `m7oto`, `m7oni`, `m7ona`, `m7one`, `m7ono`, `m7onu`, `m7oha`, `m7oho`, `m7ohu`, `m7ohy`, `m7oji`, `m7oja`, `m7ojo`, `m7osi`, `m7osa`, `m7oso`, `m7osu`, `m7osy`, `m7owi`, `m7owo`, `m7owy`, `m7uqi`, `m7uqo`, `m7uxi`, `m7uxa`, `m7uxe`, `m7uxu`, `m7uvi`, `m7uvu`, `m7uvy`, `m7uzi`, `m7uzy`, `m7uki`, `m7uka`, `m7uko`, `m7ura`, `m7ure`, `m7uro`, `m7ury`, `m7uti`, `m7uta`, `m7uto`, `m7uni`, `m7una`, `m7uhi`, `m7uha`, `m7uho`, `m7uhu`, `m7uji`, `m7uju`, `m7usi`, `m7usa`, `m7use`, `m7uso`, `m7usy`, `m7uwa`, `m7uwo`, `m7uwu`, `m7uwy`, `m7yqe`, `m7yxa`, `m7yvi`, `m7yvo`, `m7yzi`, `m7yzu`, `m7yka`, `m7yke`, `m7yko`, `m7yky`, `m7yri`, `m7yra`, `m7yry`, `m7yti`, `m7yte`, `m7ytu`, `m7yty`, `m7yni`, `m7yna`, `m7yhi`, `m7yha`, `m7yhy`, `m7yje`, `m7ysi`, `m7ysa`, `m7yso`, `m7ysu`, `m7ysy`, `m7ywa`, `m7qix`, `m7qiz`, `m7qik`, `m7qir`, `m7qij`, `m7qiw`, `m7qax`, `m7qaz`, `m7qar`, `m7qat`, `m7qan`, `m7qaw`, `m7qez`, `m7qet`, `m7qes`, `m7qoq`, `m7qox`, `m7qor`, `m7qur`, `m7quj`, `m7qyx`, `m7xiq`, `m7xix`, `m7xiv`, `m7xiz`, `m7xik`, `m7xir`, `m7xij`, `m7xis`, `m7xiw`, `m7xaq`, `m7xax`, `m7xaz`, `m7xan`, `m7xah`, `m7xaj`, `m7xas`, `m7xeq`, `m7xev`, `m7xez`, `m7xek`, `m7xet`, `m7xeh`, `m7xej`, `m7xes`, `m7xoq`, `m7xox`, `m7xov`, `m7xoz`, `m7xot`, `m7xon`, `m7xoh`, `m7xos`, `m7xuq`, `m7xux`, `m7xut`, `m7xun`, `m7xyq`, `m7xyz`, `m7xyr`, `m7xyt`, `m7xyn`, `m7xys`, `m7vix`, `m7viv`, `m7viz`, `m7vik`, `m7vit`, `m7vis`, `m7viw`, `m7vaq`, `m7var`, `m7vah`, `m7vas`, `m7vaw`, `m7vex`, `m7vev`, `m7ven`, `m7ves`, `m7vox`, `m7vok`, `m7vor`, `m7voh`, `m7voj`, `m7vux`, `m7vus`, `m7vyq`, `m7vyv`, `m7vyz`, `m7vyk`, `m7vyt`, `m7vyn`
 
-## INDÉTERMINÉ — 54
+## INDÉTERMINÉ — 46
 
-`m7yy`, `m7qz`, `m7xz`, `m7ko`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `j7ia`, `m9ia`, `m7izi`, `m7ako`, `m7asa`, `m7awi`, `m7awo`, `m7evu`, `m7ezi`, `m7ezy`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ozi`, `m7ony`, `m7osa`, `m7ose`, `m7ura`, `m7uja`, `m7yqu`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xak`, `m7xaw`, `m7xer`, `m7xew`, `m7xor`, `m7xoj`, `m7xuv`, `m7xuz`, `m7xur`, `m7xus`, `m7vak`, `m7ver`, `m7veh`, `m7vos`, `m7vyj`, `m7ziv`
+`m7yy`, `m7qz`, `m7xz`, `m7ko`, `m7rk`, `m7hz`, `m7hs`, `m7jq`, `m9ia`, `m7izi`, `m7awi`, `m7evu`, `m7ezi`, `m7ezy`, `m7eri`, `m7ero`, `m7eru`, `m7eta`, `m7esi`, `m7ove`, `m7ony`, `m7uja`, `m7yqu`, `m7qaq`, `m7qeq`, `m7qeh`, `m7qos`, `m7qyz`, `m7xit`, `m7xin`, `m7xak`, `m7xaw`, `m7xer`, `m7xew`, `m7xor`, `m7xoj`, `m7xuv`, `m7xuz`, `m7xur`, `m7xus`, `m7vak`, `m7ver`, `m7veh`, `m7vos`, `m7vyj`, `m7ziv`

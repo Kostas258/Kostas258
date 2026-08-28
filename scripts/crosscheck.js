@@ -210,6 +210,25 @@ function workList() {
       continue;
     }
 
+    // Une réponse servie depuis le cache amont ET sans verdict ne changera pas
+    // tant que ce cache n'expire pas : la redemander dans le même run dépense
+    // 60 s pour obtenir le même octet. Mesuré le 28/08 : 5 requêtes sur 40.
+    // On épuise donc son budget d'essais d'un coup, ce qui la sort de la file
+    // sans rien promouvoir — elle reste « unknown » dans le magasin, et un run
+    // ultérieur, cache expiré, la reprendra normalement.
+    //
+    // Un cache qui porte un verdict reste utile et n'est pas concerné : sur les
+    // mêmes 40 requêtes, une réponse en cache a répondu « taken ».
+    if (res.cached && res.verdict === 'unknown') {
+      RUN_TRIES.set(u, MAX_TRIES);
+      console.log(`${ts()} [sc] ${u} -> unknown (cache amont) — inutile de réessayer ce run`);
+      store.results[u] = { ...res, tries: ((store.results[u] && store.results[u].tries) || 0) + 1 };
+      save();
+      checks++;
+      await sleep(throttle.delay);
+      continue;
+    }
+
     RUN_TRIES.set(u, runTries(u) + 1);
     res.tries = ((store.results[u] && store.results[u].tries) || 0) + 1;
     store.results[u] = res;
