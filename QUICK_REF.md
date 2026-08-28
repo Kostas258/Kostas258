@@ -1,5 +1,33 @@
 # Carte du projet
 
+## État au 29/08 00:00 UTC
+
+| | |
+|---|---|
+| **Disponibles, confirmés 2 sources** | **396** — dans `pseudos_disponibles.md` |
+| Pris | 665 |
+| Contradictions | 15 |
+| Indéterminés | 24 |
+
+Ce qui reste, et ce qu'il faut en faire :
+
+- **24 orphelins** — pseudos que socialcal n'a jamais tranchés. vervox est la
+  seule source qui puisse leur donner un premier verdict. Sa file les contient ;
+  la relève horaire le relance dès que son cooldown tombe à zéro. Sur les six
+  déjà traités, cinq sont revenus « pris ».
+- **15 contradictions** — vervox « disponible », socialcal « pris », les quinze
+  dans le même sens. socialcal a été redemandé le 28/08 : 11 maintiennent,
+  0 résolu. Reste à redemander à vervox : `node scripts/recheck_conflicts.js vervox`,
+  que `control.sh` propose de lui-même une fois la file vervox vide.
+- **socialcal** est en pause jusqu'au 29/08 ~19:20 UTC. Ses 32 sans verdict
+  reviennent de son cache amont ; mesuré le 28/08, redemander à 3 h d'écart a
+  coûté 45 requêtes pour un verdict. Seuil porté à 24 h.
+- **dnsrobot** reste le seul arbitre possible des contradictions. Sondé à chaque
+  relève par `control.sh`, amont fermé depuis le 24/08.
+
+`bash scripts/control.sh` dit toujours quoi faire : il émet `RESTART_VERVOX`,
+`RESTART_SOCIALCAL` ou `RECHECK_CONFLICTS` avec la commande exacte.
+
 ## Livrables
 - `pseudos_verifies.md` — rapport complet : méthode, sources, preuves, limites
 - `liste_1000.md` / `liste_1000.csv` — les 1000 pseudos, groupés par statut
