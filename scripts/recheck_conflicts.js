@@ -114,6 +114,19 @@ const check = SOURCE === 'vervox'
     await sleep(DELAY_MS);
   }
 
+  // Trace du passage. Indispensable côté vervox : cette remesure n'écrit pas
+  // dans progress*.json — le verrou y appartient à confirm.js — donc rien
+  // n'indiquerait au contrôleur qu'elle a eu lieu, et il la reproposerait à
+  // chaque relève. Quinze requêtes vervox et deux heures et demie pour
+  // réapprendre ce qu'on vient d'apprendre.
+  const marqueur = path.join(REPO, 'recheck_state.json');
+  const etat = readJsonSafe(marqueur) || {};
+  etat[SOURCE] = {
+    at: new Date().toISOString(),
+    conflits: conflits.length, resolus, persistants, muets,
+  };
+  writeJsonAtomic(marqueur, etat);
+
   console.log(`\n${ts()} ${resolus} résolus, ${persistants} persistants, ${muets} sans réponse`);
   if (SOURCE === 'vervox' && (resolus || persistants)) {
     console.log(`${ts()} mesure seule : les verdicts vervox ne sont pas réécrits ici, ` +

@@ -128,9 +128,25 @@ else
     if ps -eo args --no-headers | grep -q "^node scripts/recheck_conflicts.js"; then
       say "vervox : remesure des contradictions déjà en cours"
     elif [ "${nconf:-0}" -gt 0 ]; then
-      say "vervox : file vide, mais $nconf contradictions à remesurer"
-      say "   node scripts/recheck_conflicts.js vervox"
-      echo "RECHECK_CONFLICTS=1"
+      # Une remesure qui vient de conclure ne se refait pas. Les 29/08, les deux
+      # sources ont maintenu leurs positions sur vingt-quatre mesures fraîches :
+      # ces contradictions sont réelles et stables. Les redemander chaque heure
+      # coûterait quinze requêtes vervox pour réapprendre la même chose.
+      rhours=$(node -e '
+        const fs=require("fs");
+        if (!fs.existsSync("./recheck_state.json")) { console.log(999); process.exit(0); }
+        const e=JSON.parse(fs.readFileSync("./recheck_state.json","utf8")).vervox;
+        console.log(e && e.at ? ((Date.now()-Date.parse(e.at))/3600000).toFixed(1) : 999);
+        ' 2>/dev/null || echo 999)
+      RECHECK_H="${RECHECK_HOURS:-24}"
+      if awk "BEGIN{exit !(${rhours:-999} >= $RECHECK_H)}"; then
+        say "vervox : file vide, mais $nconf contradictions à remesurer"
+        say "   node scripts/recheck_conflicts.js vervox"
+        echo "RECHECK_CONFLICTS=1"
+      else
+        say "vervox : $nconf contradictions, remesurées il y a ${rhours} h — les deux sources maintiennent"
+        say "   prochaine remesure utile dans $(awk "BEGIN{printf \"%.0f\", $RECHECK_H-${rhours}}") h ; seul dnsrobot pourrait les trancher"
+      fi
     else
       say "vervox : arrêté, file vide — rien à faire"
     fi
