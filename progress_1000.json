@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 408,
+  "checked": 410,
   "available": [
     "m7ia",
     "m7iy",
@@ -1361,7 +1361,8 @@
     "m7eta",
     "m7qeh",
     "m7qyz",
-    "m7xin"
+    "m7xin",
+    "m7xus"
   ],
   "results": {
     "m7ii": {
@@ -5370,7 +5371,27 @@
       "checkedAt": "2026-08-29T04:44:32.635Z",
       "attempts": 1,
       "tries": 1
+    },
+    "m7xus": {
+      "site": "vervox",
+      "username": "m7xus",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7xus\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7xus semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-29T04:55:00.218Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7vos": {
+      "site": "vervox",
+      "username": "m7vos",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7vos\",\"platform\":\"Instagram\"},\"message\":\"@m7vos est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-29T05:05:13.733Z",
+      "attempts": 1,
+      "tries": 1
     }
   },
-  "updatedAt": "2026-08-29T04:44:49.811Z"
+  "updatedAt": "2026-08-29T05:05:16.375Z"
 }

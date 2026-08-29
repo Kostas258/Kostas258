@@ -1,7 +1,7 @@
 # Pseudos Instagram — identifiants utilisés ou non
 
-**Généré le :** 29/08/2026 06:54:55 (heure de Paris, UTC+2)
-**Fenêtre de vérification :** 20/08/2026 14:07:47 → 29/08/2026 06:44:32 (heure de Paris)
+**Généré le :** 29/08/2026 07:15:21 (heure de Paris, UTC+2)
+**Fenêtre de vérification :** 20/08/2026 14:07:47 → 29/08/2026 07:05:13 (heure de Paris)
 
 ## Sources
 
@@ -30,10 +30,10 @@ Si les deux sources se contredisent, le statut est « contradiction », jamais u
 | Identifiants utilisés | 100 | 1000 | 1100 |
 | Identifiants non utilisés | 0 | 0 | 0 |
 | Disponibles (2 sources) | 48 | 348 | 396 |
-| Disponibles (1 source) | 0 | 6 | 6 |
-| Pris | 42 | 639 | 681 |
+| Disponibles (1 source) | 0 | 7 | 7 |
+| Pris | 42 | 640 | 682 |
 | Contradictions | 10 | 5 | 15 |
-| Indéterminés | 0 | 2 | 2 |
+| Indéterminés | 0 | 0 | 0 |
 
 Vérifications par la seconde source (socialcal) : 1068.
 
@@ -393,56 +393,57 @@ Aucun pseudo confirmé n'a jamais été archivé.
 302. **m7xuk** — confirmé par 2 sources
 303. **m7xuh** — confirmé par 2 sources
 304. **m7xuj** — confirmé par 2 sources
-305. **m7xuw** — confirmé par 2 sources
-306. **m7xyx** — confirmé par 2 sources
-307. **m7xyv** — confirmé par 2 sources
-308. **m7xyk** — confirmé par 2 sources
-309. **m7xyh** — confirmé par 2 sources
-310. **m7xyj** — confirmé par 2 sources
-311. **m7xyw** — confirmé par 2 sources
-312. **m7viq** — confirmé par 2 sources
-313. **m7vir** — confirmé par 2 sources
-314. **m7vin** — confirmé par 2 sources
-315. **m7vih** — confirmé par 2 sources
-316. **m7vij** — confirmé par 2 sources
-317. **m7vax** — confirmé par 2 sources
-318. **m7vav** — confirmé par 2 sources
-319. **m7vaz** — confirmé par 2 sources
-320. **m7vat** — confirmé par 2 sources
-321. **m7van** — confirmé par 2 sources
-322. **m7vaj** — confirmé par 2 sources
-323. **m7veq** — confirmé par 2 sources
-324. **m7vez** — confirmé par 2 sources
-325. **m7vek** — confirmé par 2 sources
-326. **m7ver** — confirmé par 2 sources
-327. **m7vet** — confirmé par 2 sources
-328. **m7veh** — confirmé par 2 sources
-329. **m7vej** — confirmé par 2 sources
-330. **m7vew** — confirmé par 2 sources
-331. **m7voq** — confirmé par 2 sources
-332. **m7vov** — confirmé par 2 sources
-333. **m7voz** — confirmé par 2 sources
-334. **m7vot** — confirmé par 2 sources
-335. **m7von** — confirmé par 2 sources
-336. **m7vow** — confirmé par 2 sources
-337. **m7vuq** — confirmé par 2 sources
-338. **m7vuv** — confirmé par 2 sources
-339. **m7vuz** — confirmé par 2 sources
-340. **m7vuk** — confirmé par 2 sources
-341. **m7vur** — confirmé par 2 sources
-342. **m7vut** — confirmé par 2 sources
-343. **m7vun** — confirmé par 2 sources
-344. **m7vuh** — confirmé par 2 sources
-345. **m7vuj** — confirmé par 2 sources
-346. **m7vuw** — confirmé par 2 sources
-347. **m7vyx** — confirmé par 2 sources
-348. **m7vyr** — confirmé par 2 sources
-349. **m7vyh** — confirmé par 2 sources
-350. **m7vyj** — confirmé par 2 sources
-351. **m7vys** — confirmé par 2 sources
-352. **m7vyw** — confirmé par 2 sources
-353. **m7ziq** — confirmé par 2 sources
-354. **m7zix** — confirmé par 2 sources
+305. **m7xus** — 1 source
+306. **m7xuw** — confirmé par 2 sources
+307. **m7xyx** — confirmé par 2 sources
+308. **m7xyv** — confirmé par 2 sources
+309. **m7xyk** — confirmé par 2 sources
+310. **m7xyh** — confirmé par 2 sources
+311. **m7xyj** — confirmé par 2 sources
+312. **m7xyw** — confirmé par 2 sources
+313. **m7viq** — confirmé par 2 sources
+314. **m7vir** — confirmé par 2 sources
+315. **m7vin** — confirmé par 2 sources
+316. **m7vih** — confirmé par 2 sources
+317. **m7vij** — confirmé par 2 sources
+318. **m7vax** — confirmé par 2 sources
+319. **m7vav** — confirmé par 2 sources
+320. **m7vaz** — confirmé par 2 sources
+321. **m7vat** — confirmé par 2 sources
+322. **m7van** — confirmé par 2 sources
+323. **m7vaj** — confirmé par 2 sources
+324. **m7veq** — confirmé par 2 sources
+325. **m7vez** — confirmé par 2 sources
+326. **m7vek** — confirmé par 2 sources
+327. **m7ver** — confirmé par 2 sources
+328. **m7vet** — confirmé par 2 sources
+329. **m7veh** — confirmé par 2 sources
+330. **m7vej** — confirmé par 2 sources
+331. **m7vew** — confirmé par 2 sources
+332. **m7voq** — confirmé par 2 sources
+333. **m7vov** — confirmé par 2 sources
+334. **m7voz** — confirmé par 2 sources
+335. **m7vot** — confirmé par 2 sources
+336. **m7von** — confirmé par 2 sources
+337. **m7vow** — confirmé par 2 sources
+338. **m7vuq** — confirmé par 2 sources
+339. **m7vuv** — confirmé par 2 sources
+340. **m7vuz** — confirmé par 2 sources
+341. **m7vuk** — confirmé par 2 sources
+342. **m7vur** — confirmé par 2 sources
+343. **m7vut** — confirmé par 2 sources
+344. **m7vun** — confirmé par 2 sources
+345. **m7vuh** — confirmé par 2 sources
+346. **m7vuj** — confirmé par 2 sources
+347. **m7vuw** — confirmé par 2 sources
+348. **m7vyx** — confirmé par 2 sources
+349. **m7vyr** — confirmé par 2 sources
+350. **m7vyh** — confirmé par 2 sources
+351. **m7vyj** — confirmé par 2 sources
+352. **m7vys** — confirmé par 2 sources
+353. **m7vyw** — confirmé par 2 sources
+354. **m7ziq** — confirmé par 2 sources
+355. **m7zix** — confirmé par 2 sources
 
 ### Liste m7ia
 
@@ -520,12 +521,6 @@ Ces pseudos ont reçu deux verdicts opposés. Aucun n'est retenu comme disponibl
 | `m7at` | Disponible | Pris |
 | `m7ei` | Disponible | Pris |
 | `m7ea` | Disponible | Pris |
-
-## Indéterminés (2)
-
-Interrogés, mais aucune réponse exploitable. À revérifier — surtout pas à considérer comme libres.
-
-`m7xus`, `m7vos`
 
 ## Liste m7ia — 100 identifiants
 
@@ -1549,7 +1544,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 909 | `m7xun` | Pris | — | Pris | 23/08/2026 20:55:24 |
 | 910 | `m7xuh` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:43:20 |
 | 911 | `m7xuj` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:51:40 |
-| 912 | `m7xus` | Indéterminé | — | Indéterminé | 28/08/2026 22:52:14 |
+| 912 | `m7xus` | Disponible (1 source) | Disponible | Indéterminé | 29/08/2026 06:55:00 |
 | 913 | `m7xuw` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 10:59:51 |
 | 914 | `m7xyq` | Pris | — | Pris | 23/08/2026 21:00:31 |
 | 915 | `m7xyx` | Disponible (2 sources) | Disponible | Disponible | 26/08/2026 12:32:12 |
@@ -1609,7 +1604,7 @@ Seuls les identifiants réellement interrogés sont détaillés ; les autres son
 | 969 | `m7von` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:23:43 |
 | 970 | `m7voh` | Pris | — | Pris | 28/08/2026 14:48:13 |
 | 971 | `m7voj` | Pris | — | Pris | 28/08/2026 14:49:14 |
-| 972 | `m7vos` | Indéterminé | — | Indéterminé | 28/08/2026 23:08:37 |
+| 972 | `m7vos` | Pris | Pris | Indéterminé | 29/08/2026 07:05:13 |
 | 973 | `m7vow` | Disponible (2 sources) | Disponible | Disponible | 27/08/2026 16:48:25 |
 | 974 | `m7vuq` | Disponible (2 sources) | Disponible | Disponible | 28/08/2026 01:40:22 |
 | 975 | `m7vux` | Pris | — | Pris | 23/08/2026 22:05:02 |
