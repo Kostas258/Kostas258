@@ -1,16 +1,16 @@
 # Pseudos Instagram disponibles
 
-**Liste provisoire — la vérification n'est pas finie.** 0 pseudo(s) attendent une confirmation par la seconde source et 19 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
+**Liste provisoire — la vérification n'est pas finie.** 3 pseudo(s) attendent une confirmation par la seconde source et 13 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
 
-Généré le 03:51:59 (heure de Paris).
+Généré le 04:51:38 (heure de Paris).
 
 | | nombre |
 |---|---|
 | Disponibles, confirmés par 2 sources | **396** |
-| Disponibles, vus par 1 source seulement | 0 |
-| Pris | 670 |
+| Disponibles, vus par 1 source seulement | 3 |
+| Pris | 673 |
 | Contradictions entre sources | 15 |
-| Indéterminés | 19 |
+| Indéterminés | 13 |
 
 ## Confirmés par 2 sources — 396
 
@@ -416,13 +416,17 @@ preuve le plus élevé atteint ici.
 | 395 | `m7ziq` | liste de 1000 |
 | 396 | `m7zix` | liste de 1000 |
 
-## Vus par une seule source — 0
+## Vus par une seule source — 3
 
 Une seule source a répondu. À traiter comme une piste, pas comme un acquis :
 vervox sur-déclare la disponibilité, donc un « disponible » vervox non
 corroboré est le cas le plus fragile.
 
-_Aucun._
+| # | pseudo | source | origine |
+|---|---|---|---|
+| 1 | `m7evu` | vervox | liste de 1000 |
+| 2 | `m7ero` | vervox | liste de 1000 |
+| 3 | `m7eta` | vervox | liste de 1000 |
 
 ## Ce que cette liste ne dit pas
 

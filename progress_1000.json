@@ -1001,7 +1001,7 @@
     "m7zix",
     "m7ziv"
   ],
-  "checked": 391,
+  "checked": 397,
   "available": [
     "m7ia",
     "m7iy",
@@ -1355,7 +1355,10 @@
     "m7vut",
     "m7vun",
     "m7vyj",
-    "m7zix"
+    "m7zix",
+    "m7evu",
+    "m7ero",
+    "m7eta"
   ],
   "results": {
     "m7ii": {
@@ -5198,13 +5201,63 @@
     "m7evu": {
       "site": "vervox",
       "username": "m7evu",
-      "verdict": "unknown",
-      "api": null,
-      "error": "HTTP 0",
-      "checkedAt": "2026-08-29T01:42:38.467Z",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7evu\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7evu semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-29T01:52:38.819Z",
+      "attempts": 1,
+      "tries": 2
+    },
+    "m7ezi": {
+      "site": "vervox",
+      "username": "m7ezi",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7ezi\",\"platform\":\"Instagram\"},\"message\":\"@m7ezi est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-29T02:02:54.667Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eri": {
+      "site": "vervox",
+      "username": "m7eri",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7eri\",\"platform\":\"Instagram\"},\"message\":\"@m7eri est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-29T02:12:57.916Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7ero": {
+      "site": "vervox",
+      "username": "m7ero",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7ero\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7ero semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-29T02:23:02.137Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eru": {
+      "site": "vervox",
+      "username": "m7eru",
+      "verdict": "taken",
+      "api": "{\"available\":false,\"statusCode\":\"TAKEN\",\"statusParams\":{\"username\":\"m7eru\",\"platform\":\"Instagram\"},\"message\":\"@m7eru est déjà pris sur Instagram.\",\"alternatives\":[],\"alternativesAvailable\":true}",
+      "error": null,
+      "checkedAt": "2026-08-29T02:33:11.535Z",
+      "attempts": 1,
+      "tries": 1
+    },
+    "m7eta": {
+      "site": "vervox",
+      "username": "m7eta",
+      "verdict": "available",
+      "api": "{\"available\":true,\"statusCode\":\"AVAILABLE\",\"statusParams\":{\"username\":\"m7eta\",\"platform\":\"Instagram\"},\"caveat\":\"HANDLE_RESERVATION\",\"message\":\"@m7eta semble disponible sur Instagram !\",\"alternatives\":[]}",
+      "error": null,
+      "checkedAt": "2026-08-29T02:43:17.635Z",
       "attempts": 1,
       "tries": 1
     }
   },
-  "updatedAt": "2026-08-29T01:42:38.783Z"
+  "updatedAt": "2026-08-29T02:43:29.808Z"
 }
