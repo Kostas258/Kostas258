@@ -110,6 +110,33 @@ compte, dédiés à la disponibilité, et déjà mesurés ici sur plus de mille 
    propre de la page, et n'annonce une candidate que si l'écart le dépasse
    nettement.
 
+### Les 15 contradictions sont réelles — remesure du 29/08
+
+La question ouverte depuis huit jours était : ces désaccords sont-ils de vrais
+désaccords, ou des mesures périmées ? Les deux sources ont été redemandées, la
+même liste, à huit jours d'intervalle des verdicts d'origine.
+
+| Source | Résultat |
+|---|---|
+| socialcal (28/08, 00:32–00:47) | **11 maintiennent « pris »**, 4 sans réponse, **0 résolu** |
+| vervox (29/08, 07:15–09:49) | **13 maintiennent « disponible »**, 2 sans réponse, **0 résolu** |
+
+Zéro convergence sur vingt-quatre mesures fraîches. Les deux sources sont donc
+cohérentes avec elles-mêmes et incompatibles entre elles. Ce ne sont pas des
+artefacts de données vieilles : ce sont de vrais désaccords, stables.
+
+Les quinze vont dans le même sens — vervox « disponible », socialcal « pris ».
+Un désaccord aléatoire se répartirait entre les deux sens. Cette asymétrie
+désigne le biais que ce document documente sur vervox depuis le début, et elle
+suggère fortement que socialcal a raison. Elle ne le prouve pas, et rien ici ne
+promeut ces quinze vers « pris » sur cette base.
+
+Ce qui les trancherait : dnsrobot, s'il rouvre. Il interroge Instagram en direct
+et reste le seul arbitre possible. Sondé à chaque relève par `control.sh`,
+fermé depuis le 24/08.
+
+Wayback a été essayé sur ces quinze : **0 archive sur 15**, aucune information.
+
 ### Threads réexaminé le 28/08 — négatif, et instructif
 
 Threads partage le namespace d'Instagram : le handle Threads **est** le handle
