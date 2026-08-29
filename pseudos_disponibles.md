@@ -1,16 +1,16 @@
 # Pseudos Instagram disponibles
 
-**Liste provisoire — la vérification n'est pas finie.** 0 pseudo(s) attendent une confirmation par la seconde source et 24 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
+**Liste provisoire — la vérification n'est pas finie.** 0 pseudo(s) attendent une confirmation par la seconde source et 19 restent indéterminés. Un pseudo absent de cette liste n'est donc pas nécessairement pris.
 
-Généré le 02:52:02 (heure de Paris).
+Généré le 03:51:59 (heure de Paris).
 
 | | nombre |
 |---|---|
 | Disponibles, confirmés par 2 sources | **396** |
 | Disponibles, vus par 1 source seulement | 0 |
-| Pris | 665 |
+| Pris | 670 |
 | Contradictions entre sources | 15 |
-| Indéterminés | 24 |
+| Indéterminés | 19 |
 
 ## Confirmés par 2 sources — 396
 
