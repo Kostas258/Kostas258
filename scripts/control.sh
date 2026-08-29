@@ -120,7 +120,14 @@ else
         if (v&&s&&v!==s) n++;
       }
       console.log(n);' 2>/dev/null || echo 0)
-    if [ "${nconf:-0}" -gt 0 ]; then
+    # `alive` ne teste que les deux runners historiques. La remesure des
+    # contradictions est un troisième consommateur du quota vervox : sans ce
+    # test, une relève en lancerait une seconde pendant que la première tourne,
+    # et deux files sur la même source sont exactement ce que le verrou
+    # d'instance existe pour empêcher.
+    if ps -eo args --no-headers | grep -q "^node scripts/recheck_conflicts.js"; then
+      say "vervox : remesure des contradictions déjà en cours"
+    elif [ "${nconf:-0}" -gt 0 ]; then
       say "vervox : file vide, mais $nconf contradictions à remesurer"
       say "   node scripts/recheck_conflicts.js vervox"
       echo "RECHECK_CONFLICTS=1"
